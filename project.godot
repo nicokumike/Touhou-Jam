@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="godot-library"
+run/main_scene="res://Game/Lib/Game_Manager/game_manager.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://Game/Lib/Audio_Manager/audio_manager_bus.tres"
+
+[autoload]
+
+AudMan="*res://Game/Lib/Audio_Manager/audio_manager.tscn"
+SignalBus="*res://Game/Lib/SignalBus/signal_bus.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=0
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"

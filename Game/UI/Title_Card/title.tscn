@@ -1,0 +1,111 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo8235t87pkb1"]
+
+[ext_resource type="Script" path="res://Game/UI/Title_Card/title_control.gd" id="1_epqi3"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_epqi3")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="Panel" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Butttons_Container" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -190.0
+offset_right = 100.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="CanvasLayer/HBoxContainer/Buttons/Butttons_Container"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "Start"
+
+[node name="Settings" type="Button" parent="CanvasLayer/HBoxContainer/Buttons/Butttons_Container"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "Settings
+"
+
+[node name="Credits" type="Button" parent="CanvasLayer/HBoxContainer/Buttons/Butttons_Container"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "Credits"
+
+[node name="Gallery" type="Button" parent="CanvasLayer/HBoxContainer/Buttons/Butttons_Container"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "Gallery"
+
+[node name="Quit" type="Button" parent="CanvasLayer/HBoxContainer/Buttons/Butttons_Container"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "Quit"
+
+[node name="Extra Button" type="Button" parent="CanvasLayer/HBoxContainer/Buttons/Butttons_Container"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "Extra Button"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Game_Title" type="Panel" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer/Game_Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Game Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Graphic_Example" type="Panel" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer/Graphic_Example"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Graphic Example"
+horizontal_alignment = 1
+vertical_alignment = 1

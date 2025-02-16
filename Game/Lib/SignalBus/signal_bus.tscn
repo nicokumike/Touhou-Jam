@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ipe0deuwgpt"]
+
+[ext_resource type="Script" path="res://Game/Lib/SignalBus/signal_bus.gd" id="1_je40x"]
+
+[node name="SignalBus" type="Node"]
+script = ExtResource("1_je40x")
