@@ -26,6 +26,9 @@ func switch_songs():
 #takes a looped argument defaults to true
 func play_music(music: AudioStreamMP3, volume = 0, looped = true):
 	#music_manager.playing = true
+	#Checks if the song is the same song, prevents double triggers
+	if music == current_music:
+		return false
 	if current_music:
 		new_music = music
 		new_volume = volume
