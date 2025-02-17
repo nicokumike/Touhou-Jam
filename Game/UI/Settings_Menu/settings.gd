@@ -51,7 +51,6 @@ func _on_master_slider_drag_ended(value_changed: bool) -> void:
 	pass # Replace with function body.
 
 func _on_music_slider_value_changed(value):
-	prints(value, music_bus)
 	AudioServer.set_bus_volume_db(music_bus, linear_to_db(value))
 
 func _on_music_slider_drag_ended(value_changed):
