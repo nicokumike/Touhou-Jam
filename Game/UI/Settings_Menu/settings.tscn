@@ -62,8 +62,7 @@ layout_mode = 2
 
 [node name="MusicLabel" type="Label" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer2"]
 layout_mode = 2
-text = "MUSIC
-"
+text = "MUSIC   "
 
 [node name="MusicSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer2"]
 layout_mode = 2
@@ -77,7 +76,7 @@ layout_mode = 2
 
 [node name="VoiceLabel" type="Label" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer3"]
 layout_mode = 2
-text = "VOICE"
+text = "VOICE    "
 
 [node name="VoiceSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer3"]
 layout_mode = 2
@@ -91,8 +90,7 @@ layout_mode = 2
 
 [node name="SFXLabel" type="Label" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer4"]
 layout_mode = 2
-text = "SFX
-"
+text = "SFX        "
 
 [node name="SFXSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer4"]
 layout_mode = 2
