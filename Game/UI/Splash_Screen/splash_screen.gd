@@ -10,7 +10,7 @@ extends Control
 	preload("res://Assets/SFX/SplashScreen/b06.wav"),
 	preload("res://Assets/SFX/SplashScreen/b07.wav"),
 	preload("res://Assets/SFX/SplashScreen/b08.wav"),
-	preload("res://Assets/SFX/SplashScreen/b09.wav"),
+	preload("res://Assets/SFX/SplashScreen/b09.wav")
 ]
 
 func _play_splash_sfx():
