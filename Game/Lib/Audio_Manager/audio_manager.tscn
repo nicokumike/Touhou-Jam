@@ -6,6 +6,7 @@
 script = ExtResource("1_ad85s")
 
 [node name="MusicManager" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="FadeTimer" type="Timer" parent="MusicManager"]
 

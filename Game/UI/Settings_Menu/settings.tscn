@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://jjuu8asfhrpm"]
+[gd_scene load_steps=4 format=3 uid="uid://jjuu8asfhrpm"]
 
 [ext_resource type="Script" path="res://Game/UI/Settings_Menu/settings.gd" id="1_xj52j"]
+[ext_resource type="AudioStream" uid="uid://gmlgf3h8xomw" path="res://Assets/SFX/BP_Default_Sounds/Default_Attack.mp3" id="2_an335"]
+[ext_resource type="AudioStream" uid="uid://dda66qotujk1g" path="res://Assets/SFX/BP_Default_Sounds/Default_Death.mp3" id="3_1mofh"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +12,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xj52j")
+sample_sfx = ExtResource("2_an335")
+sample_voice = ExtResource("3_1mofh")
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
@@ -51,11 +55,13 @@ text = "MASTER
 "
 
 [node name="MasterSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-value = 80.0
-rounded = true
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox"]
 layout_mode = 2
@@ -65,11 +71,13 @@ layout_mode = 2
 text = "MUSIC   "
 
 [node name="MusicSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-value = 80.0
-rounded = true
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox"]
 layout_mode = 2
@@ -79,11 +87,13 @@ layout_mode = 2
 text = "VOICE    "
 
 [node name="VoiceSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-value = 80.0
-rounded = true
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox"]
 layout_mode = 2
@@ -93,11 +103,13 @@ layout_mode = 2
 text = "SFX        "
 
 [node name="SFXSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer4"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-value = 80.0
-rounded = true
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="drag_ended" from="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer/MasterSlider" to="." method="_on_master_slider_drag_ended"]
