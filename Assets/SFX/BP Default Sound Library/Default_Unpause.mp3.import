@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dchtbqauk56hb"
+path="res://.godot/imported/Default_Unpause.mp3-a7c74542ad1786a5b29511b975ab9538.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/BP Default Sound Library/Default_Unpause.mp3"
+dest_files=["res://.godot/imported/Default_Unpause.mp3-a7c74542ad1786a5b29511b975ab9538.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

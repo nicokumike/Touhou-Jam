@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fdp04dn4crgj"
+path="res://.godot/imported/Default_Menu_Click.mp3-849bb01279040f540dccc66df22e7b0a.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/BP Default Sound Library/Default_Menu_Click.mp3"
+dest_files=["res://.godot/imported/Default_Menu_Click.mp3-849bb01279040f540dccc66df22e7b0a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
