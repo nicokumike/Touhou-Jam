@@ -43,6 +43,7 @@ func _ready() -> void:
 		#Change this to start the game trigger once you get to it to skip the menu
 		SignalBus.game_state_changed.emit("Main")
 
+
 func change_scene(new_state: String):
 	if debug_mode == true:
 		prints('menu scene changed', new_state, Menu_Scenes[new_state])
