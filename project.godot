@@ -22,7 +22,7 @@ buses/default_bus_layout="res://Game/Lib/Audio_Manager/audio_manager_bus.tres"
 [autoload]
 
 AudMan="*res://Game/Lib/Audio_Manager/audio_manager.tscn"
-SignalBus="*res://Game/Lib/SignalBus/signal_bus.gd"
+SignalBus="*res://Game/Lib/Signal_Bus/signal_bus.gd"
 
 [debug]
 
