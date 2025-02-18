@@ -1,0 +1,15 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://31q0ryklov0o"
+path="res://.godot/imported/Base.atlas-6c3df11c8286a0810fc173013245e69f.spatlas"
+
+[deps]
+
+source_file="res://Assets/Characters/Base/Base.atlas"
+dest_files=["res://.godot/imported/Base.atlas-6c3df11c8286a0810fc173013245e69f.spatlas"]
+
+[params]
+
+normal_map_prefix="n"

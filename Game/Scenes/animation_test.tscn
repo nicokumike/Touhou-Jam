@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl6f0y14bbbnn"]
+
+[ext_resource type="PackedScene" uid="uid://8ppak2hpy7qc" path="res://Game/Characters/Flandre/flandre.tscn" id="1_4jlud"]
+
+[node name="AnimationTest" type="Node2D"]
+
+[node name="Flandre" parent="." instance=ExtResource("1_4jlud")]
+position = Vector2(241, 267)
