@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://bc03syknr3he6"]
+
+[ext_resource type="Texture2D" uid="uid://dw5ji5ifhotwb" path="res://Assets/Characters/Scarlet.png" id="1_xhhx3"]
+[ext_resource type="Script" path="res://background.gd" id="2_ep8y8"]
+[ext_resource type="Texture2D" uid="uid://dt0g18e7aly5u" path="res://Assets/Characters/Utsuho_Reiuji_Vector.webp" id="3_cv0cf"]
+[ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="4_lafp1"]
+[ext_resource type="Script" path="res://Scenes/pointer.gd" id="5_6yugx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrojt"]
+size = Vector2(200, 193.333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc1gi"]
+size = Vector2(124.878, 124.343)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gt10"]
+size = Vector2(73.3334, 73.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qb27d"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Scarlet" type="Sprite2D" parent="."]
+position = Vector2(167, 339)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_xhhx3")
+
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("2_ep8y8")
+
+[node name="UtsuhoReiujiVector" type="Sprite2D" parent="Background"]
+position = Vector2(10220, 345)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_cv0cf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(19203, 69)
+scale = Vector2(300, 1)
+texture = ExtResource("4_lafp1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background"]
+position = Vector2(19204, 656)
+scale = Vector2(300, 1)
+texture = ExtResource("4_lafp1")
+
+[node name="Icon" type="CharacterBody2D" parent="."]
+modulate = Color(1, 1, 1, 0.2)
+position = Vector2(441, 342)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("5_6yugx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Icon"]
+texture = ExtResource("4_lafp1")
+
+[node name="Bad" type="Area2D" parent="Icon"]
+
+[node name="Bad" type="CollisionShape2D" parent="Icon/Bad"]
+position = Vector2(-0.00012207, 0)
+shape = SubResource("RectangleShape2D_vrojt")
+
+[node name="Good" type="Area2D" parent="Icon"]
+
+[node name="Good" type="CollisionShape2D" parent="Icon/Good"]
+position = Vector2(0.00012207, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_bc1gi")
+debug_color = Color(0, 0, 1, 0.419608)
+
+[node name="Great" type="Area2D" parent="Icon"]
+position = Vector2(0, 3.33325)
+
+[node name="Great" type="CollisionShape2D" parent="Icon/Great"]
+position = Vector2(-0.00012207, -3.33337)
+shape = SubResource("RectangleShape2D_8gt10")
+debug_color = Color(0, 0.976471, 0, 0.419608)
+
+[node name="Perfect" type="Area2D" parent="Icon"]
+
+[node name="Perfect" type="CollisionShape2D" parent="Icon/Perfect"]
+shape = SubResource("RectangleShape2D_qb27d")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1208, 344)
+
+[connection signal="area_entered" from="Icon/Bad" to="Icon" method="_on_bad_area_entered"]
+[connection signal="area_exited" from="Icon/Bad" to="Icon" method="_on_bad_area_exited"]
+[connection signal="area_entered" from="Icon/Good" to="Icon" method="_on_good_area_entered"]
+[connection signal="area_exited" from="Icon/Good" to="Icon" method="_on_good_area_exited"]
+[connection signal="area_entered" from="Icon/Great" to="Icon" method="_on_great_area_entered"]
+[connection signal="area_exited" from="Icon/Great" to="Icon" method="_on_great_area_exited"]
+[connection signal="area_entered" from="Icon/Perfect" to="Icon" method="_on_perfect_area_entered"]
+[connection signal="area_exited" from="Icon/Perfect" to="Icon" method="_on_perfect_area_exited"]
+[connection signal="timeout" from="Timer" to="Background" method="_on_timer_timeout"]
