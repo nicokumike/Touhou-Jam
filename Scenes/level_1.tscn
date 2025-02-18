@@ -52,21 +52,23 @@ script = ExtResource("5_6yugx")
 texture = ExtResource("4_lafp1")
 
 [node name="Bad" type="Area2D" parent="Icon"]
+collision_mask = 2
 
 [node name="Bad" type="CollisionShape2D" parent="Icon/Bad"]
 position = Vector2(-0.00012207, 0)
 shape = SubResource("RectangleShape2D_vrojt")
 
 [node name="Good" type="Area2D" parent="Icon"]
+collision_mask = 2
 
 [node name="Good" type="CollisionShape2D" parent="Icon/Good"]
 position = Vector2(0.00012207, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bc1gi")
 debug_color = Color(0, 0, 1, 0.419608)
 
 [node name="Great" type="Area2D" parent="Icon"]
 position = Vector2(0, 3.33325)
+collision_mask = 2
 
 [node name="Great" type="CollisionShape2D" parent="Icon/Great"]
 position = Vector2(-0.00012207, -3.33337)
@@ -74,6 +76,7 @@ shape = SubResource("RectangleShape2D_8gt10")
 debug_color = Color(0, 0.976471, 0, 0.419608)
 
 [node name="Perfect" type="Area2D" parent="Icon"]
+collision_mask = 2
 
 [node name="Perfect" type="CollisionShape2D" parent="Icon/Perfect"]
 shape = SubResource("RectangleShape2D_qb27d")

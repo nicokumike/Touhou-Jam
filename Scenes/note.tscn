@@ -14,7 +14,8 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_elhnb")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_2tjty")
-debug_color = Color(0, 1, 0, 0.419608)
+debug_color = Color(1, 1, 1, 0.2)

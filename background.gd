@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed = 1000
+var speed = 100
 var bpm = 170
 
 @onready var note = preload("res://Scenes/note.tscn")
