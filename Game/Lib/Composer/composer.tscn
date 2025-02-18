@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://dc56wgltvjxpl"]
+[gd_scene load_steps=2 format=3 uid="uid://dc56wgltvjxpl"]
+
+[ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_4ijpw"]
 
 [node name="Composer" type="Node"]
+script = ExtResource("1_4ijpw")
