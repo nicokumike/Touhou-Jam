@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dasb0nmhg1pb3"
+path="res://.godot/imported/Latency Test - B.wav-ad8a4a20ed632a33403ad0a0cfc33d7e.sample"
+
+[deps]
+
+source_file="res://Game/Lib/Audio_Manager/Latency Test - B.wav"
+dest_files=["res://.godot/imported/Latency Test - B.wav-ad8a4a20ed632a33403ad0a0cfc33d7e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
