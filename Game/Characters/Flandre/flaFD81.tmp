@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://8ppak2hpy7qc"]
+
+[ext_resource type="Script" path="res://Game/Lib/_Test_PlayerController/test_playercontroller.gd" id="1_fkgm5"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://dl8kow7042sab" path="res://Assets/Characters/Base/base_data_resource.tres" id="1_nsdd7"]
+[ext_resource type="Script" path="res://Game/Lib/Animation_Handler/Spine/animation_handler_spine.gd" id="2_6t3se"]
+[ext_resource type="Script" path="res://Game/Lib/StateMachine/statemachine.gd" id="3_33epy"]
+[ext_resource type="Script" path="res://Game/Characters/Flandre/States/flandre_idle.gd" id="6_xuki0"]
+[ext_resource type="Script" path="res://Game/Characters/Flandre/States/flandre_attack_d.gd" id="7_nh2sa"]
+
+[node name="Flandre" type="Node2D" node_paths=PackedStringArray("state_machine", "animation_handler")]
+script = ExtResource("1_fkgm5")
+state_machine = NodePath("StateMachine")
+animation_handler = NodePath("AnimationHandler_Spine")
+
+[node name="AnimationHandler_Spine" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("1_nsdd7")
+preview_skin = "default"
+preview_animation = "Flandre/idle"
+preview_frame = false
+preview_time = 0.0
+script = ExtResource("2_6t3se")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_33epy")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_handler")]
+script = ExtResource("6_xuki0")
+animation_handler = NodePath("../../AnimationHandler_Spine")
+skeletonDataResource = ExtResource("1_nsdd7")
+animation_name = "Flandre/idle"
+loop = true
+
+[node name="Attack_D" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_handler")]
+script = ExtResource("7_nh2sa")
+animation_handler = NodePath("../../AnimationHandler_Spine")

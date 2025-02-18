@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkddhiwceg4no"]
+
+[ext_resource type="Script" path="res://Game/Lib/Animation_Handler/Spine/animation_handler_spine.gd" id="1_wejwb"]
+
+[node name="AnimationHandler_Spine" type="SpineSprite"]
+script = ExtResource("1_wejwb")
