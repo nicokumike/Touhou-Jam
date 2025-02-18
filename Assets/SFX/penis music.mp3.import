@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhr52t3j5obyw"
+path="res://.godot/imported/penis music.mp3-04632f4b98499c8b66053d148e252641.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/penis music.mp3"
+dest_files=["res://.godot/imported/penis music.mp3-04632f4b98499c8b66053d148e252641.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

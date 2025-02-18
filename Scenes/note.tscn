@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5okftixnlb3w"]
+
+[ext_resource type="Script" path="res://note.gd" id="1_j3arb"]
+[ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="2_elhnb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tjty"]
+size = Vector2(26, 26)
+
+[node name="Note" type="CharacterBody2D" groups=["note"]]
+script = ExtResource("1_j3arb")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_elhnb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2tjty")
+debug_color = Color(0, 1, 0, 0.419608)
