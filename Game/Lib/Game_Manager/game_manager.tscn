@@ -4,12 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://5ooenep8ptyj" path="res://Game/UI/Splash_Screen/splash_screen.tscn" id="2_ymkn1"]
 
 [node name="GameManager" type="Node" node_paths=PackedStringArray("current_menu")]
-process_mode = 3
 script = ExtResource("1_uo502")
 current_menu = NodePath("Transitions/Splash")
 
 [node name="MenuUI" type="CanvasLayer" parent="."]
-process_mode = 3
 layer = 99
 
 [node name="Transitions" type="CanvasLayer" parent="."]

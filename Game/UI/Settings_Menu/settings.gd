@@ -1,13 +1,16 @@
 extends Control
 
+@export var action_items: Array[String]
+
 @export var sample_sfx: AudioStreamMP3
 @export var sample_voice: AudioStreamMP3
+
+@onready var input_map_container   = %InputMapContainer
 
 @onready var master_volume_slider = %MasterSlider
 @onready var music_volume_slider  = %MusicSlider
 @onready var voice_volume_slider  = %VoiceSlider
 @onready var sfx_volume_slider    = %SFXSlider
-
 var music_bus_name: String        = "Music"
 var voice_bus_name: String        = "Voice"
 var sfx_bus_name: String          = "SFX"
@@ -36,9 +39,30 @@ func _ready():
 	voice_bus  = AudioServer.get_bus_index(voice_bus_name)
 	sfx_bus    = AudioServer.get_bus_index(sfx_bus_name)
 	master_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(master_bus))
-	music_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(music_bus))
-	voice_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(voice_bus))
-	sfx_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus))
+	music_volume_slider.value  = db_to_linear(AudioServer.get_bus_volume_db(music_bus))
+	voice_volume_slider.value  = db_to_linear(AudioServer.get_bus_volume_db(voice_bus))
+	sfx_volume_slider.value    = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus))
+	create_action_remap_items()
+
+
+func create_action_remap_items():
+	var previous_item = input_map_container.get_child(input_map_container.get_child_count() - 1)
+	for index in range(action_items.size()):
+		var action = action_items[index]
+		var label = Label.new()
+		label.text = action
+		input_map_container.add_child(label)
+		
+		var button = RemapButton.new()
+		button.action = action
+		#prints(index, action, previous_item)
+		button.focus_neighbor_top = previous_item.get_path()
+		previous_item.focus_neighbor_bottom = button.get_path()
+		#if index == action_items.size() - 1:
+			#mai
+		previous_item = button
+		input_map_container.add_child(button)
+
 
 func _on_back_button_pressed() -> void:
 	SignalBus.game_state_changed.emit("Main")
