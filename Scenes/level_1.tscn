@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bc03syknr3he6"]
+[gd_scene load_steps=11 format=3 uid="uid://bc03syknr3he6"]
 
+[ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
 [ext_resource type="Texture2D" uid="uid://dw5ji5ifhotwb" path="res://Assets/Characters/Scarlet.png" id="1_xhhx3"]
 [ext_resource type="Script" path="res://background.gd" id="2_ep8y8"]
 [ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="4_lafp1"]
@@ -20,6 +21,10 @@ size = Vector2(73.3334, 73.3333)
 size = Vector2(20, 350)
 
 [node name="Level1" type="Node2D"]
+
+[node name="Composer" type="Node" parent="." node_paths=PackedStringArray("emitter")]
+script = ExtResource("1_auj5i")
+emitter = NodePath("../Background")
 
 [node name="Scarlet" type="Sprite2D" parent="."]
 position = Vector2(167, 339)
