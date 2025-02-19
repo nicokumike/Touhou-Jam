@@ -11,8 +11,8 @@ func _ready():
 	set_process_unhandled_input(false)
 	update_key_text()
 
-func _toggled(button_pressed):
-	set_process_unhandled_input(button_pressed)
+func _toggled(new_button_pressed):
+	set_process_unhandled_input(new_button_pressed)
 	if button_pressed:
 		text = "... Awaiting Input ..."
 		release_focus()
