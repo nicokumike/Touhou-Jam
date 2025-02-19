@@ -1,6 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpnq6w7rd0t4s"]
+[gd_scene load_steps=24 format=3 uid="uid://cpnq6w7rd0t4s"]
 
 [ext_resource type="Script" path="res://Game/UI/Main_Menu/main_menu.gd" id="1_lbcms"]
+[ext_resource type="Texture2D" uid="uid://055gj3xys6qy" path="res://Assets/UI/Title_Screen_Graphics/Blue_Sky.png" id="2_wbdnd"]
+[ext_resource type="Texture2D" uid="uid://c7hf48l4alqd7" path="res://Assets/UI/Title_Screen_Graphics/Blood_Moon.png" id="3_ed2fx"]
+[ext_resource type="Texture2D" uid="uid://bu8ynafy53e5h" path="res://Assets/UI/Title_Screen_Graphics/Stars.png" id="3_w1e0u"]
+[ext_resource type="Texture2D" uid="uid://bugy2hoewox07" path="res://Assets/UI/Title_Screen_Graphics/Mansion.png" id="4_15131"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Blending_Modes/soft_light.gdshader" id="5_g55ib"]
+[ext_resource type="Texture2D" uid="uid://c46ql5rga05gn" path="res://Assets/UI/Title_Screen_Graphics/Utsuho.png" id="6_ov4cd"]
+[ext_resource type="Texture2D" uid="uid://oy2k746gnjl6" path="res://Assets/UI/Title_Screen_Graphics/Title.png" id="7_qnal7"]
+[ext_resource type="Texture2D" uid="uid://tmhjaktames" path="res://Assets/UI/Title_Screen_Graphics/Flandre_Sill.png" id="8_5dr6k"]
+[ext_resource type="Texture2D" uid="uid://c2v6vowqmuhto" path="res://Assets/UI/Title_Screen_Graphics/Start_Gray.png" id="10_muy4s"]
+[ext_resource type="Texture2D" uid="uid://ccg6rbuhvygnw" path="res://Assets/UI/Title_Screen_Graphics/Start.png" id="11_iw8te"]
+[ext_resource type="Texture2D" uid="uid://cc70we17eyoyr" path="res://Assets/UI/Title_Screen_Graphics/Settings_Gray.png" id="12_i3d67"]
+[ext_resource type="Texture2D" uid="uid://ccbxwk2uv3116" path="res://Assets/UI/Title_Screen_Graphics/Credits_Gray.png" id="13_nu5ql"]
+[ext_resource type="Texture2D" uid="uid://1sp0vnkehkv3" path="res://Assets/UI/Title_Screen_Graphics/Settings.png" id="13_y43fx"]
+[ext_resource type="Texture2D" uid="uid://bby8ptgqgkwfb" path="res://Assets/UI/Title_Screen_Graphics/Credits.png" id="14_20vub"]
+[ext_resource type="Texture2D" uid="uid://dem55w22fykbw" path="res://Assets/UI/Title_Screen_Graphics/Music_Room_Gray.png" id="15_dx2oi"]
+[ext_resource type="Texture2D" uid="uid://islsqt57ygga" path="res://Assets/UI/Title_Screen_Graphics/Music_Room.png" id="16_c1qd8"]
+[ext_resource type="Texture2D" uid="uid://dg6k1fyokeha0" path="res://Assets/UI/Title_Screen_Graphics/Quit_Gray.png" id="17_m3amv"]
+[ext_resource type="Texture2D" uid="uid://bg6i5f1duif0l" path="res://Assets/UI/Title_Screen_Graphics/Quit.png" id="18_tyf8r"]
+
+[sub_resource type="Environment" id="Environment_i042l"]
+background_mode = 3
+background_canvas_max_layer = 1
+glow_enabled = true
+glow_bloom = 0.13
+glow_blend_mode = 0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tsuga"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1mpq"]
+noise = SubResource("FastNoiseLite_tsuga")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7g6o"]
+shader = ExtResource("5_g55ib")
+shader_parameter/intensity = 1.0
+shader_parameter/dissolve_value = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_x1mpq")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -21,39 +57,116 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-layout_mode = 1
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i042l")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlueSky" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 3
+scale = Vector2(2, 2)
+texture = ExtResource("2_wbdnd")
+
+[node name="Stars" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0, 0.741176, 1, 1)
+texture_filter = 3
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_w1e0u")
+
+[node name="BloodMoon" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 3
+scale = Vector2(2, 2)
+texture = ExtResource("3_ed2fx")
+
+[node name="Mansion" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 3
+scale = Vector2(2, 2)
+texture = ExtResource("4_15131")
+
+[node name="Utsuho" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_g7g6o")
+scale = Vector2(2, 2)
+texture = ExtResource("6_ov4cd")
+
+[node name="Title" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 3
+offset_left = 466.0
+offset_top = 120.0
+offset_right = 1106.0
+offset_bottom = 480.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(445, 215.5)
+texture = ExtResource("7_qnal7")
+
+[node name="FlandreSill" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 3
+offset_left = 80.0
+offset_top = -3.0
+offset_right = 720.0
+offset_bottom = 357.0
+scale = Vector2(2, 2)
+texture = ExtResource("8_5dr6k")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+texture_filter = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -68.0
-offset_right = 35.0
-offset_bottom = 68.0
+offset_left = 88.0
+offset_top = 58.0
+offset_right = 245.0
+offset_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 
-[node name="Start" type="Button" parent="Control/VBoxContainer"]
+[node name="Start" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-text = "Start
-"
+texture_normal = ExtResource("10_muy4s")
+texture_hover = ExtResource("11_iw8te")
+ignore_texture_size = true
+stretch_mode = 3
 
-[node name="Settings" type="Button" parent="Control/VBoxContainer"]
+[node name="Settings" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-text = "Settings"
+texture_normal = ExtResource("12_i3d67")
+texture_hover = ExtResource("13_y43fx")
+ignore_texture_size = true
+stretch_mode = 3
 
-[node name="Credits" type="Button" parent="Control/VBoxContainer"]
+[node name="Credits" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-text = "Credits
-"
+texture_normal = ExtResource("13_nu5ql")
+texture_hover = ExtResource("14_20vub")
+ignore_texture_size = true
+stretch_mode = 3
 
-[node name="Quit" type="Button" parent="Control/VBoxContainer"]
+[node name="MusicRoom" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-text = "Quit"
+texture_normal = ExtResource("15_dx2oi")
+texture_hover = ExtResource("16_c1qd8")
+ignore_texture_size = true
+stretch_mode = 3
 
-[connection signal="pressed" from="Control/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Quit" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+texture_normal = ExtResource("17_m3amv")
+texture_hover = ExtResource("18_tyf8r")
+ignore_texture_size = true
+stretch_mode = 3
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MusicRoom" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
