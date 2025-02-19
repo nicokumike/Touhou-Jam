@@ -22,10 +22,6 @@ size = Vector2(20, 350)
 
 [node name="Level1" type="Node2D"]
 
-[node name="Composer" type="Node" parent="." node_paths=PackedStringArray("emitter")]
-script = ExtResource("1_auj5i")
-emitter = NodePath("../Background")
-
 [node name="Scarlet" type="Sprite2D" parent="."]
 position = Vector2(167, 339)
 scale = Vector2(0.2, 0.2)
@@ -33,6 +29,10 @@ texture = ExtResource("1_xhhx3")
 
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource("2_ep8y8")
+
+[node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
+script = ExtResource("1_auj5i")
+emitter = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(19203, 69)

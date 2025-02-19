@@ -35,7 +35,7 @@ func initialize(data):
 	sheet = sheet_data.sheet
 	prints(bpm, song_path, song_name, sheet)
 	print('------------------')
-	print_it_all()
+	#print_it_all()
 
 #Debug function
 func print_it_all():
@@ -53,6 +53,7 @@ func play_note():
 	#Grab the note data
 	var note = sheet[index[0]][index[1]][index[2]]
 	var note_data
+	print(note)
 	if note is not float:
 		prints("play note:", note)
 		pass
