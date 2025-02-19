@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cpnq6w7rd0t4s"]
+[gd_scene load_steps=28 format=3 uid="uid://cpnq6w7rd0t4s"]
 
 [ext_resource type="Script" path="res://Game/UI/Main_Menu/main_menu.gd" id="1_lbcms"]
 [ext_resource type="Texture2D" uid="uid://055gj3xys6qy" path="res://Assets/UI/Title_Screen_Graphics/Blue_Sky.png" id="2_wbdnd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://tmhjaktames" path="res://Assets/UI/Title_Screen_Graphics/Flandre_Sill.png" id="8_5dr6k"]
 [ext_resource type="Texture2D" uid="uid://c2v6vowqmuhto" path="res://Assets/UI/Title_Screen_Graphics/Start_Gray.png" id="10_muy4s"]
 [ext_resource type="Texture2D" uid="uid://ccg6rbuhvygnw" path="res://Assets/UI/Title_Screen_Graphics/Start.png" id="11_iw8te"]
+[ext_resource type="Script" path="res://Game/UI/Buttons_Visuals/menu_buttons.gd" id="12_c85h5"]
 [ext_resource type="Texture2D" uid="uid://cc70we17eyoyr" path="res://Assets/UI/Title_Screen_Graphics/Settings_Gray.png" id="12_i3d67"]
 [ext_resource type="Texture2D" uid="uid://ccbxwk2uv3116" path="res://Assets/UI/Title_Screen_Graphics/Credits_Gray.png" id="13_nu5ql"]
 [ext_resource type="Texture2D" uid="uid://1sp0vnkehkv3" path="res://Assets/UI/Title_Screen_Graphics/Settings.png" id="13_y43fx"]
@@ -26,6 +27,67 @@ background_canvas_max_layer = 1
 glow_enabled = true
 glow_bloom = 0.13
 glow_blend_mode = 0
+
+[sub_resource type="Animation" id="Animation_qgev1"]
+resource_name = "cutscene"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Utsuho:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.615571, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Utsuho:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1.46409, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gq7mg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Utsuho:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Utsuho:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lh125"]
+_data = {
+"RESET": SubResource("Animation_gq7mg"),
+"cutscene": SubResource("Animation_qgev1")
+}
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tsuga"]
 
@@ -60,14 +122,19 @@ grow_vertical = 2
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i042l")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lh125")
+}
 
-[node name="BlueSky" type="TextureRect" parent="CanvasLayer"]
+[node name="BlueSky" type="TextureRect" parent="."]
 texture_filter = 3
+offset_right = 640.0
+offset_bottom = 360.0
 scale = Vector2(2, 2)
 texture = ExtResource("2_wbdnd")
 
-[node name="Stars" type="TextureRect" parent="CanvasLayer"]
+[node name="Stars" type="TextureRect" parent="."]
 modulate = Color(0, 0.741176, 1, 1)
 texture_filter = 3
 offset_right = 640.0
@@ -75,33 +142,38 @@ offset_bottom = 360.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_w1e0u")
 
-[node name="BloodMoon" type="TextureRect" parent="CanvasLayer"]
+[node name="BloodMoon" type="TextureRect" parent="."]
 texture_filter = 3
+offset_right = 640.0
+offset_bottom = 360.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_ed2fx")
 
-[node name="Mansion" type="TextureRect" parent="CanvasLayer"]
+[node name="Mansion" type="TextureRect" parent="."]
 texture_filter = 3
+offset_right = 640.0
+offset_bottom = 360.0
 scale = Vector2(2, 2)
 texture = ExtResource("4_15131")
 
-[node name="Utsuho" type="TextureRect" parent="CanvasLayer"]
+[node name="Utsuho" type="TextureRect" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_g7g6o")
+offset_right = 640.0
+offset_bottom = 360.0
 scale = Vector2(2, 2)
 texture = ExtResource("6_ov4cd")
 
-[node name="Title" type="TextureRect" parent="CanvasLayer"]
+[node name="Title" type="TextureRect" parent="."]
 texture_filter = 3
-offset_left = 466.0
-offset_top = 120.0
-offset_right = 1106.0
-offset_bottom = 480.0
+offset_left = -1.0
+offset_top = -112.0
+offset_right = 639.0
+offset_bottom = 248.0
 scale = Vector2(2, 2)
-pivot_offset = Vector2(445, 215.5)
 texture = ExtResource("7_qnal7")
 
-[node name="FlandreSill" type="TextureRect" parent="CanvasLayer"]
+[node name="FlandreSill" type="TextureRect" parent="."]
 texture_filter = 3
 offset_left = 80.0
 offset_top = -3.0
@@ -110,63 +182,79 @@ offset_bottom = 357.0
 scale = Vector2(2, 2)
 texture = ExtResource("8_5dr6k")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 texture_filter = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 88.0
-offset_top = 58.0
-offset_right = 245.0
-offset_bottom = 199.0
+offset_left = 63.0
+offset_top = 40.0
+offset_right = 220.0
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
+theme_override_constants/separation = 6
 
-[node name="Start" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+[node name="Start" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 texture_normal = ExtResource("10_muy4s")
 texture_hover = ExtResource("11_iw8te")
 ignore_texture_size = true
 stretch_mode = 3
+script = ExtResource("12_c85h5")
 
-[node name="Settings" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+[node name="Settings" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 texture_normal = ExtResource("12_i3d67")
 texture_hover = ExtResource("13_y43fx")
 ignore_texture_size = true
 stretch_mode = 3
+script = ExtResource("12_c85h5")
 
-[node name="Credits" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+[node name="Credits" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 texture_normal = ExtResource("13_nu5ql")
 texture_hover = ExtResource("14_20vub")
 ignore_texture_size = true
 stretch_mode = 3
+script = ExtResource("12_c85h5")
 
-[node name="MusicRoom" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+[node name="MusicRoom" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 texture_normal = ExtResource("15_dx2oi")
 texture_hover = ExtResource("16_c1qd8")
 ignore_texture_size = true
 stretch_mode = 3
+script = ExtResource("12_c85h5")
 
-[node name="Quit" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+[node name="Quit" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 texture_normal = ExtResource("17_m3amv")
 texture_hover = ExtResource("18_tyf8r")
 ignore_texture_size = true
 stretch_mode = 3
+script = ExtResource("12_c85h5")
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/MusicRoom" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="start" type="Marker2D" parent="."]
+position = Vector2(-1, -112)
+scale = Vector2(2, 2)
+
+[node name="end" type="Marker2D" parent="."]
+position = Vector2(-1, -711)
+scale = Vector2(2, 2)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/MusicRoom" to="." method="_on_music_room_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
