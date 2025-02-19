@@ -1,7 +1,10 @@
 extends Node2D
 
-var speed = 100
+var speed = 300
 var bpm = 170
+
+var noteCount = 0
+var bossCount = 20
 
 @onready var note = preload("res://Scenes/note.tscn")
 @onready var spawnPoint = $"../SpawnPoint"
@@ -14,7 +17,8 @@ func _ready():
 
 func _process(delta):
 	position.x -= speed * delta
-	pass
+	if noteCount >= bossCount:
+		timer.stop()
 
 func _on_timer_timeout():
 	var note_instance = note.instantiate()
@@ -22,3 +26,5 @@ func _on_timer_timeout():
 	note_instance.setSpeed(speed)
 	note_instance.position = spawnPoint.position
 	get_parent().add_child(note_instance)
+	
+	noteCount += 1

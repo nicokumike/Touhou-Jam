@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://dw5ji5ifhotwb" path="res://Assets/Characters/Scarlet.png" id="1_xhhx3"]
 [ext_resource type="Script" path="res://background.gd" id="2_ep8y8"]
-[ext_resource type="Texture2D" uid="uid://dt0g18e7aly5u" path="res://Assets/Characters/Utsuho_Reiuji_Vector.webp" id="3_cv0cf"]
 [ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="4_lafp1"]
 [ext_resource type="Script" path="res://Scenes/pointer.gd" id="5_6yugx"]
 
@@ -17,6 +16,9 @@ size = Vector2(73.3334, 73.3333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb27d"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vjq"]
+size = Vector2(20, 350)
+
 [node name="Level1" type="Node2D"]
 
 [node name="Scarlet" type="Sprite2D" parent="."]
@@ -26,11 +28,6 @@ texture = ExtResource("1_xhhx3")
 
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource("2_ep8y8")
-
-[node name="UtsuhoReiujiVector" type="Sprite2D" parent="Background"]
-position = Vector2(10220, 345)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_cv0cf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(19203, 69)
@@ -88,6 +85,14 @@ autostart = true
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(1208, 344)
+
+[node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(15, 347)
+shape = SubResource("RectangleShape2D_q6vjq")
 
 [connection signal="area_entered" from="Icon/Bad" to="Icon" method="_on_bad_area_entered"]
 [connection signal="area_exited" from="Icon/Bad" to="Icon" method="_on_bad_area_exited"]

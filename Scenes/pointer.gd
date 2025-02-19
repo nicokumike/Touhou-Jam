@@ -53,40 +53,16 @@ func _unhandled_input(event):
 				print(score)
 
 func checkHitboxes() -> Array:
-	var auxArray = []
-	var testPerfect : Array = perfect_hitbox.get_overlapping_areas()
-	for t in testPerfect:
-		t = t.get_parent()
-		auxArray.append(t)
-	testPerfect = auxArray
-	auxArray = []
-	var testGreat = great_hitbox.get_overlapping_areas()
-	for t in testGreat:
-		t = t.get_parent()
-		auxArray.append(t)
-	testGreat = auxArray
-	auxArray = []
-	var testGood = good_hitbox.get_overlapping_areas()
-	for t in testGood:
-		t = t.get_parent()
-		auxArray.append(t)
-	testGood = auxArray
-	auxArray = []
-	var testBad = bad_hitbox.get_overlapping_areas()
-	for t in testBad:
-		t = t.get_parent()
-		auxArray.append(t)
-	testBad = auxArray
-	
+	var retArray = [null, 0]
 	if bad_hitbox.get_overlapping_areas().size() > 0:
-		return [bad_hitbox.get_overlapping_areas()[0], 1]
-	if good_hitbox.get_overlapping_areas().size() > 0:
-		return [good_hitbox.get_overlapping_areas()[0], 2]
-	if great_hitbox.get_overlapping_areas().size() > 0:
-		return [great_hitbox.get_overlapping_areas()[0], 3]
-	if perfect_hitbox.get_overlapping_areas().size() > 0:
-		return [perfect_hitbox.get_overlapping_areas()[0], 4]
-	return [null, 0]
+		retArray = [bad_hitbox.get_overlapping_areas()[0], 1]
+	if good_hitbox.get_overlapping_areas().size() > 0 and good_hitbox.get_overlapping_areas()[0] == retArray[0]:
+		retArray = [good_hitbox.get_overlapping_areas()[0], 2]
+	if great_hitbox.get_overlapping_areas().size() > 0 and great_hitbox.get_overlapping_areas()[0] == retArray[0]:
+		retArray = [great_hitbox.get_overlapping_areas()[0], 3]
+	if perfect_hitbox.get_overlapping_areas().size() > 0 and perfect_hitbox.get_overlapping_areas()[0] == retArray[0]:
+		retArray = [perfect_hitbox.get_overlapping_areas()[0], 4]
+	return retArray
 
 #func _on_bad_area_entered(area):
 	#if area.get_parent().is_in_group("note"):

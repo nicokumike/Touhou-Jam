@@ -41,6 +41,7 @@ enabled=PackedStringArray("res://addons/SpineAnimationAsset/plugin.cfg")
 [global_group]
 
 note=""
+killzone=""
 
 [input]
 
