@@ -71,23 +71,23 @@ func _on_back_button_pressed() -> void:
 func _on_master_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
 
-func _on_master_slider_drag_ended(value_changed: bool) -> void:
+func _on_master_slider_drag_ended(_value_changed: bool) -> void:
 	pass # Replace with function body.
 
 func _on_music_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(music_bus, linear_to_db(value))
 
-func _on_music_slider_drag_ended(value_changed):
+func _on_music_slider_drag_ended(_value_changed):
 	pass # Replace with function body.
 
 func _on_voice_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(voice_bus, linear_to_db(value))
 
-func _on_voice_slider_drag_ended(value_changed):
+func _on_voice_slider_drag_ended(_value_changed):
 	AudMan.play_quip(sample_voice)
 
 func _on_sfx_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(value))
 
-func _on_sfx_slider_drag_ended(value_changed):
+func _on_sfx_slider_drag_ended(_value_changed):
 	AudMan.play_sfx(sample_sfx)
