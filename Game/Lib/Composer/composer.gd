@@ -23,13 +23,14 @@ var legend = {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#print(music_sheet.name)
-	initialize(music_sheet)
+	#initialize(music_sheet)
 	pass # Replace with function body.
 
-func initialize(data):
-	var json_as_text = FileAccess.get_file_as_string(data)
+func initialize():
+	var json_as_text = FileAccess.get_file_as_string(music_sheet)
 	var sheet_data = JSON.parse_string(json_as_text)
 	bpm = sheet_data.bpm
+	emitter.bpm = bpm
 	song_path = sheet_data.song
 	song_name = sheet_data.name
 	sheet = sheet_data.sheet
@@ -48,8 +49,6 @@ func print_it_all():
 				#prints("current note", note)
 				play_note()
 	print("final index, ", index)
-
-
 
 func decipher_note(note):
 	var new_note = {
@@ -77,16 +76,16 @@ func decipher_note(note):
 func play_note():
 	#Grab the note data
 	var note = sheet[index[0]][index[1]][index[2]]
-	var note_data
-	print(note)
+	var note_data = null
+	#print(note)
 	if note is not float:
-		prints("play note:", note)
+		#prints("play note:", note)
 		#Map it out according to our legend
-		decipher_note(note)
-		pass
-	
+		note_data = decipher_note(note)
 	#Build the note projectile
 	#Tell the emitter to emit the note
+	if note_data != null:
+		print(note_data)
 	
 	#Iterate the index
 	index[2] += 1
