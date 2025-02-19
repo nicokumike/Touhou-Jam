@@ -49,6 +49,31 @@ func print_it_all():
 				play_note()
 	print("final index, ", index)
 
+
+
+func decipher_note(note):
+	var new_note = {
+		"color": null,
+		"hold": false,
+		"length": 0,
+		"type": null
+	}
+	
+	match note[0]:
+		"R": new_note.color = legend[note[0]]
+		"G": new_note.color = legend[note[0]]
+		"B": new_note.color = legend[note[0]]
+		"Y": new_note.color = legend[note[0]]
+	match note[1]:
+		"H": 
+			new_note.hold = true
+			new_note.length = note[2]
+	match note[-1]:
+		"P": new_note.type = legend[note[1]]
+		"F": new_note.type = legend[note[1]]
+	#print(new_note)
+	return new_note
+
 func play_note():
 	#Grab the note data
 	var note = sheet[index[0]][index[1]][index[2]]
@@ -56,8 +81,10 @@ func play_note():
 	print(note)
 	if note is not float:
 		prints("play note:", note)
+		#Map it out according to our legend
+		decipher_note(note)
 		pass
-	#Map it out according to our legend
+	
 	#Build the note projectile
 	#Tell the emitter to emit the note
 	
