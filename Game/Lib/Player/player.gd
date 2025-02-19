@@ -3,6 +3,7 @@ class_name Player extends Entity
 func _ready():
 	pass
 
+# NOTE: This is only a test btw
 func _process(delta):
 	if Input.is_action_pressed("ui_up"):
 		state_machine.change_state("WindBrace")
