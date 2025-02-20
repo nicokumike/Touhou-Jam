@@ -17,7 +17,7 @@ var legend = {
 	"G" = "Green",
 	"B" = "Blue",
 	"Y" = "Yellow",
-	"H" =  "Hold",
+	"H" = "Hold",
 	"P" = "Projectile",
 	"F" = "Fairy",
 }

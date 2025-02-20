@@ -27,4 +27,5 @@ func _unhandled_input(event):
 		button_pressed = false
 
 func update_key_text():
+	var aux = InputMap.action_get_events(action)[0].as_text()
 	text = "%s" % InputMap.action_get_events(action)[0].as_text()
