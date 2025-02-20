@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cpnq6w7rd0t4s"]
+[gd_scene load_steps=45 format=3 uid="uid://cpnq6w7rd0t4s"]
 
 [ext_resource type="Script" path="res://Game/UI/Main_Menu/main_menu.gd" id="1_lbcms"]
 [ext_resource type="Texture2D" uid="uid://055gj3xys6qy" path="res://Assets/UI/Title_Screen_Graphics/Blue_Sky.png" id="2_wbdnd"]
@@ -34,71 +34,6 @@ glow_blend_mode = 0
 fog_light_energy = 0.0
 fog_sun_scatter = 0.63
 fog_density = 0.0275
-
-[sub_resource type="Animation" id="Animation_qgev1"]
-resource_name = "cutscene"
-length = 15.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BlackHouse/Utsuho:material:shader_parameter/dissolve_value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(0.615571, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BlackHouse/Utsuho:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1.46409, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BlackHouse/FlandreSill:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(3.5, 6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(197, 210), Vector2(-223, 210)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BlackHouse/FlandreSill:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.499, 3.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(2, 2), Vector2(-2, 2)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BlackHouse:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(4.7, 15),
-"transitions": PackedFloat32Array(0.353554, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -2202)]
-}
 
 [sub_resource type="Animation" id="Animation_gq7mg"]
 length = 0.001
@@ -187,6 +122,71 @@ tracks/6/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_qgev1"]
+resource_name = "cutscene"
+length = 15.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackHouse/Utsuho:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.615571, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackHouse/Utsuho:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1.46409, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlackHouse/FlandreSill:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(197, 210), Vector2(-223, 210)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlackHouse/FlandreSill:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.499, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 2), Vector2(-2, 2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlackHouse:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.7, 15),
+"transitions": PackedFloat32Array(0.353554, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2202)]
+}
+
 [sub_resource type="Animation" id="Animation_4bhem"]
 resource_name = "cutscene2"
 length = 8.0
@@ -222,6 +222,56 @@ _data = {
 "cutscene": SubResource("Animation_qgev1"),
 "cutscene2": SubResource("Animation_4bhem")
 }
+
+[sub_resource type="Gradient" id="Gradient_pmol8"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uaqro"]
+gradient = SubResource("Gradient_pmol8")
+
+[sub_resource type="Gradient" id="Gradient_ykmon"]
+offsets = PackedFloat32Array(0, 0.508197, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_12p6u"]
+gradient = SubResource("Gradient_ykmon")
+
+[sub_resource type="Curve" id="Curve_dk4sm"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -10.989), 0.0, 0.0, 0, 0, Vector2(0.16, 46.1538), 0.0, 0.0, 0, 0, Vector2(0.313333, -15.3846), 0.0, 0.0, 0, 0, Vector2(0.433333, 32.967), 0.0, 0.0, 0, 0, Vector2(0.606667, -19.7802), 0.0, 0.0, 0, 0, Vector2(0.773333, 28.5714), 0.0, 0.0, 0, 0, Vector2(0.886667, -28.5714), 0.0, 0.0, 0, 0, Vector2(1, 37.3626), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="CurveTexture" id="CurveTexture_dha20"]
+curve = SubResource("Curve_dk4sm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p7a2o"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(640, 360, 1)
+direction = Vector3(-1, 0, 0)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+gravity = Vector3(-200, 20, 0)
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 6.0
+tangential_accel_curve = SubResource("CurveTexture_dha20")
+damping_max = 100.0
+scale_min = 1.5
+scale_max = 1.8
+color_ramp = SubResource("GradientTexture1D_12p6u")
+color_initial_ramp = SubResource("GradientTexture1D_uaqro")
+
+[sub_resource type="Gradient" id="Gradient_eoj1g"]
+offsets = PackedFloat32Array(0.012987, 0.525974, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0.7, 0.98, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ydg04"]
+gradient = SubResource("Gradient_eoj1g")
+width = 2
+height = 32
+fill_to = Vector2(0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tsuga"]
 
@@ -278,6 +328,7 @@ libraries = {
 
 [node name="BlueSky" type="TextureRect" parent="."]
 texture_filter = 3
+layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
@@ -286,6 +337,7 @@ texture = ExtResource("2_wbdnd")
 [node name="Stars" type="TextureRect" parent="."]
 modulate = Color(0, 0.741176, 1, 1)
 texture_filter = 3
+layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
@@ -293,6 +345,7 @@ texture = ExtResource("3_w1e0u")
 
 [node name="BloodMoon" type="TextureRect" parent="."]
 texture_filter = 3
+layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
@@ -305,14 +358,27 @@ offset_bottom = 40.0
 
 [node name="Mansion" type="TextureRect" parent="BlackHouse"]
 texture_filter = 3
+layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
 texture = ExtResource("4_15131")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BlackHouse/Mansion"]
+position = Vector2(635, 335)
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_p7a2o")
+texture = SubResource("GradientTexture2D_ydg04")
+lifetime = 5.0
+preprocess = 2.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.6
+
 [node name="Utsuho" type="TextureRect" parent="BlackHouse"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_g7g6o")
+layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
@@ -320,6 +386,7 @@ texture = ExtResource("6_ov4cd")
 
 [node name="Title" type="TextureRect" parent="BlackHouse"]
 texture_filter = 3
+layout_mode = 0
 offset_left = -1.0
 offset_top = -112.0
 offset_right = 639.0
@@ -329,6 +396,7 @@ texture = ExtResource("7_qnal7")
 
 [node name="FlandreSill" type="TextureRect" parent="BlackHouse"]
 texture_filter = 3
+layout_mode = 0
 offset_left = 197.0
 offset_top = 210.0
 offset_right = 837.0
@@ -356,7 +424,7 @@ color = Color(0, 0, 0, 1)
 [node name="ColorRect2" type="ColorRect" parent="BlackHouse"]
 layout_mode = 0
 offset_top = 1021.0
-offset_right = 1358.0
+offset_right = 1280.0
 offset_bottom = 2202.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
@@ -366,7 +434,7 @@ layout_mode = 0
 offset_left = 562.0
 offset_top = 1021.0
 offset_right = 818.0
-offset_bottom = 1817.0
+offset_bottom = 1739.0
 rotation = -1.5708
 texture = SubResource("GradientTexture1D_6rhuk")
 
@@ -399,6 +467,7 @@ texture = SubResource("GradientTexture2D_rew0p")
 
 [node name="FlandreSill2" type="TextureRect" parent="BlackHouse"]
 texture_filter = 3
+layout_mode = 0
 offset_left = 442.0
 offset_top = 2558.0
 offset_right = 1082.0
@@ -417,6 +486,7 @@ texture = SubResource("GradientTexture2D_rew0p")
 
 [node name="FlandreSill3" type="TextureRect" parent="BlackHouse"]
 texture_filter = 3
+layout_mode = 0
 offset_left = 442.0
 offset_top = 2558.0
 offset_right = 1082.0
@@ -451,7 +521,7 @@ offset_bottom = 40.0
 [node name="ColorRect3" type="ColorRect" parent="BlackHouse/Outside"]
 layout_mode = 0
 offset_left = 1520.0
-offset_top = 1741.0
+offset_top = 2202.0
 offset_right = 3550.0
 offset_bottom = 2922.0
 mouse_filter = 2
@@ -459,9 +529,9 @@ color = Color(0, 0, 0, 1)
 
 [node name="TextureRect2" type="TextureRect" parent="BlackHouse/Outside/ColorRect3"]
 layout_mode = 0
-offset_top = 1181.0
+offset_top = 720.0
 offset_right = 256.0
-offset_bottom = 2362.0
+offset_bottom = 1440.0
 rotation = 3.14159
 texture = SubResource("GradientTexture1D_6rhuk")
 
