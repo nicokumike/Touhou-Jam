@@ -14,17 +14,28 @@ func _ready():
 func _toggled(new_button_pressed):
 	set_process_unhandled_input(new_button_pressed)
 	if button_pressed:
-		text = "... Awaiting Input ..."
-		release_focus()
+		text = "?"
+		#release_focus()
 	else:
 		update_key_text()
-		grab_focus()
+		#grab_focus()
 
 func _unhandled_input(event):
-	if event.pressed:
-		InputMap.action_erase_events(note)
-		InputMap.action_add_event(note, event)
+	if event.is_action_pressed("Blue"):
+		text = "Blue"
 		button_pressed = false
+	if event.is_action_pressed("Red"):
+		text = "Red"
+		button_pressed = false
+		pass
+	if event.is_action_pressed("Green"):
+		text = "Green"
+		button_pressed = false
+	if event.is_action_pressed("Yellow"):
+		text = "Yellow"
+		button_pressed = false
+
+
 
 func update_key_text():
 	#var aux = InputMap.action_get_events(note)[0].as_text()

@@ -23,81 +23,96 @@ text = "1"
 
 [node name="BeatHContainer" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 6
 
 [node name="RemapNoteButton" type="Button" parent="HBoxContainer/BeatHContainer"]
 layout_mode = 2
 text = "1"
 script = ExtResource("2_kb5uk")
 
-[node name="Button" type="Button" parent="HBoxContainer/BeatHContainer"]
-layout_mode = 2
-text = "1"
-
-[node name="Button2" type="Button" parent="HBoxContainer/BeatHContainer"]
+[node name="RemapNoteButton2" type="Button" parent="HBoxContainer/BeatHContainer"]
 layout_mode = 2
 text = "2"
+script = ExtResource("2_kb5uk")
 
-[node name="Button3" type="Button" parent="HBoxContainer/BeatHContainer"]
+[node name="RemapNoteButton3" type="Button" parent="HBoxContainer/BeatHContainer"]
 layout_mode = 2
 text = "3"
+script = ExtResource("2_kb5uk")
 
-[node name="Button4" type="Button" parent="HBoxContainer/BeatHContainer"]
+[node name="RemapNoteButton4" type="Button" parent="HBoxContainer/BeatHContainer"]
 layout_mode = 2
 text = "4"
+script = ExtResource("2_kb5uk")
 
-[node name="BeatHContainer2" type="HBoxContainer" parent="HBoxContainer"]
+[node name="BeatHContainer5" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 6
 
-[node name="Button" type="Button" parent="HBoxContainer/BeatHContainer2"]
+[node name="RemapNoteButton" type="Button" parent="HBoxContainer/BeatHContainer5"]
 layout_mode = 2
 text = "1"
+script = ExtResource("2_kb5uk")
 
-[node name="Button2" type="Button" parent="HBoxContainer/BeatHContainer2"]
+[node name="RemapNoteButton2" type="Button" parent="HBoxContainer/BeatHContainer5"]
 layout_mode = 2
 text = "2"
+script = ExtResource("2_kb5uk")
 
-[node name="Button3" type="Button" parent="HBoxContainer/BeatHContainer2"]
+[node name="RemapNoteButton3" type="Button" parent="HBoxContainer/BeatHContainer5"]
 layout_mode = 2
 text = "3"
+script = ExtResource("2_kb5uk")
 
-[node name="Button4" type="Button" parent="HBoxContainer/BeatHContainer2"]
+[node name="RemapNoteButton4" type="Button" parent="HBoxContainer/BeatHContainer5"]
 layout_mode = 2
 text = "4"
+script = ExtResource("2_kb5uk")
 
-[node name="BeatHContainer3" type="HBoxContainer" parent="HBoxContainer"]
+[node name="BeatHContainer6" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 6
 
-[node name="Button" type="Button" parent="HBoxContainer/BeatHContainer3"]
+[node name="RemapNoteButton" type="Button" parent="HBoxContainer/BeatHContainer6"]
 layout_mode = 2
 text = "1"
+script = ExtResource("2_kb5uk")
 
-[node name="Button2" type="Button" parent="HBoxContainer/BeatHContainer3"]
+[node name="RemapNoteButton2" type="Button" parent="HBoxContainer/BeatHContainer6"]
 layout_mode = 2
 text = "2"
+script = ExtResource("2_kb5uk")
 
-[node name="Button3" type="Button" parent="HBoxContainer/BeatHContainer3"]
+[node name="RemapNoteButton3" type="Button" parent="HBoxContainer/BeatHContainer6"]
 layout_mode = 2
 text = "3"
+script = ExtResource("2_kb5uk")
 
-[node name="Button4" type="Button" parent="HBoxContainer/BeatHContainer3"]
+[node name="RemapNoteButton4" type="Button" parent="HBoxContainer/BeatHContainer6"]
 layout_mode = 2
 text = "4"
+script = ExtResource("2_kb5uk")
 
-[node name="BeatHContainer4" type="HBoxContainer" parent="HBoxContainer"]
+[node name="BeatHContainer7" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 6
 
-[node name="Button" type="Button" parent="HBoxContainer/BeatHContainer4"]
+[node name="RemapNoteButton" type="Button" parent="HBoxContainer/BeatHContainer7"]
 layout_mode = 2
 text = "1"
+script = ExtResource("2_kb5uk")
 
-[node name="Button2" type="Button" parent="HBoxContainer/BeatHContainer4"]
+[node name="RemapNoteButton2" type="Button" parent="HBoxContainer/BeatHContainer7"]
 layout_mode = 2
 text = "2"
+script = ExtResource("2_kb5uk")
 
-[node name="Button3" type="Button" parent="HBoxContainer/BeatHContainer4"]
+[node name="RemapNoteButton3" type="Button" parent="HBoxContainer/BeatHContainer7"]
 layout_mode = 2
 text = "3"
+script = ExtResource("2_kb5uk")
 
-[node name="Button4" type="Button" parent="HBoxContainer/BeatHContainer4"]
+[node name="RemapNoteButton4" type="Button" parent="HBoxContainer/BeatHContainer7"]
 layout_mode = 2
 text = "4"
+script = ExtResource("2_kb5uk")
