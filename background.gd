@@ -17,7 +17,7 @@ var bossCount = 20
 func _ready():
 	AudMan.play_music(penisMusic, -20)
 	composer.initialize()
-	timer.wait_time = 60.0/bpm
+	timer.wait_time = (60.0/bpm)/4
 	
 
 func _process(delta):
