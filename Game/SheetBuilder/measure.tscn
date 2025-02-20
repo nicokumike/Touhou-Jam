@@ -1,9 +1,93 @@
 [gd_scene format=3 uid="uid://c525mub6rxvk8"]
 
-[node name="Measure" type="Node"]
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
+[node name="Measure" type="MarginContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="BeatHContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/BeatHContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Button2" type="Button" parent="HBoxContainer/BeatHContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="Button3" type="Button" parent="HBoxContainer/BeatHContainer"]
+layout_mode = 2
+text = "3"
+
+[node name="Button4" type="Button" parent="HBoxContainer/BeatHContainer"]
+layout_mode = 2
+text = "4"
+
+[node name="BeatHContainer2" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/BeatHContainer2"]
+layout_mode = 2
+text = "1"
+
+[node name="Button2" type="Button" parent="HBoxContainer/BeatHContainer2"]
+layout_mode = 2
+text = "2"
+
+[node name="Button3" type="Button" parent="HBoxContainer/BeatHContainer2"]
+layout_mode = 2
+text = "3"
+
+[node name="Button4" type="Button" parent="HBoxContainer/BeatHContainer2"]
+layout_mode = 2
+text = "4"
+
+[node name="BeatHContainer3" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/BeatHContainer3"]
+layout_mode = 2
+text = "1"
+
+[node name="Button2" type="Button" parent="HBoxContainer/BeatHContainer3"]
+layout_mode = 2
+text = "2"
+
+[node name="Button3" type="Button" parent="HBoxContainer/BeatHContainer3"]
+layout_mode = 2
+text = "3"
+
+[node name="Button4" type="Button" parent="HBoxContainer/BeatHContainer3"]
+layout_mode = 2
+text = "4"
+
+[node name="BeatHContainer4" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/BeatHContainer4"]
+layout_mode = 2
+text = "1"
+
+[node name="Button2" type="Button" parent="HBoxContainer/BeatHContainer4"]
+layout_mode = 2
+text = "2"
+
+[node name="Button3" type="Button" parent="HBoxContainer/BeatHContainer4"]
+layout_mode = 2
+text = "3"
+
+[node name="Button4" type="Button" parent="HBoxContainer/BeatHContainer4"]
+layout_mode = 2
+text = "4"
+
+[node name="Measure" type="Control" parent="."]
+layout_mode = 2

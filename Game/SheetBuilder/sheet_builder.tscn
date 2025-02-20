@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl1418utvnwre"]
+[gd_scene load_steps=3 format=3 uid="uid://bl1418utvnwre"]
 
 [ext_resource type="Script" path="res://Game/SheetBuilder/sheet_builder.gd" id="1_d4v2n"]
+[ext_resource type="PackedScene" uid="uid://c525mub6rxvk8" path="res://Game/SheetBuilder/measure.tscn" id="2_kcc8a"]
 
 [node name="SheetBuilder" type="Control"]
 layout_mode = 3
@@ -24,6 +25,14 @@ text = "Save"
 layout_mode = 2
 text = "Load"
 
+[node name="EditButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Edit"
+
+[node name="NewSheetButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "New Sheet"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
@@ -33,13 +42,17 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
-[node name="PlayButton" type="Button" parent="VBoxContainer2"]
+[node name="PlaySongButton" type="Button" parent="VBoxContainer2"]
 layout_mode = 2
 text = "Play >"
 
 [node name="StopButton" type="Button" parent="VBoxContainer2"]
 layout_mode = 2
 text = "Stop X"
+
+[node name="TestButton2" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Test"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -71,7 +84,7 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -205.0
-offset_bottom = 277.0
+offset_bottom = 328.0
 grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
@@ -81,7 +94,13 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="Measure" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_kcc8a")]
+layout_mode = 2
+
+[node name="NewMeasureButton" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "New Measure +"
+
+[connection signal="pressed" from="VBoxContainer2/PlaySongButton" to="." method="_on_play_song_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/StopButton" to="." method="_on_stop_button_pressed"]
