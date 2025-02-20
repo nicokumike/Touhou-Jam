@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://bal6kufq0syfy"]
+
+[ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="1_gojix"]
+[ext_resource type="PackedScene" uid="uid://cguq6ynfjgd4q" path="res://Game/Lib/Dialogue_Manager/dialogUI.tscn" id="1_sr8o4"]
+
+[sub_resource type="GDScript" id="GDScript_rvrdn"]
+script/source = "extends CharacterBody2D
+
+@export var speed: float = 200.0  # Movement speed
+
+var dialogue = {
+	\"0\": {                                 
+		\"Character\": [\"Bob\", \"Excited\", \"Bottom\"],       
+		\"Text\": \"I love money! I also love gummy bears too and kombucha and mushrooms and greek yogurt and spinach and blue beeries and potatoes!!\"
+	},
+
+	\"1\": {                              
+		\"Character\": [\"Alice\", \"Angry\", \"Top\"],         
+		\"Text\": \"I have no money.\"
+	},
+	
+	\"2\": {                                    
+		\"Text\": \"The sea spans into the horizon. Not a spec of land in sight...\"
+	}
+}
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"E\"):
+		SignalBus.dialogue_triggered.emit(dialogue)
+
+
+func _physics_process(delta):
+	var direction = Vector2.ZERO  # Default no movement
+
+	# Get input direction
+	if Input.is_action_pressed(\"A\"):
+		direction.y -= 1
+	if Input.is_action_pressed(\"B\"):
+		direction.y += 1
+	if Input.is_action_pressed(\"C\"):
+		direction.x -= 1
+	if Input.is_action_pressed(\"D\"):
+		direction.x += 1
+
+	# Normalize to prevent diagonal speed boost
+	direction = direction.normalized()
+
+	# Apply movement
+	velocity = direction * speed
+	move_and_slide()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5o7r"]
+size = Vector2(129, 126)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(545, 365)
+script = SubResource("GDScript_rvrdn")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_gojix")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_x5o7r")
+
+[node name="DialogUi" parent="." instance=ExtResource("1_sr8o4")]

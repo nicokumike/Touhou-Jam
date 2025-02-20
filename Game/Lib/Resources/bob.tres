@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://bgwqsqt6872v4"]
+
+[ext_resource type="Texture2D" uid="uid://eo0hb7b1x2xv" path="res://Game/Lib/Resources/1692344450866.jpg" id="1_1sgbg"]
+[ext_resource type="Script" path="res://Game/Lib/Resources/CharacterData.gd" id="1_j1hvd"]
+
+[resource]
+script = ExtResource("1_j1hvd")
+character_name = "Bob"
+expression = {
+"Excited": ExtResource("1_1sgbg")
+}
