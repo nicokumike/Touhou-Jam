@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl1418utvnwre"]
+
+[ext_resource type="Script" path="res://Game/SheetBuilder/sheet_builder.gd" id="1_d4v2n"]
+
+[node name="SheetBuilder" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d4v2n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SaveButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Load"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="PlayButton" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Play >"
+
+[node name="StopButton" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Stop X"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.5
+offset_right = 28.5
+offset_bottom = 66.0
+grow_horizontal = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer3"]
+layout_mode = 2
+text = "SheetName"
+
+[node name="BPMLabel" type="Label" parent="VBoxContainer3"]
+layout_mode = 2
+text = "BPM: 148
+"
+
+[node name="SongPathLabel" type="Label" parent="VBoxContainer3"]
+layout_mode = 2
+text = "Songpath"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -205.0
+offset_bottom = 277.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "New Measure +"
