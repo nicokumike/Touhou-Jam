@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8ppak2hpy7qc"]
+[gd_scene load_steps=13 format=3 uid="uid://8ppak2hpy7qc"]
 
 [ext_resource type="Script" path="res://Game/Lib/Player/player.gd" id="1_fkgm5"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://dl8kow7042sab" path="res://Assets/Characters/Base/base_data_resource.tres" id="1_nsdd7"]
@@ -9,12 +9,22 @@
 [ext_resource type="Script" path="res://Game/Characters/Flandre/States/flandre_attack_d.gd" id="7_nh2sa"]
 [ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="8_m6tr3"]
 
+[sub_resource type="Resource" id="Resource_jaao4"]
+script = ExtResource("8_m6tr3")
+skeleton_data_resource = ExtResource("1_nsdd7")
+animation_name = "Flandre/idle"
+animation_index = 0
+loop = true
+track = 0
+mix_duration = -1.0
+
 [sub_resource type="Resource" id="Resource_qxsu3"]
 script = ExtResource("8_m6tr3")
 skeleton_data_resource = ExtResource("1_nsdd7")
 animation_name = "Flandre/idle"
 animation_index = 0
 loop = true
+track = 0
 mix_duration = -1.0
 
 [sub_resource type="Resource" id="Resource_cn0sb"]
@@ -23,6 +33,7 @@ skeleton_data_resource = ExtResource("1_nsdd7")
 animation_name = "Flandre/knee"
 animation_index = 1
 loop = false
+track = 0
 mix_duration = 0.025
 
 [sub_resource type="Resource" id="Resource_uaohq"]
@@ -31,6 +42,7 @@ skeleton_data_resource = ExtResource("1_nsdd7")
 animation_name = "Flandre/windBrace"
 animation_index = 2
 loop = true
+track = 0
 mix_duration = -1.0
 
 [node name="Flandre" type="Node2D" node_paths=PackedStringArray("state_machine", "animation_handler")]
@@ -45,7 +57,7 @@ preview_animation = "Flandre/idle"
 preview_frame = false
 preview_time = 0.0
 script = ExtResource("2_6t3se")
-initial_animation_name = "Flandre/knee"
+initial_animation = SubResource("Resource_jaao4")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_33epy")
