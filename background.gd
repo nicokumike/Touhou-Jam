@@ -11,11 +11,11 @@ var bossCount = 20
 @onready var note = preload("res://Scenes/note.tscn")
 @onready var spawnPoint = $"../SpawnPoint"
 @onready var timer = $"../Timer"
-@onready var penisMusic = preload("res://Assets/SFX/penis music.mp3")
+@export var penisMusic = preload("res://Assets/SFX/penis music.mp3")
 @onready var composer = $Composer
 
 func _ready():
-	#AudMan.play_music(penisMusic, -20)
+	AudMan.play_music(penisMusic, -20)
 	composer.initialize()
 	timer.wait_time = 60.0/bpm
 	

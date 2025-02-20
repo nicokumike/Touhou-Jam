@@ -4,10 +4,12 @@ class_name Composer
 @export var emitter: Node
 @export_file("*.json") var music_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 
+var music
+
 var bpm
 var song_path
 var song_name
-var sheet
+var sheet = []
 var index = [0,0,0]
 
 var legend = {
@@ -24,6 +26,9 @@ var legend = {
 func _ready() -> void:
 	#print(music_sheet.name)
 	#initialize(music_sheet)
+	var json_as_text = FileAccess.get_file_as_string(music_sheet)
+	var sheet_data = JSON.parse_string(json_as_text)
+	#music = load(sheet_data.song)
 	pass # Replace with function body.
 
 func initialize():
@@ -32,7 +37,11 @@ func initialize():
 	bpm = sheet_data.bpm
 	emitter.bpm = bpm
 	song_path = sheet_data.song
-	emitter.music = load(song_path)
+	#Preloads the song
+	#emitter.music = load(song_path)
+	#I'm doing the trigger here but only because THE LEVEL CODE IS DIRTY AND GROSS, it will have to be fixed
+	#AudMan.play_music(emitter.music, -20)
+	#AudMan.play_music(music)
 	song_name = sheet_data.name
 	sheet = sheet_data.sheet
 	
@@ -75,6 +84,9 @@ func decipher_note(note):
 	return new_note
 
 func play_note():
+	#Early exit
+	if index[0] == sheet.size():
+		return
 	#Grab the note data
 	var note = sheet[index[0]][index[1]][index[2]]
 	var note_data = null
