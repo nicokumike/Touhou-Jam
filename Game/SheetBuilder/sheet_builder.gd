@@ -4,13 +4,13 @@ class_name SheetBuilder
 @export_file("*.json") var music_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 @onready var measure_node = preload("res://Game/SheetBuilder/measure.tscn")
 
-@onready var name_label = $VBoxContainer3/NameLabel
-@onready var bpm_label = $VBoxContainer3/BPMLabel
-@onready var song_path_label = $VBoxContainer3/SongPathLabel 
+@onready var name_label: Label = $VBoxContainer3/NameLabel
+@onready var bpm_label: Label = $VBoxContainer3/BPMLabel
+@onready var song_path_label: Label = $VBoxContainer3/SongPathLabel 
 
 @onready var scroll_container: ScrollContainer = $ScrollContainer
-@onready var sheet_container = $ScrollContainer/MeasureVContainer
-@onready var new_measure_button = $ScrollContainer/MeasureVContainer/NewMeasureButton
+@onready var sheet_container: VBoxContainer = $ScrollContainer/MeasureVContainer
+@onready var new_measure_button: Button = $ScrollContainer/MeasureVContainer/NewMeasureButton
 
 var music
 var bpm
@@ -74,6 +74,7 @@ func _on_play_song_button_pressed() -> void:
 
 func _on_stop_button_pressed() -> void:
 	#TODO stop music
+	AudMan.stop_music()
 	pass # Replace with function body.
 
 func _on_test_button_pressed() -> void:
