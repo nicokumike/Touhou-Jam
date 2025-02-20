@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cpnq6w7rd0t4s"]
+[gd_scene load_steps=36 format=3 uid="uid://cpnq6w7rd0t4s"]
 
 [ext_resource type="Script" path="res://Game/UI/Main_Menu/main_menu.gd" id="1_lbcms"]
 [ext_resource type="Texture2D" uid="uid://055gj3xys6qy" path="res://Assets/UI/Title_Screen_Graphics/Blue_Sky.png" id="2_wbdnd"]
@@ -10,7 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://oy2k746gnjl6" path="res://Assets/UI/Title_Screen_Graphics/Title.png" id="7_qnal7"]
 [ext_resource type="Texture2D" uid="uid://tmhjaktames" path="res://Assets/UI/Title_Screen_Graphics/Flandre_Sill.png" id="8_5dr6k"]
 [ext_resource type="Texture2D" uid="uid://c2v6vowqmuhto" path="res://Assets/UI/Title_Screen_Graphics/Start_Gray.png" id="10_muy4s"]
+[ext_resource type="Texture2D" uid="uid://c8bkrsuhc3ddr" path="res://Assets/UI/Title_Screen_Graphics/InsideMansion.png" id="10_tsigm"]
 [ext_resource type="Texture2D" uid="uid://ccg6rbuhvygnw" path="res://Assets/UI/Title_Screen_Graphics/Start.png" id="11_iw8te"]
+[ext_resource type="Texture2D" uid="uid://4gycrxxgwog0" path="res://Assets/UI/Title_Screen_Graphics/BookLoli_Sillouhette10.png" id="11_wo8h0"]
+[ext_resource type="Texture2D" uid="uid://bojm31bkn82e5" path="res://Assets/UI/Title_Screen_Graphics/OutsideMansion.png" id="12_3ahp2"]
 [ext_resource type="Script" path="res://Game/UI/Buttons_Visuals/menu_buttons.gd" id="12_c85h5"]
 [ext_resource type="Texture2D" uid="uid://cc70we17eyoyr" path="res://Assets/UI/Title_Screen_Graphics/Settings_Gray.png" id="12_i3d67"]
 [ext_resource type="Texture2D" uid="uid://ccbxwk2uv3116" path="res://Assets/UI/Title_Screen_Graphics/Credits_Gray.png" id="13_nu5ql"]
@@ -24,17 +27,22 @@
 [sub_resource type="Environment" id="Environment_i042l"]
 background_mode = 3
 background_canvas_max_layer = 1
+tonemap_exposure = 0.9
 glow_enabled = true
 glow_bloom = 0.13
 glow_blend_mode = 0
+fog_light_energy = 0.0
+fog_sun_scatter = 0.63
+fog_density = 0.0275
 
 [sub_resource type="Animation" id="Animation_qgev1"]
 resource_name = "cutscene"
-length = 3.0
+length = 15.0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Utsuho:material:shader_parameter/dissolve_value")
+tracks/0/path = NodePath("BlackHouse/Utsuho:material:shader_parameter/dissolve_value")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -46,7 +54,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Utsuho:modulate")
+tracks/1/path = NodePath("BlackHouse/Utsuho:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -55,13 +63,49 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlackHouse/FlandreSill:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(197, 210), Vector2(-223, 210)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlackHouse/FlandreSill:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.499, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 2), Vector2(-2, 2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlackHouse:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.7, 15),
+"transitions": PackedFloat32Array(0.353554, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2202)]
+}
 
 [sub_resource type="Animation" id="Animation_gq7mg"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Utsuho:material:shader_parameter/dissolve_value")
+tracks/0/path = NodePath("BlackHouse/Utsuho:material:shader_parameter/dissolve_value")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,7 +117,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Utsuho:modulate")
+tracks/1/path = NodePath("BlackHouse/Utsuho:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -82,11 +126,101 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlackHouse/FlandreSill:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(197, 210)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlackHouse/FlandreSill:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlackHouse/FlandreSill:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BlackHouse:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BlackHouse/Outside:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4bhem"]
+resource_name = "cutscene2"
+length = 8.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackHouse:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2202)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackHouse/Outside:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(0.34151, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-3550, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lh125"]
 _data = {
 "RESET": SubResource("Animation_gq7mg"),
-"cutscene": SubResource("Animation_qgev1")
+"cutscene": SubResource("Animation_qgev1"),
+"cutscene2": SubResource("Animation_4bhem")
 }
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tsuga"]
@@ -99,6 +233,21 @@ shader = ExtResource("5_g55ib")
 shader_parameter/intensity = 1.0
 shader_parameter/dissolve_value = 1.0
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_x1mpq")
+
+[sub_resource type="Gradient" id="Gradient_2dvhx"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rew0p"]
+gradient = SubResource("Gradient_2dvhx")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.509174, 0.110092)
+
+[sub_resource type="Gradient" id="Gradient_fkg8e"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6rhuk"]
+gradient = SubResource("Gradient_fkg8e")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -149,14 +298,19 @@ offset_bottom = 360.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_ed2fx")
 
-[node name="Mansion" type="TextureRect" parent="."]
+[node name="BlackHouse" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Mansion" type="TextureRect" parent="BlackHouse"]
 texture_filter = 3
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
 texture = ExtResource("4_15131")
 
-[node name="Utsuho" type="TextureRect" parent="."]
+[node name="Utsuho" type="TextureRect" parent="BlackHouse"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_g7g6o")
 offset_right = 640.0
@@ -164,7 +318,7 @@ offset_bottom = 360.0
 scale = Vector2(2, 2)
 texture = ExtResource("6_ov4cd")
 
-[node name="Title" type="TextureRect" parent="."]
+[node name="Title" type="TextureRect" parent="BlackHouse"]
 texture_filter = 3
 offset_left = -1.0
 offset_top = -112.0
@@ -173,14 +327,163 @@ offset_bottom = 248.0
 scale = Vector2(2, 2)
 texture = ExtResource("7_qnal7")
 
-[node name="FlandreSill" type="TextureRect" parent="."]
+[node name="FlandreSill" type="TextureRect" parent="BlackHouse"]
 texture_filter = 3
-offset_left = 80.0
-offset_top = -3.0
-offset_right = 720.0
-offset_bottom = 357.0
+offset_left = 197.0
+offset_top = 210.0
+offset_right = 837.0
+offset_bottom = 570.0
 scale = Vector2(2, 2)
+pivot_offset = Vector2(117, 210)
 texture = ExtResource("8_5dr6k")
+
+[node name="TextureRect2" type="TextureRect" parent="BlackHouse/FlandreSill"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 198.5
+offset_right = 148.0
+offset_bottom = 304.5
+texture = SubResource("GradientTexture2D_rew0p")
+
+[node name="ColorRect" type="ColorRect" parent="BlackHouse"]
+layout_mode = 0
+offset_top = 720.0
+offset_right = 562.0
+offset_bottom = 1021.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="BlackHouse"]
+layout_mode = 0
+offset_top = 1021.0
+offset_right = 1358.0
+offset_bottom = 2202.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="BlackHouse"]
+layout_mode = 0
+offset_left = 562.0
+offset_top = 1021.0
+offset_right = 818.0
+offset_bottom = 1817.0
+rotation = -1.5708
+texture = SubResource("GradientTexture1D_6rhuk")
+
+[node name="InsideMansion" type="TextureRect" parent="BlackHouse"]
+texture_filter = 3
+layout_mode = 0
+offset_top = 2202.0
+offset_right = 640.0
+offset_bottom = 2562.0
+scale = Vector2(2, 2)
+texture = ExtResource("10_tsigm")
+
+[node name="BookLoliSillouhette10" type="TextureRect" parent="BlackHouse"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 760.0
+offset_top = 2674.0
+offset_right = 920.0
+offset_bottom = 2764.0
+scale = Vector2(2, 2)
+texture = ExtResource("11_wo8h0")
+
+[node name="TextureRect" type="TextureRect" parent="BlackHouse/BookLoliSillouhette10"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 31.0
+offset_right = 111.0
+offset_bottom = 137.0
+texture = SubResource("GradientTexture2D_rew0p")
+
+[node name="FlandreSill2" type="TextureRect" parent="BlackHouse"]
+texture_filter = 3
+offset_left = 442.0
+offset_top = 2558.0
+offset_right = 1082.0
+offset_bottom = 2918.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(117, 210)
+texture = ExtResource("8_5dr6k")
+
+[node name="TextureRect2" type="TextureRect" parent="BlackHouse/FlandreSill2"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 198.5
+offset_right = 148.0
+offset_bottom = 304.5
+texture = SubResource("GradientTexture2D_rew0p")
+
+[node name="FlandreSill3" type="TextureRect" parent="BlackHouse"]
+texture_filter = 3
+offset_left = 442.0
+offset_top = 2558.0
+offset_right = 1082.0
+offset_bottom = 2918.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(117, 210)
+texture = ExtResource("8_5dr6k")
+
+[node name="TextureRect2" type="TextureRect" parent="BlackHouse/FlandreSill3"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 198.5
+offset_right = 148.0
+offset_bottom = 304.5
+texture = SubResource("GradientTexture2D_rew0p")
+
+[node name="Label" type="Label" parent="BlackHouse"]
+modulate = Color(1, 1, 1, 0.476)
+layout_mode = 0
+offset_left = 521.0
+offset_top = 1414.0
+offset_right = 819.0
+offset_bottom = 1456.0
+theme_override_font_sizes/font_size = 30
+text = "Dialogue Starts Here"
+
+[node name="Outside" type="TextureRect" parent="BlackHouse"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect3" type="ColorRect" parent="BlackHouse/Outside"]
+layout_mode = 0
+offset_left = 1520.0
+offset_top = 1741.0
+offset_right = 3550.0
+offset_bottom = 2922.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="BlackHouse/Outside/ColorRect3"]
+layout_mode = 0
+offset_top = 1181.0
+offset_right = 256.0
+offset_bottom = 2362.0
+rotation = 3.14159
+texture = SubResource("GradientTexture1D_6rhuk")
+
+[node name="OutsideMansion" type="TextureRect" parent="BlackHouse/Outside"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 3550.0
+offset_top = 2202.0
+offset_right = 4190.0
+offset_bottom = 2562.0
+scale = Vector2(2, 2)
+texture = ExtResource("12_3ahp2")
+
+[node name="BookLoliSillouhette11" type="TextureRect" parent="BlackHouse/Outside/OutsideMansion"]
+texture_filter = 3
+layout_mode = 0
+offset_left = -21.0
+offset_top = 182.0
+offset_right = 139.0
+offset_bottom = 272.0
+texture = ExtResource("11_wo8h0")
+flip_h = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 texture_filter = 3

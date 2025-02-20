@@ -19,7 +19,7 @@ func _on_start_pressed() -> void:
 	tween.tween_property($VBoxContainer/Start, "scale", Vector2(10, 0), 0.05)
 	tween.tween_property($VBoxContainer, "modulate", Color.TRANSPARENT, 0.2)
 	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_property($Title, "global_position", $end.global_position, 0.3)
+	tween.tween_property($BlackHouse/Title, "global_position", $end.global_position, 0.3)
 	await tween.finished
 	await get_tree().create_timer(1.5).timeout
 	$AnimationPlayer.play("cutscene")
@@ -39,5 +39,6 @@ func _on_music_room_pressed() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "cutscene":
-		SignalBus.game_state_changed.emit("Start")
-		queue_free()
+		$AnimationPlayer.play("cutscene2")
+		#SignalBus.game_state_changed.emit("Start")
+		#queue_free()
