@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b3mt2m647n0e3"]
+
+[ext_resource type="FontFile" uid="uid://kpqikns6mdrr" path="res://Assets/Fonts/LittleMissLoudonBold-VGO9l.ttf" id="1_iyogf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d2fci"]
+
+[resource]
+Label/colors/font_color = Color(1, 0.654902, 0.65098, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 10
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_iyogf")
+Label/styles/normal = SubResource("StyleBoxTexture_d2fci")
+RichTextLabel/colors/default_color = Color(0.791, 1, 0.62, 1)
+RichTextLabel/constants/outline_size = 10
