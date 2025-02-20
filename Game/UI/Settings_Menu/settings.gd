@@ -44,7 +44,6 @@ func _ready():
 	sfx_volume_slider.value    = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus))
 	create_action_remap_items()
 
-
 func create_action_remap_items():
 	var previous_item = input_map_container.get_child(input_map_container.get_child_count() - 1)
 	for index in range(action_items.size()):

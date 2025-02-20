@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bc03syknr3he6"]
+[gd_scene load_steps=13 format=3 uid="uid://bc03syknr3he6"]
 
 [ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
 [ext_resource type="Texture2D" uid="uid://dw5ji5ifhotwb" path="res://Assets/Characters/Scarlet.png" id="1_xhhx3"]
@@ -17,6 +17,9 @@ size = Vector2(124.878, 124.343)
 size = Vector2(73.3334, 73.3333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb27d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yc55l"]
+font_size = 90
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vjq"]
 size = Vector2(20, 350)
@@ -46,43 +49,47 @@ position = Vector2(19204, 656)
 scale = Vector2(300, 1)
 texture = ExtResource("4_lafp1")
 
-[node name="Icon" type="CharacterBody2D" parent="."]
+[node name="Pointer" type="CharacterBody2D" parent="."]
 modulate = Color(1, 1, 1, 0.2)
 position = Vector2(441, 342)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("5_6yugx")
 
-[node name="Sprite2D" type="Sprite2D" parent="Icon"]
+[node name="Sprite2D" type="Sprite2D" parent="Pointer"]
 texture = ExtResource("4_lafp1")
 
-[node name="Bad" type="Area2D" parent="Icon"]
+[node name="Bad" type="Area2D" parent="Pointer"]
+collision_layer = 4
 collision_mask = 2
 
-[node name="Bad" type="CollisionShape2D" parent="Icon/Bad"]
+[node name="Bad" type="CollisionShape2D" parent="Pointer/Bad"]
 position = Vector2(-0.00012207, 0)
 shape = SubResource("RectangleShape2D_vrojt")
 
-[node name="Good" type="Area2D" parent="Icon"]
+[node name="Good" type="Area2D" parent="Pointer"]
+collision_layer = 8
 collision_mask = 2
 
-[node name="Good" type="CollisionShape2D" parent="Icon/Good"]
+[node name="Good" type="CollisionShape2D" parent="Pointer/Good"]
 position = Vector2(0.00012207, 0)
 shape = SubResource("RectangleShape2D_bc1gi")
 debug_color = Color(0, 0, 1, 0.419608)
 
-[node name="Great" type="Area2D" parent="Icon"]
+[node name="Great" type="Area2D" parent="Pointer"]
 position = Vector2(0, 3.33325)
+collision_layer = 16
 collision_mask = 2
 
-[node name="Great" type="CollisionShape2D" parent="Icon/Great"]
+[node name="Great" type="CollisionShape2D" parent="Pointer/Great"]
 position = Vector2(-0.00012207, -3.33337)
 shape = SubResource("RectangleShape2D_8gt10")
 debug_color = Color(0, 0.976471, 0, 0.419608)
 
-[node name="Perfect" type="Area2D" parent="Icon"]
+[node name="Perfect" type="Area2D" parent="Pointer"]
+collision_layer = 32
 collision_mask = 2
 
-[node name="Perfect" type="CollisionShape2D" parent="Icon/Perfect"]
+[node name="Perfect" type="CollisionShape2D" parent="Pointer/Perfect"]
 shape = SubResource("RectangleShape2D_qb27d")
 debug_color = Color(1, 0, 0, 0.419608)
 
@@ -93,20 +100,68 @@ autostart = true
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(1208, 344)
 
+[node name="MissLabel" type="Label" parent="."]
+visible = false
+offset_left = 295.0
+offset_top = 222.0
+offset_right = 544.0
+offset_bottom = 335.0
+text = "MISS"
+label_settings = SubResource("LabelSettings_yc55l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BadLabel" type="Label" parent="."]
+visible = false
+offset_left = 295.0
+offset_top = 222.0
+offset_right = 544.0
+offset_bottom = 335.0
+text = "BAD"
+label_settings = SubResource("LabelSettings_yc55l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoodLabel" type="Label" parent="."]
+visible = false
+offset_left = 295.0
+offset_top = 222.0
+offset_right = 544.0
+offset_bottom = 335.0
+text = "GOOD"
+label_settings = SubResource("LabelSettings_yc55l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GreatLabel" type="Label" parent="."]
+visible = false
+offset_left = 295.0
+offset_top = 222.0
+offset_right = 553.0
+offset_bottom = 335.0
+text = "GREAT"
+label_settings = SubResource("LabelSettings_yc55l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PerfectLabel" type="Label" parent="."]
+visible = false
+offset_left = 295.0
+offset_top = 222.0
+offset_right = 631.0
+offset_bottom = 335.0
+text = "PERFECT"
+label_settings = SubResource("LabelSettings_yc55l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
-collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(15, 347)
 shape = SubResource("RectangleShape2D_q6vjq")
 
-[connection signal="area_entered" from="Icon/Bad" to="Icon" method="_on_bad_area_entered"]
-[connection signal="area_exited" from="Icon/Bad" to="Icon" method="_on_bad_area_exited"]
-[connection signal="area_entered" from="Icon/Good" to="Icon" method="_on_good_area_entered"]
-[connection signal="area_exited" from="Icon/Good" to="Icon" method="_on_good_area_exited"]
-[connection signal="area_entered" from="Icon/Great" to="Icon" method="_on_great_area_entered"]
-[connection signal="area_exited" from="Icon/Great" to="Icon" method="_on_great_area_exited"]
-[connection signal="area_entered" from="Icon/Perfect" to="Icon" method="_on_perfect_area_entered"]
-[connection signal="area_exited" from="Icon/Perfect" to="Icon" method="_on_perfect_area_exited"]
+[connection signal="area_entered" from="Pointer/Bad" to="Pointer" method="_on_bad_area_entered"]
+[connection signal="area_exited" from="Pointer/Bad" to="Pointer" method="_on_bad_area_exited"]
 [connection signal="timeout" from="Timer" to="Background" method="_on_timer_timeout"]
