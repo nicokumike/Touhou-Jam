@@ -59,7 +59,6 @@ func decipher_note(note):
 		"length": 0,
 		"type": null
 	}
-	
 	match note[0]:
 		"R": new_note.color = legend[note[0]]
 		"G": new_note.color = legend[note[0]]

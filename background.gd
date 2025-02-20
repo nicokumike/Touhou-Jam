@@ -34,6 +34,15 @@ func _on_timer_timeout():
 	#get_parent().add_child(note_instance)	
 	noteCount += 1
 
-func emit_note(note):
-	print(note)
+func emit_note(note_data):
+	var note_instance = note.instantiate()
+	match note_data.color:
+		"Red": note_instance.setColor(4)
+		"Blue": note_instance.setColor(2)
+		"Green": note_instance.setColor(3)
+		"Yellow": note_instance.setColor(1)
+	#note_instance.setColor(randi_range(1, 4))
+	note_instance.setSpeed(speed)
+	note_instance.position = spawnPoint.position
+	get_parent().add_child(note_instance)
 	pass
