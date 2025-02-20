@@ -210,7 +210,6 @@ _data = {
 
 [node name="DialogUi" type="CanvasLayer"]
 script = ExtResource("1_xrtxq")
-text_speed = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

@@ -6,7 +6,7 @@ extends CanvasLayer
 const text_speed_dict : Dictionary = {
 	0 : .5,   # Slow
 	1 : 1,    # Medium
-	2 : 1.3   # Fast
+	2 : 2.5   # Fast
 }
 
 ## Path template for character data resources
@@ -117,11 +117,15 @@ func _on_dialogue_triggered(dialogue_data: Dictionary) -> void:
 func _on_dialogue_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == &"Fade_In":
 		# Now start the dialogue stuff here
+		%DialogueAnimationPlayer.speed_scale = text_speed_dict[text_speed]
 		%DialogueAnimationPlayer.play("reveal_text")
 
 
 func _on_dialogue_finished():
 	is_text_revealing = false
+	# Setting speed scale back to default
+	%DialogueAnimationPlayer.speed_scale = text_speed_dict[1]
+	
 	%DialogueAnimationPlayer.play("Fade_Out")
 #endregion
 	
