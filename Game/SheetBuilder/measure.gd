@@ -6,3 +6,7 @@ var count
 @onready var count_label = $HBoxContainer/MeasureCountLabel
 
 var measure_data = []
+
+func update_measure(data):
+	print(data)
+	pass

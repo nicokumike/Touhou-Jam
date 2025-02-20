@@ -1,0 +1,32 @@
+extends Button
+class_name RemapNoteButton
+
+@export var note: String = "Bluh"
+
+func _init():
+	toggle_mode = true
+	theme_type_variation = "RemapButton"
+
+func _ready():
+	set_process_unhandled_input(false)
+	#update_key_text()
+
+func _toggled(new_button_pressed):
+	set_process_unhandled_input(new_button_pressed)
+	if button_pressed:
+		text = "... Awaiting Input ..."
+		release_focus()
+	else:
+		update_key_text()
+		grab_focus()
+
+func _unhandled_input(event):
+	if event.pressed:
+		InputMap.action_erase_events(note)
+		InputMap.action_add_event(note, event)
+		button_pressed = false
+
+func update_key_text():
+	#var aux = InputMap.action_get_events(note)[0].as_text()
+	#text = "%s" % InputMap.action_get_events(note)[0].as_text()
+	pass

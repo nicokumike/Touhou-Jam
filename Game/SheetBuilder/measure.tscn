@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c525mub6rxvk8"]
+[gd_scene load_steps=3 format=3 uid="uid://c525mub6rxvk8"]
 
 [ext_resource type="Script" path="res://Game/SheetBuilder/measure.gd" id="1_e1l25"]
+[ext_resource type="Script" path="res://Game/SheetBuilder/remap_note_button.gd" id="2_kb5uk"]
 
 [node name="Measure" type="MarginContainer"]
 offset_right = 40.0
@@ -22,6 +23,11 @@ text = "1"
 
 [node name="BeatHContainer" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+
+[node name="RemapNoteButton" type="Button" parent="HBoxContainer/BeatHContainer"]
+layout_mode = 2
+text = "1"
+script = ExtResource("2_kb5uk")
 
 [node name="Button" type="Button" parent="HBoxContainer/BeatHContainer"]
 layout_mode = 2

@@ -61,19 +61,17 @@ func populate_measures(sheet):
 		new_measure.count = index[0] + 1
 		new_measure.count_label.text = str(index[0] + 1)
 		new_measure.measure_data = measure
+		new_measure.update_measure(measure)
 		
 		index[0] += 1
 		#print(measure)
-		
 	sheet_container.move_child(new_measure_button, index[0] + 1)
-	pass
 
 func _on_play_song_button_pressed() -> void:
 	AudMan.play_music(music)
 	pass # Replace with function body.
 
 func _on_stop_button_pressed() -> void:
-	#TODO stop music
 	AudMan.stop_music()
 	pass # Replace with function body.
 
@@ -98,7 +96,6 @@ func _on_new_sheet_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_new_measure_button_pressed() -> void:
-	#TODO Spawn new measure
 	var new_data = [[1, 2, 3, 4],[1, 2, 3, 4],[1, 2, 3, 4],[1, 2, 3, 4]]
 	var new_measure: Measure = measure_node.instantiate()
 	sheet.append(new_data)
@@ -107,12 +104,10 @@ func _on_new_measure_button_pressed() -> void:
 	new_measure.count = sheet.size()
 	new_measure.count_label.text = str(sheet.size())
 	new_measure.measure_data = new_data
-	print(sheet)
+	#print(new_measure.measure_data)
 	sheet_container.move_child(new_measure_button, sheet.size() + 1)
 	#This only works by waiting a frame, dunno why
 	call_deferred("update_scroll")
-	pass # Replace with function body.
 
 func update_scroll():
 	scroll_container.set_deferred("scroll_vertical", 999999)
-	pass
