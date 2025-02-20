@@ -50,7 +50,7 @@ text = "Play >"
 layout_mode = 2
 text = "Stop X"
 
-[node name="TestButton2" type="Button" parent="VBoxContainer2"]
+[node name="TestButton" type="Button" parent="VBoxContainer2"]
 layout_mode = 2
 text = "Test"
 
@@ -102,5 +102,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "New Measure +"
 
+[connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/EditButton" to="." method="_on_edit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/NewSheetButton" to="." method="_on_new_sheet_button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/PlaySongButton" to="." method="_on_play_song_button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/StopButton" to="." method="_on_stop_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/TestButton" to="." method="_on_test_button_pressed"]
