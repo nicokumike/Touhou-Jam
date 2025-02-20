@@ -2,4 +2,7 @@ extends MarginContainer
 
 class_name Measure
 
-@onready var count = $HBoxContainer/MeasureCountLabel
+var count
+@onready var count_label = $HBoxContainer/MeasureCountLabel
+
+var measure_data = []

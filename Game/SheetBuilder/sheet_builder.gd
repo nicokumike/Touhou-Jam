@@ -8,6 +8,7 @@ class_name SheetBuilder
 @onready var bpm_label = $VBoxContainer3/BPMLabel
 @onready var song_path_label = $VBoxContainer3/SongPathLabel 
 
+@onready var scroll_container: ScrollContainer = $ScrollContainer
 @onready var sheet_container = $ScrollContainer/MeasureVContainer
 @onready var new_measure_button = $ScrollContainer/MeasureVContainer/NewMeasureButton
 
@@ -52,15 +53,18 @@ func initialize():
 	populate_measures(sheet)
 
 func populate_measures(sheet):
-	print(sheet)
+	#print(sheet)
 	for measure in sheet:
 		var new_measure: Measure = measure_node.instantiate()
 		sheet_container.add_child(new_measure)
 		sheet_container.move_child(new_measure, -1)
-		new_measure.count.text = str(index[0] + 1)
+		new_measure.count = index[0] + 1
+		new_measure.count_label.text = str(index[0] + 1)
+		new_measure.measure_data = measure
 		
 		index[0] += 1
-		print(measure)
+		#print(measure)
+		
 	sheet_container.move_child(new_measure_button, index[0] + 1)
 	pass
 
@@ -94,4 +98,20 @@ func _on_new_sheet_button_pressed() -> void:
 
 func _on_new_measure_button_pressed() -> void:
 	#TODO Spawn new measure
+	var new_data = [[1, 2, 3, 4],[1, 2, 3, 4],[1, 2, 3, 4],[1, 2, 3, 4]]
+	var new_measure: Measure = measure_node.instantiate()
+	sheet.append(new_data)
+	sheet_container.add_child(new_measure)
+	sheet_container.move_child(new_measure, -1)
+	new_measure.count = sheet.size()
+	new_measure.count_label.text = str(sheet.size())
+	new_measure.measure_data = new_data
+	print(sheet)
+	sheet_container.move_child(new_measure_button, sheet.size() + 1)
+	#This only works by waiting a frame, dunno why
+	call_deferred("update_scroll")
 	pass # Replace with function body.
+
+func update_scroll():
+	scroll_container.set_deferred("scroll_vertical", 999999)
+	pass
