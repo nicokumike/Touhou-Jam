@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c525mub6rxvk8"]
+[gd_scene load_steps=2 format=3 uid="uid://c525mub6rxvk8"]
+
+[ext_resource type="Script" path="res://Game/SheetBuilder/measure.gd" id="1_e1l25"]
 
 [node name="Measure" type="MarginContainer"]
 offset_right = 40.0
@@ -8,12 +10,13 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("1_e1l25")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="MeasureCountLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "1"
 

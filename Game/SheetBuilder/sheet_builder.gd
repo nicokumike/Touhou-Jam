@@ -2,10 +2,14 @@ extends Control
 class_name SheetBuilder
 
 @export_file("*.json") var music_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
+@onready var measure_node = preload("res://Game/SheetBuilder/measure.tscn")
 
 @onready var name_label = $VBoxContainer3/NameLabel
 @onready var bpm_label = $VBoxContainer3/BPMLabel
 @onready var song_path_label = $VBoxContainer3/SongPathLabel 
+
+@onready var sheet_container = $ScrollContainer/MeasureVContainer
+@onready var new_measure_button = $ScrollContainer/MeasureVContainer/NewMeasureButton
 
 var music
 var bpm
@@ -43,7 +47,22 @@ func initialize():
 	bpm_label.text = str("BPM: ", bpm)
 	
 	sheet = sheet_data.sheet
-	print(sheet_data)
+	prints(bpm, song_path, music, song_name, sheet)
+	print('------------------')
+	populate_measures(sheet)
+
+func populate_measures(sheet):
+	print(sheet)
+	for measure in sheet:
+		var new_measure: Measure = measure_node.instantiate()
+		sheet_container.add_child(new_measure)
+		sheet_container.move_child(new_measure, -1)
+		new_measure.count.text = str(index[0] + 1)
+		
+		index[0] += 1
+		print(measure)
+	sheet_container.move_child(new_measure_button, index[0] + 1)
+	pass
 
 func _on_play_song_button_pressed() -> void:
 	AudMan.play_music(music)
@@ -71,4 +90,8 @@ func _on_edit_button_pressed() -> void:
 
 func _on_new_sheet_button_pressed() -> void:
 	#TODO New sheet
+	pass # Replace with function body.
+
+func _on_new_measure_button_pressed() -> void:
+	#TODO Spawn new measure
 	pass # Replace with function body.

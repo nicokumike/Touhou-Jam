@@ -90,14 +90,15 @@ grow_vertical = 2
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="MeasureVContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Measure" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_kcc8a")]
+[node name="Measure" parent="ScrollContainer/MeasureVContainer" instance=ExtResource("2_kcc8a")]
+visible = false
 layout_mode = 2
 
-[node name="NewMeasureButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="NewMeasureButton" type="Button" parent="ScrollContainer/MeasureVContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "New Measure +"
@@ -109,3 +110,4 @@ text = "New Measure +"
 [connection signal="pressed" from="VBoxContainer2/PlaySongButton" to="." method="_on_play_song_button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/StopButton" to="." method="_on_stop_button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/TestButton" to="." method="_on_test_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/MeasureVContainer/NewMeasureButton" to="." method="_on_new_measure_button_pressed"]
