@@ -29,21 +29,25 @@ theme_override_constants/separation = 6
 layout_mode = 2
 text = "1"
 script = ExtResource("2_kb5uk")
+num = "1"
 
 [node name="RemapNoteButton2" type="Button" parent="HBoxContainer/BeatHContainer"]
 layout_mode = 2
 text = "2"
 script = ExtResource("2_kb5uk")
+num = "2"
 
 [node name="RemapNoteButton3" type="Button" parent="HBoxContainer/BeatHContainer"]
 layout_mode = 2
 text = "3"
 script = ExtResource("2_kb5uk")
+num = "3"
 
 [node name="RemapNoteButton4" type="Button" parent="HBoxContainer/BeatHContainer"]
 layout_mode = 2
 text = "4"
 script = ExtResource("2_kb5uk")
+num = "4"
 
 [node name="BeatHContainer5" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2

@@ -2,6 +2,9 @@ extends Button
 class_name RemapNoteButton
 
 @export var note: String = "Bluh"
+@export var num: String
+
+signal new_note
 
 func _init():
 	toggle_mode = true
@@ -34,6 +37,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("Yellow"):
 		text = "Yellow"
 		button_pressed = false
+	if event.is_action_pressed("ui_cancel"):
+		text = num
 
 
 
