@@ -22,7 +22,9 @@ func _on_start_pressed() -> void:
 	tween.tween_property($BlackHouse/Title, "global_position", $end.global_position, 0.3)
 	await tween.finished
 	await get_tree().create_timer(1.5).timeout
+	tween.tween_property($BlackHouse/GPUParticles2D, "modulate", Color.TRANSPARENT, 0.2)
 	$AnimationPlayer.play("cutscene")
+	
 
 func _on_settings_pressed() -> void:
 	await animate_button($VBoxContainer/Settings, "Settings")
