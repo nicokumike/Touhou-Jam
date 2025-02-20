@@ -32,9 +32,11 @@ func initialize():
 	bpm = sheet_data.bpm
 	emitter.bpm = bpm
 	song_path = sheet_data.song
+	emitter.music = load(song_path)
 	song_name = sheet_data.name
 	sheet = sheet_data.sheet
-	prints(bpm, song_path, song_name, sheet)
+	
+	prints(bpm, song_path, emitter.music, song_name, sheet)
 	print('------------------')
 	#print_it_all()
 
@@ -85,7 +87,8 @@ func play_note():
 	#Build the note projectile
 	#Tell the emitter to emit the note
 	if note_data != null:
-		print(note_data)
+		#print(note_data)
+		emitter.emit_note(note_data)
 	
 	#Iterate the index
 	index[2] += 1

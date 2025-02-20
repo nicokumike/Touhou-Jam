@@ -3,6 +3,8 @@ extends Node2D
 var speed = 300
 @export var bpm = 170
 
+var music: AudioStreamMP3
+
 var noteCount = 0
 var bossCount = 20
 
@@ -29,6 +31,9 @@ func _on_timer_timeout():
 	#note_instance.setColor(randi_range(1, 4))
 	#note_instance.setSpeed(speed)
 	#note_instance.position = spawnPoint.position
-	#get_parent().add_child(note_instance)
-	
+	#get_parent().add_child(note_instance)	
 	noteCount += 1
+
+func emit_note(note):
+	print(note)
+	pass
