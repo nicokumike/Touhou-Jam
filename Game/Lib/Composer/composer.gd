@@ -14,8 +14,8 @@ var index = [0,0,0]
 
 var legend = {
 	"R" = "Red",
-	"B" = "Blue",
 	"G" = "Green",
+	"B" = "Blue",
 	"Y" = "Yellow",
 	"H" =  "Hold",
 	"P" = "Projectile",

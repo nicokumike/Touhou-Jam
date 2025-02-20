@@ -41,7 +41,6 @@ func emit_note(note_data):
 		"Blue": note_instance.setColor(2)
 		"Green": note_instance.setColor(3)
 		"Yellow": note_instance.setColor(1)
-	#note_instance.setColor(randi_range(1, 4))
 	note_instance.setSpeed(speed)
 	note_instance.position = spawnPoint.position
 	get_parent().add_child(note_instance)
