@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="2_elhnb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tjty"]
-size = Vector2(26, 26)
+size = Vector2(30, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tytpf"]
 
@@ -22,35 +22,35 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_elhnb")
 
 [node name="Bad" type="Area2D" parent="." groups=["bad"]]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bad"]
 shape = SubResource("RectangleShape2D_2tjty")
-debug_color = Color(0, 0, 1, 0.2)
+debug_color = Color(1, 1, 1, 0.42)
 
 [node name="Good" type="Area2D" parent="." groups=["good"]]
-collision_layer = 2
+collision_layer = 8
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Good"]
 shape = SubResource("RectangleShape2D_tytpf")
-debug_color = Color(0, 1, 0, 0.419608)
+debug_color = Color(1, 1, 1, 0.42)
 
 [node name="Great" type="Area2D" parent="." groups=["great"]]
-collision_layer = 2
+collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Great"]
 shape = SubResource("RectangleShape2D_nodhu")
-debug_color = Color(1, 1, 0, 0.419608)
+debug_color = Color(1, 1, 1, 0.42)
 
 [node name="Perfect" type="Area2D" parent="." groups=["perfect"]]
-collision_layer = 2
+collision_layer = 32
 collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Perfect"]
 shape = SubResource("RectangleShape2D_i0c15")
-debug_color = Color(1, 0, 0, 0.419608)
+debug_color = Color(1, 1, 1, 0.42)
 
 [connection signal="area_entered" from="Bad" to="." method="_on_area_2d_area_entered"]

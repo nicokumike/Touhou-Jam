@@ -86,6 +86,8 @@ func decipher_note(note):
 func play_note():
 	#Early exit
 	if index[0] == sheet.size():
+		emitter.transition()
+		print("terminó")
 		return
 	#Grab the note data
 	var note = sheet[index[0]][index[1]][index[2]]

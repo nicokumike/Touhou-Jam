@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bc03syknr3he6"]
+[gd_scene load_steps=14 format=3 uid="uid://bc03syknr3he6"]
 
 [ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
 [ext_resource type="Texture2D" uid="uid://dw5ji5ifhotwb" path="res://Assets/Characters/Scarlet.png" id="1_xhhx3"]
@@ -8,21 +8,25 @@
 [ext_resource type="Script" path="res://Scenes/pointer.gd" id="5_6yugx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrojt"]
-size = Vector2(200, 193.333)
+size = Vector2(221.667, 215)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bc1gi"]
-size = Vector2(124.878, 124.343)
+size = Vector2(139.105, 138.838)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gt10"]
-size = Vector2(73.3334, 73.3333)
+size = Vector2(80, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb27d"]
+size = Vector2(26.6666, 26.6667)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yc55l"]
 font_size = 90
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vjq"]
 size = Vector2(20, 350)
+
+[sub_resource type="LabelSettings" id="LabelSettings_371ga"]
+font_size = 32
 
 [node name="Level1" type="Node2D"]
 
@@ -60,38 +64,38 @@ texture = ExtResource("4_lafp1")
 
 [node name="Bad" type="Area2D" parent="Pointer"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 4
 
 [node name="Bad" type="CollisionShape2D" parent="Pointer/Bad"]
-position = Vector2(-0.00012207, 0)
 shape = SubResource("RectangleShape2D_vrojt")
 
 [node name="Good" type="Area2D" parent="Pointer"]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 8
 
 [node name="Good" type="CollisionShape2D" parent="Pointer/Good"]
-position = Vector2(0.00012207, 0)
 shape = SubResource("RectangleShape2D_bc1gi")
 debug_color = Color(0, 0, 1, 0.419608)
 
 [node name="Great" type="Area2D" parent="Pointer"]
-position = Vector2(0, 3.33325)
 collision_layer = 16
-collision_mask = 2
+collision_mask = 16
 
 [node name="Great" type="CollisionShape2D" parent="Pointer/Great"]
-position = Vector2(-0.00012207, -3.33337)
 shape = SubResource("RectangleShape2D_8gt10")
 debug_color = Color(0, 0.976471, 0, 0.419608)
 
 [node name="Perfect" type="Area2D" parent="Pointer"]
 collision_layer = 32
-collision_mask = 2
+collision_mask = 32
 
 [node name="Perfect" type="CollisionShape2D" parent="Pointer/Perfect"]
 shape = SubResource("RectangleShape2D_qb27d")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="PrecisionLabelReset" type="Timer" parent="Pointer"]
+wait_time = 0.5
+autostart = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -99,6 +103,9 @@ autostart = true
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(1208, 344)
+
+[node name="BossSpawn" type="Marker2D" parent="."]
+position = Vector2(1685, 344)
 
 [node name="MissLabel" type="Label" parent="."]
 visible = false
@@ -156,12 +163,48 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
+collision_layer = 60
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(15, 347)
 shape = SubResource("RectangleShape2D_q6vjq")
 
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 31.0
+offset_top = 9.0
+offset_right = 125.0
+offset_bottom = 54.0
+text = "Score:"
+label_settings = SubResource("LabelSettings_371ga")
+
+[node name="ScoreAmount" type="Label" parent="."]
+offset_left = 180.0
+offset_top = 9.0
+offset_right = 526.0
+offset_bottom = 54.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_371ga")
+
+[node name="ComboLabel" type="Label" parent="."]
+offset_left = 31.0
+offset_top = 72.0
+offset_right = 125.0
+offset_bottom = 117.0
+text = "Combo:"
+label_settings = SubResource("LabelSettings_371ga")
+
+[node name="ComboAmount" type="Label" parent="."]
+offset_left = 180.0
+offset_top = 72.0
+offset_right = 274.0
+offset_bottom = 117.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_371ga")
+
 [connection signal="area_entered" from="Pointer/Bad" to="Pointer" method="_on_bad_area_entered"]
 [connection signal="area_exited" from="Pointer/Bad" to="Pointer" method="_on_bad_area_exited"]
+[connection signal="timeout" from="Pointer/PrecisionLabelReset" to="Pointer" method="_on_precision_label_reset_timeout"]
 [connection signal="timeout" from="Timer" to="Background" method="_on_timer_timeout"]

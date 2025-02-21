@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bf6eehdenx7th"
+path="res://.godot/imported/Prismriver Sisters.mp3-44cc39d17d2ae006792a4bd5feb1b360.mp3str"
+
+[deps]
+
+source_file="res://Game/Lib/Composer/Music_Sheets/Prismriver Sisters.mp3"
+dest_files=["res://.godot/imported/Prismriver Sisters.mp3-44cc39d17d2ae006792a4bd5feb1b360.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bal6kufq0syfy"]
+[gd_scene load_steps=5 format=3 uid="uid://cn5tlvobabucw"]
 
 [ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="1_gojix"]
 [ext_resource type="PackedScene" uid="uid://cguq6ynfjgd4q" path="res://Game/Lib/Dialogue_Manager/dialogUI.tscn" id="1_sr8o4"]

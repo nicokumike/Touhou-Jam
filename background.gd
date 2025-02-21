@@ -5,14 +5,14 @@ var speed = 300
 
 var music: AudioStreamMP3
 
-var noteCount = 0
-var bossCount = 20
-
 @onready var note = preload("res://Scenes/note.tscn")
 @onready var spawnPoint = $"../SpawnPoint"
 @onready var timer = $"../Timer"
 @export var penisMusic = preload("res://Assets/SFX/penis music.mp3")
 @onready var composer = $Composer
+
+@export var boss = preload("res://Scenes/boss.tscn")
+@onready var bossSpawnPoint = $"../BossSpawn"
 
 func _ready():
 	AudMan.play_music(penisMusic, -20)
@@ -21,9 +21,6 @@ func _ready():
 
 func _process(delta):
 	position.x -= speed * delta
-	if noteCount >= bossCount:
-		timer.stop()
-		bossSpawn()
 
 func _on_timer_timeout():
 	composer.play_note()
@@ -31,8 +28,7 @@ func _on_timer_timeout():
 	#note_instance.setColor(randi_range(1, 4))
 	#note_instance.setSpeed(speed)
 	#note_instance.position = spawnPoint.position
-	#get_parent().add_child(note_instance)	
-	#noteCount += 1
+	#get_parent().add_child(note_instance)
 
 func emit_note(note_data):
 	var note_instance = note.instantiate()
@@ -46,9 +42,9 @@ func emit_note(note_data):
 	get_parent().add_child(note_instance)
 	pass
 
-func bossSpawn():
-	#composer.music_sheet = "insert boss music here"
-	composer.initialize()
-	#Spawn boss
-	
-	pass
+func transition():
+	timer.stop()
+	var boss_instance = boss.instantiate()
+	boss_instance.initiate(spawnPoint.position)
+	boss_instance.position = bossSpawnPoint.position
+	get_parent().add_child(boss_instance)
