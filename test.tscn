@@ -8,46 +8,11 @@ script/source = "extends CharacterBody2D
 
 @export var speed: float = 200.0  # Movement speed
 
-var dialogue = {
-	\"0\": {                                 
-		\"Character\": [\"Bob\", \"Excited\", \"Bottom\"],       
-		\"Text\": \"I love money! I also love gummy bears too and kombucha and mushrooms and greek yogurt and spinach and blue beeries and potatoes!!\"
-	},
-
-	\"1\": {                              
-		\"Character\": [\"Alice\", \"Angry\", \"Top\"],         
-		\"Text\": \"I have no money.\"
-	},
-	
-	\"2\": {                                    
-		\"Text\": \"The sea spans into the horizon. Not a spec of land in sight...\"
-	}
-}
+var json_data : JSON = preload(\"res://json_test_.json\")
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(\"E\"):
-		SignalBus.dialogue_triggered.emit(dialogue)
-
-
-func _physics_process(delta):
-	var direction = Vector2.ZERO  # Default no movement
-
-	# Get input direction
-	if Input.is_action_pressed(\"A\"):
-		direction.y -= 1
-	if Input.is_action_pressed(\"B\"):
-		direction.y += 1
-	if Input.is_action_pressed(\"C\"):
-		direction.x -= 1
-	if Input.is_action_pressed(\"D\"):
-		direction.x += 1
-
-	# Normalize to prevent diagonal speed boost
-	direction = direction.normalized()
-
-	# Apply movement
-	velocity = direction * speed
-	move_and_slide()
+	if event.is_action_pressed(\"test\"):
+		SignalBus.dialogue_triggered.emit(json_data.data)
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5o7r"]

@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+# TODO: Add audio sounds for character text, cause its kinda cool no?
+# TODO: Swapping property track for top and bottom diag boxes?? or just have two seperate animations would be easier lol
+
 # Export enum for speed
 @export_enum("Slow", "Medium", "Fast") var text_speed : int = 0
 
@@ -37,10 +40,9 @@ func _ready():
 	# Connect to the dialogue signals
 	SignalBus.dialogue_triggered.connect(_on_dialogue_triggered)
 	SignalBus.dialogue_finished.connect(_on_dialogue_finished)
-	dialogue_dictionary["Top"] = %BottomDialogue
+	dialogue_dictionary["Top"] = %TopDialogue
 	dialogue_dictionary["Bottom"] = %BottomDialogue
 	current_dialogue_box = %BottomDialogue
-	
 #endregion
 	
 #region Main functions
@@ -49,10 +51,12 @@ func _shortcut_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"skip") or event.is_action_pressed(&"cont"):
 		# If an animation is playing, seek to the end
 		if %DialogueAnimationPlayer.is_playing():
+			# Grab current animation
 			var current_anim : String = %DialogueAnimationPlayer.current_animation
 			
 			# Don't skip the fade in
 			if current_anim != "Fade_In":
+				# Get length of the current animation
 				var anim_length : float = %DialogueAnimationPlayer.get_animation(current_anim).length
 				# Seek to the end and force an update
 				%DialogueAnimationPlayer.seek(anim_length, true)
@@ -66,20 +70,35 @@ func _shortcut_input(event: InputEvent) -> void:
 	
 # Load in the next batch of dialogue
 func progress_dialogue() -> void:
+	# Make sure we are not at the end of our dialogue
 	if dialogue_index != max_dialogue_index:
-		current_dialogue_box.visible_characters = 0
+		# Make sure we are not narrating stuff
 		if not dialogue_sequence[dialogue_index]["type"] == "narration":
-			current_dialogue_box = dialogue_dictionary[dialogue_sequence[dialogue_index]["position"]]
-			%TextureRect.texture = dialogue_sequence[dialogue_index]["character_resource"].expression[dialogue_sequence[dialogue_index]["expression"]]
-			%BottomSpeaker.text = dialogue_sequence[dialogue_index]["character_name"]
-			%BottomDialogue.text = dialogue_sequence[dialogue_index]["text"]
+			# Handle bottom dialogue
+			if dialogue_sequence[dialogue_index]["position"] == "Bottom":
+				current_dialogue_box = dialogue_dictionary[dialogue_sequence[dialogue_index]["position"]]
+				%BottomTextureRect.texture = dialogue_sequence[dialogue_index]["character_resource"].expression[dialogue_sequence[dialogue_index]["expression"]]
+				%BottomSpeaker.text = dialogue_sequence[dialogue_index]["character_name"]
+				%BottomDialogue.text = dialogue_sequence[dialogue_index]["text"]
+				%DialogueAnimationPlayer.play("reveal_text_bottom")
+			# Handle top dialogue
+			else:
+				current_dialogue_box = dialogue_dictionary[dialogue_sequence[dialogue_index]["position"]]
+				%TopTextureRect.texture = dialogue_sequence[dialogue_index]["character_resource"].expression[dialogue_sequence[dialogue_index]["expression"]]
+				%TopSpeaker.text = dialogue_sequence[dialogue_index]["character_name"]
+				%TopDialogue.text = dialogue_sequence[dialogue_index]["text"]
+				%DialogueAnimationPlayer.play("reveal_text_top")
+		# Handle narration
 		else:
+			# For now narration will just go in the bottom.
+			# Maybe hide top dialogue when narration goes on?
 			current_dialogue_box = dialogue_dictionary["Bottom"]
-			%TextureRect.texture = null
+			%BottomTextureRect.texture = null
 			%BottomSpeaker.text = ""
 			%BottomDialogue.text = dialogue_sequence[dialogue_index]["text"]
+			%DialogueAnimationPlayer.play("reveal_text_bottom")
 			
-		%DialogueAnimationPlayer.play("reveal_text")
+	# If we are at the end, set index to 0 and fade out
 	else:
 		dialogue_index = 0
 		SignalBus.dialogue_finished.emit()
@@ -109,23 +128,32 @@ func _on_dialogue_triggered(dialogue_data: Dictionary) -> void:
 	# Start dialouge process.
 	visible = true
 	is_text_revealing = true
+	
 	progress_dialogue()
 	
 	%DialogueAnimationPlayer.play("Fade_In")
 	
-
 func _on_dialogue_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == &"Fade_In":
 		# Now start the dialogue stuff here
 		%DialogueAnimationPlayer.speed_scale = text_speed_dict[text_speed]
-		%DialogueAnimationPlayer.play("reveal_text")
-
-
+		
+		# Make the appropriate objects visible
+		if dialogue_sequence[dialogue_index]["position"] == "Bottom":
+			%BottomDialogueCont.visible = true
+			%DialogueAnimationPlayer.play("reveal_text_bottom")
+		else:
+			%TopDialogueCont.visible = true
+			%DialogueAnimationPlayer.play("reveal_text_top")
+			
+	elif anim_name == &"Fade_Out":
+		%TopDialogue.visible_characters = 0
+		%BottomDialogue.visible_characters = 0
+	
 func _on_dialogue_finished():
 	is_text_revealing = false
 	# Setting speed scale back to default
 	%DialogueAnimationPlayer.speed_scale = text_speed_dict[1]
-	
 	%DialogueAnimationPlayer.play("Fade_Out")
 #endregion
 	

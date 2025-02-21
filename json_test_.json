@@ -1,0 +1,15 @@
+{
+	"1": {                              
+		"Character": ["Alice", "Angry", "Top"],         
+		"Text": "I have no money."
+	},
+	
+	"0": {                                 
+		"Character": ["Bob", "Excited", "Bottom"],       
+		"Text": "I love money!"
+	},
+	
+	"2": {                                    
+		"Text": "The sea spans into the horizon. Not a spec of land in sight..."
+	}
+}

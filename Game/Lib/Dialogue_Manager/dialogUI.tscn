@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cguq6ynfjgd4q"]
+[gd_scene load_steps=11 format=3 uid="uid://cguq6ynfjgd4q"]
 
 [ext_resource type="Script" path="res://Game/Lib/Dialogue_Manager/dialogue_manager.gd" id="1_xrtxq"]
 [ext_resource type="Shader" path="res://Assets/Shaders/blur_shader.gdshader" id="2_fy62d"]
+[ext_resource type="Texture2D" uid="uid://eo0hb7b1x2xv" path="res://Game/Lib/Resources/1692344450866.jpg" id="3_hr21h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4xau"]
 shader = ExtResource("2_fy62d")
@@ -32,30 +33,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%TextureRect:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("%BottomDialogueCont:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_eomn4"]
@@ -88,26 +65,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%TextureRect:visible")
+tracks/2/path = NodePath("%BottomDialogueCont:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("..:visible")
+tracks/3/path = NodePath("%TopDialogueCont:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_0mwtb"]
@@ -139,31 +116,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%TextureRect:visible")
+tracks/2/path = NodePath("%BottomDialogue:visible_ratio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("..:visible")
+tracks/3/path = NodePath("%TopDialogue:visible_ratio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%BottomDialogueCont:visible")
+tracks/4/path = NodePath("%TopDialogueCont:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -175,18 +152,18 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%BottomDialogue:visible_ratio")
+tracks/5/path = NodePath("%BottomDialogueCont:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_gnsip"]
-resource_name = "reveal_text"
+resource_name = "reveal_text_bottom"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -199,17 +176,59 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%BottomDialogueCont:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7la8g"]
+resource_name = "reveal_text_top"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%TopDialogue:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%TopDialogueCont:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kfuif"]
 _data = {
 "Fade_In": SubResource("Animation_puxh3"),
 "Fade_Out": SubResource("Animation_eomn4"),
 "RESET": SubResource("Animation_0mwtb"),
-"reveal_text": SubResource("Animation_gnsip")
+"reveal_text_bottom": SubResource("Animation_gnsip"),
+"reveal_text_top": SubResource("Animation_7la8g")
 }
 
 [node name="DialogUi" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_xrtxq")
+text_speed = 2
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -237,16 +256,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-offset_left = 64.0
-offset_top = 448.0
-offset_right = 256.0
-offset_bottom = 640.0
-expand_mode = 3
-
 [node name="BottomDialogueCont" type="Control" parent="Control"]
 unique_name_in_owner = true
 visible = false
@@ -257,6 +266,15 @@ anchor_right = 0.75
 anchor_bottom = 0.889
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="BottomTextureRect" type="TextureRect" parent="Control/BottomDialogueCont"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = -192.0
+offset_top = 0.160004
+offset_bottom = 192.16
+texture = ExtResource("3_hr21h")
+expand_mode = 3
 
 [node name="DialogueBackground" type="Panel" parent="Control/BottomDialogueCont"]
 layout_mode = 1
@@ -280,6 +298,59 @@ layout_mode = 2
 text = "NAME HERE"
 
 [node name="BottomDialogue" type="RichTextLabel" parent="Control/BottomDialogueCont/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Lorem ipsum odor amet, consectetuer adipiscing elit. Iaculis duis massa laoreet himenaeos mattis tortor. Odio auctor dolor; suscipit praesent suscipit hac tortor. Molestie lacus venenatis pulvinar fusce mollis ornare conubia bibendum. Libero id parturient scelerisque blandit; cras nibh congue. Lobortis tempor eget efficitur ornare diam; vulputate risus."
+fit_content = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="TopDialogueCont" type="Control" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 0.3
+anchor_top = 0.167
+anchor_right = 1.0
+anchor_bottom = 0.434
+offset_top = -0.240005
+offset_right = -192.0
+offset_bottom = -0.23999
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TopTextureRect" type="TextureRect" parent="Control/TopDialogueCont"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 704.0
+offset_right = 896.0
+offset_bottom = 192.0
+texture = ExtResource("3_hr21h")
+expand_mode = 3
+
+[node name="DialogueBackground" type="Panel" parent="Control/TopDialogueCont"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TopDialogueCont"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopSpeaker" type="Label" parent="Control/TopDialogueCont/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "NAME HERE"
+
+[node name="TopDialogue" type="RichTextLabel" parent="Control/TopDialogueCont/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true

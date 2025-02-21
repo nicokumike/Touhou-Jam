@@ -10,7 +10,7 @@ signal pause_game
 signal game_state_changed(new_state)
 
 # Signal that will be triggered when dialogue starts
-signal dialogue_triggered(dialogue_data: Dictionary)
+signal dialogue_triggered(dialogue_data : Dictionary)
 
 # Signal that will be emitted when dialogue is complete
 signal dialogue_finished
