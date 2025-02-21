@@ -11,5 +11,5 @@
 		[["GP",2,"GP",4],["YP",2,"YP",4],["RP",2,"RP",4],["BP",2,"BP",4]],
 		[["GP",2,"GP",4],["YP",2,"YP",4],["RP",2,"RP",4],["BP",2,"BP",4]],
 	],
-	"song": "res://Game/Lib/Composer/Music_Sheets/Debug tune.mp3",
+	"song": "res://Game/Lib/Composer/Music_Sheets/debug_tune.mp3",
 }

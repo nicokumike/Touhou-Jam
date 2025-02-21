@@ -42,6 +42,11 @@ func play_music(music: AudioStreamMP3, volume = 0, looped = true):
 	music_manager.play()
 	#return music_manager
 
+func stop_music():
+	music_manager.stop()
+	current_music = null
+	pass
+
 #SFX Bus
 #Plays an mp3 file
 #takes an argument of volume (which is then affected by bus volume)
