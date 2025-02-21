@@ -27,10 +27,9 @@ func hook_up(beat: HBoxContainer):
 	var children = beat.get_children()
 	for button: RemapNoteButton in children:
 		button.new_note.connect(_on_button_new_note.bind())
-		pass
-	print(children)
-	pass
+	#print(children)
 
 func _on_button_new_note(data):
-	print(data)
-	pass
+	#print(data)
+	on_changed_note.emit(data)
+	#pass

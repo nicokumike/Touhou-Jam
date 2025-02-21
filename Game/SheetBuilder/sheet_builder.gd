@@ -62,18 +62,21 @@ func populate_measures(sheet):
 		new_measure.count_label.text = str(index[0] + 1)
 		new_measure.measure_data = measure
 		new_measure.update_measure(measure)
+		new_measure.on_changed_note.connect(on_new_note.bind())
 		
 		index[0] += 1
 		#print(measure)
 	sheet_container.move_child(new_measure_button, index[0] + 1)
 
+func on_new_note(data):
+	print(data)
+	pass
+
 func _on_play_song_button_pressed() -> void:
 	AudMan.play_music(music)
-	pass # Replace with function body.
 
 func _on_stop_button_pressed() -> void:
 	AudMan.stop_music()
-	pass # Replace with function body.
 
 func _on_test_button_pressed() -> void:
 	#TODO go to a debug stage and play this track
