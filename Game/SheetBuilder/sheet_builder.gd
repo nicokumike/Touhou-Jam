@@ -107,6 +107,7 @@ func _on_new_measure_button_pressed() -> void:
 	new_measure.count = sheet.size()
 	new_measure.count_label.text = str(sheet.size())
 	new_measure.measure_data = new_data
+	new_measure.on_changed_note.connect(on_new_note.bind())
 	#print(new_measure.measure_data)
 	sheet_container.move_child(new_measure_button, sheet.size() + 1)
 	#This only works by waiting a frame, dunno why
