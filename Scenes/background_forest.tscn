@@ -1,0 +1,146 @@
+[gd_scene load_steps=26 format=3 uid="uid://dqhvnb8w1krad"]
+
+[ext_resource type="Texture2D" uid="uid://v5pyu0jps4qf" path="res://Assets/Environment/BackgroundSky.png" id="1_b0ikd"]
+[ext_resource type="Shader" path="res://Assets/Shaders/water.gdshader" id="2_o38cd"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Blending_Modes/soft_light.gdshader" id="3_1r3pf"]
+[ext_resource type="Texture2D" uid="uid://i6i0vkoa086c" path="res://Assets/Environment/BackgroundForest.png" id="3_bcwka"]
+[ext_resource type="Texture2D" uid="uid://cqo0ojuubal85" path="res://Assets/Environment/Backgroundgrass.png" id="4_8ak37"]
+[ext_resource type="Texture2D" uid="uid://bwo6p8ttiatv7" path="res://Assets/Environment/WaterReflections.png" id="4_8gpir"]
+[ext_resource type="Texture2D" uid="uid://cm2q5032b8v4g" path="res://Assets/Environment/FlandreBackground.png" id="5_ulgq3"]
+
+[sub_resource type="Gradient" id="Gradient_e4jpv"]
+offsets = PackedFloat32Array(0.00819672, 0.696721, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.696721, 0.696721, 0.696721, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_52l8l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0axqn"]
+color_ramp = SubResource("Gradient_e4jpv")
+noise = SubResource("FastNoiseLite_52l8l")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1d0a3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_njoc3"]
+width = 2872
+height = 597
+noise = SubResource("FastNoiseLite_1d0a3")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i63yp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oe0qy"]
+noise = SubResource("FastNoiseLite_i63yp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uuy7s"]
+shader = ExtResource("2_o38cd")
+shader_parameter/front_colour = Color(0, 0.383333, 0.46, 1)
+shader_parameter/middle_colour = Color(0, 0.54, 0.441, 1)
+shader_parameter/back_colour = Color(0.051, 0.0543, 0.15, 1)
+shader_parameter/layer_distort = 0.5
+shader_parameter/sin_scale = 1
+shader_parameter/highlights_threshold = 0.884
+shader_parameter/reflection_strength = 0.227
+shader_parameter/refraction_strength = 0.0
+shader_parameter/sun_refraction_scale = 0.161
+shader_parameter/sun_refraction_mag_min = 0.555
+shader_parameter/sun_refraction_mag_max = 0.76
+shader_parameter/refraction_colour_split = 0.277
+shader_parameter/height = 0.36
+shader_parameter/saturation = 1.472
+shader_parameter/waves = SubResource("NoiseTexture2D_oe0qy")
+shader_parameter/highlights_0 = SubResource("NoiseTexture2D_0axqn")
+shader_parameter/highlights_1 = SubResource("NoiseTexture2D_njoc3")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3yekm"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j0vqp"]
+noise = SubResource("FastNoiseLite_3yekm")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tfnn1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h8pdk"]
+width = 1002
+height = 1757
+noise = SubResource("FastNoiseLite_tfnn1")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mc24w"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nh0vm"]
+noise = SubResource("FastNoiseLite_mc24w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75pvt"]
+shader = ExtResource("2_o38cd")
+shader_parameter/front_colour = Color(0.054, 0.18, 0.1611, 1)
+shader_parameter/middle_colour = Color(0, 0.319, 0.33, 1)
+shader_parameter/back_colour = Color(0.0013, 0.13, 0.106405, 1)
+shader_parameter/layer_distort = 0.5
+shader_parameter/sin_scale = 1
+shader_parameter/highlights_threshold = 0.85
+shader_parameter/reflection_strength = 0.25
+shader_parameter/refraction_strength = 0.0
+shader_parameter/sun_refraction_scale = 0.195
+shader_parameter/sun_refraction_mag_min = 0.8
+shader_parameter/sun_refraction_mag_max = 0.9
+shader_parameter/refraction_colour_split = 0.03
+shader_parameter/height = 0.36
+shader_parameter/saturation = 1.0
+shader_parameter/waves = SubResource("NoiseTexture2D_nh0vm")
+shader_parameter/highlights_0 = SubResource("NoiseTexture2D_j0vqp")
+shader_parameter/highlights_1 = SubResource("NoiseTexture2D_h8pdk")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_15kvc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tuo8v"]
+noise = SubResource("FastNoiseLite_15kvc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvg18"]
+shader = ExtResource("3_1r3pf")
+shader_parameter/intensity = 0.076
+shader_parameter/dissolve_value = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_tuo8v")
+
+[node name="BackgroundForest" type="Node2D"]
+texture_filter = 3
+
+[node name="BackgroundSky" type="Sprite2D" parent="."]
+position = Vector2(640, 223)
+scale = Vector2(2, 2)
+texture = ExtResource("1_b0ikd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_uuy7s")
+offset_top = 631.0
+offset_right = 1281.0
+offset_bottom = 719.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_75pvt")
+offset_left = 75.0
+offset_top = -31.0
+offset_right = 1251.0
+offset_bottom = 497.0
+color = Color(0.402, 0.31, 1, 1)
+
+[node name="WaterReflections" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_lvg18")
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("4_8gpir")
+
+[node name="BackgroundForest" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("3_bcwka")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(-50, 0)
+
+[node name="Backgroundgrass" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("4_8ak37")
+
+[node name="FlandreBackground" type="Sprite2D" parent="."]
+position = Vector2(528, 333)
+scale = Vector2(2, 2)
+texture = ExtResource("5_ulgq3")
