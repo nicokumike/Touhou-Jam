@@ -11,5 +11,24 @@
 	
 	"2": {                                    
 		"Text": "The sea spans into the horizon. Not a spec of land in sight..."
-	}
+	},
+	
+	"3": {                                 
+		"Character": ["Bob", "Excited", "Bottom"],       
+		"Text": "Thinking and testing stuff"
+	},
+	
+	"4": {                              
+		"Character": ["Alice", "Angry", "Top"],         
+		"Text": "Testing further again"
+	},
+	
+	"4": {                              
+		"Character": ["Alice", "Angry", "Top"],         
+		"Text": "Twice in a row wow nice"
+	},
+	
+	"5": {                                    
+		"Text": "Finished wow nice!!!"
+	},
 }

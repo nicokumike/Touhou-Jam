@@ -1,13 +1,13 @@
 extends CanvasLayer
 
 # TODO: Add audio sounds for character text, cause its kinda cool no?
-# TODO: Swapping property track for top and bottom diag boxes?? or just have two seperate animations would be easier lol
+# TODO: Darken the dialogue not being played
 
 # Export enum for speed
 @export_enum("Slow", "Medium", "Fast") var text_speed : int = 0
 
 const text_speed_dict : Dictionary = {
-	0 : .5,   # Slow
+	0 : .65,   # Slow
 	1 : 1,    # Medium
 	2 : 2.5   # Fast
 }
@@ -76,6 +76,9 @@ func progress_dialogue() -> void:
 		if not dialogue_sequence[dialogue_index]["type"] == "narration":
 			# Handle bottom dialogue
 			if dialogue_sequence[dialogue_index]["position"] == "Bottom":
+				%BottomDialogueCover.visible = false
+				if %TopDialogueCont.visible:
+					%TopDialogueCover.visible = true
 				current_dialogue_box = dialogue_dictionary[dialogue_sequence[dialogue_index]["position"]]
 				%BottomTextureRect.texture = dialogue_sequence[dialogue_index]["character_resource"].expression[dialogue_sequence[dialogue_index]["expression"]]
 				%BottomSpeaker.text = dialogue_sequence[dialogue_index]["character_name"]
@@ -83,6 +86,9 @@ func progress_dialogue() -> void:
 				%DialogueAnimationPlayer.play("reveal_text_bottom")
 			# Handle top dialogue
 			else:
+				%TopDialogueCover.visible = false
+				if %BottomDialogueCont.visible:
+					%BottomDialogueCover.visible = true
 				current_dialogue_box = dialogue_dictionary[dialogue_sequence[dialogue_index]["position"]]
 				%TopTextureRect.texture = dialogue_sequence[dialogue_index]["character_resource"].expression[dialogue_sequence[dialogue_index]["expression"]]
 				%TopSpeaker.text = dialogue_sequence[dialogue_index]["character_name"]
@@ -92,6 +98,10 @@ func progress_dialogue() -> void:
 		else:
 			# For now narration will just go in the bottom.
 			# Maybe hide top dialogue when narration goes on?
+			%TopDialogueCont.visible = false
+			%TopDialogueCover.visible = false
+			%BottomDialogueCover.visible = false
+			
 			current_dialogue_box = dialogue_dictionary["Bottom"]
 			%BottomTextureRect.texture = null
 			%BottomSpeaker.text = ""
