@@ -41,9 +41,9 @@ func _ready():
 func _unhandled_input(event):
 	if event is InputEventKey and !started:
 		composer.initialize()
+		AudMan.play_music(song, -10)
 		timer.wait_time = (60.0/bpm)/4
 		timer.start()
-		AudMan.play_music(song, -10)
 		started = true
 		$"../AnyKey".visible = false
 
