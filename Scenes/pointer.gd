@@ -117,7 +117,7 @@ func arrow():
 func checkNotes() -> Array:
 	var retArray = [null, 0]
 	var notes = get_tree().get_nodes_in_group("note")
-	if notes.size() > 0 and notes[0].dead:
+	while notes.size() > 0 and notes[0].dead:
 		notes.erase(notes[0])
 	
 	if notes.size() > 0:
@@ -174,18 +174,26 @@ func printPrecision():
 			damage = damage + 100
 			
 	noteLabel.global_position = position
-	noteLabel.global_position.y -= 150
+	noteLabel.global_position.y -= 250
 	
-	noteLabel.global_position.y += randf_range(-10, 10)
-	noteLabel.global_position.x += randf_range(-10, 10)
+	noteLabel.global_position.y += randf_range(-20, 20)
+	noteLabel.global_position.x += randf_range(-20, 20)
+	note_hit = false
 
-func _on_bad_area_exited(area):
-	if !note_hit and !area.get_parent().hit:
+#func _on_bad_area_exited(area):
+	#if !note_hit and !area.get_parent().hit:
+		#miss = true
+		#printPrecision()
+		#combo = 0
+	#resetPrecision()
+
+#func _on_bad_area_entered(area):
+	#if !holding:
+		#note_hit = false
+
+func _on_killzone_area_entered(area):
+	if !area.get_parent().hit:
 		miss = true
 		printPrecision()
 		combo = 0
-	resetPrecision()
-
-func _on_bad_area_entered(area):
-	if !holding:
-		note_hit = false
+		resetPrecision()
