@@ -14,11 +14,11 @@ extends Control
 ]
 
 func _play_splash_sfx():
-	AudMan.play_sfx(drumsfx)
+	AudMan.play_sfx(drumsfx, -20)
 
 func _play_beretchan_sfx():
 	var random = randi_range(0,bereparedosfx.size() - 1)
-	AudMan.play_sfx_wav(bereparedosfx[random], 1)
+	AudMan.play_sfx_wav(bereparedosfx[random], -10)
 	#var game_man: game_manager = get_tree().get_first_node_in_group('game')
 	#game_man.main_menu(true)
 

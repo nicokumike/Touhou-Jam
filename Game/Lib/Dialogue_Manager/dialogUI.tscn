@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cguq6ynfjgd4q"]
+[gd_scene load_steps=13 format=3 uid="uid://cguq6ynfjgd4q"]
 
 [ext_resource type="Script" path="res://Game/Lib/Dialogue_Manager/dialogue_manager.gd" id="1_xrtxq"]
 [ext_resource type="Shader" path="res://Assets/Shaders/blur_shader.gdshader" id="2_fy62d"]
 [ext_resource type="Texture2D" uid="uid://eo0hb7b1x2xv" path="res://Game/Lib/Resources/1692344450866.jpg" id="3_hr21h"]
+[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="4_5j0p6"]
+[ext_resource type="Theme" uid="uid://celsilvppyh1c" path="res://Game/Lib/Resources/richLabel.tres" id="5_empc5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4xau"]
 shader = ExtResource("2_fy62d")
@@ -140,7 +142,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%BottomDialogue:visible_ratio")
+tracks/2/path = NodePath("BottomDialogueCont/VBoxContainer/MarginContainer2/BottomDialogue:visible_ratio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -152,7 +154,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%TopDialogue:visible_ratio")
+tracks/3/path = NodePath("TopDialogueCont/VBoxContainer/MarginContainer/TopDialogue:visible_ratio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -215,7 +217,7 @@ resource_name = "reveal_text_bottom"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%BottomDialogue:visible_ratio")
+tracks/0/path = NodePath("BottomDialogueCont/VBoxContainer/MarginContainer2/BottomDialogue:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -242,7 +244,7 @@ resource_name = "reveal_text_top"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%TopDialogue:visible_ratio")
+tracks/0/path = NodePath("TopDialogueCont/VBoxContainer/MarginContainer/TopDialogue:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -280,6 +282,7 @@ script = ExtResource("1_xrtxq")
 text_speed = 2
 
 [node name="Control" type="Control" parent="."]
+texture_filter = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -341,17 +344,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BottomSpeaker" type="Label" parent="Control/BottomDialogueCont/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/BottomDialogueCont/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="BottomSpeaker" type="Label" parent="Control/BottomDialogueCont/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("4_5j0p6")
 text = "NAME HERE"
 
-[node name="BottomDialogue" type="RichTextLabel" parent="Control/BottomDialogueCont/VBoxContainer"]
-unique_name_in_owner = true
+[node name="MarginContainer2" type="MarginContainer" parent="Control/BottomDialogueCont/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 40
+
+[node name="BottomDialogue" type="RichTextLabel" parent="Control/BottomDialogueCont/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+theme = ExtResource("5_empc5")
 bbcode_enabled = true
-text = "Lorem ipsum odor amet, consectetuer adipiscing elit. Iaculis duis massa laoreet himenaeos mattis tortor. Odio auctor dolor; suscipit praesent suscipit hac tortor. Molestie lacus venenatis pulvinar fusce mollis ornare conubia bibendum. Libero id parturient scelerisque blandit; cras nibh congue. Lobortis tempor eget efficitur ornare diam; vulputate risus."
-fit_content = true
+text = "Lorem ipsum odor amet, consectetuer adipiscing elit. Iaculis duis massa laoreet himenaeos mattis tortor. Odio auctor dolor; suscipitssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
 visible_characters = 0
 visible_ratio = 0.0
 
@@ -394,17 +411,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopSpeaker" type="Label" parent="Control/TopDialogueCont/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Control/TopDialogueCont/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="TopSpeaker" type="Label" parent="Control/TopDialogueCont/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("4_5j0p6")
 text = "NAME HERE"
 
-[node name="TopDialogue" type="RichTextLabel" parent="Control/TopDialogueCont/VBoxContainer"]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="Control/TopDialogueCont/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 40
+
+[node name="TopDialogue" type="RichTextLabel" parent="Control/TopDialogueCont/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+theme = ExtResource("5_empc5")
 bbcode_enabled = true
-text = "Lorem ipsum odor amet, consectetuer adipiscing elit. Iaculis duis massa laoreet himenaeos mattis tortor. Odio auctor dolor; suscipit praesent suscipit hac tortor. Molestie lacus venenatis pulvinar fusce mollis ornare conubia bibendum. Libero id parturient scelerisque blandit; cras nibh congue. Lobortis tempor eget efficitur ornare diam; vulputate risus."
-fit_content = true
+text = "Lorem ipsum odor amet, consectetuer adipiscing elit. Iaculis duis massa laoreet himenaeos mattis tortor. Odio auctor dolor; suscipit praesent suscipit hac tortor. Molestie lacus venenatis pulvinar fusce mollis ornare conubia bibendum. Libero id parturient scelerisque blandit; cras nibh congue. Lobortis tempor eget efficitur ornare diam; vulputate risus.ddddddd"
 visible_characters = 0
 visible_ratio = 0.0
 

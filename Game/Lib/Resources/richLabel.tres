@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://celsilvppyh1c"]
+
+[ext_resource type="FontFile" uid="uid://kpqikns6mdrr" path="res://Assets/Fonts/LittleMissLoudonBold-VGO9l.ttf" id="1_iui7m"]
+
+[resource]
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/normal_font = ExtResource("1_iui7m")

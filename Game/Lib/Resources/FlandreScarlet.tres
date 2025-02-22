@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://d13kmitwyetyj"]
+
+[ext_resource type="Script" path="res://Game/Lib/Resources/CharacterData.gd" id="1_7fml3"]
+[ext_resource type="Texture2D" uid="uid://eo0hb7b1x2xv" path="res://Game/Lib/Resources/1692344450866.jpg" id="1_v3hij"]
+
+[resource]
+script = ExtResource("1_7fml3")
+character_name = "Flandre"
+expression = {
+"pout": ExtResource("1_v3hij")
+}
