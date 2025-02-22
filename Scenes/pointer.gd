@@ -43,6 +43,20 @@ func _unhandled_input(event):
 		var hitNote = hitList[0]
 		var hitPrecision = hitList[1]
 		var keyPress = checkPress(event)
+		var tween = create_tween()
+		arrow()
+		if keyPress == 1:
+			tween.tween_property($ContactPointArrow, "rotation_degrees", 270, 0)
+			$ContactPointArrow.modulate = Color.YELLOW
+		elif keyPress == 2:
+			$ContactPointArrow.modulate = Color.BLUE
+			tween.tween_property($ContactPointArrow, "rotation_degrees", 180, 0)
+		elif keyPress == 3:
+			$ContactPointArrow.modulate = Color.GREEN
+			tween.tween_property($ContactPointArrow, "rotation_degrees", 90, 0)
+		elif keyPress == 4:
+			$ContactPointArrow.modulate = Color.RED
+			tween.tween_property($ContactPointArrow, "rotation_degrees", 360, 0)
 		if hitNote != null and hitPrecision > 0 and keyPress > 0:
 			note_hit = false
 			if keyPress == hitNote.type:
@@ -92,7 +106,14 @@ func _unhandled_input(event):
 		
 func releaseNote():
 	holding = false
-		
+
+func arrow():
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_BOUNCE)
+	tween.tween_property($FlandreContactPoint, "scale", Vector2(2.5,1.5), .033)
+	tween.tween_property($FlandreContactPoint, "scale", Vector2(1.5,2.5), .033)
+	tween.tween_property($FlandreContactPoint, "scale", Vector2(2,2), .033)
+
 func checkNotes() -> Array:
 	var retArray = [null, 0]
 	var notes = get_tree().get_nodes_in_group("note")

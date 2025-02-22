@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bc03syknr3he6"]
+[gd_scene load_steps=14 format=3 uid="uid://bc03syknr3he6"]
 
 [ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
 [ext_resource type="Texture2D" uid="uid://dw5ji5ifhotwb" path="res://Assets/Characters/Scarlet.png" id="1_xhhx3"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bxpovugslghq0" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_RUNNING.mp3" id="3_pdfy0"]
 [ext_resource type="Script" path="res://Scenes/pointer.gd" id="5_6yugx"]
 [ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="7_bprpc"]
+[ext_resource type="Texture2D" uid="uid://by22eheheamcu" path="res://Assets/UI/ContactPointArrow.png" id="7_d0uin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrojt"]
 size = Vector2(221.667, 215)
@@ -51,6 +52,12 @@ script = ExtResource("5_6yugx")
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("7_bprpc")
+
+[node name="ContactPointArrow" type="Sprite2D" parent="Pointer"]
+texture_filter = 3
+scale = Vector2(2, 2)
+texture = ExtResource("7_d0uin")
+offset = Vector2(29, -2)
 
 [node name="Bad" type="Area2D" parent="Pointer"]
 visible = false
