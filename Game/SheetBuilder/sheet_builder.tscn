@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl1418utvnwre"]
+[gd_scene load_steps=3 format=3 uid="uid://bl1418utvnwre"]
 
 [ext_resource type="Script" path="res://Game/SheetBuilder/sheet_builder.gd" id="1_d4v2n"]
-[ext_resource type="PackedScene" uid="uid://c525mub6rxvk8" path="res://Game/SheetBuilder/measure.tscn" id="2_kcc8a"]
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="3_gp34d"]
 
 [node name="SheetBuilder" type="Control"]
@@ -95,10 +94,6 @@ vertical_scroll_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Measure" parent="ScrollContainer/MeasureVContainer" instance=ExtResource("2_kcc8a")]
-visible = false
-layout_mode = 2
-
 [node name="NewMeasureButton" type="Button" parent="ScrollContainer/MeasureVContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -107,8 +102,7 @@ text = "New Measure +"
 [node name="Player_Flandre" parent="." instance=ExtResource("3_gp34d")]
 position = Vector2(215, 462)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 100
+[node name="MeasureTimer" type="Timer" parent="."]
 
 [connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
@@ -118,3 +112,4 @@ layer = 100
 [connection signal="pressed" from="VBoxContainer2/StopButton" to="." method="_on_stop_button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/TestButton" to="." method="_on_test_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/MeasureVContainer/NewMeasureButton" to="." method="_on_new_measure_button_pressed"]
+[connection signal="timeout" from="MeasureTimer" to="." method="_on_measure_timer_timeout"]

@@ -12,6 +12,7 @@ class_name SheetBuilder
 @onready var scroll_container: ScrollContainer = $ScrollContainer
 @onready var sheet_container: VBoxContainer = $ScrollContainer/MeasureVContainer
 @onready var new_measure_button: Button = $ScrollContainer/MeasureVContainer/NewMeasureButton
+@onready var m_timer: Timer = $MeasureTimer
 
 var music
 var bpm
@@ -19,6 +20,7 @@ var song_path
 var song_name
 var sheet = []
 var index = [0,0,0]
+var current_measure = 1
 
 #This could be made into a global data type
 var legend = {
@@ -47,6 +49,8 @@ func initialize():
 	
 	bpm = sheet_data.bpm
 	bpm_label.text = str("BPM: ", bpm)
+	m_timer.wait_time = (60 / bpm) * 4
+	#prints(m_timer.wait_time, bpm)
 	
 	sheet = sheet_data.sheet
 	prints(bpm, song_path, music, song_name, sheet)
@@ -92,9 +96,21 @@ func save_to_file(content):
 
 func _on_play_song_button_pressed() -> void:
 	AudMan.play_music(music)
+	m_timer.start()
+	var measures = $ScrollContainer/MeasureVContainer.get_children()
+	#prints(current_measure, measures, measures[current_measure -1])
+	var new_measure = measures[0]
+	if new_measure:
+		new_measure.modulate = Color.AQUA
 
 func _on_stop_button_pressed() -> void:
 	AudMan.stop_music()
+	m_timer.stop()
+	m_timer.wait_time = (60 / bpm) * 4
+	var measures = $ScrollContainer/MeasureVContainer.get_children()
+	for measure in measures:
+		measure.modulate = Color.WHITE
+		pass
 
 func _on_test_button_pressed() -> void:
 	#TODO go to a debug stage and play this track
@@ -114,7 +130,7 @@ func _on_load_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_edit_button_pressed() -> void:
-	#TODO Bring up a panel that will let you edit the track properties like bpm and name
+	#TODO File picker
 	var editor: EditorPanel = edit_panel.instantiate()
 	add_child(editor)
 	editor.bpm.text = str(bpm)
@@ -125,11 +141,12 @@ func _on_edit_button_pressed() -> void:
 func on_edited_sheet(data):
 	song_path = data.path
 	song_path_label.text = song_path
+	
 	song_name = data.name
 	name_label.text = song_name
+	
 	bpm = data.bpm
 	bpm_label.text = str("BPM: ", bpm)
-	pass
 
 func _on_new_sheet_button_pressed() -> void:
 	#TODO New sheet
@@ -152,3 +169,17 @@ func _on_new_measure_button_pressed() -> void:
 
 func update_scroll():
 	scroll_container.set_deferred("scroll_vertical", 999999)
+
+
+func _on_measure_timer_timeout():
+	var measures = $ScrollContainer/MeasureVContainer.get_children()
+	#prints(current_measure, measures, measures[current_measure -1])
+	var new_measure = measures[current_measure]
+	print(new_measure)
+	if new_measure:
+		new_measure.modulate = Color.AQUA
+	current_measure += 1
+	if current_measure == measures.size():
+		m_timer.stop()
+		current_measure = 1
+	pass # Replace with function body.
