@@ -1,14 +1,17 @@
 extends CharacterBody2D
 
 var speed
+var bpm
 var type = 0
 
 @onready var holdTrail = $HoldTrail
 var hold = false
 var holdTime = 0
 var holding = false
+var holdTrailWidth
 
 var pointer : Vector2
+var pointerObj = null
 
 @onready var contactPoint = $EnemyContactPoint
 @onready var sprite = $Icon
@@ -16,9 +19,9 @@ var pointer : Vector2
 func _ready():
 	if hold:
 		holdTrail.visible = true
-		#holdTrail.texture.offset.y = holdTrail.texture.get_height()/2
-		var holdSize = (1.0 * holdTrail.texture.get_width() * holdTime) / speed * 60.0
-		holdTrail.scale.x = (1.0 * holdSize) / holdTrail.texture.get_width() 
+		var holdSize = speed * (bpm / 16.0 / 60.0) * holdTime / 2
+		holdTrail.scale.x = (1.0 * holdSize) / holdTrail.texture.get_width()
+		holdTrailWidth = holdTrail.texture.get_width() * holdTrail.scale.x
 	pass
 
 func _process(delta):
@@ -26,6 +29,9 @@ func _process(delta):
 		position.x -= speed * delta
 	else:
 		holdTrail.position.x -= speed * delta
+		if holdTrail.global_position.x + holdTrailWidth <= pointer.x:
+			pointerObj.releaseNote()
+			queue_free()
 	contactPoint.rotation_degrees -= .5
 
 func setColor(color):
@@ -66,6 +72,7 @@ func checkPosition() -> int:
 	
 func holdNote():
 	sprite.global_position = pointer
+	holding = true
 
 func releaseNote():
 	queue_free()
