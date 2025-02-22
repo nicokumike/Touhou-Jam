@@ -1,19 +1,31 @@
 extends CharacterBody2D
 
+# For hitting notes and stuff
+
+# Scene
 @onready var noteGraphics = preload("res://Game/UI/Notes_Graphics/note_graphics.tscn")
 
 @onready var scoreAmount = $"../ScoreAmount"
 @onready var comboAmount = $"../ComboAmount"
 
+# Scoring
 var score = 0
 var combo = 0
+
+# Note logic
 var note_queue : Array
 var note_hit
+# Tells us what kind of note we hit
 var note_precision = 0
 
+# To keep track of how many perfects we have landed
+var perfect_streak : int = 0
+
+# Multipliers
 var precisionMult = 1
 var comboMult = 1
 
+# Miss and holding
 var miss = false
 #var bad = false
 #var good = false
@@ -128,7 +140,26 @@ func resetPrecision():
 func printPrecision():
 	var noteLabel = noteGraphics.instantiate()
 	add_child(noteLabel)
-	noteLabel.initiate(note_precision)
+	var damage : int
+	var boss := get_node_or_null("../Boss")
+	match noteLabel.initiate(note_precision):
+		2:
+			perfect_streak = 0
+			damage = 5
+		3:
+			perfect_streak = 0
+			damage = 10
+		4:
+			# So we loop and you need to land another 4 hits
+			perfect_streak = (perfect_streak + 1) % 5
+			damage = 20
+	if boss != null:
+		if perfect_streak == 4:
+			# perfect streak gives us an additional 100 damage
+			damage = damage + 100
+		
+	
+			
 	noteLabel.global_position = position
 	noteLabel.global_position.y -= 100
 	

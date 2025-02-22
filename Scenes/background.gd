@@ -5,14 +5,28 @@ var speed = 300
 
 var music: AudioStreamMP3
 
+# Scene for the notes
 @onready var note = preload("res://Scenes/note.tscn")
+
+# I assuming this is where projectiles will spawn
 @onready var spawnPoint = $"../SpawnPoint"
+
+# Where the notes are going to
 @onready var pointer = $"../Pointer"
+
+# Time between 16ths
 @onready var timer = $"../Timer"
+
+# Song that will play
 @export var song = preload("res://Assets/SFX/penis music.mp3")
+
+# Loads music cheat
 @onready var composer = $Composer
 
+# Boss scene
 @export var boss = preload("res://Scenes/boss.tscn")
+
+# Boss spawn point
 @onready var bossSpawnPoint = $"../BossSpawn"
 
 func _ready():
@@ -31,6 +45,7 @@ func _on_timer_timeout():
 	#note_instance.position = spawnPoint.position
 	#get_parent().add_child(note_instance)
 
+# Emits note for the level
 func emit_note(note_data):
 	var note_instance = note.instantiate()
 	note_instance.position = spawnPoint.position
@@ -46,9 +61,15 @@ func emit_note(note_data):
 		"Green": note_instance.setColor(3)
 		"Yellow": note_instance.setColor(1)
 
+# Boss transition/spawning
 func transition():
+	# Stopping timer
 	timer.stop()
+	# Spawn boss and instantiate it
 	var boss_instance = boss.instantiate()
+	# Setting bosses projectile spawn point
 	boss_instance.initiate(spawnPoint.position)
+	# Set its position
 	boss_instance.position = bossSpawnPoint.position
+	# Add scene to tree
 	get_parent().add_child(boss_instance)
