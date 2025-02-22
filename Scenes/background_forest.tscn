@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dqhvnb8w1krad"]
+[gd_scene load_steps=26 format=3 uid="uid://dbeo4tp0jv8gk"]
 
 [ext_resource type="Texture2D" uid="uid://v5pyu0jps4qf" path="res://Assets/Environment/BackgroundSky.png" id="1_b0ikd"]
 [ext_resource type="Shader" path="res://Assets/Shaders/water.gdshader" id="2_o38cd"]

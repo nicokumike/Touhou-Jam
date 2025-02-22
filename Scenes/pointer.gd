@@ -33,25 +33,28 @@ func _process(delta):
 
 func _unhandled_input(event):
 	if event is InputEventKey:
-		var hitList = checkHitboxes()
+		#var hitList = checkHitboxes()
+		var hitList = checkNotes()
 		var hitNote = hitList[0]
 		var hitPrecision = hitList[1]
-		var keyPress = false
-		if hitNote != null:
-			hitNote = hitNote.get_parent()
+		var keyPress = checkPress(event)
+		if hitNote != null and hitPrecision > 0:
+			#hitNote = hitNote.get_parent()
 			note_hit = false
-			if event.is_action_pressed("Yellow"):
-				if hitNote.type == 1:
-					note_hit = true
-			if event.is_action_pressed("Blue"):
-				if hitNote.type == 2:
-					note_hit = true
-			if event.is_action_pressed("Green"):
-				if hitNote.type == 3:
-					note_hit = true
-			if event.is_action_pressed("Red"):
-				if hitNote.type == 4:
-					note_hit = true
+			if keyPress == hitNote.type:
+				note_hit = true
+			#if event.is_action_pressed("Yellow"):
+				#if hitNote.type == 1:
+					#note_hit = true
+			#if event.is_action_pressed("Blue"):
+				#if hitNote.type == 2:
+					#note_hit = true
+			#if event.is_action_pressed("Green"):
+				#if hitNote.type == 3:
+					#note_hit = true
+			#if event.is_action_pressed("Red"):
+				#if hitNote.type == 4:
+					#note_hit = true
 			if note_hit:
 				var precisionMult = 1
 				var comboMult = 1
@@ -67,17 +70,46 @@ func _unhandled_input(event):
 				if combo >= 100:
 					comboMult = 7
 				match hitPrecision:
-					1: precisionMult = 0.5
-					2: precisionMult = 1
-					3: precisionMult = 3
-					4: precisionMult = 5
+					1: precisionMult = 0.5 #Bad
+					2: precisionMult = 1 #Good
+					3: precisionMult = 3 #Great
+					4: precisionMult = 5 #Perfect
 				score += 10 * precisionMult * comboMult
 				hitNote.queue_free()
+			else:
+				miss = true
+				combo = 0
 		else:
-			if keyPress:
+			if keyPress != 0:
 				miss = true
 				combo = 0
 		printPrecision()
+		
+func checkNotes() -> Array:
+	var retArray = [null, 0]
+	var notes = get_tree().get_nodes_in_group("note")
+	
+	if notes.size() > 0:
+		var closestNote = notes[0]
+		var precision = closestNote.checkPosition()
+		retArray = [notes[0], notes[0].checkPosition()]
+		match precision:
+			1: bad = true
+			2: good = true
+			3: great = true
+			4: perfect = true
+	return retArray
+		
+func checkPress(event) -> int:
+	if event.is_action_pressed("Yellow"):
+		return 1
+	if event.is_action_pressed("Blue"):
+		return 2
+	if event.is_action_pressed("Green"):
+		return 3
+	if event.is_action_pressed("Red"):
+		return 4
+	return 0
 		
 func checkHitboxes() -> Array:
 	var retArray = [null, 0]
@@ -131,7 +163,7 @@ func printPrecision():
 		return
 
 func _on_bad_area_exited(area):
-	if !note_hit and area.is_in_group("bad"):
+	if !note_hit:
 		miss = true
 		printPrecision()
 		combo = 0

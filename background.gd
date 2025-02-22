@@ -7,6 +7,7 @@ var music: AudioStreamMP3
 
 @onready var note = preload("res://Scenes/note.tscn")
 @onready var spawnPoint = $"../SpawnPoint"
+@onready var pointer = $"../Pointer"
 @onready var timer = $"../Timer"
 @export var penisMusic = preload("res://Assets/SFX/penis music.mp3")
 @onready var composer = $Composer
@@ -39,6 +40,7 @@ func emit_note(note_data):
 		"Yellow": note_instance.setColor(1)
 	note_instance.setSpeed(speed)
 	note_instance.position = spawnPoint.position
+	note_instance.pointer = pointer.position
 	get_parent().add_child(note_instance)
 	pass
 

@@ -63,31 +63,35 @@ script = ExtResource("5_6yugx")
 texture = ExtResource("4_lafp1")
 
 [node name="Bad" type="Area2D" parent="Pointer"]
+visible = false
 collision_layer = 4
-collision_mask = 4
+collision_mask = 2
 
 [node name="Bad" type="CollisionShape2D" parent="Pointer/Bad"]
 shape = SubResource("RectangleShape2D_vrojt")
 
 [node name="Good" type="Area2D" parent="Pointer"]
+visible = false
 collision_layer = 8
-collision_mask = 8
+collision_mask = 2
 
 [node name="Good" type="CollisionShape2D" parent="Pointer/Good"]
 shape = SubResource("RectangleShape2D_bc1gi")
 debug_color = Color(0, 0, 1, 0.419608)
 
 [node name="Great" type="Area2D" parent="Pointer"]
+visible = false
 collision_layer = 16
-collision_mask = 16
+collision_mask = 2
 
 [node name="Great" type="CollisionShape2D" parent="Pointer/Great"]
 shape = SubResource("RectangleShape2D_8gt10")
 debug_color = Color(0, 0.976471, 0, 0.419608)
 
 [node name="Perfect" type="Area2D" parent="Pointer"]
+visible = false
 collision_layer = 32
-collision_mask = 32
+collision_mask = 2
 
 [node name="Perfect" type="CollisionShape2D" parent="Pointer/Perfect"]
 shape = SubResource("RectangleShape2D_qb27d")
@@ -163,11 +167,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
-collision_layer = 60
+position = Vector2(360, 342)
+collision_layer = 61
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(15, 347)
 shape = SubResource("RectangleShape2D_q6vjq")
 
 [node name="ScoreLabel" type="Label" parent="."]
