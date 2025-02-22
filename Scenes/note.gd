@@ -15,6 +15,7 @@ var pointerObj = null
 
 @onready var animPlayer = $AnimationPlayer
 var dead = false
+var hit = false
 
 @onready var contactPoint = $EnemyContactPoint
 @onready var sprite = $Path2D/PathFollow2D/Icon

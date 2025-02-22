@@ -15,7 +15,6 @@ var combo = 0
 # Note logic
 var note_queue : Array
 var note_hit
-var reset = false
 
 # Tells us what kind of note we hit
 var note_precision = 0
@@ -45,7 +44,6 @@ func _unhandled_input(event):
 		var hitPrecision = hitList[1]
 		var keyPress = checkPress(event)
 		if hitNote != null and hitPrecision > 0 and keyPress > 0:
-			reset = false
 			note_hit = false
 			if keyPress == hitNote.type:
 				note_hit = true
@@ -76,6 +74,7 @@ func _unhandled_input(event):
 				else:
 					hitNote.animPlayer.play("death")
 					hitNote.dead = true
+					hitNote.hit = true
 			else:
 				miss = true
 				combo = 0
@@ -160,7 +159,7 @@ func printPrecision():
 	noteLabel.global_position.x += randf_range(-10, 10)
 
 func _on_bad_area_exited(area):
-	if !note_hit and !reset:
+	if !note_hit and !area.get_parent().hit:
 		miss = true
 		printPrecision()
 		combo = 0
@@ -169,4 +168,3 @@ func _on_bad_area_exited(area):
 func _on_bad_area_entered(area):
 	if !holding:
 		note_hit = false
-		reset = true
