@@ -9,6 +9,8 @@ func _ready() -> void:
 		anim.play("bad")
 	elif type == 3:
 		anim.play("good")
+	elif type == 4:
+		anim.play("great")
 	else:
 		anim.play("perfect")
 		
