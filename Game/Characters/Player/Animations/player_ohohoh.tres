@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpineAnimationAsset" load_steps=3 format=3 uid="uid://durb4wmbb4yr5"]
+
+[ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="1_nodvh"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://dl8kow7042sab" path="res://Assets/Characters/Base/base_data_resource.tres" id="2_nmlou"]
+
+[resource]
+script = ExtResource("1_nodvh")
+skeleton_data_resource = ExtResource("2_nmlou")
+animation_name = "Flandre/HOHOH"
+animation_index = 2
+loop = true
+track = 0
+mix_duration = 0.05
+speed = 1.0

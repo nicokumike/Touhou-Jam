@@ -1,25 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmy2yrct1t6pi"]
+[gd_scene load_steps=2 format=3 uid="uid://cmy2yrct1t6pi"]
 
 [ext_resource type="PackedScene" uid="uid://8ppak2hpy7qc" path="res://Game/Characters/Player/player.tscn" id="1_gll5a"]
-[ext_resource type="Resource" uid="uid://h58lhqaxs0ur" path="res://Game/Characters/Player/Animations/player_swing_up.tres" id="2_yaxos"]
-[ext_resource type="Resource" uid="uid://bn38fen04yi0w" path="res://Game/Characters/Player/Animations/player_bump.tres" id="3_ykjyl"]
-[ext_resource type="Resource" uid="uid://bl11it02qfs22" path="res://Game/Characters/Player/Animations/player_swing_down.tres" id="4_10q2b"]
-[ext_resource type="Resource" uid="uid://tfavnasgbcf7" path="res://Game/Characters/Player/Animations/player_knee.tres" id="4_tkejj"]
 
 [node name="Player_Flandre" instance=ExtResource("1_gll5a")]
 
 [node name="AnimationHandler_Spine" parent="." index="0"]
 preview_animation = "Flandre/HOHOH"
 skinName = "Flandre"
-
-[node name="Attack_W" parent="StateMachine" index="2"]
-animation_spine = ExtResource("2_yaxos")
-
-[node name="Attack_A" parent="StateMachine" index="3"]
-animation_spine = ExtResource("3_ykjyl")
-
-[node name="Attack_S" parent="StateMachine" index="4"]
-animation_spine = ExtResource("4_10q2b")
-
-[node name="Attack_D" parent="StateMachine" index="5"]
-animation_spine = ExtResource("4_tkejj")

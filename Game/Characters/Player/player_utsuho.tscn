@@ -1,25 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://kpifd68fnr6p"]
+[gd_scene load_steps=2 format=3 uid="uid://kpifd68fnr6p"]
 
 [ext_resource type="PackedScene" uid="uid://8ppak2hpy7qc" path="res://Game/Characters/Player/player.tscn" id="1_4m72n"]
-[ext_resource type="Resource" uid="uid://h58lhqaxs0ur" path="res://Game/Characters/Player/Animations/player_swing_up.tres" id="2_nsf1j"]
-[ext_resource type="Resource" uid="uid://bn38fen04yi0w" path="res://Game/Characters/Player/Animations/player_bump.tres" id="3_04sq2"]
-[ext_resource type="Resource" uid="uid://tfavnasgbcf7" path="res://Game/Characters/Player/Animations/player_knee.tres" id="4_1ixn7"]
-[ext_resource type="Resource" uid="uid://bl11it02qfs22" path="res://Game/Characters/Player/Animations/player_swing_down.tres" id="4_ddvi3"]
 
 [node name="Player_Utsuho" instance=ExtResource("1_4m72n")]
 
 [node name="AnimationHandler_Spine" parent="." index="0"]
 preview_skin = "Utsuho"
 skinName = "Utsuho"
-
-[node name="Attack_W" parent="StateMachine" index="2"]
-animation_spine = ExtResource("2_nsf1j")
-
-[node name="Attack_A" parent="StateMachine" index="3"]
-animation_spine = ExtResource("3_04sq2")
-
-[node name="Attack_S" parent="StateMachine" index="4"]
-animation_spine = ExtResource("4_ddvi3")
-
-[node name="Attack_D" parent="StateMachine" index="5"]
-animation_spine = ExtResource("4_1ixn7")
