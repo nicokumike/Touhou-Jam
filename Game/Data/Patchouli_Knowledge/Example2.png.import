@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eo0hb7b1x2xv"
-path="res://.godot/imported/1692344450866.jpg-ba1067387a48522f7b3359ad06b3b386.ctex"
+uid="uid://j8lvonpqdir3"
+path="res://.godot/imported/Example2.png-3acafa1bcf2ac8d57a858e11434498d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Lib/Resources/1692344450866.jpg"
-dest_files=["res://.godot/imported/1692344450866.jpg-ba1067387a48522f7b3359ad06b3b386.ctex"]
+source_file="res://Game/Data/Patchouli_Knowledge/Example2.png"
+dest_files=["res://.godot/imported/Example2.png-3acafa1bcf2ac8d57a858e11434498d9.ctex"]
 
 [params]
 

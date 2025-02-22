@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1uhyrfc1j67f"]
+[gd_scene load_steps=3 format=3 uid="uid://cir17lwomofg3"]
 
 [ext_resource type="Script" path="res://Game/UI/flander_contact_point.gd" id="1_h64d6"]
 [ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="1_yjt50"]

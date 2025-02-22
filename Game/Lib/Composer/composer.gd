@@ -77,6 +77,9 @@ func decipher_note(note):
 		"H": 
 			new_note.hold = true
 			new_note.length = note[2]
+			if int(note[3]) is int:
+				new_note.length = int(note[2] + note[3])
+				print(new_note.length)
 	match note[-1]:
 		"P": new_note.type = legend[note[1]]
 		"F": new_note.type = legend[note[1]]
@@ -87,7 +90,6 @@ func play_note():
 	#Early exit
 	if index[0] == sheet.size():
 		emitter.transition()
-		print("terminó")
 		return
 	#Grab the note data
 	var note = sheet[index[0]][index[1]][index[2]]
