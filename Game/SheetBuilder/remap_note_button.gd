@@ -44,7 +44,9 @@ func _unhandled_input(event):
 		update_note("Y")
 	if event.is_action_pressed("ui_cancel"):
 		reset_note()
-		
+	if event.is_action_pressed("fairy"):
+		update_note("F")
+		pass
 	if event.is_action("ui_accept"):
 		button_pressed = false
 		#call_deferred("lose_focus")
