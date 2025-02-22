@@ -175,7 +175,7 @@ func _on_measure_timer_timeout():
 	var measures = $ScrollContainer/MeasureVContainer.get_children()
 	#prints(current_measure, measures, measures[current_measure -1])
 	var new_measure = measures[current_measure]
-	print(new_measure)
+	#print(new_measure)
 	if new_measure:
 		new_measure.modulate = Color.AQUA
 	current_measure += 1
