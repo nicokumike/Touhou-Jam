@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5okftixnlb3w"]
+[gd_scene load_steps=9 format=3 uid="uid://c5okftixnlb3w"]
 
 [ext_resource type="Script" path="res://Scenes/note.gd" id="1_j3arb"]
 [ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="2_elhnb"]
@@ -9,18 +9,73 @@ size = Vector2(3.75, 3.8125)
 
 [sub_resource type="Animation" id="Animation_g65ch"]
 resource_name = "death"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.15932, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Icon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 5.71246]
+}
+
+[sub_resource type="Animation" id="Animation_kopcd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Icon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3drgj"]
 _data = {
+"RESET": SubResource("Animation_kopcd"),
 "death": SubResource("Animation_g65ch")
 }
 
+[sub_resource type="Curve2D" id="Curve2D_nwfyt"]
+_data = {
+"points": PackedVector2Array(74.8801, 269.087, -74.8801, -269.087, 0, 0, 540.436, -65.5899, -540.436, 65.5899, -822, -366)
+}
+point_count = 2
+
 [node name="Note" type="CharacterBody2D" groups=["note"]]
 script = ExtResource("1_j3arb")
-
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_elhnb")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["perfect"]]
 collision_layer = 2
@@ -48,5 +103,17 @@ texture = ExtResource("3_2gvvc")
 libraries = {
 "": SubResource("AnimationLibrary_3drgj")
 }
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nwfyt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+scale = Vector2(0.2, 0.2)
+rotates = false
+
+[node name="Icon" type="Sprite2D" parent="Path2D/PathFollow2D"]
+texture_filter = 3
+scale = Vector2(1, 1)
+texture = ExtResource("2_elhnb")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
