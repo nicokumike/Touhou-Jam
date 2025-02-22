@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5okftixnlb3w"]
+[gd_scene load_steps=7 format=3 uid="uid://c5okftixnlb3w"]
 
 [ext_resource type="Script" path="res://Scenes/note.gd" id="1_j3arb"]
 [ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="2_elhnb"]
@@ -6,6 +6,14 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0c15"]
 size = Vector2(3.75, 3.8125)
+
+[sub_resource type="Animation" id="Animation_g65ch"]
+resource_name = "death"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3drgj"]
+_data = {
+"death": SubResource("Animation_g65ch")
+}
 
 [node name="Note" type="CharacterBody2D" groups=["note"]]
 script = ExtResource("1_j3arb")
@@ -35,5 +43,10 @@ modulate = Color(1, 1, 1, 0.454902)
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("3_2gvvc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3drgj")
+}
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
