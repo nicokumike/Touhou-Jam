@@ -13,8 +13,11 @@ var holdTrailWidth
 var pointer : Vector2
 var pointerObj = null
 
+@onready var animPlayer = $AnimationPlayer
+var dead = false
+
 @onready var contactPoint = $EnemyContactPoint
-@onready var sprite = $Icon
+@onready var sprite = $Path2D/PathFollow2D/Icon
 
 func _ready():
 	if hold:
@@ -79,4 +82,8 @@ func releaseNote():
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("killzone"):
+		queue_free()
+
+func _on_animation_player_animation_finished(anim_name):
+	if "anim_name" == "death":
 		queue_free()

@@ -5,6 +5,11 @@ var speed = 300
 
 var music: AudioStreamMP3
 
+# Background art
+@onready var backgroundArt = preload("res://Scenes/background_forest.tscn")
+# Level started
+var started = false
+
 # Scene for the notes
 @onready var note = preload("res://Scenes/note.tscn")
 
@@ -30,12 +35,17 @@ var music: AudioStreamMP3
 @onready var bossSpawnPoint = $"../BossSpawn"
 
 func _ready():
-	AudMan.play_music(song, -10)
-	composer.initialize()
-	timer.wait_time = (60.0/bpm)/4
-
-func _process(delta):
-	position.x -= speed * delta
+	var bgd = backgroundArt.instantiate()
+	add_child(bgd)
+	
+func _unhandled_input(event):
+	if event is InputEventKey and !started:
+		composer.initialize()
+		timer.wait_time = (60.0/bpm)/4
+		timer.start()
+		AudMan.play_music(song, -10)
+		started = true
+		$"../AnyKey".visible = false
 
 func _on_timer_timeout():
 	composer.play_note()
@@ -63,6 +73,9 @@ func emit_note(note_data):
 
 # Boss transition/spawning
 func transition():
+	#Is boss?
+	#Yes, trigger dialogue
+	#No, do this:
 	# Stopping timer
 	timer.stop()
 	# Spawn boss and instantiate it
@@ -73,3 +86,10 @@ func transition():
 	boss_instance.position = bossSpawnPoint.position
 	# Add scene to tree
 	get_parent().add_child(boss_instance)
+	
+	#Dialogue
+	#----
+	#After dialogue is done
+	#composer.music_sheet("boss section")
+	#composer.initialize()
+	

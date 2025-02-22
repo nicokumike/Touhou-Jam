@@ -15,6 +15,8 @@ var combo = 0
 # Note logic
 var note_queue : Array
 var note_hit
+var reset = false
+
 # Tells us what kind of note we hit
 var note_precision = 0
 
@@ -27,10 +29,6 @@ var comboMult = 1
 
 # Miss and holding
 var miss = false
-#var bad = false
-#var good = false
-#var great = false
-#var perfect = false
 var holding = false
 
 func _process(delta):
@@ -47,6 +45,7 @@ func _unhandled_input(event):
 		var hitPrecision = hitList[1]
 		var keyPress = checkPress(event)
 		if hitNote != null and hitPrecision > 0 and keyPress > 0:
+			reset = false
 			note_hit = false
 			if keyPress == hitNote.type:
 				note_hit = true
@@ -69,13 +68,14 @@ func _unhandled_input(event):
 					2: precisionMult = 1 #Good
 					3: precisionMult = 3 #Great
 					4: precisionMult = 5 #Perfect
-				score += 10 * precisionMult * comboMult
+				score += 100 * precisionMult * comboMult
 				if hitNote.hold:
 					holding = true
 					hitNote.holdNote()
 					hitNote.pointerObj = self
 				else:
-					hitNote.queue_free()
+					hitNote.animPlayer.play("death")
+					hitNote.dead = true
 			else:
 				miss = true
 				combo = 0
@@ -97,17 +97,14 @@ func releaseNote():
 func checkNotes() -> Array:
 	var retArray = [null, 0]
 	var notes = get_tree().get_nodes_in_group("note")
+	if notes.size() > 0 and notes[0].dead:
+		notes.erase(notes[0])
 	
 	if notes.size() > 0:
 		var closestNote = notes[0]
 		var precision = closestNote.checkPosition()
 		retArray = [notes[0], notes[0].checkPosition()]
 		note_precision = precision
-		#match precision:
-			#1: bad = true
-			#2: good = true
-			#3: great = true
-			#4: perfect = true
 	return retArray
 		
 func checkPress(event : InputEventKey) -> int:
@@ -132,12 +129,10 @@ func checkPress(event : InputEventKey) -> int:
 func resetPrecision():
 	miss = false
 	note_precision = 0
-	#bad = false
-	#good = false
-	#great = false
-	#perfect = false
 
 func printPrecision():
+	if !note_hit:
+		note_precision = 0
 	var noteLabel = noteGraphics.instantiate()
 	add_child(noteLabel)
 	var damage : int
@@ -157,36 +152,15 @@ func printPrecision():
 		if perfect_streak == 4:
 			# perfect streak gives us an additional 100 damage
 			damage = damage + 100
-		
-	
 			
 	noteLabel.global_position = position
-	noteLabel.global_position.y -= 100
+	noteLabel.global_position.y -= 150
 	
 	noteLabel.global_position.y += randf_range(-10, 10)
 	noteLabel.global_position.x += randf_range(-10, 10)
-	
-	#resetLabels()
-	#precisionLabelReset.wait_time = 0.5
-	#if note_hit:
-		#if perfect:
-			#perfectLabel.visible = true
-			#return
-		#if great:
-			#greatLabel.visible = true
-			#return
-		#if good:
-			#goodLabel.visible = true
-			#return
-		#if bad:
-			#badLabel.visible = true
-			#return
-	#if miss:
-		#missLabel.visible = true
-		#return
 
 func _on_bad_area_exited(area):
-	if !note_hit:
+	if !note_hit and !reset:
 		miss = true
 		printPrecision()
 		combo = 0
@@ -195,3 +169,4 @@ func _on_bad_area_exited(area):
 func _on_bad_area_entered(area):
 	if !holding:
 		note_hit = false
+		reset = true

@@ -575,6 +575,7 @@ _data = {
 
 [node name="NoteGraphics" type="Node2D"]
 texture_filter = 3
+scale = Vector2(2, 2)
 script = ExtResource("1_rbsxm")
 
 [node name="Miss" type="Sprite2D" parent="."]
