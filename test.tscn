@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn5tlvobabucw"]
+[gd_scene load_steps=4 format=3 uid="uid://cn5tlvobabucw"]
 
 [ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="1_gojix"]
-[ext_resource type="PackedScene" uid="uid://cguq6ynfjgd4q" path="res://Game/Lib/Dialogue_Manager/dialogUI.tscn" id="1_sr8o4"]
 
 [sub_resource type="GDScript" id="GDScript_rvrdn"]
 script/source = "extends CharacterBody2D
@@ -29,5 +28,3 @@ texture = ExtResource("1_gojix")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_x5o7r")
-
-[node name="DialogUi" parent="." instance=ExtResource("1_sr8o4")]

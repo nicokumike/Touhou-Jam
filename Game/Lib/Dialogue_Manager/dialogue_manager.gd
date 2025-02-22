@@ -39,7 +39,6 @@ var max_dialogue_index: int = 0
 func _ready():
 	# Connect to the dialogue signals
 	SignalBus.dialogue_triggered.connect(_on_dialogue_triggered)
-	SignalBus.dialogue_finished.connect(_on_dialogue_finished)
 	dialogue_dictionary["Top"] = %TopDialogue
 	dialogue_dictionary["Bottom"] = %BottomDialogue
 	current_dialogue_box = %BottomDialogue
@@ -111,7 +110,10 @@ func progress_dialogue() -> void:
 	# If we are at the end, set index to 0 and fade out
 	else:
 		dialogue_index = 0
-		SignalBus.dialogue_finished.emit()
+		is_text_revealing = false
+		# Setting speed scale back to default
+		%DialogueAnimationPlayer.speed_scale = text_speed_dict[1]
+		%DialogueAnimationPlayer.play("Fade_Out")
 	
 func _play_typing_sound() -> void:
 	# Sound effects later on, maybe player every other tick or whatever
@@ -159,12 +161,7 @@ func _on_dialogue_animation_player_animation_finished(anim_name: StringName) -> 
 	elif anim_name == &"Fade_Out":
 		%TopDialogue.visible_characters = 0
 		%BottomDialogue.visible_characters = 0
-	
-func _on_dialogue_finished():
-	is_text_revealing = false
-	# Setting speed scale back to default
-	%DialogueAnimationPlayer.speed_scale = text_speed_dict[1]
-	%DialogueAnimationPlayer.play("Fade_Out")
+		SignalBus.dialogue_finished.emit()
 #endregion
 	
 #region Initialization functions for loading in resources and dialogue
