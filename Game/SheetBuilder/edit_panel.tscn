@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://di4ibxjs6sr3m"]
+
+[ext_resource type="Script" path="res://Game/SheetBuilder/edit_panel.gd" id="1_xc0mo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lev2w"]
+bg_color = Color(0.172833, 0.172833, 0.172833, 1)
+
+[node name="EditPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xc0mo")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -175.0
+offset_right = 300.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lev2w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 42.0
+offset_right = 541.0
+offset_bottom = 303.0
+theme_override_constants/separation = 20
+
+[node name="SheetName" type="TextEdit" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Name..."
+
+[node name="BPM" type="TextEdit" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "BPM"
+
+[node name="SongPath" type="TextEdit" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Song file path..."
+
+[node name="FileDialog" type="FileDialog" parent="Panel/VBoxContainer"]
+mode = 2
+title = "Open a File"
+size = Vector2i(500, 300)
+ok_button_text = "Open"
+file_mode = 0
+
+[node name="ConfirmButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Confirm"
+
+[node name="CancelButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="pressed" from="Panel/VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

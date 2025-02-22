@@ -16,7 +16,7 @@ var measure_data = []
 signal on_changed_note
 #
 func update_measure(data):
-	print(data)
+	#print(data)
 	for beat in beats:
 		var children = beat.get_children()
 		#print(beat)
@@ -25,12 +25,6 @@ func update_measure(data):
 			var preloaded_note = data[index[0]][index[1]]
 			#prints(note.beat, note.num, index, preloaded_note)
 			note.load_note(preloaded_note)
-			
-			
-		#for note in beat:
-			#print(note)
-			#pass
-	pass
 
 func _ready() -> void:
 	for beat in beats:

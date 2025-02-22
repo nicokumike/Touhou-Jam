@@ -3,6 +3,7 @@ class_name SheetBuilder
 
 @export_file("*.json") var music_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 @onready var measure_node = preload("res://Game/SheetBuilder/measure.tscn")
+@onready var edit_panel = preload("res://Game/SheetBuilder/edit_panel.tscn")
 
 @onready var name_label: Label = $VBoxContainer3/NameLabel
 @onready var bpm_label: Label = $VBoxContainer3/BPMLabel
@@ -43,7 +44,7 @@ func initialize():
 
 	song_name = sheet_data.name
 	name_label.text = song_name
-		
+	
 	bpm = sheet_data.bpm
 	bpm_label.text = str("BPM: ", bpm)
 	
@@ -100,7 +101,6 @@ func _on_test_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_save_button_pressed() -> void:
-	#TODO Save the file
 	var data = {
 		"name": song_name,
 		"bpm": bpm,
@@ -115,7 +115,21 @@ func _on_load_button_pressed() -> void:
 
 func _on_edit_button_pressed() -> void:
 	#TODO Bring up a panel that will let you edit the track properties like bpm and name
-	pass # Replace with function body.
+	var editor: EditorPanel = edit_panel.instantiate()
+	add_child(editor)
+	editor.bpm.text = str(bpm)
+	editor.sheet_name.text = song_name
+	editor.path.text = song_path
+	editor.confirm_edit.connect(on_edited_sheet.bind())
+
+func on_edited_sheet(data):
+	song_path = data.path
+	song_path_label.text = song_path
+	song_name = data.name
+	name_label.text = song_name
+	bpm = data.bpm
+	bpm_label.text = str("BPM: ", bpm)
+	pass
 
 func _on_new_sheet_button_pressed() -> void:
 	#TODO New sheet

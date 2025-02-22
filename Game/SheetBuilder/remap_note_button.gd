@@ -21,9 +21,7 @@ func _init():
 
 func _ready():
 	set_process_unhandled_input(false)
-	#print(num)
 	if !(num % 2):
-		#print('modulod')
 		modulate = Color.LIGHT_SLATE_GRAY
 
 
@@ -44,8 +42,6 @@ func load_note(data):
 	text = str(data)
 	for param in data:
 		if param is not float:
-			
-			print(param)
 			update_note(str(param))
 
 func _unhandled_input(event):
