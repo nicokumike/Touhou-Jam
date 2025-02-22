@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl6f0y14bbbnn"]
+[gd_scene load_steps=11 format=3 uid="uid://vc40qwwgttab"]
 
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="1_4jlud"]
 [ext_resource type="PackedScene" uid="uid://bc1gci3geymvg" path="res://Game/Characters/Chibi/flandre_chibi.tscn" id="2_big3r"]

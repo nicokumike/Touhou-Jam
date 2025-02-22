@@ -61,7 +61,7 @@ func populate_measures(sheet):
 		new_measure.count = index[0] + 1
 		new_measure.count_label.text = str(index[0] + 1)
 		new_measure.measure_data = measure
-		new_measure.update_measure(measure)
+		#new_measure.update_measure(measure)
 		new_measure.on_changed_note.connect(on_new_note.bind())
 		
 		index[0] += 1
@@ -69,7 +69,7 @@ func populate_measures(sheet):
 	sheet_container.move_child(new_measure_button, index[0] + 1)
 
 func on_new_note(data):
-	print(data)
+	print("TOP LEVEL",data)
 	pass
 
 func _on_play_song_button_pressed() -> void:

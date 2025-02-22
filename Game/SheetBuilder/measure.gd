@@ -14,10 +14,10 @@ var count
 var measure_data = []
 
 signal on_changed_note
-
-func update_measure(data):
-	print(data)
-	pass
+#
+#func update_measure(data):
+	#print(data)
+	#pass
 
 func _ready() -> void:
 	for beat in beats:
@@ -30,6 +30,8 @@ func hook_up(beat: HBoxContainer):
 	#print(children)
 
 func _on_button_new_note(data):
-	#print(data)
-	on_changed_note.emit(data)
-	#pass
+	var new_note = {
+		"note_data": data,
+		"index": [count, data.index[0], data.index[1]]
+	}
+	on_changed_note.emit(new_note)
