@@ -1,7 +1,14 @@
 extends Button
 class_name RemapNoteButton
 
-@export var note: String = "Bluh"
+#@export var note: String = "Bluh"
+var note = {
+	"key": null,
+	"type": "P",
+	"hold": 0,
+	"text": null
+}
+
 @export var num: int
 @export var beat: int
 
@@ -28,48 +35,80 @@ func _toggled(new_button_pressed):
 func _unhandled_input(event):
 	#print(event)
 	if event.is_action_pressed("Blue"):
-		text = "B"
-		send_note("B")
-		#button_pressed = false
+		update_note("B")
 	if event.is_action_pressed("Red"):
-		text = "R"
-		send_note("R")
-		#button_pressed = false
+		update_note("R")
 	if event.is_action_pressed("Green"):
-		text = "G"
-		send_note("G")
-		#button_pressed = false
+		update_note("G")
 	if event.is_action_pressed("Yellow"):
-		text = "Y"
-		send_note("Y")
-		#button_pressed = false
+		update_note("Y")
 	if event.is_action_pressed("ui_cancel"):
-		text = str(num)
-		send_note(num)
-		button_pressed = false
+		reset_note()
+		
 	if event.is_action("ui_accept"):
 		button_pressed = false
-		call_deferred("lose_focus")
+		#call_deferred("lose_focus")
 
-func lose_focus():
-	call_deferred("lose_focus2")
-	button_pressed = false
+#func lose_focus():
+	#call_deferred("lose_focus2")
+	#button_pressed = false
+#
+#func lose_focus2():
+	#button_pressed = false
 
-func lose_focus2():
-	button_pressed = false
-
-func update_note(num):
-	pass
-
-func send_note(note):
-	var note_data = {
-		"note": note,
+func reset_note():
+	note = {
+		"key": null,
 		"type": "P",
-		"hold": 0
+		"hold": 0,
+		"text": null
 	}
-	new_note.emit(note_data)
+	text = str(num)
+	send_note()
+	button_pressed = false
+	#print(note)
+
+func update_note(param):
+	#note = {
+	#}
+	match param:
+		"B", "R", "G", "Y":
+			setColor(param)
+			note.key = param
+	
+	note.key = str(note.key + note.type)
+	text = note.key
+	#pass
+
+func send_note():
+	#var note_data = {
+		#"note": note,
+		#"type": "P",
+		#"hold": 0
+	#}
+	new_note.emit(note)
 
 func update_key_text():
 	#var aux = InputMap.action_get_events(note)[0].as_text()
 	#text = "%s" % InputMap.action_get_events(note)[0].as_text()
+	pass
+
+func setColor(color):
+	match (color):
+		"Y":
+			modulate = Color.YELLOW
+			#type = 1
+			pass
+		"B":
+			modulate = Color.BLUE
+			#type = 2
+			pass
+		"G":
+			modulate = Color.GREEN
+			#type = 3
+			pass
+		"R":
+			modulate = Color.RED
+			#type = 4
+			pass
 	pass
