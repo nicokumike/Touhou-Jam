@@ -34,6 +34,7 @@ loop = true
 mix_duration = -1.0
 
 [node name="Flandre" type="Node2D" node_paths=PackedStringArray("state_machine", "animation_handler")]
+position = Vector2(653, 405)
 script = ExtResource("1_fkgm5")
 state_machine = NodePath("StateMachine")
 animation_handler = NodePath("AnimationHandler_Spine")
