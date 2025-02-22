@@ -1,10 +1,11 @@
-extends SpineSprite
+class_name AnimationHandler_Spine extends SpineSprite
 
-class_name AnimationHandler_Spine
-
+@export var skinName: String
 @export var initial_animation: SpineAnimationAsset
 
 func _ready():
+	if not skinName.is_empty():
+		get_skeleton().set_skin_by_name(skinName)
 	if initial_animation:
 		play_animation_asset(initial_animation)
 

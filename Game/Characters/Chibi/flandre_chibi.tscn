@@ -23,4 +23,5 @@ preview_animation = "Base_Chibi/idle"
 preview_frame = false
 preview_time = 0.0
 script = ExtResource("2_onegc")
+skinName = "default"
 initial_animation = SubResource("Resource_jq158")

@@ -23,4 +23,5 @@ preview_animation = "Fairy/idle"
 preview_frame = false
 preview_time = 0.0
 script = ExtResource("2_pfepv")
+skinName = "Rock"
 initial_animation = SubResource("Resource_1ff6o")
