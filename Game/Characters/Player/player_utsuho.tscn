@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://kpifd68fnr6p"]
+
+[ext_resource type="PackedScene" uid="uid://8ppak2hpy7qc" path="res://Game/Characters/Player/player.tscn" id="1_4m72n"]
+
+[node name="Player_Utsuho" instance=ExtResource("1_4m72n")]
+
+[node name="AnimationHandler_Spine" parent="." index="0"]
+preview_skin = "Utsuho"

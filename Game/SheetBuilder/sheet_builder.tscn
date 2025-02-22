@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://Game/SheetBuilder/sheet_builder.gd" id="1_d4v2n"]
 [ext_resource type="PackedScene" uid="uid://c525mub6rxvk8" path="res://Game/SheetBuilder/measure.tscn" id="2_kcc8a"]
-[ext_resource type="PackedScene" uid="uid://8ppak2hpy7qc" path="res://Game/Characters/Flandre/flandre.tscn" id="3_fpo5y"]
+[ext_resource type="PackedScene" uid="uid://8ppak2hpy7qc" path="res://Game/Characters/Player/player.tscn" id="3_fpo5y"]
+
 
 [node name="SheetBuilder" type="Control"]
 layout_mode = 3

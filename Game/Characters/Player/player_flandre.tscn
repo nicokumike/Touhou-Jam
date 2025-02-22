@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmy2yrct1t6pi"]
+
+[ext_resource type="PackedScene" uid="uid://8ppak2hpy7qc" path="res://Game/Characters/Player/player.tscn" id="1_gll5a"]
+
+[node name="Player_Flandre" instance=ExtResource("1_gll5a")]
+
+[node name="AnimationHandler_Spine" parent="." index="0"]
+preview_animation = "Flandre/HOHOH"

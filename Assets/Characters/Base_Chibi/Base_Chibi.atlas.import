@@ -1,0 +1,15 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b2ccl3ok4sk40"
+path="res://.godot/imported/Base_Chibi.atlas-ac57bae648c41efdf3303cca5f8a20b4.spatlas"
+
+[deps]
+
+source_file="res://Assets/Characters/Base_Chibi/Base_Chibi.atlas"
+dest_files=["res://.godot/imported/Base_Chibi.atlas-ac57bae648c41efdf3303cca5f8a20b4.spatlas"]
+
+[params]
+
+normal_map_prefix="n"

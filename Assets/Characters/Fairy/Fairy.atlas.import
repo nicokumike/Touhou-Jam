@@ -1,0 +1,15 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dbfp3h68j7j2b"
+path="res://.godot/imported/Fairy.atlas-eccc41e3d02434c8c317fa9e5c999fdf.spatlas"
+
+[deps]
+
+source_file="res://Assets/Characters/Fairy/Fairy.atlas"
+dest_files=["res://.godot/imported/Fairy.atlas-eccc41e3d02434c8c317fa9e5c999fdf.spatlas"]
+
+[params]
+
+normal_map_prefix="n"

@@ -6,3 +6,4 @@ class_name SpineAnimationAsset extends Resource
 @export var loop: bool
 @export var track: int
 @export var mix_duration: float = -1
+@export var speed: float = 1
