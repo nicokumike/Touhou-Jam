@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5okftixnlb3w"]
+[gd_scene load_steps=11 format=3 uid="uid://c5okftixnlb3w"]
 
 [ext_resource type="Script" path="res://Scenes/note.gd" id="1_j3arb"]
 [ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="2_elhnb"]
 [ext_resource type="Texture2D" uid="uid://bxat8gcmm7lmf" path="res://Assets/UI/EnemyContactPoint.png" id="3_2gvvc"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Outline.gdshader" id="4_8wise"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0c15"]
 size = Vector2(3.75, 3.8125)
@@ -74,6 +75,15 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_og758"]
+shader = ExtResource("4_8wise")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
 [node name="Note" type="CharacterBody2D" groups=["note"]]
 script = ExtResource("1_j3arb")
 
@@ -113,6 +123,7 @@ rotates = false
 
 [node name="Icon" type="Sprite2D" parent="Path2D/PathFollow2D"]
 texture_filter = 3
+material = SubResource("ShaderMaterial_og758")
 scale = Vector2(1, 1)
 texture = ExtResource("2_elhnb")
 
