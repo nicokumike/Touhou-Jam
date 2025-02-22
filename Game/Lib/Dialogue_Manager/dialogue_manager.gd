@@ -13,7 +13,7 @@ const text_speed_dict : Dictionary = {
 }
 
 ## Path template for character data resources
-const CHARACTER_DATA_PATH: String = "res://Game/Lib/Resources/%s.tres"
+const CHARACTER_DATA_PATH: String = "res://Game/Data/%s.tres"
 
 ## Cached character resources to prevent redundant loading
 var loaded_characters: Dictionary = {}
@@ -47,14 +47,16 @@ func _ready():
 #region Main functions
 func _shortcut_input(event: InputEvent) -> void:
 	# Check if the skip or continue button is pressed
-	if event.is_action_pressed(&"skip") or event.is_action_pressed(&"cont"):
+	#if event.is_action_pressed(&"skip") or event.is_action_pressed(&"cont"):
+	if event is InputEventKey or event is InputEventMouseButton:
 		# If an animation is playing, seek to the end
 		if %DialogueAnimationPlayer.is_playing():
 			# Grab current animation
 			var current_anim : String = %DialogueAnimationPlayer.current_animation
 			
 			# Don't skip the fade in
-			if current_anim != "Fade_In":
+			if current_anim != "Fade_In" and current_anim != "Fade_Out":
+				print("Bug here?")
 				# Get length of the current animation
 				var anim_length : float = %DialogueAnimationPlayer.get_animation(current_anim).length
 				# Seek to the end and force an update
