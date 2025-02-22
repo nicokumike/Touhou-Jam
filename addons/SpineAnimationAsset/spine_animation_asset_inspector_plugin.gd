@@ -39,7 +39,7 @@ func _parse_property(object: Object, type: Variant.Type, name: String, hint_type
 				)
 
 		add_custom_control(hbox)
-		return true
+		return false
 	elif name == "animation_index":
 		return true
 	return false

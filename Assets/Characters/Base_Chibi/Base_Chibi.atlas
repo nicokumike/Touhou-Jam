@@ -1,0 +1,39 @@
+Base_Chibi.png
+size:107,78
+filter:Linear,Linear
+pma:true
+Dress
+bounds:2,21,55,37
+offsets:58,21,160,90
+rotate:90
+Head
+bounds:57,2,30,27
+offsets:68,51,160,90
+rotate:90
+Head Ribbon
+bounds:86,23,16,9
+offsets:82,72,160,90
+Left Arm
+bounds:41,21,14,11
+offsets:88,43,160,90
+Left Leg
+bounds:83,34,19,21
+offsets:76,8,160,90
+rotate:90
+Left Wing
+bounds:30,5,14,20
+offsets:57,47,160,90
+rotate:90
+Right Arm
+bounds:2,5,14,26
+offsets:68,30,160,90
+rotate:90
+Right Leg
+bounds:83,55,22,21
+offsets:75,7,160,90
+Right Wing
+bounds:41,34,40,42
+offsets:39,25,160,90
+Tuft of Hair
+bounds:86,6,8,15
+offsets:71,54,160,90

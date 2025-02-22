@@ -1,0 +1,8 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://b0pbotay7ugyr"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://dbfp3h68j7j2b" path="res://Assets/Characters/Fairy/Fairy.atlas" id="1_ac6vd"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://dawv4a5iveu6n" path="res://Assets/Characters/Fairy/Fairy.skel" id="2_bxxpa"]
+
+[resource]
+atlas_res = ExtResource("1_ac6vd")
+skeleton_file_res = ExtResource("2_bxxpa")

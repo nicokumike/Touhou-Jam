@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc1gci3geymvg"]
+
+[ext_resource type="SpineSkeletonDataResource" uid="uid://d2y5byo3k7up3" path="res://Assets/Characters/Base_Chibi/base_chibi_data_resource.tres" id="1_lk5gn"]
+[ext_resource type="Script" path="res://Game/Lib/Animation_Handler/Spine/animation_handler_spine.gd" id="2_onegc"]
+[ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="3_ww5sm"]
+
+[sub_resource type="Resource" id="Resource_jq158"]
+script = ExtResource("3_ww5sm")
+skeleton_data_resource = ExtResource("1_lk5gn")
+animation_name = "Base_Chibi/walk"
+animation_index = 1
+loop = true
+track = 0
+mix_duration = -1.0
+speed = 1.0
+
+[node name="Flandre_Chibi" type="Node2D"]
+
+[node name="AnimationHandler_Spine" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("1_lk5gn")
+preview_skin = "default"
+preview_animation = "Base_Chibi/idle"
+preview_frame = false
+preview_time = 0.0
+script = ExtResource("2_onegc")
+skinName = "default"
+initial_animation = SubResource("Resource_jq158")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh3dqgf8ufbly"]
+
+[ext_resource type="SpineSkeletonDataResource" uid="uid://b0pbotay7ugyr" path="res://Assets/Characters/Fairy/fairy_data_resource.tres" id="1_ck5il"]
+[ext_resource type="Script" path="res://Game/Lib/Animation_Handler/Spine/animation_handler_spine.gd" id="2_jpugf"]
+[ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="3_b0ugh"]
+
+[sub_resource type="Resource" id="Resource_1ff6o"]
+script = ExtResource("3_b0ugh")
+skeleton_data_resource = ExtResource("1_ck5il")
+animation_name = "Fairy/idle"
+animation_index = 0
+loop = true
+track = 0
+mix_duration = -1.0
+speed = 1.0
+
+[node name="Fairy_Volcano" type="Node2D"]
+
+[node name="AnimationHandler_Spine" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("1_ck5il")
+preview_skin = "Volcano"
+preview_animation = "Fairy/idle"
+preview_frame = false
+preview_time = 0.0
+script = ExtResource("2_jpugf")
+skinName = "Volcano"
+initial_animation = SubResource("Resource_1ff6o")

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://p2q6v83x7pms"
+path="res://.godot/imported/Base_Chibi.skel-48dc06042e103e3642d27aecccabb3f8.spskel"
+
+[deps]
+
+source_file="res://Assets/Characters/Base_Chibi/Base_Chibi.skel"
+dest_files=["res://.godot/imported/Base_Chibi.skel-48dc06042e103e3642d27aecccabb3f8.spskel"]
+
+[params]
+

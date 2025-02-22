@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dawv4a5iveu6n"
+path="res://.godot/imported/Fairy.skel-d38100c670431fc1f9452c588418f9e0.spskel"
+
+[deps]
+
+source_file="res://Assets/Characters/Fairy/Fairy.skel"
+dest_files=["res://.godot/imported/Fairy.skel-d38100c670431fc1f9452c588418f9e0.spskel"]
+
+[params]
+

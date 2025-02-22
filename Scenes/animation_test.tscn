@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://bl6f0y14bbbnn"]
+
+[ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="1_4jlud"]
+[ext_resource type="PackedScene" uid="uid://bc1gci3geymvg" path="res://Game/Characters/Chibi/flandre_chibi.tscn" id="2_big3r"]
+[ext_resource type="PackedScene" uid="uid://kpifd68fnr6p" path="res://Game/Characters/Player/player_utsuho.tscn" id="3_5vknm"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://dl8kow7042sab" path="res://Assets/Characters/Base/base_data_resource.tres" id="3_vjppi"]
+[ext_resource type="PackedScene" uid="uid://ctlkjntcstche" path="res://Game/Characters/Fairy/fairy_river.tscn" id="4_63weu"]
+[ext_resource type="Script" path="res://Game/Lib/Animation_Handler/Spine/animation_handler_spine.gd" id="4_p0b8u"]
+[ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="5_8vw42"]
+[ext_resource type="PackedScene" uid="uid://bp4spstrcqf4l" path="res://Game/Characters/Fairy/fairy_rock.tscn" id="5_kh4jx"]
+[ext_resource type="PackedScene" uid="uid://bh3dqgf8ufbly" path="res://Game/Characters/Fairy/fairy_volcano.tscn" id="6_s58w0"]
+
+[sub_resource type="Resource" id="Resource_jaao4"]
+script = ExtResource("5_8vw42")
+skeleton_data_resource = ExtResource("3_vjppi")
+animation_name = "Flandre/HOHOH"
+animation_index = 0
+loop = true
+track = 0
+mix_duration = -1.0
+speed = 1.0
+
+[node name="AnimationTest" type="Node2D"]
+
+[node name="Flandre_Chibi" parent="." instance=ExtResource("2_big3r")]
+position = Vector2(473, 211)
+
+[node name="Player_Flandre" parent="." instance=ExtResource("1_4jlud")]
+position = Vector2(698, 416)
+
+[node name="Player_Flandre2" type="Node2D" parent="."]
+position = Vector2(698, 416)
+
+[node name="AnimationHandler_Spine" type="SpineSprite" parent="Player_Flandre2"]
+skeleton_data_res = ExtResource("3_vjppi")
+preview_skin = "Flandre"
+preview_animation = "Flandre/HOHOH"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(-479, -65)
+script = ExtResource("4_p0b8u")
+skinName = "Flandre"
+initial_animation = SubResource("Resource_jaao4")
+
+[node name="Player_Utsuho" parent="." instance=ExtResource("3_5vknm")]
+position = Vector2(1049, 463)
+
+[node name="Node2D" parent="." instance=ExtResource("4_63weu")]
+position = Vector2(287, 567)
+
+[node name="Fairy_Rock" parent="." instance=ExtResource("5_kh4jx")]
+position = Vector2(529, 607)
+
+[node name="Node2D2" parent="." instance=ExtResource("6_s58w0")]
+position = Vector2(799, 591)
