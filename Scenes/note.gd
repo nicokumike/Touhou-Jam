@@ -41,19 +41,27 @@ func _process(delta):
 func setColor(color):
 	match (color):
 		1:
-			sprite.modulate = Color.YELLOW
+			#yellow
+			sprite.material.set("shader_parameter/starting_colour", Vector4(1, 1, 0, 1))
+			sprite.material.set("shader_parameter/ending_colour", Vector4(1, 1, 0, 0))
 			type = 1
 			pass
 		2:
-			sprite.modulate = Color.BLUE
+			#blue
+			sprite.material.set("shader_parameter/starting_colour", Vector4(0, 0, 1, 1))
+			sprite.material.set("shader_parameter/ending_colour", Vector4(0, 0, 1, 0))
 			type = 2
 			pass
 		3:
-			sprite.modulate = Color.GREEN
+			#green
+			sprite.material.set("shader_parameter/starting_colour", Vector4(0, 1, 0, 1))
+			sprite.material.set("shader_parameter/ending_colour", Vector4(0, 1, 0, 0))
 			type = 3
 			pass
 		4:
-			sprite.modulate = Color.RED
+			#red
+			sprite.material.set("shader_parameter/starting_colour", Vector4(1, 0, 0, 1))
+			sprite.material.set("shader_parameter/ending_colour", Vector4(1, 0, 0, 0))
 			type = 4
 			pass
 	pass
