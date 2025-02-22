@@ -21,6 +21,11 @@ func _init():
 
 func _ready():
 	set_process_unhandled_input(false)
+	#print(num)
+	if !(num % 2):
+		#print('modulod')
+		modulate = Color.LIGHT_SLATE_GRAY
+
 
 func _toggled(new_button_pressed):
 	set_process_unhandled_input(new_button_pressed)
@@ -33,6 +38,15 @@ func _toggled(new_button_pressed):
 		#update_key_text()
 		#grab_focus()
 		pass
+
+func load_note(data):
+	#print(data)
+	text = str(data)
+	for param in data:
+		if param is not float:
+			
+			print(param)
+			update_note(str(param))
 
 func _unhandled_input(event):
 	#print(event)
@@ -76,14 +90,12 @@ func _unhandled_input(event):
 		button_pressed = false
 		if event.is_action_pressed("ui_accept"):
 			send_note()
-		
-		
 
 func reset_note():
 	note = {
 		"key": null,
 		"type": "P",
-		"hold": 0,
+		"hold": null,
 		"text": null,
 		"index": [beat, num]
 	}
@@ -125,17 +137,12 @@ func setColor(color):
 		"Y":
 			modulate = Color.YELLOW
 			#type = 1
-			pass
 		"B":
 			modulate = Color.BLUE
 			#type = 2
-			pass
 		"G":
 			modulate = Color.GREEN
 			#type = 3
-			pass
 		"R":
 			modulate = Color.RED
 			#type = 4
-			pass
-	pass

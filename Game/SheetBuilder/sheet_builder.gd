@@ -61,7 +61,7 @@ func populate_measures(sheet):
 		new_measure.count = index[0] + 1
 		new_measure.count_label.text = str(index[0] + 1)
 		new_measure.measure_data = measure
-		#new_measure.update_measure(measure)
+		new_measure.update_measure(measure)
 		new_measure.on_changed_note.connect(on_new_note.bind())
 		
 		index[0] += 1
@@ -70,7 +70,24 @@ func populate_measures(sheet):
 
 func on_new_note(data):
 	print("TOP LEVEL",data)
-	pass
+	var index = [data.index[0] -1, data.index[1] -1, data.index[2] -1]
+	#print(index)
+	#var note = sheet[index[0]][index[1]][index[2]]
+	#print(note)
+	#note = data.note_data.text
+	#print(note)
+	#print(sheet[index[0]][index[1]][index[2]])
+	sheet[index[0]][index[1]][index[2]] = data.note_data.text
+	#print(sheet[index[0]][index[1]][index[2]])
+	#print(sheet)
+
+func save_to_file(content):
+	#var save_dir = "res://Game/Lib/Composer/Music_Sheets/"
+	#var save_path = str(save_dir, 'new_sheet.json')
+	var save_path = music_sheet
+	
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_string(content)
 
 func _on_play_song_button_pressed() -> void:
 	AudMan.play_music(music)
@@ -84,7 +101,13 @@ func _on_test_button_pressed() -> void:
 
 func _on_save_button_pressed() -> void:
 	#TODO Save the file
-	pass # Replace with function body.
+	var data = {
+		"name": song_name,
+		"bpm": bpm,
+		"sheet": sheet,
+		"song": song_path
+	}
+	save_to_file(JSON.stringify(data, "\t"))
 
 func _on_load_button_pressed() -> void:
 	#TODO Load the file

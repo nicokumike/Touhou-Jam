@@ -15,13 +15,27 @@ var measure_data = []
 
 signal on_changed_note
 #
-#func update_measure(data):
-	#print(data)
-	#pass
+func update_measure(data):
+	print(data)
+	for beat in beats:
+		var children = beat.get_children()
+		#print(beat)
+		for note: RemapNoteButton in children:
+			var index = [note.beat -1, note.num -1]
+			var preloaded_note = data[index[0]][index[1]]
+			#prints(note.beat, note.num, index, preloaded_note)
+			note.load_note(preloaded_note)
+			
+			
+		#for note in beat:
+			#print(note)
+			#pass
+	pass
 
 func _ready() -> void:
 	for beat in beats:
 		hook_up(beat)
+		#print(beat)
 
 func hook_up(beat: HBoxContainer):
 	var children = beat.get_children()
