@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl6f0y14bbbnn"]
+[gd_scene load_steps=13 format=3 uid="uid://bl6f0y14bbbnn"]
 
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="1_4jlud"]
 [ext_resource type="PackedScene" uid="uid://bc1gci3geymvg" path="res://Game/Characters/Chibi/flandre_chibi.tscn" id="2_big3r"]
@@ -10,11 +10,31 @@
 [ext_resource type="PackedScene" uid="uid://bp4spstrcqf4l" path="res://Game/Characters/Fairy/fairy_rock.tscn" id="5_kh4jx"]
 [ext_resource type="PackedScene" uid="uid://bh3dqgf8ufbly" path="res://Game/Characters/Fairy/fairy_volcano.tscn" id="6_s58w0"]
 
-[sub_resource type="Resource" id="Resource_jaao4"]
+[sub_resource type="Resource" id="Resource_thpjm"]
+script = ExtResource("5_8vw42")
+skeleton_data_resource = ExtResource("3_vjppi")
+animation_name = "Flandre/idle"
+animation_index = 3
+loop = true
+track = 0
+mix_duration = -1.0
+speed = 1.0
+
+[sub_resource type="Resource" id="Resource_ch0ny"]
 script = ExtResource("5_8vw42")
 skeleton_data_resource = ExtResource("3_vjppi")
 animation_name = "Flandre/HOHOH"
-animation_index = 0
+animation_index = 2
+loop = true
+track = 0
+mix_duration = -1.0
+speed = 1.0
+
+[sub_resource type="Resource" id="Resource_jaao4"]
+script = ExtResource("5_8vw42")
+skeleton_data_resource = ExtResource("3_vjppi")
+animation_name = "Flandre/windBrace"
+animation_index = 7
 loop = true
 track = 0
 mix_duration = -1.0
@@ -33,8 +53,36 @@ position = Vector2(698, 416)
 
 [node name="AnimationHandler_Spine" type="SpineSprite" parent="Player_Flandre2"]
 skeleton_data_res = ExtResource("3_vjppi")
+preview_skin = "Utsuho"
+preview_animation = "Flandre/idle"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(-479, -65)
+script = ExtResource("4_p0b8u")
+skinName = "Utsuho"
+initial_animation = SubResource("Resource_thpjm")
+
+[node name="Player_Flandre4" type="Node2D" parent="."]
+position = Vector2(698, 416)
+
+[node name="AnimationHandler_Spine" type="SpineSprite" parent="Player_Flandre4"]
+skeleton_data_res = ExtResource("3_vjppi")
 preview_skin = "Flandre"
 preview_animation = "Flandre/HOHOH"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(-566, 155)
+script = ExtResource("4_p0b8u")
+skinName = "Flandre"
+initial_animation = SubResource("Resource_ch0ny")
+
+[node name="Player_Flandre3" type="Node2D" parent="."]
+position = Vector2(947, 505)
+
+[node name="AnimationHandler_Spine" type="SpineSprite" parent="Player_Flandre3"]
+skeleton_data_res = ExtResource("3_vjppi")
+preview_skin = "Flandre"
+preview_animation = "Flandre/windBrace"
 preview_frame = false
 preview_time = 0.0
 position = Vector2(-479, -65)

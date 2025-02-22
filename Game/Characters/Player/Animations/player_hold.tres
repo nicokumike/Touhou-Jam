@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpineAnimationAsset" load_steps=3 format=3 uid="uid://cfqqtqlysppne"]
+
+[ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="1_britf"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://dl8kow7042sab" path="res://Assets/Characters/Base/base_data_resource.tres" id="2_aykfq"]
+
+[resource]
+script = ExtResource("1_britf")
+skeleton_data_resource = ExtResource("2_aykfq")
+animation_name = "Flandre/windBrace"
+animation_index = 7
+loop = true
+track = 0
+mix_duration = 0.05
+speed = 1.0
