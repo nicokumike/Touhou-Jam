@@ -9,12 +9,16 @@ var score = 0
 var combo = 0
 var note_queue : Array
 var note_hit
+var note_precision = 0
+
+var precisionMult = 1
+var comboMult = 1
 
 var miss = false
-var bad = false
-var good = false
-var great = false
-var perfect = false
+#var bad = false
+#var good = false
+#var great = false
+#var perfect = false
 var holding = false
 
 func _process(delta):
@@ -22,7 +26,7 @@ func _process(delta):
 	scoreAmount.text = str(score)
 	comboAmount.text = str(combo)
 	if holding:
-		pass
+		score += 1 * precisionMult * comboMult
 
 func _unhandled_input(event):
 	if event is InputEventKey:
@@ -30,13 +34,13 @@ func _unhandled_input(event):
 		var hitNote = hitList[0]
 		var hitPrecision = hitList[1]
 		var keyPress = checkPress(event)
-		if hitNote != null and hitPrecision > 0:
+		if hitNote != null and hitPrecision > 0 and keyPress > 0:
 			note_hit = false
 			if keyPress == hitNote.type:
 				note_hit = true
 			if note_hit:
-				var precisionMult = 1
-				var comboMult = 1
+				precisionMult = 1
+				comboMult = 1
 				combo += 1
 				if combo >= 10:
 					comboMult = 2
@@ -54,25 +58,29 @@ func _unhandled_input(event):
 					3: precisionMult = 3 #Great
 					4: precisionMult = 5 #Perfect
 				score += 10 * precisionMult * comboMult
-				if !holding:
-					hitNote.queue_free()
-				else:
+				if hitNote.hold:
+					holding = true
 					hitNote.holdNote()
+					hitNote.pointerObj = self
+				else:
+					hitNote.queue_free()
 			else:
 				miss = true
 				combo = 0
 		else:
-			if keyPress != 0:
+			if keyPress > 0:
 				miss = true
 				combo = 0
 		if holding:
-			if hitNote != null:
-				hitNote.holding = true
 			if keyPress < 0:
 				holding = false
 				hitNote.queue_free()
 			pass
-		printPrecision()
+		if keyPress > 0:
+			printPrecision()
+		
+func releaseNote():
+	holding = false
 		
 func checkNotes() -> Array:
 	var retArray = [null, 0]
@@ -82,13 +90,12 @@ func checkNotes() -> Array:
 		var closestNote = notes[0]
 		var precision = closestNote.checkPosition()
 		retArray = [notes[0], notes[0].checkPosition()]
-		match precision:
-			1: bad = true
-			2: good = true
-			3: great = true
-			4: perfect = true
-		if closestNote.hold:
-			holding = true
+		note_precision = precision
+		#match precision:
+			#1: bad = true
+			#2: good = true
+			#3: great = true
+			#4: perfect = true
 	return retArray
 		
 func checkPress(event : InputEventKey) -> int:
@@ -112,23 +119,22 @@ func checkPress(event : InputEventKey) -> int:
 
 func resetPrecision():
 	miss = false
-	bad = false
-	good = false
-	great = false
-	perfect = false
-
-func resetLabels():
-	#missLabel.visible = false
-	#badLabel.visible = false
-	#goodLabel.visible = false
-	#greatLabel.visible = false
-	#perfectLabel.visible = false
-	pass
+	note_precision = 0
+	#bad = false
+	#good = false
+	#great = false
+	#perfect = false
 
 func printPrecision():
 	var noteLabel = noteGraphics.instantiate()
+	add_child(noteLabel)
+	noteLabel.initiate(note_precision)
+	noteLabel.global_position = position
+	noteLabel.global_position.y -= 100
 	
-	pass
+	noteLabel.global_position.y += randf_range(-10, 10)
+	noteLabel.global_position.x += randf_range(-10, 10)
+	
 	#resetLabels()
 	#precisionLabelReset.wait_time = 0.5
 	#if note_hit:
@@ -156,8 +162,5 @@ func _on_bad_area_exited(area):
 	resetPrecision()
 
 func _on_bad_area_entered(area):
-	resetLabels()
-	note_hit = false
-
-func _on_precision_label_reset_timeout():
-	resetLabels()
+	if !holding:
+		note_hit = false

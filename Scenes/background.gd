@@ -38,14 +38,13 @@ func emit_note(note_data):
 	note_instance.hold = note_data.hold
 	note_instance.holdTime = note_data.length
 	note_instance.speed = speed
+	note_instance.bpm = bpm
 	get_parent().add_child(note_instance)
 	match note_data.color:
 		"Red": note_instance.setColor(4)
 		"Blue": note_instance.setColor(2)
 		"Green": note_instance.setColor(3)
 		"Yellow": note_instance.setColor(1)
-	
-	pass
 
 func transition():
 	timer.stop()

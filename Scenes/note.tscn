@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5okftixnlb3w"]
 
-[ext_resource type="Script" path="res://note.gd" id="1_j3arb"]
+[ext_resource type="Script" path="res://Scenes/note.gd" id="1_j3arb"]
 [ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="2_elhnb"]
 [ext_resource type="Texture2D" uid="uid://bxat8gcmm7lmf" path="res://Assets/UI/EnemyContactPoint.png" id="3_2gvvc"]
 
@@ -24,13 +24,14 @@ debug_color = Color(1, 1, 1, 0.42)
 
 [node name="HoldTrail" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(13, 2.84217e-14)
-scale = Vector2(0.2, 0.07)
+position = Vector2(13, 6.01853e-36)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_elhnb")
 centered = false
 offset = Vector2(0, -64)
 
 [node name="EnemyContactPoint" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.454902)
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("3_2gvvc")

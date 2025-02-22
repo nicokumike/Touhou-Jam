@@ -14,14 +14,22 @@ var count
 var measure_data = []
 
 signal on_changed_note
-
+#
 func update_measure(data):
-	print(data)
-	pass
+	#print(data)
+	for beat in beats:
+		var children = beat.get_children()
+		#print(beat)
+		for note: RemapNoteButton in children:
+			var index = [note.beat -1, note.num -1]
+			var preloaded_note = data[index[0]][index[1]]
+			#prints(note.beat, note.num, index, preloaded_note)
+			note.load_note(preloaded_note)
 
 func _ready() -> void:
 	for beat in beats:
 		hook_up(beat)
+		#print(beat)
 
 func hook_up(beat: HBoxContainer):
 	var children = beat.get_children()
@@ -30,6 +38,8 @@ func hook_up(beat: HBoxContainer):
 	#print(children)
 
 func _on_button_new_note(data):
-	#print(data)
-	on_changed_note.emit(data)
-	#pass
+	var new_note = {
+		"note_data": data,
+		"index": [count, data.index[0], data.index[1]]
+	}
+	on_changed_note.emit(new_note)
