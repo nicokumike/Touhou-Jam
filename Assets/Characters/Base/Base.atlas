@@ -1,186 +1,370 @@
 Base.png
-size:523,269
+size:1460,142
 filter:Linear,Linear
 pma:true
 Flandre/Scarlet10
-bounds:237,4,45,34
+bounds:1413,48,45,34
 offsets:123,249,300,360
-rotate:90
 Flandre/Scarlet11
-bounds:444,42,20,22
+bounds:1036,2,20,22
 offsets:143,223,300,360
 rotate:90
 Flandre/Scarlet12
-bounds:260,189,78,91
+bounds:968,62,78,91
 offsets:106,160,300,360
 rotate:90
 Flandre/Scarlet13
-bounds:394,2,24,26
+bounds:514,2,24,26
 offsets:113,226,300,360
 rotate:90
 Flandre/Scarlet14
-bounds:375,2,17,23
+bounds:891,2,17,23
 offsets:153,224,300,360
+rotate:90
 Flandre/Scarlet15
-bounds:73,5,53,47
+bounds:74,2,53,47
 offsets:71,191,300,360
+rotate:90
 Flandre/Scarlet16
-bounds:393,62,37,33
+bounds:932,19,37,33
 offsets:107,220,300,360
 Flandre/Scarlet17
-bounds:444,84,46,41
+bounds:688,11,46,41
 offsets:163,190,300,360
 Flandre/Scarlet18
-bounds:492,93,29,32
+bounds:1186,4,29,32
 offsets:148,217,300,360
 Flandre/Scarlet19
-bounds:345,107,25,64
+bounds:376,17,25,64
 offsets:124,138,300,360
 rotate:90
 Flandre/Scarlet2
-bounds:273,2,22,53
+bounds:1405,118,22,53
 offsets:107,235,300,360
+rotate:90
 Flandre/Scarlet20
-bounds:259,83,19,70
+bounds:442,23,19,70
 offsets:125,84,300,360
 rotate:90
 Flandre/Scarlet21
-bounds:345,2,28,23
+bounds:542,3,28,23
 offsets:126,70,300,360
-Flandre/Scarlet22
-bounds:417,132,25,55
-offsets:141,149,300,360
-Flandre/Scarlet23
-bounds:500,192,16,75
-offsets:144,85,300,360
 Flandre/Scarlet24
-bounds:407,33,27,22
+bounds:1347,2,27,22
 offsets:143,73,300,360
-rotate:90
 Flandre/Scarlet25
-bounds:353,189,78,91
+bounds:1061,62,78,91
 offsets:106,160,300,360
 rotate:90
 Flandre/Scarlet26
-bounds:446,185,82,52
+bounds:172,3,82,52
 offsets:150,233,300,360
-rotate:90
 Flandre/Scarlet27
-bounds:198,76,106,59
+bounds:1154,81,106,59
 offsets:40,227,300,360
-rotate:90
 Flandre/Scarlet28
-bounds:432,75,10,20
+bounds:784,2,10,20
 offsets:48,211,300,360
+rotate:90
 Flandre/Scarlet29
-bounds:432,53,10,20
+bounds:806,2,10,20
 offsets:62,224,300,360
+rotate:90
 Flandre/Scarlet3
-bounds:314,4,51,29
+bounds:833,23,51,29
 offsets:118,268,300,360
-rotate:90
 Flandre/Scarlet30
-bounds:444,9,10,20
+bounds:1139,7,10,20
 offsets:77,237,300,360
-rotate:90
 Flandre/Scarlet31
-bounds:475,62,10,20
+bounds:406,5,10,20
 offsets:93,225,300,360
+rotate:90
 Flandre/Scarlet32
-bounds:468,40,10,20
+bounds:585,4,10,20
 offsets:113,215,300,360
+rotate:90
 Flandre/Scarlet33
-bounds:466,18,10,20
+bounds:607,4,10,20
 offsets:165,215,300,360
+rotate:90
 Flandre/Scarlet34
-bounds:480,40,10,20
+bounds:1248,13,10,20
 offsets:180,229,300,360
+rotate:90
 Flandre/Scarlet35
-bounds:478,18,10,20
+bounds:1270,13,10,20
 offsets:197,237,300,360
+rotate:90
 Flandre/Scarlet36
-bounds:492,47,10,20
+bounds:1292,13,10,20
 offsets:216,228,300,360
 rotate:90
 Flandre/Scarlet4
-bounds:422,2,29,20
+bounds:1005,2,29,20
 offsets:130,265,300,360
-rotate:90
 Flandre/Scarlet5
-bounds:2,4,7,28
+bounds:376,8,7,28
 offsets:157,254,300,360
 rotate:90
 Flandre/Scarlet6
-bounds:384,28,21,32
+bounds:971,2,21,32
 offsets:117,250,300,360
+rotate:90
 Flandre/Scarlet7
-bounds:345,27,37,35
+bounds:1220,44,37,35
 offsets:124,254,300,360
 Flandre/Scarlet8
-bounds:444,64,29,18
+bounds:1060,9,29,18
 offsets:130,236,300,360
 Flandre/Scarlet9
-bounds:329,59,14,22
+bounds:929,3,14,22
 offsets:139,248,300,360
+rotate:90
+PRISMRIVER BLACK/CAP
+bounds:639,13,47,39
+offsets:118,276,300,360
+PRISMRIVER BLACK/DRESS
+bounds:520,54,86,110
+offsets:101,146,300,360
+rotate:90
+PRISMRIVER BLACK/HAIR
+bounds:1259,25,42,30
+offsets:122,259,300,360
+PRISMRIVER BLACK/HAIR BACK
+bounds:886,21,44,31
+offsets:120,251,300,360
+PRISMRIVER BLACK/HEAD
+bounds:1399,2,33,31
+offsets:127,254,300,360
+rotate:90
+PRISMRIVER RED/HEAD
+bounds:1399,2,33,31
+offsets:127,254,300,360
+rotate:90
+PRISMRIVER WHITE/HEAD
+bounds:1399,2,33,31
+offsets:127,254,300,360
+rotate:90
+PRISMRIVER BLACK/L ARM
+bounds:1432,2,15,19
+offsets:154,226,300,360
+rotate:90
+PRISMRIVER RED/L ARM
+bounds:1432,2,15,19
+offsets:154,226,300,360
+rotate:90
+PRISMRIVER WHITE/L ARM
+bounds:1432,2,15,19
+offsets:154,226,300,360
+rotate:90
+PRISMRIVER BLACK/L FOOT
+bounds:1376,2,22,21
+offsets:147,74,300,360
+rotate:90
+PRISMRIVER BLACK/L FOREARM
+bounds:1016,24,41,36
+offsets:165,193,300,360
+PRISMRIVER RED/L FOREARM
+bounds:1016,24,41,36
+offsets:165,193,300,360
+PRISMRIVER WHITE/L FOREARM
+bounds:1016,24,41,36
+offsets:165,193,300,360
+PRISMRIVER BLACK/L LEG
+bounds:1405,101,15,53
+offsets:143,88,300,360
+rotate:90
+PRISMRIVER RED/L LEG
+bounds:1405,101,15,53
+offsets:143,88,300,360
+rotate:90
+PRISMRIVER WHITE/L LEG
+bounds:1405,101,15,53
+offsets:143,88,300,360
+rotate:90
+PRISMRIVER BLACK/L THIGH
+bounds:1154,56,23,64
+offsets:143,137,300,360
+rotate:90
+PRISMRIVER RED/L THIGH
+bounds:1154,56,23,64
+offsets:143,137,300,360
+rotate:90
+PRISMRIVER WHITE/L THIGH
+bounds:1154,56,23,64
+offsets:143,137,300,360
+rotate:90
+UTSUHO HEHEHE/L THIGH
+bounds:1154,56,23,64
+offsets:143,137,300,360
+rotate:90
+PRISMRIVER BLACK/NECK
+bounds:572,10,11,16
+offsets:138,245,300,360
+PRISMRIVER RED/NECK
+bounds:572,10,11,16
+offsets:138,245,300,360
+PRISMRIVER WHITE/NECK
+bounds:572,10,11,16
+offsets:138,245,300,360
+PRISMRIVER BLACK/R ARM
+bounds:1432,19,27,26
+offsets:110,223,300,360
+rotate:90
+PRISMRIVER RED/R ARM
+bounds:1432,19,27,26
+offsets:110,223,300,360
+rotate:90
+PRISMRIVER WHITE/R ARM
+bounds:1432,19,27,26
+offsets:110,223,300,360
+rotate:90
+PRISMRIVER BLACK/R FOOT
+bounds:442,2,22,19
+offsets:129,74,300,360
+PRISMRIVER BLACK/R FOREARM
+bounds:971,25,43,35
+offsets:74,194,300,360
+PRISMRIVER RED/R FOREARM
+bounds:971,25,43,35
+offsets:74,194,300,360
+PRISMRIVER WHITE/R FOREARM
+bounds:971,25,43,35
+offsets:74,194,300,360
+PRISMRIVER BLACK/R LEG
+bounds:833,2,17,56
+offsets:124,88,300,360
+rotate:90
+PRISMRIVER RED/R LEG
+bounds:833,2,17,56
+offsets:124,88,300,360
+rotate:90
+PRISMRIVER WHITE/R LEG
+bounds:833,2,17,56
+offsets:124,88,300,360
+rotate:90
+PRISMRIVER BLACK/R THIGH
+bounds:1347,58,24,64
+offsets:124,136,300,360
+rotate:90
+PRISMRIVER RED/R THIGH
+bounds:1347,58,24,64
+offsets:124,136,300,360
+rotate:90
+PRISMRIVER WHITE/R THIGH
+bounds:1347,58,24,64
+offsets:124,136,300,360
+rotate:90
+PRISMRIVER BLACK/TORSO
+bounds:632,54,86,110
+offsets:101,146,300,360
+rotate:90
+PRISMRIVER RED/TORSO
+bounds:632,54,86,110
+offsets:101,146,300,360
+rotate:90
+PRISMRIVER WHITE/TORSO
+bounds:632,54,86,110
+offsets:101,146,300,360
+rotate:90
+PRISMRIVER RED/CAP
+bounds:784,14,47,38
+offsets:118,276,300,360
+PRISMRIVER RED/DRESS
+bounds:744,54,86,110
+offsets:101,146,300,360
+rotate:90
+PRISMRIVER RED/HAIR
+bounds:1303,25,42,30
+offsets:122,259,300,360
+PRISMRIVER RED/HAIR BACK
+bounds:1059,29,44,31
+offsets:120,251,300,360
+PRISMRIVER RED/L FOOT
+bounds:1091,6,22,21
+offsets:147,74,300,360
+PRISMRIVER RED/R FOOT
+bounds:466,2,22,19
+offsets:129,74,300,360
+PRISMRIVER WHITE/CAP
+bounds:256,2,47,40
+offsets:118,276,300,360
+PRISMRIVER WHITE/DRESS
+bounds:856,54,86,110
+offsets:101,146,300,360
+rotate:90
+PRISMRIVER WHITE/HAIR
+bounds:1347,26,42,30
+offsets:122,259,300,360
+PRISMRIVER WHITE/HAIR BACK
+bounds:1105,29,44,31
+offsets:120,251,300,360
+PRISMRIVER WHITE/L FOOT
+bounds:1115,6,22,21
+offsets:147,74,300,360
+PRISMRIVER WHITE/R FOOT
+bounds:490,2,22,19
+offsets:129,74,300,360
 UTSUHO HEHEHE/BUN
-bounds:2,13,69,39
+bounds:305,3,69,39
 offsets:98,270,300,360
 UTSUHO HEHEHE/CANNON
-bounds:444,127,56,56
+bounds:1347,84,56,56
 offsets:174,164,300,360
 UTSUHO HEHEHE/CRYSTAL
-bounds:32,2,9,12
+bounds:1413,37,9,12
 offsets:147,227,300,360
 rotate:90
 UTSUHO HEHEHE/DRESS
-bounds:2,54,96,128
+bounds:260,44,96,128
 offsets:97,127,300,360
+rotate:90
 UTSUHO HEHEHE/HAIR
-bounds:345,134,70,53
+bounds:2,2,70,53
 offsets:104,246,300,360
 UTSUHO HEHEHE/HAIR BACK
-bounds:260,104,83,83
+bounds:1262,57,83,83
 offsets:102,210,300,360
 UTSUHO HEHEHE/HEAD
-bounds:411,97,33,31
+bounds:1151,5,33,31
 offsets:127,254,300,360
-rotate:90
 UTSUHO HEHEHE/L ARM
-bounds:492,59,29,32
+bounds:1217,10,29,32
 offsets:148,217,300,360
 UTSUHO HEHEHE/L FOOT
-bounds:183,13,36,52
+bounds:585,16,36,52
 offsets:138,73,300,360
 rotate:90
 UTSUHO HEHEHE/L FOREARM
-bounds:345,64,46,41
+bounds:736,11,46,41
 offsets:163,190,300,360
 UTSUHO HEHEHE/L LEG
-bounds:297,2,15,53
+bounds:1405,84,15,53
 offsets:143,88,300,360
-UTSUHO HEHEHE/L THIGH
-bounds:198,51,23,64
-offsets:143,137,300,360
 rotate:90
 UTSUHO HEHEHE/NECK
-bounds:431,35,11,16
+bounds:916,3,11,16
 offsets:138,245,300,360
 UTSUHO HEHEHE/R FOOT
-bounds:444,21,20,19
+bounds:1391,37,20,19
 offsets:130,75,300,360
 UTSUHO HEHEHE/R FOREARM
-bounds:128,5,53,47
+bounds:123,2,53,47
 offsets:71,191,300,360
+rotate:90
 UTSUHO HEHEHE/R LEG
-bounds:502,134,16,56
+bounds:1151,38,16,56
 offsets:125,88,300,360
+rotate:90
 UTSUHO HEHEHE/R THIGH
-bounds:264,57,24,63
+bounds:520,28,24,63
 offsets:124,137,300,360
 rotate:90
 UTSUHO HEHEHE/TORSO
-bounds:100,54,96,128
+bounds:390,44,96,128
 offsets:97,127,300,360
+rotate:90
 UTSUHO HEHEHE/UTSUHO23
-bounds:2,184,256,83
+bounds:2,57,256,83
 offsets:8,187,300,360
