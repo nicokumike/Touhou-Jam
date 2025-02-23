@@ -6,12 +6,10 @@ var speed = 300
 var music: AudioStreamMP3
 
 # Background art
-@onready var backgroundArt = preload("res://Scenes/background_forest.tscn")
-@onready var volcano = preload("res://Scenes/background_volcano.tscn")
+@export var backgroundArt =  preload("res://Scenes/background_forest.tscn")
+
 # Level started
 var started = false
-
-
 
 # Scene for the notes
 @onready var note = preload("res://Scenes/note.tscn")
@@ -24,6 +22,8 @@ var started = false
 
 # Song that will play
 @export var song = preload("res://Assets/SFX/penis music.mp3")
+@export var loopSong = preload("res://Assets/SFX/penis music.mp3")
+@export var bossSong = preload("res://Assets/SFX/penis music.mp3")
 
 # Boss scene
 @export var boss = preload("res://Scenes/boss.tscn")
@@ -34,7 +34,7 @@ var started = false
 #@export_file("*.json") var music_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 @export_file("*.json") var hard_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 @export_file("*.json") var easy_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
-@export_file("*.json") var hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-boss.json"
+@export_file("*.json") var hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 @export_file("*.json") var easy_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 
 # Loads music cheat
@@ -50,44 +50,28 @@ var time_delay: float
 var beat_played = true
 var last_beat = 0
 
-var curr_bgd
-
-#var time_begin
-#var time_delay
-#
-#
-#func _ready():
-	#time_begin = Time.get_ticks_usec()
-	#time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
-	#$Player.play()
-#
-#
-#func _process(delta):
-	## Obtain from ticks.
-	#var time = (Time.get_ticks_usec() - time_begin) / 1000000.0
-	## Compensate for latency.
-	#time -= time_delay
-	## May be below 0 (did not begin yet).
-	#time = max(0, time)
-	#print("Time is: ", time)
-
 var now = false
 
 func _ready():
 	var bgd = backgroundArt.instantiate()
-	curr_bgd = bgd
 	add_child(bgd)
 	time_begin = Time.get_ticks_usec()
 	time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
-	SignalBus.transition_finished.connect(trans_finished.bind() )
+	SignalBus.transition_finished.connect(trans_finished.bind())
+	
+	#Start all relevant variables
+	boss_instance = null 
+	music_player = null
+	beat_played = true
+	last_beat = 0
+
+	now = false
+	started = false
 
 func trans_finished(type_name):
 	if type_name == "fade_out":
-		curr_bgd.queue_free()
-		var bgd = volcano.instantiate()
-		curr_bgd = bgd
-		add_child(bgd)
 		SignalBus.finish_transition.emit()
+		SignalBus.game_state_changed.emit("Start")
 	else:
 		pass
 	print(type_name)
@@ -120,6 +104,7 @@ func _unhandled_input(event):
 		elif SignalBus.difficulty == "Hard":
 			composer.music_sheet = hard_sheet
 		composer.initialize()
+		AudMan.stop_music()
 		#music_player = AudMan.play_music(song, -10)
 		$"../Timer2".start()
 		now = true
@@ -159,7 +144,7 @@ func transition():
 		# Play looping song section
 		song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_LOOP.mp3")
 		now = false
-		AudMan.play_music(song, -10)
+		AudMan.play_music(loopSong, -10)
 		# Spawn boss and instantiate it
 		boss_instance = boss.instantiate()
 		# Setting bosses projectile spawn point
@@ -191,7 +176,7 @@ func transition():
 	
 func _on_dialogue_finished():
 	AudMan.stop_music()
-	song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3")
+	song = bossSong
 	if SignalBus.difficulty == "Easy":
 		composer.music_sheet = easy_boss_sheet
 	elif SignalBus.difficulty == "Hard":
