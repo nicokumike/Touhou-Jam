@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://jjuu8asfhrpm"]
+[gd_scene load_steps=9 format=3 uid="uid://jjuu8asfhrpm"]
 
 [ext_resource type="Script" path="res://Game/UI/Settings_Menu/settings.gd" id="1_xj52j"]
 [ext_resource type="AudioStream" uid="uid://gmlgf3h8xomw" path="res://Assets/SFX/BP_Default_Sounds/Default_Attack.mp3" id="2_an335"]
 [ext_resource type="AudioStream" uid="uid://dda66qotujk1g" path="res://Assets/SFX/BP_Default_Sounds/Default_Death.mp3" id="3_1mofh"]
+[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="4_e0h5c"]
+[ext_resource type="Texture2D" uid="uid://055gj3xys6qy" path="res://Assets/UI/Title_Screen_Graphics/Blue_Sky.png" id="4_hxwd8"]
+[ext_resource type="FontFile" uid="uid://kpqikns6mdrr" path="res://Assets/Fonts/LittleMissLoudonBold-VGO9l.ttf" id="5_2f7ux"]
+[ext_resource type="Theme" uid="uid://bbj4at51n1iaj" path="res://Assets/Themes/button.tres" id="6_b3r87"]
+[ext_resource type="Texture2D" uid="uid://bsfmf4ofw2ivx" path="res://Assets/UI/EnemyPointArrow.png" id="7_ae6lo"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -16,10 +21,31 @@ action_items = Array[String](["Yellow", "Blue", "Green", "Red"])
 sample_sfx = ExtResource("2_an335")
 sample_voice = ExtResource("3_1mofh")
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BlueSky" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("4_hxwd8")
+
+[node name="EnemyPointArrow" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(95, 82)
+rotation = -3.14159
+scale = Vector2(2, 2)
+texture = ExtResource("7_ae6lo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 65
+theme_override_constants/margin_top = 65
+
+[node name="BackButton" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("6_b3r87")
+theme_override_fonts/font = ExtResource("5_2f7ux")
+theme_override_font_sizes/font_size = 32
 text = "Back to main"
 
 [node name="SettingsContainer" type="Control" parent="."]
@@ -43,11 +69,14 @@ offset_bottom = 131.0
 
 [node name="Label" type="Label" parent="SettingsContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_e0h5c")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "SETTINGS
 "
 horizontal_alignment = 1
 
 [node name="KeybindsLabel" type="Label" parent="SettingsContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "KEYBINDS"
 horizontal_alignment = 1
@@ -73,6 +102,8 @@ text = "UP"
 
 [node name="SoundLabel" type="Label" parent="SettingsContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_e0h5c")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "AUDIO
 "
 horizontal_alignment = 1
@@ -85,6 +116,8 @@ layout_mode = 2
 
 [node name="MasterLabel" type="Label" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_e0h5c")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "MASTER
 "
 
@@ -102,7 +135,9 @@ layout_mode = 2
 
 [node name="MusicLabel" type="Label" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer2"]
 layout_mode = 2
-text = "MUSIC   "
+theme = ExtResource("4_e0h5c")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "MUSIC  "
 
 [node name="MusicSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer2"]
 unique_name_in_owner = true
@@ -114,6 +149,7 @@ step = 0.05
 value = 1.0
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox"]
+visible = false
 layout_mode = 2
 
 [node name="VoiceLabel" type="Label" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer3"]
@@ -134,7 +170,9 @@ layout_mode = 2
 
 [node name="SFXLabel" type="Label" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer4"]
 layout_mode = 2
-text = "SFX        "
+theme = ExtResource("4_e0h5c")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "SFX     "
 
 [node name="SFXSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer4"]
 unique_name_in_owner = true
@@ -145,7 +183,7 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="drag_ended" from="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer/MasterSlider" to="." method="_on_master_slider_drag_ended"]
 [connection signal="value_changed" from="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="drag_ended" from="SettingsContainer/VBoxContainer/AudioSliderContainerVbox/HBoxContainer2/MusicSlider" to="." method="_on_music_slider_drag_ended"]

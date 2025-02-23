@@ -1,24 +1,33 @@
 extends CharacterBody2D
 
+# For hitting notes and stuff
+
+# Scene
 @onready var noteGraphics = preload("res://Game/UI/Notes_Graphics/note_graphics.tscn")
 
 @onready var scoreAmount = $"../ScoreAmount"
 @onready var comboAmount = $"../ComboAmount"
 
+# Scoring
 var score = 0
 var combo = 0
+
+# Note logic
 var note_queue : Array
 var note_hit
+
+# Tells us what kind of note we hit
 var note_precision = 0
 
+# To keep track of how many perfects we have landed
+var perfect_streak : int = 0
+
+# Multipliers
 var precisionMult = 1
 var comboMult = 1
 
+# Miss and holding
 var miss = false
-#var bad = false
-#var good = false
-#var great = false
-#var perfect = false
 var holding = false
 
 func _process(delta):
@@ -34,6 +43,20 @@ func _unhandled_input(event):
 		var hitNote = hitList[0]
 		var hitPrecision = hitList[1]
 		var keyPress = checkPress(event)
+		var tween = create_tween()
+		arrow()
+		if keyPress == 1:
+			tween.tween_property($ContactPointArrow, "rotation_degrees", 270, 0)
+			$ContactPointArrow.modulate = Color.YELLOW
+		elif keyPress == 2:
+			$ContactPointArrow.modulate = Color.BLUE
+			tween.tween_property($ContactPointArrow, "rotation_degrees", 180, 0)
+		elif keyPress == 3:
+			$ContactPointArrow.modulate = Color.GREEN
+			tween.tween_property($ContactPointArrow, "rotation_degrees", 90, 0)
+		elif keyPress == 4:
+			$ContactPointArrow.modulate = Color.RED
+			tween.tween_property($ContactPointArrow, "rotation_degrees", 360, 0)
 		if hitNote != null and hitPrecision > 0 and keyPress > 0:
 			note_hit = false
 			if keyPress == hitNote.type:
@@ -57,13 +80,16 @@ func _unhandled_input(event):
 					2: precisionMult = 1 #Good
 					3: precisionMult = 3 #Great
 					4: precisionMult = 5 #Perfect
-				score += 10 * precisionMult * comboMult
+				score += 100 * precisionMult * comboMult
 				if hitNote.hold:
 					holding = true
 					hitNote.holdNote()
 					hitNote.pointerObj = self
 				else:
-					hitNote.queue_free()
+					hitNote.animPlayer.play("death")
+					hitNote.enemyPointArrow.visible = false
+					hitNote.dead = true
+					hitNote.hit = true
 			else:
 				miss = true
 				combo = 0
@@ -81,21 +107,25 @@ func _unhandled_input(event):
 		
 func releaseNote():
 	holding = false
-		
+
+func arrow():
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_BOUNCE)
+	tween.tween_property($FlandreContactPoint, "scale", Vector2(2.5,1.5), .033)
+	tween.tween_property($FlandreContactPoint, "scale", Vector2(1.5,2.5), .033)
+	tween.tween_property($FlandreContactPoint, "scale", Vector2(2,2), .033)
+
 func checkNotes() -> Array:
 	var retArray = [null, 0]
 	var notes = get_tree().get_nodes_in_group("note")
+	while notes.size() > 0 and notes[0].dead:
+		notes.erase(notes[0])
 	
 	if notes.size() > 0:
 		var closestNote = notes[0]
 		var precision = closestNote.checkPosition()
 		retArray = [notes[0], notes[0].checkPosition()]
 		note_precision = precision
-		#match precision:
-			#1: bad = true
-			#2: good = true
-			#3: great = true
-			#4: perfect = true
 	return retArray
 		
 func checkPress(event : InputEventKey) -> int:
@@ -120,47 +150,54 @@ func checkPress(event : InputEventKey) -> int:
 func resetPrecision():
 	miss = false
 	note_precision = 0
-	#bad = false
-	#good = false
-	#great = false
-	#perfect = false
 
 func printPrecision():
+	if !note_hit:
+		note_precision = 0
 	var noteLabel = noteGraphics.instantiate()
 	add_child(noteLabel)
-	noteLabel.initiate(note_precision)
+	var damage : int
+	var boss := get_node_or_null("../Boss")
+	match noteLabel.initiate(note_precision):
+		2:
+			perfect_streak = 0
+			damage = 5
+		3:
+			perfect_streak = 0
+			damage = 10
+		4:
+			# So we loop and you need to land another 4 hits
+			perfect_streak = (perfect_streak + 1) % 5
+			damage = 20
+	# Boss is in the scene so make it take damage
+	if boss != null:
+		if perfect_streak == 4:
+			# perfect streak gives us an additional 100 damage
+			damage = damage + 100
+		if boss.has_method("take_damage"):
+			boss.take_damage(damage)
+			
 	noteLabel.global_position = position
-	noteLabel.global_position.y -= 100
+	noteLabel.global_position.y -= 250
 	
-	noteLabel.global_position.y += randf_range(-10, 10)
-	noteLabel.global_position.x += randf_range(-10, 10)
-	
-	#resetLabels()
-	#precisionLabelReset.wait_time = 0.5
-	#if note_hit:
-		#if perfect:
-			#perfectLabel.visible = true
-			#return
-		#if great:
-			#greatLabel.visible = true
-			#return
-		#if good:
-			#goodLabel.visible = true
-			#return
-		#if bad:
-			#badLabel.visible = true
-			#return
-	#if miss:
-		#missLabel.visible = true
-		#return
+	noteLabel.global_position.y += randf_range(-20, 20)
+	noteLabel.global_position.x += randf_range(-20, 20)
+	note_hit = false
 
-func _on_bad_area_exited(area):
-	if !note_hit:
+#func _on_bad_area_exited(area):
+	#if !note_hit and !area.get_parent().hit:
+		#miss = true
+		#printPrecision()
+		#combo = 0
+	#resetPrecision()
+
+#func _on_bad_area_entered(area):
+	#if !holding:
+		#note_hit = false
+
+func _on_killzone_area_entered(area):
+	if !area.get_parent().hit:
 		miss = true
 		printPrecision()
 		combo = 0
-	resetPrecision()
-
-func _on_bad_area_entered(area):
-	if !holding:
-		note_hit = false
+		resetPrecision()

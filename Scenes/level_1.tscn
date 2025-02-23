@@ -1,12 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://bc03syknr3he6"]
+[gd_scene load_steps=14 format=3 uid="uid://bc03syknr3he6"]
 
 [ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
-[ext_resource type="Texture2D" uid="uid://dw5ji5ifhotwb" path="res://Assets/Characters/Scarlet.png" id="1_xhhx3"]
 [ext_resource type="Script" path="res://Scenes/background.gd" id="2_ep8y8"]
-[ext_resource type="AudioStream" uid="uid://bxpovugslghq0" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_RUNNING.mp3" id="3_pdfy0"]
-[ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="4_lafp1"]
+[ext_resource type="AudioStream" uid="uid://c1k7gw8dgw6sh" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3" id="3_wdnrs"]
 [ext_resource type="Script" path="res://Scenes/pointer.gd" id="5_6yugx"]
+[ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="7_2ahiu"]
 [ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="7_bprpc"]
+[ext_resource type="Texture2D" uid="uid://by22eheheamcu" path="res://Assets/UI/ContactPointArrow.png" id="7_d0uin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrojt"]
 size = Vector2(221.667, 215)
@@ -20,40 +20,24 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb27d"]
 size = Vector2(26.6666, 26.6667)
 
-[sub_resource type="LabelSettings" id="LabelSettings_yc55l"]
-font_size = 90
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vjq"]
 size = Vector2(20, 350)
 
 [sub_resource type="LabelSettings" id="LabelSettings_371ga"]
 font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Level1" type="Node2D"]
 
-[node name="Scarlet" type="Sprite2D" parent="."]
-position = Vector2(167, 339)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_xhhx3")
-
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource("2_ep8y8")
-song = ExtResource("3_pdfy0")
+song = ExtResource("3_wdnrs")
 
 [node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
 script = ExtResource("1_auj5i")
 emitter = NodePath("..")
-music_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running.json"
-
-[node name="Sprite2D" type="Sprite2D" parent="Background"]
-position = Vector2(19203, 69)
-scale = Vector2(300, 1)
-texture = ExtResource("4_lafp1")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Background"]
-position = Vector2(19204, 656)
-scale = Vector2(300, 1)
-texture = ExtResource("4_lafp1")
+music_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-boss.json"
 
 [node name="Pointer" type="CharacterBody2D" parent="."]
 position = Vector2(441, 342)
@@ -63,6 +47,12 @@ script = ExtResource("5_6yugx")
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("7_bprpc")
+
+[node name="ContactPointArrow" type="Sprite2D" parent="Pointer"]
+texture_filter = 3
+scale = Vector2(2, 2)
+texture = ExtResource("7_d0uin")
+offset = Vector2(29, -2)
 
 [node name="Bad" type="Area2D" parent="Pointer"]
 visible = false
@@ -101,68 +91,12 @@ debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(1208, 342)
 
 [node name="BossSpawn" type="Marker2D" parent="."]
 position = Vector2(1685, 342)
-
-[node name="MissLabel" type="Label" parent="."]
-visible = false
-offset_left = 295.0
-offset_top = 222.0
-offset_right = 544.0
-offset_bottom = 335.0
-text = "MISS"
-label_settings = SubResource("LabelSettings_yc55l")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BadLabel" type="Label" parent="."]
-visible = false
-offset_left = 295.0
-offset_top = 222.0
-offset_right = 544.0
-offset_bottom = 335.0
-text = "BAD"
-label_settings = SubResource("LabelSettings_yc55l")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GoodLabel" type="Label" parent="."]
-visible = false
-offset_left = 295.0
-offset_top = 222.0
-offset_right = 544.0
-offset_bottom = 335.0
-text = "GOOD"
-label_settings = SubResource("LabelSettings_yc55l")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GreatLabel" type="Label" parent="."]
-visible = false
-offset_left = 295.0
-offset_top = 222.0
-offset_right = 553.0
-offset_bottom = 335.0
-text = "GREAT"
-label_settings = SubResource("LabelSettings_yc55l")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PerfectLabel" type="Label" parent="."]
-visible = false
-offset_left = 295.0
-offset_top = 222.0
-offset_right = 631.0
-offset_bottom = 335.0
-text = "PERFECT"
-label_settings = SubResource("LabelSettings_yc55l")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
 position = Vector2(360, 342)
@@ -178,6 +112,14 @@ offset_top = 9.0
 offset_right = 125.0
 offset_bottom = 54.0
 text = "Score:"
+label_settings = SubResource("LabelSettings_371ga")
+
+[node name="AnyKey" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 342.0
+offset_right = 830.0
+offset_bottom = 387.0
+text = "Press any key to start"
 label_settings = SubResource("LabelSettings_371ga")
 
 [node name="ScoreAmount" type="Label" parent="."]
@@ -206,6 +148,12 @@ text = "0
 "
 label_settings = SubResource("LabelSettings_371ga")
 
+[node name="Player_Flandre" parent="." instance=ExtResource("7_2ahiu")]
+z_index = 10
+position = Vector2(217, 564)
+scale = Vector2(2, 2)
+
 [connection signal="area_entered" from="Pointer/Bad" to="Pointer" method="_on_bad_area_entered"]
 [connection signal="area_exited" from="Pointer/Bad" to="Pointer" method="_on_bad_area_exited"]
 [connection signal="timeout" from="Timer" to="Background" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Killzone" to="Pointer" method="_on_killzone_area_entered"]

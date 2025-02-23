@@ -10,6 +10,7 @@ uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_nearest;
 uniform vec4  front_colour: source_color;
 uniform vec4  middle_colour: source_color;
 uniform vec4  back_colour: source_color;
+uniform vec4  highlight_colour: source_color;
 uniform float layer_distort: hint_range(0.0, 1.0) = 0.5;
 uniform uint  sin_scale = 1;
 

@@ -1,0 +1,268 @@
+[gd_scene load_steps=43 format=3 uid="uid://btuclynen63si"]
+
+[ext_resource type="PackedScene" uid="uid://do5dx0a7tuc54" path="res://Scenes/lava.tscn" id="1_fsbb8"]
+[ext_resource type="Shader" path="res://Assets/Shaders/water.gdshader" id="1_hefh1"]
+[ext_resource type="Shader" path="res://Assets/Shaders/lava.gdshader" id="2_gy1n1"]
+[ext_resource type="Texture2D" uid="uid://d0q3466tacuhb" path="res://Assets/Environment/Backgroundrock.png" id="2_mejla"]
+[ext_resource type="Texture2D" uid="uid://brtiyi1k4u838" path="res://Assets/Environment/BackgroundVolcano.png" id="3_nlryy"]
+[ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="6_mb178"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6cuvf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7skmc"]
+height = 2702
+seamless = true
+seamless_blend_skirt = 0.724
+as_normal_map = true
+bump_strength = 46.2
+noise = SubResource("FastNoiseLite_6cuvf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hf1p1"]
+resource_local_to_scene = true
+shader = ExtResource("2_gy1n1")
+shader_parameter/timeScaleFactor = 0.04
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_7skmc")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2qcj0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2yrn0"]
+noise = SubResource("FastNoiseLite_2qcj0")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ht2na"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fs3go"]
+noise = SubResource("FastNoiseLite_ht2na")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k5572"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_suq3w"]
+noise = SubResource("FastNoiseLite_k5572")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2hjek"]
+shader = ExtResource("1_hefh1")
+shader_parameter/front_colour = Color(1, 0.583333, 0, 1)
+shader_parameter/middle_colour = Color(1, 0.233333, 0, 1)
+shader_parameter/back_colour = Color(0.27, 0.045, 0, 1)
+shader_parameter/highlight_colour = null
+shader_parameter/layer_distort = 0.117
+shader_parameter/sin_scale = 6
+shader_parameter/highlights_threshold = 0.866
+shader_parameter/reflection_strength = 0.0
+shader_parameter/refraction_strength = 0.45
+shader_parameter/sun_refraction_scale = 1.0
+shader_parameter/sun_refraction_mag_min = 0.834
+shader_parameter/sun_refraction_mag_max = 1.0
+shader_parameter/refraction_colour_split = 0.918
+shader_parameter/height = 0.53
+shader_parameter/saturation = 1.0
+shader_parameter/waves = SubResource("NoiseTexture2D_suq3w")
+shader_parameter/highlights_0 = SubResource("NoiseTexture2D_2yrn0")
+shader_parameter/highlights_1 = SubResource("NoiseTexture2D_fs3go")
+
+[sub_resource type="Gradient" id="Gradient_kulqo"]
+offsets = PackedFloat32Array(0, 0.92623, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.93, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m02jt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mxcrh"]
+color_ramp = SubResource("Gradient_kulqo")
+noise = SubResource("FastNoiseLite_m02jt")
+
+[sub_resource type="Gradient" id="Gradient_jpn5h"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a6gn5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_36lgk"]
+color_ramp = SubResource("Gradient_jpn5h")
+noise = SubResource("FastNoiseLite_a6gn5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aenc8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r5bos"]
+noise = SubResource("FastNoiseLite_aenc8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6in3a"]
+shader = ExtResource("1_hefh1")
+shader_parameter/front_colour = Color(0.41, 0.0546667, 0, 1)
+shader_parameter/middle_colour = Color(0.27, 0.0855, 0, 1)
+shader_parameter/back_colour = Color(0, 0, 0, 1)
+shader_parameter/highlight_colour = null
+shader_parameter/layer_distort = 0.5
+shader_parameter/sin_scale = 7
+shader_parameter/highlights_threshold = 0.895
+shader_parameter/reflection_strength = 0.25
+shader_parameter/refraction_strength = 0.0
+shader_parameter/sun_refraction_scale = 0.195
+shader_parameter/sun_refraction_mag_min = 0.8
+shader_parameter/sun_refraction_mag_max = 0.9
+shader_parameter/refraction_colour_split = 0.423
+shader_parameter/height = 0.305
+shader_parameter/saturation = 1.0
+shader_parameter/waves = SubResource("NoiseTexture2D_r5bos")
+shader_parameter/highlights_0 = SubResource("NoiseTexture2D_mxcrh")
+shader_parameter/highlights_1 = SubResource("NoiseTexture2D_36lgk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmegw"]
+
+[sub_resource type="Gradient" id="Gradient_436d3"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.7, 0.7, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_063wl"]
+gradient = SubResource("Gradient_436d3")
+
+[sub_resource type="Environment" id="Environment_77gdu"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.21
+glow_strength = 1.69
+glow_bloom = 0.02
+adjustment_enabled = true
+adjustment_contrast = 1.17
+adjustment_saturation = 1.17
+adjustment_color_correction = SubResource("GradientTexture1D_063wl")
+
+[sub_resource type="Gradient" id="Gradient_pcsxx"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 0.333333, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hocpq"]
+gradient = SubResource("Gradient_pcsxx")
+width = 51
+
+[sub_resource type="Gradient" id="Gradient_au2tn"]
+offsets = PackedFloat32Array(0, 0.00819672, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0.783333, 0, 0.917647, 1, 0.4, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_plm44"]
+gradient = SubResource("Gradient_au2tn")
+
+[sub_resource type="Gradient" id="Gradient_ii3lw"]
+offsets = PackedFloat32Array(0.0409836, 0.508197, 1)
+colors = PackedColorArray(1, 0.879667, 0.62, 1, 1, 0.683333, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wts8a"]
+gradient = SubResource("Gradient_ii3lw")
+
+[sub_resource type="Curve" id="Curve_w5wlh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.725275), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jjqvk"]
+curve = SubResource("Curve_w5wlh")
+
+[sub_resource type="Curve" id="Curve_21o4i"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -10.989), 0.0, 0.0, 0, 0, Vector2(0.16, 46.1538), 0.0, 0.0, 0, 0, Vector2(0.313333, -15.3846), 0.0, 0.0, 0, 0, Vector2(0.433333, 32.967), 0.0, 0.0, 0, 0, Vector2(0.606667, -19.7802), 0.0, 0.0, 0, 0, Vector2(0.773333, 28.5714), 0.0, 0.0, 0, 0, Vector2(0.886667, -28.5714), 0.0, 0.0, 0, 0, Vector2(1, 37.3626), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="CurveTexture" id="CurveTexture_0cjp3"]
+curve = SubResource("Curve_21o4i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v6wvn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(640, 360, 1)
+direction = Vector3(-1, 0, 0)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+gravity = Vector3(-200, 20, 0)
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 6.0
+tangential_accel_curve = SubResource("CurveTexture_0cjp3")
+damping_max = 100.0
+scale_min = 3.0
+scale_max = 4.0
+color_ramp = SubResource("GradientTexture1D_wts8a")
+color_initial_ramp = SubResource("GradientTexture1D_plm44")
+emission_curve = SubResource("CurveTexture_jjqvk")
+
+[sub_resource type="Gradient" id="Gradient_3camp"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.012987, 0.525974, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.966667, 1, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_liebp"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_3camp")
+width = 2
+height = 32
+fill_to = Vector2(0, 1)
+
+[node name="BackgroundVolcano" type="Node2D"]
+texture_filter = 3
+
+[node name="Node2D" parent="." instance=ExtResource("1_fsbb8")]
+position = Vector2(-4, -282)
+
+[node name="ColorRect2" parent="Node2D" index="0"]
+material = SubResource("ShaderMaterial_hf1p1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_2hjek")
+offset_top = 556.0
+offset_right = 1280.0
+offset_bottom = 789.0
+color = Color(1, 0.7025, 0.15, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6in3a")
+offset_left = 2.0
+offset_top = -351.0
+offset_right = 1278.0
+offset_bottom = 602.0
+
+[node name="BackgroundVolcano" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mmegw")
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("3_nlryy")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(-150, 0)
+repeat_times = 2
+
+[node name="Backgroundrock" type="Sprite2D" parent="Parallax2D"]
+modulate = Color(0.34, 0.34, 0.34, 1)
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("2_mejla")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_77gdu")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(639, 624.044)
+rotation = 1.5708
+scale = Vector2(6.46018, 1279.71)
+energy = 2.83
+texture = SubResource("GradientTexture1D_hocpq")
+
+[node name="Player_Flandre" parent="." instance=ExtResource("6_mb178")]
+position = Vector2(243, 524)
+scale = Vector2(2, 2)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(1140, 335)
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_v6wvn")
+texture = SubResource("GradientTexture2D_liebp")
+lifetime = 5.0
+preprocess = 2.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.6
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(836, 324)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_v6wvn")
+lifetime = 5.0
+preprocess = 2.0
+randomness = 1.0
+trail_lifetime = 0.6
+
+[editable path="Node2D"]

@@ -44,6 +44,7 @@ func initialize():
 	#AudMan.play_music(music)
 	song_name = sheet_data.name
 	sheet = sheet_data.sheet
+	index = [0,0,0]
 	
 	prints(bpm, song_path, emitter.music, song_name, sheet)
 	print('------------------')
@@ -79,7 +80,6 @@ func decipher_note(note):
 			new_note.length = note[2]
 			if int(note[3]) is int:
 				new_note.length = int(note[2] + note[3])
-				print(new_note.length)
 	match note[-1]:
 		"P": new_note.type = legend[note[1]]
 		"F": new_note.type = legend[note[1]]
@@ -96,7 +96,7 @@ func play_note():
 	var note_data = null
 	#print(note)
 	if note is not float:
-		#prints("play note:", note)
+		#prints("play note:", note)w
 		#Map it out according to our legend
 		note_data = decipher_note(note)
 	#Build the note projectile

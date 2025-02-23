@@ -13,8 +13,13 @@ var holdTrailWidth
 var pointer : Vector2
 var pointerObj = null
 
+@onready var animPlayer = $AnimationPlayer
+var dead = false
+var hit = false
+
 @onready var contactPoint = $EnemyContactPoint
-@onready var sprite = $Icon
+@onready var enemyPointArrow = $EnemyPointArrow
+@onready var sprite = $Path2D/PathFollow2D/Icon
 
 func _ready():
 	if hold:
@@ -35,21 +40,38 @@ func _process(delta):
 	contactPoint.rotation_degrees -= .5
 
 func setColor(color):
+	var tween = create_tween()
 	match (color):
 		1:
-			sprite.modulate = Color.YELLOW
+			#yellow
+			tween.tween_property(enemyPointArrow, "rotation_degrees", 270, 0)
+			enemyPointArrow.modulate = Color.YELLOW
+			sprite.material.set("shader_parameter/starting_colour", Vector4(1, 1, 0, 1))
+			sprite.material.set("shader_parameter/ending_colour", Vector4(1, 1, 0, 0))
 			type = 1
 			pass
 		2:
-			sprite.modulate = Color.BLUE
+			#blue
+			enemyPointArrow.modulate = Color.BLUE
+			tween.tween_property(enemyPointArrow, "rotation_degrees", 180, 0)
+			sprite.material.set("shader_parameter/starting_colour", Vector4(0, 0, 1, 1))
+			sprite.material.set("shader_parameter/ending_colour", Vector4(0, 0, 1, 0))
 			type = 2
 			pass
 		3:
-			sprite.modulate = Color.GREEN
+			#green
+			enemyPointArrow.modulate = Color.GREEN
+			tween.tween_property(enemyPointArrow, "rotation_degrees", 90, 0)
+			sprite.material.set("shader_parameter/starting_colour", Vector4(0, 1, 0, 1))
+			sprite.material.set("shader_parameter/ending_colour", Vector4(0, 1, 0, 0))
 			type = 3
 			pass
 		4:
-			sprite.modulate = Color.RED
+			#red
+			enemyPointArrow.modulate = Color.RED
+			tween.tween_property(enemyPointArrow, "rotation_degrees", 360, 0)
+			sprite.material.set("shader_parameter/starting_colour", Vector4(1, 0, 0, 1))
+			sprite.material.set("shader_parameter/ending_colour", Vector4(1, 0, 0, 0))
 			type = 4
 			pass
 	pass
@@ -79,4 +101,8 @@ func releaseNote():
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("killzone"):
+		queue_free()
+
+func _on_animation_player_animation_finished(anim_name):
+	if "anim_name" == "death":
 		queue_free()

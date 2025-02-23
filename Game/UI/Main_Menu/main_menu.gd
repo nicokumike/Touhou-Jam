@@ -1,6 +1,7 @@
 extends Control
 
 @onready var menu_music = preload("res://Assets/SFX/BP_Default_Sounds/Default_Muzak.mp3")
+@onready var easy_modo = preload("res://Assets/SFX/EEEH_EASY MODE_.mp3")
 
 func _ready() -> void:
 	SignalBus.dialogue_finished.connect(_resume_cutscene)
@@ -14,14 +15,16 @@ func animate_button(button_node: Node, state: String) -> void:
 	await tween.finished
 	SignalBus.game_state_changed.emit(state)
 	queue_free()
-	
-var json_data : JSON = preload("res://json_test_.json")
+
+# Dialogue for the cutscene
+var cutscene_dialogue : JSON = preload("res://Game/UI/Main_Menu/Dialogue/level0_1.dialogue.json")
+
 # Function to trigger dialogue then pause
 func _trigger_dialogue() -> void:
 	# For testing
 	# TODO: Would probably be better to pause all other scenes
 	$AnimationPlayer.pause()
-	SignalBus.dialogue_triggered.emit(json_data.data)
+	SignalBus.dialogue_triggered.emit(cutscene_dialogue.data)
 	
 	
 # Function to resume custcene when dialogue is paused
@@ -37,8 +40,14 @@ func _on_start_pressed() -> void:
 	await tween.finished
 	await get_tree().create_timer(1.5).timeout
 	tween.tween_property($BlackHouse/GPUParticles2D, "modulate", Color.TRANSPARENT, 0.2)
+	difficulty()
 	$AnimationPlayer.play("cutscene")
 	
+func difficulty():
+	$HBoxContainer.visible = true
+	get_tree().paused = true
+	
+	pass
 
 func _on_settings_pressed() -> void:
 	await animate_button($VBoxContainer/Settings, "Settings")
@@ -58,3 +67,24 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		$AnimationPlayer.play("cutscene2")
 		#SignalBus.game_state_changed.emit("Start")
 		#queue_free()
+
+
+func _on_easy_pressed() -> void:
+	#ur a baby
+	AudMan.play_quip(easy_modo)
+	$AnimationPlayer.play("cutscene")
+	SignalBus.difficulty = "Easy"
+	$HBoxContainer/Easy.visible = false
+	$HBoxContainer/Hard.visible = false
+	print(SignalBus.difficulty)
+	get_tree().paused = false
+
+
+func _on_hard_pressed() -> void:
+	#ur retarded niko made it too hard you have no correct options
+	$AnimationPlayer.play("cutscene")
+	SignalBus.difficulty = "Hard"
+	$HBoxContainer/Easy.visible = false
+	$HBoxContainer/Hard.visible = false
+	print(SignalBus.difficulty)
+	get_tree().paused = false

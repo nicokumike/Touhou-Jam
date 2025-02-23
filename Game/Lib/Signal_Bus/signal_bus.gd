@@ -3,6 +3,8 @@ extends Node
 #Turn off unused signal warning in project to get rid of the dumb warnings
 #I KNOW WHAT IM DOING GODOT HECK OFF
 
+var difficulty = null
+
 # Signal that will be triggered when game pauses
 signal pause_game
 
@@ -14,3 +16,5 @@ signal dialogue_triggered(dialogue_data : Dictionary)
 
 # Signal that will be emitted when dialogue is complete
 signal dialogue_finished
+
+#signal difficulty_selected(diff)

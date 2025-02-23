@@ -1,18 +1,137 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5okftixnlb3w"]
+[gd_scene load_steps=14 format=3 uid="uid://c5okftixnlb3w"]
 
 [ext_resource type="Script" path="res://Scenes/note.gd" id="1_j3arb"]
 [ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="2_elhnb"]
 [ext_resource type="Texture2D" uid="uid://bxat8gcmm7lmf" path="res://Assets/UI/EnemyContactPoint.png" id="3_2gvvc"]
+[ext_resource type="Shader" path="res://Assets/Shaders/note.gdshader" id="3_3tjxe"]
+[ext_resource type="Texture2D" uid="uid://drrbubr80a1w7" path="res://Assets/UI/Notes/Projectile2.png" id="5_mcwh5"]
+[ext_resource type="Texture2D" uid="uid://bsfmf4ofw2ivx" path="res://Assets/UI/EnemyPointArrow.png" id="6_6a8ug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0c15"]
 size = Vector2(3.75, 3.8125)
 
+[sub_resource type="Animation" id="Animation_kopcd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Icon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Path2D/PathFollow2D/Icon:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_g65ch"]
+resource_name = "death"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.15932, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Icon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 5.71246]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyContactPoint:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4ed0o"]
+resource_name = "pulsate"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3drgj"]
+_data = {
+"RESET": SubResource("Animation_kopcd"),
+"death": SubResource("Animation_g65ch"),
+"pulsate": SubResource("Animation_4ed0o")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_nwfyt"]
+_data = {
+"points": PackedVector2Array(74.8801, 269.087, -74.8801, -269.087, 0, 0, 540.436, -65.5899, -540.436, 65.5899, -822, -366)
+}
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1qf07"]
+resource_local_to_scene = true
+shader = ExtResource("3_3tjxe")
+shader_parameter/max_line_width = 16.86
+shader_parameter/min_line_width = 7.08
+shader_parameter/freq = 13.955
+shader_parameter/block_size = 20.0
+shader_parameter/starting_colour = Vector4(0, 1, 0, 1)
+shader_parameter/ending_colour = Vector4(0, 1, 0, 0)
+
 [node name="Note" type="CharacterBody2D" groups=["note"]]
 script = ExtResource("1_j3arb")
-
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_elhnb")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["perfect"]]
 collision_layer = 2
@@ -36,4 +155,31 @@ texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("3_2gvvc")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3drgj")
+}
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nwfyt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+scale = Vector2(0.2, 0.2)
+rotates = false
+
+[node name="Icon" type="Sprite2D" parent="Path2D/PathFollow2D"]
+texture_filter = 3
+material = SubResource("ShaderMaterial_1qf07")
+scale = Vector2(10, 10)
+texture = ExtResource("5_mcwh5")
+hframes = 2
+
+[node name="EnemyPointArrow" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(4, -161)
+scale = Vector2(3, 3)
+texture = ExtResource("6_6a8ug")
+offset = Vector2(-1.33333, -2)
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

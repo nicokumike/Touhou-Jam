@@ -7,8 +7,8 @@
 [sub_resource type="Resource" id="Resource_jq158"]
 script = ExtResource("3_ww5sm")
 skeleton_data_resource = ExtResource("1_lk5gn")
-animation_name = "Base_Chibi/walk"
-animation_index = 1
+animation_name = "Base_Chibi/idle"
+animation_index = 0
 loop = true
 track = 0
 mix_duration = -1.0

@@ -1,14 +1,16 @@
-[gd_scene load_steps=45 format=3 uid="uid://cpnq6w7rd0t4s"]
+[gd_scene load_steps=53 format=3 uid="uid://cpnq6w7rd0t4s"]
 
 [ext_resource type="Script" path="res://Game/UI/Main_Menu/main_menu.gd" id="1_lbcms"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://d2y5byo3k7up3" path="res://Assets/Characters/Base_Chibi/base_chibi_data_resource.tres" id="2_6f0g6"]
 [ext_resource type="Texture2D" uid="uid://055gj3xys6qy" path="res://Assets/UI/Title_Screen_Graphics/Blue_Sky.png" id="2_wbdnd"]
+[ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="3_7ql5x"]
 [ext_resource type="Texture2D" uid="uid://c7hf48l4alqd7" path="res://Assets/UI/Title_Screen_Graphics/Blood_Moon.png" id="3_ed2fx"]
 [ext_resource type="Texture2D" uid="uid://bu8ynafy53e5h" path="res://Assets/UI/Title_Screen_Graphics/Stars.png" id="3_w1e0u"]
 [ext_resource type="Texture2D" uid="uid://bugy2hoewox07" path="res://Assets/UI/Title_Screen_Graphics/Mansion.png" id="4_15131"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Blending_Modes/soft_light.gdshader" id="5_g55ib"]
 [ext_resource type="Texture2D" uid="uid://c46ql5rga05gn" path="res://Assets/UI/Title_Screen_Graphics/Utsuho.png" id="6_ov4cd"]
 [ext_resource type="Texture2D" uid="uid://oy2k746gnjl6" path="res://Assets/UI/Title_Screen_Graphics/Title.png" id="7_qnal7"]
-[ext_resource type="Texture2D" uid="uid://tmhjaktames" path="res://Assets/UI/Title_Screen_Graphics/Flandre_Sill.png" id="8_5dr6k"]
+[ext_resource type="PackedScene" uid="uid://bc1gci3geymvg" path="res://Game/Characters/Chibi/flandre_chibi.tscn" id="9_p7ual"]
 [ext_resource type="Texture2D" uid="uid://c2v6vowqmuhto" path="res://Assets/UI/Title_Screen_Graphics/Start_Gray.png" id="10_muy4s"]
 [ext_resource type="Texture2D" uid="uid://c8bkrsuhc3ddr" path="res://Assets/UI/Title_Screen_Graphics/InsideMansion.png" id="10_tsigm"]
 [ext_resource type="Texture2D" uid="uid://ccg6rbuhvygnw" path="res://Assets/UI/Title_Screen_Graphics/Start.png" id="11_iw8te"]
@@ -23,6 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://islsqt57ygga" path="res://Assets/UI/Title_Screen_Graphics/Music_Room.png" id="16_c1qd8"]
 [ext_resource type="Texture2D" uid="uid://dg6k1fyokeha0" path="res://Assets/UI/Title_Screen_Graphics/Quit_Gray.png" id="17_m3amv"]
 [ext_resource type="Texture2D" uid="uid://bg6i5f1duif0l" path="res://Assets/UI/Title_Screen_Graphics/Quit.png" id="18_tyf8r"]
+[ext_resource type="Texture2D" uid="uid://bk2q70jckfgl6" path="res://Assets/UI/Title_Screen_Graphics/easybutton2.png" id="26_5pq6m"]
+[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="27_2bun6"]
+[ext_resource type="Texture2D" uid="uid://u1nkqbm05iie" path="res://Assets/UI/Title_Screen_Graphics/easybutton3.png" id="27_jny33"]
+[ext_resource type="Texture2D" uid="uid://bj2w2l3sfd16o" path="res://Assets/UI/Title_Screen_Graphics/hardbutton2.png" id="28_63dgu"]
+[ext_resource type="Texture2D" uid="uid://bqcmrc0qflcw7" path="res://Assets/UI/Title_Screen_Graphics/hardbutton3.png" id="30_x1xbc"]
 
 [sub_resource type="Environment" id="Environment_i042l"]
 background_mode = 3
@@ -34,6 +41,16 @@ glow_blend_mode = 0
 fog_light_energy = 0.0
 fog_sun_scatter = 0.63
 fog_density = 0.0275
+
+[sub_resource type="Resource" id="Resource_jq158"]
+script = ExtResource("3_7ql5x")
+skeleton_data_resource = ExtResource("2_6f0g6")
+animation_name = "Base_Chibi/idle"
+animation_index = 0
+loop = true
+track = 0
+mix_duration = -1.0
+speed = 1.0
 
 [sub_resource type="Animation" id="Animation_gq7mg"]
 length = 0.001
@@ -64,68 +81,80 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BlackHouse/FlandreSill:position")
+tracks/2/path = NodePath("BlackHouse:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(197, 210)]
+"values": [Vector2(0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BlackHouse/FlandreSill:flip_h")
+tracks/3/path = NodePath("BlackHouse/Outside:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BlackHouse/FlandreSill:scale")
+tracks/4/path = NodePath("BlackHouse/Flandre_Chibi:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2, 2)]
+"values": [Vector2(314, 485)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("BlackHouse:position")
+tracks/5/path = NodePath("BlackHouse/Flandre_Chibi:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(2, 2)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("BlackHouse/Outside:position")
+tracks/6/path = NodePath("BlackHouse/Flandre_Chibi/AnimationHandler_Spine:initial_animation:skeleton_data_resource")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [ExtResource("2_6f0g6")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlackHouse/Flandre_Chibi/AnimationHandler_Spine:initial_animation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Resource_jq158")]
 }
 
 [sub_resource type="Animation" id="Animation_qgev1"]
 resource_name = "cutscene"
-length = 15.0
-step = 0.1
+length = 18.0
+step = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -153,52 +182,76 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BlackHouse/FlandreSill:position")
+tracks/2/path = NodePath("BlackHouse:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3.5, 6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(197, 210), Vector2(-223, 210)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BlackHouse/FlandreSill:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.499, 3.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(2, 2), Vector2(-2, 2)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BlackHouse:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(4.7, 15),
+"times": PackedFloat32Array(6.083, 18),
 "transitions": PackedFloat32Array(0.353554, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -2202)]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(6.7),
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(9.662),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"_trigger_dialogue"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlackHouse/Flandre_Chibi:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(314, 485), Vector2(-49, 485.376)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BlackHouse/Flandre_Chibi:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3, 3.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(-2, 2)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BlackHouse/Flandre_Chibi/AnimationHandler_Spine:initial_animation:skeleton_data_resource")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.025, 3.156),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_6f0g6"), ExtResource("2_6f0g6"), ExtResource("2_6f0g6")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlackHouse/Flandre_Chibi/AnimationHandler_Spine:initial_animation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 3.156),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("Resource_jq158"), SubResource("Resource_jq158")]
 }
 
 [sub_resource type="Animation" id="Animation_4bhem"]
@@ -240,14 +293,14 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_pmol8"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uaqro"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q3ldf"]
 gradient = SubResource("Gradient_pmol8")
 
 [sub_resource type="Gradient" id="Gradient_ykmon"]
 offsets = PackedFloat32Array(0, 0.508197, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_12p6u"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tx7cv"]
 gradient = SubResource("Gradient_ykmon")
 
 [sub_resource type="Curve" id="Curve_dk4sm"]
@@ -256,7 +309,7 @@ max_value = 200.0
 _data = [Vector2(0, -10.989), 0.0, 0.0, 0, 0, Vector2(0.16, 46.1538), 0.0, 0.0, 0, 0, Vector2(0.313333, -15.3846), 0.0, 0.0, 0, 0, Vector2(0.433333, 32.967), 0.0, 0.0, 0, 0, Vector2(0.606667, -19.7802), 0.0, 0.0, 0, 0, Vector2(0.773333, 28.5714), 0.0, 0.0, 0, 0, Vector2(0.886667, -28.5714), 0.0, 0.0, 0, 0, Vector2(1, 37.3626), 0.0, 0.0, 0, 0]
 point_count = 8
 
-[sub_resource type="CurveTexture" id="CurveTexture_dha20"]
+[sub_resource type="CurveTexture" id="CurveTexture_7k3jg"]
 curve = SubResource("Curve_dk4sm")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p7a2o"]
@@ -270,19 +323,21 @@ initial_velocity_max = 80.0
 gravity = Vector3(-200, 20, 0)
 tangential_accel_min = -2.23517e-06
 tangential_accel_max = 6.0
-tangential_accel_curve = SubResource("CurveTexture_dha20")
+tangential_accel_curve = SubResource("CurveTexture_7k3jg")
 damping_max = 100.0
 scale_min = 1.5
 scale_max = 1.8
-color_ramp = SubResource("GradientTexture1D_12p6u")
-color_initial_ramp = SubResource("GradientTexture1D_uaqro")
+color_ramp = SubResource("GradientTexture1D_tx7cv")
+color_initial_ramp = SubResource("GradientTexture1D_q3ldf")
 
-[sub_resource type="Gradient" id="Gradient_eoj1g"]
+[sub_resource type="Gradient" id="Gradient_xvb5q"]
+resource_local_to_scene = true
 offsets = PackedFloat32Array(0.012987, 0.525974, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 0.7, 0.98, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ydg04"]
-gradient = SubResource("Gradient_eoj1g")
+resource_local_to_scene = true
+gradient = SubResource("Gradient_xvb5q")
 width = 2
 height = 32
 fill_to = Vector2(0, 1)
@@ -346,6 +401,7 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
+mouse_filter = 2
 texture = ExtResource("2_wbdnd")
 
 [node name="Stars" type="TextureRect" parent="."]
@@ -355,6 +411,7 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
+mouse_filter = 2
 texture = ExtResource("3_w1e0u")
 
 [node name="BloodMoon" type="TextureRect" parent="."]
@@ -363,6 +420,7 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
+mouse_filter = 2
 texture = ExtResource("3_ed2fx")
 
 [node name="BlackHouse" type="TextureRect" parent="."]
@@ -376,6 +434,7 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
+mouse_filter = 2
 texture = ExtResource("4_15131")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="BlackHouse/Mansion"]
@@ -396,6 +455,7 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
+mouse_filter = 2
 texture = ExtResource("6_ov4cd")
 
 [node name="Title" type="TextureRect" parent="BlackHouse"]
@@ -406,25 +466,23 @@ offset_top = -112.0
 offset_right = 639.0
 offset_bottom = 248.0
 scale = Vector2(2, 2)
+mouse_filter = 2
 texture = ExtResource("7_qnal7")
 
-[node name="FlandreSill" type="TextureRect" parent="BlackHouse"]
+[node name="Flandre_Chibi" parent="BlackHouse" instance=ExtResource("9_p7ual")]
 texture_filter = 3
-layout_mode = 0
-offset_left = 197.0
-offset_top = 210.0
-offset_right = 837.0
-offset_bottom = 570.0
+position = Vector2(314, 485)
 scale = Vector2(2, 2)
-pivot_offset = Vector2(117, 210)
-texture = ExtResource("8_5dr6k")
 
-[node name="TextureRect2" type="TextureRect" parent="BlackHouse/FlandreSill"]
-layout_mode = 0
-offset_left = 84.0
-offset_top = 198.5
-offset_right = 148.0
-offset_bottom = 304.5
+[node name="AnimationHandler_Spine" parent="BlackHouse/Flandre_Chibi" index="0"]
+initial_animation = SubResource("Resource_jq158")
+
+[node name="TextureRect2" type="TextureRect" parent="BlackHouse/Flandre_Chibi"]
+offset_left = -32.0
+offset_top = -58.0
+offset_right = 32.0
+offset_bottom = 48.0
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_rew0p")
 
 [node name="ColorRect" type="ColorRect" parent="BlackHouse"]
@@ -479,53 +537,17 @@ offset_right = 111.0
 offset_bottom = 137.0
 texture = SubResource("GradientTexture2D_rew0p")
 
-[node name="FlandreSill2" type="TextureRect" parent="BlackHouse"]
+[node name="Flandre_Chibi2" parent="BlackHouse" instance=ExtResource("9_p7ual")]
 texture_filter = 3
-layout_mode = 0
-offset_left = 442.0
-offset_top = 2558.0
-offset_right = 1082.0
-offset_bottom = 2918.0
+position = Vector2(560, 2834)
 scale = Vector2(2, 2)
-pivot_offset = Vector2(117, 210)
-texture = ExtResource("8_5dr6k")
 
-[node name="TextureRect2" type="TextureRect" parent="BlackHouse/FlandreSill2"]
-layout_mode = 0
-offset_left = 84.0
-offset_top = 198.5
-offset_right = 148.0
-offset_bottom = 304.5
+[node name="TextureRect2" type="TextureRect" parent="BlackHouse/Flandre_Chibi2"]
+offset_left = -32.0
+offset_top = -58.0
+offset_right = 32.0
+offset_bottom = 48.0
 texture = SubResource("GradientTexture2D_rew0p")
-
-[node name="FlandreSill3" type="TextureRect" parent="BlackHouse"]
-texture_filter = 3
-layout_mode = 0
-offset_left = 442.0
-offset_top = 2558.0
-offset_right = 1082.0
-offset_bottom = 2918.0
-scale = Vector2(2, 2)
-pivot_offset = Vector2(117, 210)
-texture = ExtResource("8_5dr6k")
-
-[node name="TextureRect2" type="TextureRect" parent="BlackHouse/FlandreSill3"]
-layout_mode = 0
-offset_left = 84.0
-offset_top = 198.5
-offset_right = 148.0
-offset_bottom = 304.5
-texture = SubResource("GradientTexture2D_rew0p")
-
-[node name="Label" type="Label" parent="BlackHouse"]
-modulate = Color(1, 1, 1, 0.476)
-layout_mode = 0
-offset_left = 521.0
-offset_top = 1414.0
-offset_right = 819.0
-offset_bottom = 1456.0
-theme_override_font_sizes/font_size = 30
-text = "Dialogue Starts Here"
 
 [node name="Outside" type="TextureRect" parent="BlackHouse"]
 layout_mode = 0
@@ -569,7 +591,20 @@ offset_bottom = 272.0
 texture = ExtResource("11_wo8h0")
 flip_h = true
 
+[node name="Flandre_Chibi3" parent="BlackHouse/Outside" instance=ExtResource("9_p7ual")]
+texture_filter = 3
+position = Vector2(4263, 2827)
+scale = Vector2(2, 2)
+
+[node name="TextureRect2" type="TextureRect" parent="BlackHouse/Outside/Flandre_Chibi3"]
+offset_left = -34.5
+offset_top = -36.5
+offset_right = 29.5
+offset_bottom = 69.5
+texture = SubResource("GradientTexture2D_rew0p")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 100
 texture_filter = 3
 layout_mode = 1
 anchors_preset = 8
@@ -639,9 +674,89 @@ scale = Vector2(2, 2)
 position = Vector2(-1, -711)
 scale = Vector2(2, 2)
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+process_mode = 2
+visible = false
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.5
+offset_top = -27.0
+offset_right = 164.5
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Easy" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture_normal = ExtResource("26_5pq6m")
+texture_pressed = ExtResource("27_jny33")
+texture_hover = ExtResource("27_jny33")
+
+[node name="Label" type="Label" parent="HBoxContainer/Easy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("27_2bun6")
+theme_override_colors/font_color = Color(0.329412, 0.819608, 0.415686, 1)
+theme_override_font_sizes/font_size = 64
+text = "Heaven
+(Easy)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hard" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture_normal = ExtResource("28_63dgu")
+texture_pressed = ExtResource("30_x1xbc")
+texture_hover = ExtResource("30_x1xbc")
+
+[node name="Label2" type="Label" parent="HBoxContainer/Hard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("27_2bun6")
+theme_override_colors/font_color = Color(0.827451, 0.376471, 0.686275, 1)
+theme_override_font_sizes/font_size = 64
+text = "Hell
+(Hard)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/MusicRoom" to="." method="_on_music_room_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HBoxContainer/Easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="HBoxContainer/Easy" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_hard_pressed"]
+[connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_button_2_pressed"]
+
+[editable path="BlackHouse/Flandre_Chibi"]
