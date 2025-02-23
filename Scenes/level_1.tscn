@@ -177,7 +177,7 @@ label_settings = SubResource("LabelSettings_371ga")
 metadata/_edit_use_anchors_ = true
 
 [node name="Timer2" type="Timer" parent="."]
-wait_time = 2.4
+wait_time = 2.557
 one_shot = true
 
 [connection signal="area_entered" from="Pointer/Bad" to="Pointer" method="_on_bad_area_entered"]
