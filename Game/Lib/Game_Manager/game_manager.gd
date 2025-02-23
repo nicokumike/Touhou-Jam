@@ -19,6 +19,7 @@ class_name Game_Manager
 @onready var main_menu = preload("uid://cpnq6w7rd0t4s")
 @onready var settings_menu = preload("res://Game/UI/Settings_Menu/settings.tscn")
 @onready var credits_menu = preload("res://Game/UI/Credits_Menu/credits_menu.tscn")
+@onready var level_man = preload("res://Game/Lib/Level_Manager/level_manager.tscn")
 
 #I might just get rid of this but it might be useful to you
 @export var current_menu: Control
@@ -26,7 +27,7 @@ class_name Game_Manager
 #Dictionary that holds all the relevant menus we will be switching through
 @onready var Menu_Scenes: Dictionary = {
 	"Main": main_menu,
-	"Start": 'Triggers the start of the game',
+	"Start": level_man,
 	"Settings": settings_menu,
 	"Credits": credits_menu,
 	"Pause": 'PAUSE SCREEN HERE',
@@ -49,7 +50,10 @@ func change_scene(new_state: String):
 	if new_state == "Quit":
 		get_tree().quit()
 	if new_state == "Start":
-		pass
+		print("start")
+		var new_scene = Menu_Scenes[new_state].instantiate()
+		add_child(new_scene)
+		return
 	if Menu_Scenes[new_state] is PackedScene:
 		var new_scene = Menu_Scenes[new_state].instantiate()
 		menu_ui.add_child(new_scene)

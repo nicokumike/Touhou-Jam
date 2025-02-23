@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dg6k1fyokeha0" path="res://Assets/UI/Title_Screen_Graphics/Quit_Gray.png" id="17_m3amv"]
 [ext_resource type="Texture2D" uid="uid://bg6i5f1duif0l" path="res://Assets/UI/Title_Screen_Graphics/Quit.png" id="18_tyf8r"]
 [ext_resource type="Texture2D" uid="uid://bk2q70jckfgl6" path="res://Assets/UI/Title_Screen_Graphics/easybutton2.png" id="26_5pq6m"]
-[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="27_2bun6"]
+[ext_resource type="Theme" path="res://Assets/Themes/label.tres" id="27_2bun6"]
 [ext_resource type="Texture2D" uid="uid://u1nkqbm05iie" path="res://Assets/UI/Title_Screen_Graphics/easybutton3.png" id="27_jny33"]
 [ext_resource type="Texture2D" uid="uid://bj2w2l3sfd16o" path="res://Assets/UI/Title_Screen_Graphics/hardbutton2.png" id="28_63dgu"]
 [ext_resource type="Texture2D" uid="uid://bqcmrc0qflcw7" path="res://Assets/UI/Title_Screen_Graphics/hardbutton3.png" id="30_x1xbc"]

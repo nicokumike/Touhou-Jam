@@ -1,11 +1,12 @@
 extends Control
 
-@onready var menu_music = preload("res://Assets/SFX/BP_Default_Sounds/Default_Muzak.mp3")
+@onready var menu_music = preload("res://Assets/Music/TSR_PRESS_START.mp3")
+@onready var wind = preload("res://Assets/Music/TSR_Wind.mp3")
 @onready var easy_modo = preload("res://Assets/SFX/EEEH_EASY MODE_.mp3")
 
 func _ready() -> void:
 	SignalBus.dialogue_finished.connect(_resume_cutscene)
-	#AudMan.play_music(menu_music)
+	AudMan.play_music(menu_music, -15)
 	pass
 	
 func animate_button(button_node: Node, state: String) -> void:
@@ -46,7 +47,6 @@ func _on_start_pressed() -> void:
 func difficulty():
 	$HBoxContainer.visible = true
 	get_tree().paused = true
-	
 	pass
 
 func _on_settings_pressed() -> void:
@@ -67,6 +67,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		pass
 		#SignalBus.game_state_changed.emit("Start")
 		#queue_free()
+	if anim_name == "cutscene2":
+		SignalBus.game_state_changed.emit("Start")
+		queue_free()
+		pass
 
 
 func _on_easy_pressed() -> void:
@@ -88,3 +92,9 @@ func _on_hard_pressed() -> void:
 	$HBoxContainer/Hard.visible = false
 	print(SignalBus.difficulty)
 	get_tree().paused = false
+
+
+func _on_wind_timer_timeout():
+	$WindTimer.wait_time = 32
+	AudMan.play_sfx(wind, -15)
+	pass # Replace with function body.
