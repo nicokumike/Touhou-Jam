@@ -71,8 +71,18 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_easy_pressed() -> void:
 	#ur a baby 
 	$AnimationPlayer.play("cutscene")
+	SignalBus.difficulty = "Easy"
+	$HBoxContainer/Easy.visible = false
+	$HBoxContainer/Hard.visible = false
+	print(SignalBus.difficulty)
+	get_tree().paused = false
 
 
 func _on_hard_pressed() -> void:
 	#ur retarded niko made it too hard you have no correct options
 	$AnimationPlayer.play("cutscene")
+	SignalBus.difficulty = "Hard"
+	$HBoxContainer/Easy.visible = false
+	$HBoxContainer/Hard.visible = false
+	print(SignalBus.difficulty)
+	get_tree().paused = false

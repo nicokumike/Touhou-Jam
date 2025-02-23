@@ -22,11 +22,20 @@ var started = false
 # Song that will play
 @export var song = preload("res://Assets/SFX/penis music.mp3")
 
+# Boss scene
+@export var boss = preload("res://Scenes/boss.tscn")
+
+@export_group("Sheets")
+#@export_file("*.json") var music_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
+@export_file("*.json") var hard_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
+@export_file("*.json") var easy_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
+@export_file("*.json") var hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
+@export_file("*.json") var easy_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
+
 # Loads music cheat
 @onready var composer = $Composer
 
-# Boss scene
-@export var boss = preload("res://Scenes/boss.tscn")
+
 
 # Boss spawn point
 @onready var bossSpawnPoint = $"../BossSpawn"
@@ -59,6 +68,10 @@ func _process(delta):
 	
 func _unhandled_input(event):
 	if event is InputEventKey and !started:
+		if SignalBus.difficulty == "Easy":
+			composer.music_sheet = easy_sheet
+		elif SignalBus.difficulty == "Hard":
+			composer.music_sheet = hard_sheet
 		composer.initialize()
 		music_player = AudMan.play_music(song, -10)
 		started = true
@@ -123,6 +136,10 @@ func transition():
 	
 func _on_dialogue_finished():
 	song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3")
+	if SignalBus.difficulty == "Easy":
+		composer.music_sheet = easy_boss_sheet
+	elif SignalBus.difficulty == "Hard":
+		composer.music_sheet = hard_boss_sheet
 	composer.initialize()
 	music_player = AudMan.play_music(song, -10)
 	print(music_player)

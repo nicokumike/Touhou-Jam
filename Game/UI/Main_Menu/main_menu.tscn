@@ -469,6 +469,9 @@ texture_filter = 3
 position = Vector2(314, 485)
 scale = Vector2(2, 2)
 
+[node name="AnimationHandler_Spine" parent="BlackHouse/Flandre_Chibi" index="0"]
+initial_animation = SubResource("Resource_jq158")
+
 [node name="TextureRect2" type="TextureRect" parent="BlackHouse/Flandre_Chibi"]
 offset_left = -32.0
 offset_top = -58.0
