@@ -246,7 +246,7 @@ position = Vector2(243, 524)
 scale = Vector2(2, 2)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(635, 335)
+position = Vector2(1140, 335)
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_v6wvn")
 texture = SubResource("GradientTexture2D_liebp")
