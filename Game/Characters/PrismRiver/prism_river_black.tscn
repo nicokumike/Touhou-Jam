@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://vpyds6nh3lxv"]
+
+[ext_resource type="SpineSkeletonDataResource" uid="uid://dl8kow7042sab" path="res://Assets/Characters/Base/base_data_resource.tres" id="1_2xj2o"]
+[ext_resource type="Script" path="res://Game/Lib/Animation_Handler/Spine/animation_handler_spine.gd" id="2_ko275"]
+[ext_resource type="Resource" uid="uid://8es45meorutc" path="res://Game/Characters/Player/Animations/player_flying.tres" id="3_pmfu8"]
+
+[node name="PrismRiver_Black" type="Node2D"]
+
+[node name="AnimationHandler_Spine" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("1_2xj2o")
+preview_skin = "PrismRiverBlack"
+preview_animation = "Flandre/flying"
+preview_frame = false
+preview_time = 0.0
+script = ExtResource("2_ko275")
+skinName = "PrismRiverBlack"
+initial_animation = ExtResource("3_pmfu8")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bl6f0y14bbbnn"]
+[gd_scene load_steps=16 format=3 uid="uid://bl6f0y14bbbnn"]
 
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="1_4jlud"]
 [ext_resource type="PackedScene" uid="uid://bc1gci3geymvg" path="res://Game/Characters/Chibi/flandre_chibi.tscn" id="2_big3r"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="5_8vw42"]
 [ext_resource type="PackedScene" uid="uid://bp4spstrcqf4l" path="res://Game/Characters/Fairy/fairy_rock.tscn" id="5_kh4jx"]
 [ext_resource type="PackedScene" uid="uid://bh3dqgf8ufbly" path="res://Game/Characters/Fairy/fairy_volcano.tscn" id="6_s58w0"]
+[ext_resource type="PackedScene" uid="uid://u4oq7b3l32pe" path="res://Game/Characters/PrismRiver/prism_river_red.tscn" id="10_jrdgl"]
+[ext_resource type="PackedScene" uid="uid://vpyds6nh3lxv" path="res://Game/Characters/PrismRiver/prism_river_black.tscn" id="11_hoi4w"]
+[ext_resource type="PackedScene" uid="uid://bawavabrqj7kg" path="res://Game/Characters/PrismRiver/prism_river_white.tscn" id="12_7qe4o"]
 
 [sub_resource type="Resource" id="Resource_thpjm"]
 script = ExtResource("5_8vw42")
@@ -101,3 +104,13 @@ position = Vector2(529, 607)
 
 [node name="Node2D2" parent="." instance=ExtResource("6_s58w0")]
 position = Vector2(799, 591)
+
+[node name="PrismRiver_Red" parent="." instance=ExtResource("10_jrdgl")]
+position = Vector2(388, 209)
+
+[node name="PrismRiver_Black" parent="." instance=ExtResource("11_hoi4w")]
+position = Vector2(639, 206)
+
+[node name="PrismRiver_White" parent="." instance=ExtResource("12_7qe4o")]
+position = Vector2(914, 242)
+scale = Vector2(-1, 1)

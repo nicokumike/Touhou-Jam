@@ -114,10 +114,20 @@ position = Vector2(-250, -267)
 texture = ExtResource("7_mvbdy")
 
 [node name="AnyKey" type="Label" parent="."]
-offset_left = 499.0
-offset_top = 342.0
-offset_right = 830.0
-offset_bottom = 387.0
+texture_filter = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 680.0
+offset_top = 329.0
+offset_right = 1008.0
+offset_bottom = 357.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_ua65x")
+theme_override_font_sizes/font_size = 32
 text = "Press any key to start"
 label_settings = SubResource("LabelSettings_371ga")
 
