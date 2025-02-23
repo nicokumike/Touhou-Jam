@@ -253,6 +253,20 @@ tracks/7/keys = {
 "update": 1,
 "values": [SubResource("Resource_jq158"), SubResource("Resource_jq158")]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BlackHouse/Flandre_Chibi/AnimationHandler_Spine")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.851),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Base_Chibi/walk", true, 0, -1.0, 1.0],
+"method": &"play_animation"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_4bhem"]
 resource_name = "cutscene2"
