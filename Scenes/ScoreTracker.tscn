@@ -1,0 +1,246 @@
+[gd_scene load_steps=10 format=3 uid="uid://dsjruqxp1cwvl"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/note.gdshader" id="1_3r41p"]
+[ext_resource type="Texture2D" uid="uid://8k2553q8h8bw" path="res://Assets/UI/Notes/ComboContainer.png" id="1_m5grj"]
+[ext_resource type="FontFile" uid="uid://kpqikns6mdrr" path="res://Assets/Fonts/LittleMissLoudonBold-VGO9l.ttf" id="3_2ibcx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fqjil"]
+shader = ExtResource("1_3r41p")
+shader_parameter/max_line_width = 9.705
+shader_parameter/min_line_width = 5.0
+shader_parameter/freq = 1.0
+shader_parameter/block_size = 20.0
+shader_parameter/starting_colour = Vector4(1, 1, 0, 1)
+shader_parameter/ending_colour = Vector4(1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_0hf7d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(220, 150)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ud3if"]
+resource_name = "groe"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.217638, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(476, 67)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(3.36359, 1),
+"update": 0,
+"values": [Vector2(220, 150), Vector2(739, 585)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ngtwi"]
+resource_name = "shrink"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(739, 585), Vector2(220, 150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(476, 67), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uccro"]
+_data = {
+"RESET": SubResource("Animation_0hf7d"),
+"grow": SubResource("Animation_ud3if"),
+"shrink": SubResource("Animation_ngtwi")
+}
+
+[sub_resource type="Theme" id="Theme_kdqgd"]
+Label/constants/outline_size = 23
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("3_2ibcx")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 3
+material = SubResource("ShaderMaterial_fqjil")
+custom_minimum_size = Vector2(220, 150)
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 150.0
+texture = ExtResource("1_m5grj")
+patch_margin_left = 104
+patch_margin_top = 50
+patch_margin_right = 115
+patch_margin_bottom = 50
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uccro")
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 671.0
+offset_top = 116.0
+offset_right = 983.0
+offset_bottom = 582.0
+theme = SubResource("Theme_kdqgd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Score" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Score:"
+
+[node name="Perfect" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Perfects:"
+
+[node name="Great" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Greats:"
+
+[node name="Good" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Goods:"
+
+[node name="Bad" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Bads:"
+
+[node name="Miss" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Misses:"
+
+[node name="Accuracy" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Accuracy:"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ScoreCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="PerfectCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="GreatCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="GoodCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="BadCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="MissCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="AcccuracyCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "0"
