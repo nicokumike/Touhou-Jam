@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="7_bprpc"]
 [ext_resource type="Texture2D" uid="uid://by22eheheamcu" path="res://Assets/UI/ContactPointArrow.png" id="7_d0uin"]
 [ext_resource type="Texture2D" uid="uid://8k2553q8h8bw" path="res://Assets/UI/Notes/ComboContainer.png" id="7_mvbdy"]
-[ext_resource type="Theme" path="res://Assets/Themes/label.tres" id="9_ua65x"]
+[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="9_ua65x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrojt"]
 size = Vector2(221.667, 215)

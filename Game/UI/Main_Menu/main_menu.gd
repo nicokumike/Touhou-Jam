@@ -96,5 +96,5 @@ func _on_hard_pressed() -> void:
 
 func _on_wind_timer_timeout():
 	$WindTimer.wait_time = 32
-	AudMan.play_sfx(wind, -15)
+	AudMan.play_sfx(wind, -12)
 	pass # Replace with function body.

@@ -20,6 +20,7 @@ class_name Game_Manager
 @onready var settings_menu = preload("res://Game/UI/Settings_Menu/settings.tscn")
 @onready var credits_menu = preload("res://Game/UI/Credits_Menu/credits_menu.tscn")
 @onready var level_man = preload("res://Game/Lib/Level_Manager/level_manager.tscn")
+@onready var transition = preload("res://Assets/UI/transition.tscn")
 
 #I might just get rid of this but it might be useful to you
 @export var current_menu: Control
@@ -37,12 +38,20 @@ class_name Game_Manager
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.game_state_changed.connect(change_scene.bind())
+	SignalBus.transition.connect(transition_scene.bind())
 	if debug_mode == true:
 		print("-----DEBUG MODE ACTIVATED-----")
 		#Skips the splash screen if you're in debug mode
 		$Transitions/Splash.queue_free()
 		#Change this to start the game trigger once you get to it to skip the menu
 		SignalBus.game_state_changed.emit("Main")
+
+func transition_scene():
+	print('transition')
+	var new_transition = transition.instantiate()
+	$Transitions.add_child(new_transition)
+	#new_transition.fade = "Fade_In"
+	new_transition._begin()
 
 func change_scene(new_state: String):
 	if debug_mode == true:

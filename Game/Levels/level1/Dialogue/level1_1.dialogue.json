@@ -1,71 +1,71 @@
 {
-    "0": {
-        "Character": ["Lunasa", "Grin", "Top"],
-        "Text": "Someone's a little far from their nest."
-    },
+	"0": {
+		"Character": ["Lunasa", "Grin", "Top"],
+		"Text": "Someone's a little far from their nest."
+	},
 
-    "1": {
-        "Character": ["Lyrica", "Smirk", "Top"],
-        "Text": "You should head on home, there's nothing here for you."
-    },
+	"1": {
+		"Character": ["Lyrica", "Smirk", "Top"],
+		"Text": "You should head on home, there's nothing here for you."
+	},
 
-    "2": {
-        "Character": ["Flandre", "Neutral", "Bottom"],
-        "Text": "Enough. What are you three doing?"
-    },
+	"2": {
+		"Character": ["Flandre", "Neutral", "Bottom"],
+		"Text": "Enough. What are you three doing?"
+	},
 
-    "3": {
-        "Character": ["Merlin", "Smile", "Top"],
-        "Text": "We're just practicing for our next big show, so unless you want to get hurt, I'd leave now."
-    },
+	"3": {
+		"Character": ["Merlin", "Smile", "Top"],
+		"Text": "We're just practicing for our next big show, so unless you want to get hurt, I'd leave now."
+	},
 
-    "4": {
-        "Character": ["Flandre", "Annoyed", "Bottom"],
-        "Text": "Stop playing coy. Cirno told me everything. I know what you three have done."
-    },
+	"4": {
+		"Character": ["Flandre", "Annoyed", "Bottom"],
+		"Text": "Stop playing coy. Cirno told me everything. I know what you three have done."
+	},
 
-    "5": {
-        "Character": ["Lunasa", "Angry", "Top"],
-        "Text": "Cirno? She knows nothing."
-    },
+	"5": {
+		"Character": ["Lunasa", "Angry", "Top"],
+		"Text": "Cirno? She knows nothing."
+	},
 	
 	"6": {
-        "Character": ["Merlin", "Grin", "Top"],
-        "Text": "What did she tell you? You just take anything she says for fact?"
-    },
+		"Character": ["Merlin", "Grin", "Top"],
+		"Text": "What did she tell you? You just take anything she says for fact?"
+	},
 
-    "7": {
-        "Character": ["Flandre", "Neutral", "Bottom"],
-        "Text": "She told me you three put her up to it. You had her steal the Ethereal Resonate. And now she thinks we stole her vanilla ice cream because of your lies."
-    },
+	"7": {
+		"Character": ["Flandre", "Neutral", "Bottom"],
+		"Text": "She told me you three put her up to it. You had her steal the Ethereal Resonate. And now she thinks we stole her vanilla ice cream because of your lies."
+	},
 
-    "8": {
-        "Character": ["Lyrica", "Angry", "Top"],
-        "Text": "That impudent fairy! I told you two she couldn't be trusted!"
-    },
+	"8": {
+		"Character": ["Lyrica", "Angry", "Top"],
+		"Text": "That impudent fairy! I told you two she couldn't be trusted!"
+	},
 
-    "9": {
-        "Character": ["Lunasa", "Annoyed", "Top"],
-        "Text": "Lyrica! Quiet!"
-    },
+	"9": {
+		"Character": ["Lunasa", "Annoyed", "Top"],
+		"Text": "Lyrica! Quiet!"
+	},
 
-    "10": {
-        "Character": ["Flandre", "Annoyed", "Bottom"],
-        "Text": "So, where is it?"
-    },
+	"10": {
+		"Character": ["Flandre", "Annoyed", "Bottom"],
+		"Text": "So, where is it?"
+	},
 
-    "11": {
-        "Character": ["Merlin", "Grin", "Top"],
-        "Text": "You're too late, it's already at the top of the volcano."
-    },
+	"11": {
+		"Character": ["Merlin", "Grin", "Top"],
+		"Text": "You're too late, it's already at the top of the volcano."
+	},
 	
 	"12": {
-        "Character": ["Lunasa", "Grin", "Top"],
-        "Text": "And we're not letting you get there!"
-    },
+		"Character": ["Lunasa", "Grin", "Top"],
+		"Text": "And we're not letting you get there!"
+	},
 	
 	"13": {
-        "Character": ["Lyrica", "Grin", "Top"],
-        "Text": "Time to start the show, girls!"
-    }
+		"Character": ["Lyrica", "Grin", "Top"],
+		"Text": "Time to start the show, girls!"
+	}
 }

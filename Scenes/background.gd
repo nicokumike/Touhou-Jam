@@ -7,6 +7,7 @@ var music: AudioStreamMP3
 
 # Background art
 @onready var backgroundArt = preload("res://Scenes/background_forest.tscn")
+@onready var volcano = preload("res://Scenes/background_volcano.tscn")
 # Level started
 var started = false
 
@@ -49,13 +50,27 @@ var time_delay: float
 var beat_played = true
 var last_beat = 0
 
+var curr_bgd
+
 func _ready():
 	var bgd = backgroundArt.instantiate()
+	curr_bgd = bgd
 	add_child(bgd)
 	time_begin = Time.get_ticks_usec()
 	time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+
+func level_two():
+	SignalBus.transition.emit()
+	curr_bgd.queue_free()
+	var bgd = volcano.instantiate()
+	curr_bgd = bgd
+	add_child(bgd)
 	
+
 func _process(delta):
+	if Input.is_action_just_pressed("9"):
+		level_two()
+		pass
 	if music_player != null:
 		var time := 0.0
 			# Obtain from ticks.
@@ -131,6 +146,7 @@ func transition():
 		if boss_instance.health <= 0:
 			var json_data3 : JSON = preload("res://json_test_3.json")
 			SignalBus.dialogue_triggered.emit(json_data3.data)
+			level_two()
 		else:
 			SignalBus.dialogue_triggered.emit(json_data2.data)
 			

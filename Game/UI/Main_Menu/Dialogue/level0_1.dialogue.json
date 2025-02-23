@@ -1,16 +1,16 @@
 {
-    "0": {
-        "Character": ["Patchouli", "Neutral", "Top"],
-        "Text": "I have a matter to address with you, Lady Scarlet. Normally, I wouldn't come to this decision, but the situation demands it. Your help is requested, as your sister and her maid are absent."
-    },
+	"0": {
+		"Character": ["Patchouli", "Neutral", "Top"],
+		"Text": "I have a matter to address with you, Lady Scarlet. Normally, I wouldn't come to this decision, but the situation demands it. Your help is requested, as your sister and her maid are absent."
+	},
 
-    "1": {
-        "Character": ["Patchouli", "Annoyed", "Top"],
-        "Text": "One of our gramophones, the Ethereal Resonate, is suddenly missing. I suspect theft, of a musical sort. If my suspicions of the culprits are correct, you'll need this blessed metronome."
-    },
+	"1": {
+		"Character": ["Patchouli", "Annoyed", "Top"],
+		"Text": "One of our gramophones, the Ethereal Resonate, is suddenly missing. I suspect theft, of a musical sort. If my suspicions of the culprits are correct, you'll need this blessed metronome."
+	},
 
-    "2": {
-        "Character": ["Patchouli", "Neutral", "Top"],
-        "Text": "You must obtain the Resonate before it's used incorrectly, for it is far too dangerous in the hands of the uninformed. Then return to the mansion immediately."
-    }
+	"2": {
+		"Character": ["Patchouli", "Neutral", "Top"],
+		"Text": "You must obtain the Resonate before it's used incorrectly, for it is far too dangerous in the hands of the uninformed. Then return to the mansion immediately."
+	}
 }
