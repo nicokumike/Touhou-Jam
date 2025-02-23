@@ -5,12 +5,36 @@ func _ready():
 
 # NOTE: This is only a test btw
 func _process(delta):
-	if Input.is_action_pressed("ui_up"):
-		state_machine.change_state("WindBrace")
-	elif Input.is_action_just_pressed("ui_down"):
-		state_machine.change_state("Attack_D")
+	if Input.is_action_just_pressed("ui_up"):
+		do_attack_up()
 	elif Input.is_action_just_pressed("ui_left"):
-		state_machine.change_state("Attack_D")
+		do_attack_left()
+	elif Input.is_action_just_pressed("ui_down"):
+		do_attack_down()
 	elif Input.is_action_just_pressed("ui_right"):
-		state_machine.change_state("Attack_D")
+		do_attack_right()
 	pass
+
+func do_idle():
+	state_machine.set_state("Idle")
+	
+func do_flying():
+	state_machine.set_state("Flying")
+
+func do_attack_up():
+	state_machine.set_state("Attack_UP")
+	
+func do_attack_down():
+	state_machine.set_state("Attack_DOWN")
+
+func do_attack_left():
+	state_machine.set_state("Attack_LEFT")
+
+func do_attack_right():
+	state_machine.set_state("Attack_RIGHT")
+
+func do_hold():
+	state_machine.set_state("Hold")
+
+func do_ohohoh():
+	state_machine.set_state("OHOHOH")
