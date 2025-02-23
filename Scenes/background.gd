@@ -55,8 +55,6 @@ func _process(delta):
 		var beat := int(time * composer.bpm / (60.0 / 4))
 		if last_beat != beat:
 			composer.play_note()
-		print("BEAT: ", beat, ", LAST BEAT: ", last_beat)
-		
 		last_beat = beat
 	
 func _unhandled_input(event):

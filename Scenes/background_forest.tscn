@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cqo0ojuubal85" path="res://Assets/Environment/Backgroundgrass.png" id="4_8ak37"]
 [ext_resource type="Texture2D" uid="uid://bwo6p8ttiatv7" path="res://Assets/Environment/WaterReflections.png" id="4_8gpir"]
 [ext_resource type="Texture2D" uid="uid://cm2q5032b8v4g" path="res://Assets/Environment/FlandreBackground.png" id="5_ulgq3"]
-[ext_resource type="PackedScene" uid="uid://ctat1o7jjpnk1" path="res://Scenes/wind.tscn" id="8_00l0s"]
+[ext_resource type="PackedScene" path="res://Scenes/wind.tscn" id="8_00l0s"]
 
 [sub_resource type="Gradient" id="Gradient_e4jpv"]
 offsets = PackedFloat32Array(0.00819672, 0.696721, 1)
