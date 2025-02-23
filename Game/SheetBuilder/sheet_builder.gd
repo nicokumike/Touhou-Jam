@@ -111,8 +111,6 @@ func _on_stop_button_pressed() -> void:
 	current_measure = 1
 	for measure in measures:
 		measure.modulate = Color.WHITE
-		
-		pass
 
 func _on_test_button_pressed() -> void:
 	#TODO go to a debug stage and play this track
