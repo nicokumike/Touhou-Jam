@@ -19,7 +19,7 @@ class_name Game_Manager
 @onready var main_menu = preload("uid://cpnq6w7rd0t4s")
 @onready var settings_menu = preload("res://Game/UI/Settings_Menu/settings.tscn")
 @onready var credits_menu = preload("res://Game/UI/Credits_Menu/credits_menu.tscn")
-@onready var level_man = preload("res://Game/Lib/Level_Manager/level_manager.tscn")
+@onready var level_man = $Level_Manager
 @onready var transition = preload("res://Assets/UI/transition.tscn")
 var current_transition
 
@@ -46,7 +46,8 @@ func _ready() -> void:
 		#Skips the splash screen if you're in debug mode
 		$Transitions/Splash.queue_free()
 		#Change this to start the game trigger once you get to it to skip the menu
-		SignalBus.game_state_changed.emit("Main")
+		#SignalBus.game_state_changed.emit("Main")
+		SignalBus.game_state_changed.emit("Start")
 
 func finish_transition():
 	print('finish it!')
@@ -69,9 +70,9 @@ func change_scene(new_state: String):
 	if new_state == "Quit":
 		get_tree().quit()
 	if new_state == "Start":
-		print("start")
-		var new_scene = Menu_Scenes[new_state].instantiate()
-		add_child(new_scene)
+		level_man.nextLevel()
+		#var new_scene = Menu_Scenes[new_state].instantiate()
+		#add_child(new_scene)
 		return
 	if Menu_Scenes[new_state] is PackedScene:
 		var new_scene = Menu_Scenes[new_state].instantiate()

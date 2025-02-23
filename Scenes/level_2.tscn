@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc03syknr3he6"]
+[gd_scene load_steps=15 format=3 uid="uid://b775uf6udw3vl"]
 
-[ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
-[ext_resource type="AudioStream" uid="uid://bxpovugslghq0" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_RUNNING.mp3" id="2_8f5yi"]
-[ext_resource type="Script" path="res://Scenes/background.gd" id="2_ep8y8"]
-[ext_resource type="AudioStream" uid="uid://bpc8t3uvyeirb" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_LOOP.mp3" id="3_b5tno"]
-[ext_resource type="AudioStream" uid="uid://c1k7gw8dgw6sh" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3" id="4_47too"]
-[ext_resource type="Script" path="res://Scenes/pointer.gd" id="5_6yugx"]
-[ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="7_2ahiu"]
-[ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="7_bprpc"]
-[ext_resource type="Texture2D" uid="uid://by22eheheamcu" path="res://Assets/UI/ContactPointArrow.png" id="7_d0uin"]
-[ext_resource type="Texture2D" uid="uid://8k2553q8h8bw" path="res://Assets/UI/Notes/ComboContainer.png" id="7_mvbdy"]
-[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="9_ua65x"]
+[ext_resource type="Script" path="res://Scenes/background.gd" id="1_hsngw"]
+[ext_resource type="PackedScene" uid="uid://btuclynen63si" path="res://Scenes/background_volcano.tscn" id="2_db0tb"]
+[ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="3_1wch0"]
+[ext_resource type="AudioStream" uid="uid://uu6lauef18jv" path="res://Game/Lib/Composer/Music_Sheets/Utsusho_Running.mp3" id="3_16e83"]
+[ext_resource type="Script" path="res://Scenes/pointer.gd" id="4_bs3am"]
+[ext_resource type="AudioStream" uid="uid://bcn2q65jun7xg" path="res://Game/Lib/Composer/Music_Sheets/Utsusho_LOOP.mp3" id="4_oximf"]
+[ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="5_ba5mo"]
+[ext_resource type="AudioStream" uid="uid://c5s4bftlnd744" path="res://Game/Lib/Composer/Music_Sheets/Utsusho_Boss.mp3" id="5_iw6i0"]
+[ext_resource type="Texture2D" uid="uid://by22eheheamcu" path="res://Assets/UI/ContactPointArrow.png" id="6_xj55f"]
+[ext_resource type="Texture2D" uid="uid://8k2553q8h8bw" path="res://Assets/UI/Notes/ComboContainer.png" id="7_o0inv"]
+[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="8_c5sms"]
+[ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="9_o3eyl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vjq"]
 size = Vector2(20, 350)
@@ -20,34 +21,33 @@ font_size = 32
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Level1" type="Node2D"]
+[node name="Level2" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
-script = ExtResource("2_ep8y8")
-song = ExtResource("2_8f5yi")
-loopSong = ExtResource("3_b5tno")
-bossSong = ExtResource("4_47too")
-hard_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running.json"
-hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-boss.json"
+script = ExtResource("1_hsngw")
+backgroundArt = ExtResource("2_db0tb")
+song = ExtResource("3_16e83")
+loopSong = ExtResource("4_oximf")
+bossSong = ExtResource("5_iw6i0")
 
 [node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
-script = ExtResource("1_auj5i")
+script = ExtResource("3_1wch0")
 emitter = NodePath("..")
 music_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running.json"
 
 [node name="Pointer" type="CharacterBody2D" parent="."]
 position = Vector2(441, 342)
-script = ExtResource("5_6yugx")
+script = ExtResource("4_bs3am")
 
 [node name="FlandreContactPoint" type="Sprite2D" parent="Pointer"]
 texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("7_bprpc")
+texture = ExtResource("5_ba5mo")
 
 [node name="ContactPointArrow" type="Sprite2D" parent="Pointer"]
 texture_filter = 3
 scale = Vector2(2, 2)
-texture = ExtResource("7_d0uin")
+texture = ExtResource("6_xj55f")
 offset = Vector2(29, -2)
 
 [node name="Timer" type="Timer" parent="."]
@@ -70,7 +70,7 @@ shape = SubResource("RectangleShape2D_q6vjq")
 [node name="ComboContainer" type="Sprite2D" parent="Killzone"]
 texture_filter = 3
 position = Vector2(-250, -267)
-texture = ExtResource("7_mvbdy")
+texture = ExtResource("7_o0inv")
 
 [node name="AnyKey" type="Label" parent="."]
 texture_filter = 3
@@ -85,12 +85,12 @@ offset_right = 1008.0
 offset_bottom = 357.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("9_ua65x")
+theme = ExtResource("8_c5sms")
 theme_override_font_sizes/font_size = 32
 text = "Press any key to start"
 label_settings = SubResource("LabelSettings_371ga")
 
-[node name="Player_Flandre" parent="." instance=ExtResource("7_2ahiu")]
+[node name="Player_Flandre" parent="." instance=ExtResource("9_o3eyl")]
 z_index = 10
 texture_filter = 3
 position = Vector2(220, 453)
@@ -102,7 +102,7 @@ offset_left = 4.0
 offset_top = 38.0
 offset_right = 145.0
 offset_bottom = 132.0
-theme = ExtResource("9_ua65x")
+theme = ExtResource("8_c5sms")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
