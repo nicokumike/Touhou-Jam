@@ -1,12 +1,15 @@
-[gd_scene load_steps=36 format=3 uid="uid://dbeo4tp0jv8gk"]
+[gd_scene load_steps=51 format=3 uid="uid://dbeo4tp0jv8gk"]
 
 [ext_resource type="Texture2D" uid="uid://v5pyu0jps4qf" path="res://Assets/Environment/BackgroundSky.png" id="1_b0ikd"]
+[ext_resource type="Script" path="res://Scenes/background_forest.gd" id="1_noxjd"]
 [ext_resource type="Shader" path="res://Assets/Shaders/water.gdshader" id="2_o38cd"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Blending_Modes/soft_light.gdshader" id="3_1r3pf"]
 [ext_resource type="Texture2D" uid="uid://i6i0vkoa086c" path="res://Assets/Environment/BackgroundForest.png" id="3_bcwka"]
 [ext_resource type="Texture2D" uid="uid://cqo0ojuubal85" path="res://Assets/Environment/Backgroundgrass.png" id="4_8ak37"]
 [ext_resource type="Texture2D" uid="uid://bwo6p8ttiatv7" path="res://Assets/Environment/WaterReflections.png" id="4_8gpir"]
+[ext_resource type="PackedScene" uid="uid://ctlkjntcstche" path="res://Game/Characters/Fairy/fairy_river.tscn" id="6_lb5lr"]
 [ext_resource type="PackedScene" uid="uid://ctat1o7jjpnk1" path="res://Scenes/wind.tscn" id="8_00l0s"]
+[ext_resource type="PackedScene" uid="uid://bp4spstrcqf4l" path="res://Game/Characters/Fairy/fairy_rock.tscn" id="8_yty7t"]
 
 [sub_resource type="Gradient" id="Gradient_e4jpv"]
 offsets = PackedFloat32Array(0.00819672, 0.696721, 1)
@@ -100,6 +103,24 @@ shader_parameter/intensity = 0.076
 shader_parameter/dissolve_value = 1.0
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_tuo8v")
 
+[sub_resource type="Curve2D" id="Curve2D_112fr"]
+_data = {
+"points": PackedVector2Array(-62.8701, -300.52, 62.8701, 300.52, 179, -227, 0, 0, 0, 0, 365, 81, 0, 0, 0, 0, 1074, 78, 0.356945, 257.45, -0.356945, -257.45, 1351, -177)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_cisvr"]
+_data = {
+"points": PackedVector2Array(139.972, 366.69, -139.972, -366.69, 1352, 841, 191.178, -83.9052, -191.178, 83.9052, 880, 368, 116.067, 172.305, -116.067, -172.305, 347, 229, 0, 0, 0, 0, 137, -398)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_yganw"]
+_data = {
+"points": PackedVector2Array(-782.839, -215.203, 782.839, 215.203, -259, 450, -332.881, -218.979, 332.881, 218.979, 1508, 258)
+}
+point_count = 2
+
 [sub_resource type="Gradient" id="Gradient_molrh"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
@@ -164,8 +185,123 @@ glow_blend_mode = 1
 adjustment_enabled = true
 adjustment_brightness = 1.1
 
+[sub_resource type="Animation" id="Animation_gb7fc"]
+resource_name = "fairy1"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_rdo7x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3njr8"]
+_data = {
+"RESET": SubResource("Animation_rdo7x"),
+"fairy1": SubResource("Animation_gb7fc")
+}
+
+[sub_resource type="Animation" id="Animation_a02ey"]
+resource_name = "fairy"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Path2D2/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_lvspf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Path2D2/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b8yq2"]
+_data = {
+"RESET": SubResource("Animation_lvspf"),
+"fairy": SubResource("Animation_a02ey")
+}
+
+[sub_resource type="Animation" id="Animation_vcls6"]
+resource_name = "fairy3"
+length = 15.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D3/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 13.5, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.253, 0.747, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_c1gs7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D3/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4wfh"]
+_data = {
+"RESET": SubResource("Animation_c1gs7"),
+"fairy3": SubResource("Animation_vcls6")
+}
+
 [node name="BackgroundForest" type="Node2D"]
 texture_filter = 3
+script = ExtResource("1_noxjd")
 
 [node name="BackgroundSky" type="Sprite2D" parent="."]
 position = Vector2(640, 223)
@@ -197,6 +333,59 @@ position = Vector2(640, 360)
 scale = Vector2(2, 2)
 texture = ExtResource("3_bcwka")
 
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_112fr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+position = Vector2(179, -227)
+rotates = false
+
+[node name="Node2D" type="Node2D" parent="Path2D3/PathFollow2D"]
+position = Vector2(-92, 116)
+scale = Vector2(0.5, 0.5)
+
+[node name="Fairy_River" parent="Path2D3/PathFollow2D/Node2D" instance=ExtResource("6_lb5lr")]
+rotation = 0.20944
+scale = Vector2(-1, 1)
+
+[node name="Fairy_River2" parent="Path2D3/PathFollow2D/Node2D" instance=ExtResource("6_lb5lr")]
+position = Vector2(114, -62)
+rotation = 0.20944
+scale = Vector2(-1, 1)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-70, 55)
+curve = SubResource("Curve2D_cisvr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(1352, 841)
+rotates = false
+
+[node name="Node2D" type="Node2D" parent="Path2D/PathFollow2D"]
+scale = Vector2(0.8, 0.8)
+
+[node name="Fairy_River" parent="Path2D/PathFollow2D/Node2D" instance=ExtResource("6_lb5lr")]
+position = Vector2(-94, -43)
+
+[node name="Fairy_River2" parent="Path2D/PathFollow2D/Node2D" instance=ExtResource("6_lb5lr")]
+position = Vector2(102, -37)
+
+[node name="Fairy_River3" parent="Path2D/PathFollow2D/Node2D" instance=ExtResource("6_lb5lr")]
+scale = Vector2(0.7, 0.7)
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_yganw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(-259, 450)
+rotates = false
+
+[node name="Node2D" type="Node2D" parent="Path2D2/PathFollow2D"]
+
+[node name="Fairy_Rock" parent="Path2D2/PathFollow2D/Node2D" instance=ExtResource("8_yty7t")]
+rotation = 0.359538
+scale = Vector2(-1, 1)
+
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(1280, 0)
 autoscroll = Vector2(-50, 0)
@@ -214,5 +403,40 @@ texture = SubResource("GradientTexture2D_b511q")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_55avn")
+
+[node name="fairy1" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3njr8")
+}
+
+[node name="Fairy1" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="fairy2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Fairy2")
+libraries = {
+"": SubResource("AnimationLibrary_b8yq2")
+}
+
+[node name="Fairy2" type="Timer" parent="."]
+wait_time = 40.0
+autostart = true
+
+[node name="fairy3" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w4wfh")
+}
+
+[node name="Fairy3" type="Timer" parent="."]
+wait_time = 70.0
+autostart = true
+
+[connection signal="animation_finished" from="fairy1" to="." method="_on_fairy_1_animation_finished"]
+[connection signal="timeout" from="Fairy1" to="." method="_on_fairy_1_timeout"]
+[connection signal="animation_finished" from="fairy2" to="." method="_on_fairy_2_animation_finished"]
+[connection signal="timeout" from="Fairy2" to="." method="_on_fairy_2_timeout"]
+[connection signal="animation_finished" from="fairy3" to="." method="_on_fairy_3_animation_finished"]
+[connection signal="timeout" from="Fairy3" to="." method="_on_fairy_3_timeout"]
 
 [editable path="Wind"]
