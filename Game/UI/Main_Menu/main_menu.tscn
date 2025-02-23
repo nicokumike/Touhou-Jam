@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cpnq6w7rd0t4s"]
+[gd_scene load_steps=55 format=3 uid="uid://cpnq6w7rd0t4s"]
 
 [ext_resource type="Script" path="res://Game/UI/Main_Menu/main_menu.gd" id="1_lbcms"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://d2y5byo3k7up3" path="res://Assets/Characters/Base_Chibi/base_chibi_data_resource.tres" id="2_6f0g6"]
@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://1sp0vnkehkv3" path="res://Assets/UI/Title_Screen_Graphics/Settings.png" id="13_y43fx"]
 [ext_resource type="Texture2D" uid="uid://bby8ptgqgkwfb" path="res://Assets/UI/Title_Screen_Graphics/Credits.png" id="14_20vub"]
 [ext_resource type="Texture2D" uid="uid://dem55w22fykbw" path="res://Assets/UI/Title_Screen_Graphics/Music_Room_Gray.png" id="15_dx2oi"]
+[ext_resource type="Texture2D" uid="uid://3bbxv46su0ii" path="res://Assets/Characters/Base_Chibi/FlandreDread.png" id="15_qm4mx"]
+[ext_resource type="Texture2D" uid="uid://ccu42etyo3ueq" path="res://Assets/UI/Title_Screen_Graphics/FlandreFine.png" id="16_4vsm7"]
 [ext_resource type="Texture2D" uid="uid://islsqt57ygga" path="res://Assets/UI/Title_Screen_Graphics/Music_Room.png" id="16_c1qd8"]
 [ext_resource type="Texture2D" uid="uid://dg6k1fyokeha0" path="res://Assets/UI/Title_Screen_Graphics/Quit_Gray.png" id="17_m3amv"]
 [ext_resource type="Texture2D" uid="uid://bg6i5f1duif0l" path="res://Assets/UI/Title_Screen_Graphics/Quit.png" id="18_tyf8r"]
@@ -173,6 +175,30 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(5107.99, 2202)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BlackHouse/Outside/Flandre_Chibi3/FlandreFine:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BlackHouse/Outside/Flandre_Chibi3/FlandreFine:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_qgev1"]
@@ -357,6 +383,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(6.27667, 1),
 "update": 0,
 "values": [Vector2(5107.99, 2202), Vector2(2799.99, 2202)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BlackHouse/Outside/Flandre_Chibi3/FlandreFine:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(7.4, 8.9, 9.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.905, -0.005)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BlackHouse/Outside/Flandre_Chibi3/FlandreFine:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lh125"]
@@ -678,6 +728,18 @@ offset_top = -36.5
 offset_right = 29.5
 offset_bottom = 69.5
 texture = SubResource("GradientTexture2D_rew0p")
+
+[node name="FlandreDread" type="Sprite2D" parent="BlackHouse/Outside/Flandre_Chibi3"]
+texture_filter = 3
+position = Vector2(-13, -60.5)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("15_qm4mx")
+
+[node name="FlandreFine" type="Sprite2D" parent="BlackHouse/Outside/Flandre_Chibi3"]
+visible = false
+texture_filter = 3
+position = Vector2(15, -71.5)
+texture = ExtResource("16_4vsm7")
 
 [node name="ColorRect4" type="ColorRect" parent="BlackHouse/Outside"]
 layout_mode = 0

@@ -1,0 +1,26 @@
+{
+    "0": {
+        "Character": ["Patchouli", "Neutral", "Top"],
+        "Text": "Ah Lady Scarlet, you've returned. I assume you have the Resonate?"
+    },
+
+    "1": {
+        "Character": ["Patchouli", "Smile", "Top"],
+        "Text": "Splendid. Now there's nothing else to worry about!"
+    },
+
+    "2": {
+        "Character": ["Flandre", "Smile", "Bottom"],
+        "Text": "Time for tea?"
+    },
+
+    "3": {
+        "Character": ["Patchouli", "Smile", "Top"],
+        "Text": "Yes, and a special ice cream I had procured recently."
+    },
+
+    "4": {
+        "Character": ["Flandre", "Neutral", "Bottom"],
+        "Text": "Hmm, ice cream? What kind?"
+    }
+}

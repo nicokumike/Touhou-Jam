@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://bgwqsqt6872v4"]
+
+[ext_resource type="Texture2D" uid="uid://ce0e116rkd8r7" path="res://Game/Data/Flandre_Scarlet/flanportrait.png" id="1_dqpp5"]
+[ext_resource type="Script" path="res://Game/Lib/Resources/CharacterData.gd" id="2_oct16"]
+
+[resource]
+script = ExtResource("2_oct16")
+character_name = "Flandre"
+expression = {
+"Neutral": ExtResource("1_dqpp5")
+}

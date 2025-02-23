@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eo0hb7b1x2xv"
-path="res://.godot/imported/Example1.jpg-3cbec9f51ce36aa6a3175050e6fa3176.ctex"
+uid="uid://ccu42etyo3ueq"
+path="res://.godot/imported/FlandreFine.png-1ddc017d876e9595c7188e5fbcb545ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Data/Flandre_Scarlet/Example1.jpg"
-dest_files=["res://.godot/imported/Example1.jpg-3cbec9f51ce36aa6a3175050e6fa3176.ctex"]
+source_file="res://Assets/UI/Title_Screen_Graphics/FlandreFine.png"
+dest_files=["res://.godot/imported/FlandreFine.png-1ddc017d876e9595c7188e5fbcb545ca.ctex"]
 
 [params]
 
