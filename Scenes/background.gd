@@ -35,8 +35,6 @@ var started = false
 # Loads music cheat
 @onready var composer = $Composer
 
-
-
 # Boss spawn point
 @onready var bossSpawnPoint = $"../BossSpawn"
 

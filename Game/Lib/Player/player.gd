@@ -5,13 +5,13 @@ func _ready():
 
 # NOTE: This is only a test btw
 func _process(delta):
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("Yellow"):
 		do_attack_up()
-	elif Input.is_action_just_pressed("ui_left"):
+	elif Input.is_action_just_pressed("Blue"):
 		do_attack_left()
-	elif Input.is_action_just_pressed("ui_down"):
+	elif Input.is_action_just_pressed("Green"):
 		do_attack_down()
-	elif Input.is_action_just_pressed("ui_right"):
+	elif Input.is_action_just_pressed("Red"):
 		do_attack_right()
 	pass
 

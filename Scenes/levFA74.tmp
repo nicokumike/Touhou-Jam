@@ -113,7 +113,6 @@ offset_right = 125.0
 offset_bottom = 54.0
 text = "Score:"
 label_settings = SubResource("LabelSettings_371ga")
-metadata/_edit_use_anchors_ = true
 
 [node name="AnyKey" type="Label" parent="."]
 offset_left = 499.0
@@ -139,7 +138,6 @@ offset_right = 125.0
 offset_bottom = 117.0
 text = "Combo:"
 label_settings = SubResource("LabelSettings_371ga")
-metadata/_edit_use_anchors_ = true
 
 [node name="ComboAmount" type="Label" parent="."]
 offset_left = 180.0
@@ -149,12 +147,11 @@ offset_bottom = 117.0
 text = "0
 "
 label_settings = SubResource("LabelSettings_371ga")
-metadata/_edit_use_anchors_ = true
 
 [node name="Player_Flandre" parent="." instance=ExtResource("7_2ahiu")]
 z_index = 10
-position = Vector2(220, 453)
-scale = Vector2(1.5, 1.5)
+position = Vector2(217, 564)
+scale = Vector2(2, 2)
 
 [connection signal="area_entered" from="Pointer/Bad" to="Pointer" method="_on_bad_area_entered"]
 [connection signal="area_exited" from="Pointer/Bad" to="Pointer" method="_on_bad_area_exited"]
