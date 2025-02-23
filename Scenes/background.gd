@@ -27,7 +27,7 @@ var started = false
 # Boss scene
 @export var boss = preload("res://Scenes/boss.tscn")
 
-@export var fairies = [preload("res://Game/Characters/Fairy/fairy_river.tscn")]
+@export var fairies = [preload("res://Game/Characters/Fairy/fairy_river.tscn"), "GHOST"]
 
 @export_group("Sheets")
 #@export_file("*.json") var music_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"

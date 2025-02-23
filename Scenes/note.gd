@@ -4,6 +4,7 @@ var speed
 var bpm
 var type = 0
 var is_fairy = false
+var is_ghost = false
 #var fairy = null
 
 @onready var holdTrail = $HoldTrail
@@ -22,6 +23,7 @@ var hit = false
 @onready var contactPoint = $EnemyContactPoint
 @onready var enemyPointArrow = $EnemyPointArrow
 @onready var sprite = $Path2D/PathFollow2D/Icon
+@onready var ghost = preload("res://Assets/UI/Notes/GhostProjectile.png")
 
 func _ready():
 	if hold:
@@ -32,7 +34,11 @@ func _ready():
 	pass
 
 func spawn_fairy(fairy):
-	print(fairy)
+	#print(fairy)
+	pass
+
+func going_ghost():
+	#$Path2D/PathFollow2D/Icon.texture = ghost
 	pass
 
 func _process(delta):

@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctlkjntcstche"]
+[gd_scene load_steps=7 format=3 uid="uid://ctlkjntcstche"]
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b0pbotay7ugyr" path="res://Assets/Characters/Fairy/fairy_data_resource.tres" id="1_6su17"]
 [ext_resource type="Script" path="res://Game/Lib/Animation_Handler/Spine/animation_handler_spine.gd" id="2_4gtx1"]
+[ext_resource type="Shader" path="res://Assets/Shaders/note.gdshader" id="2_byyuw"]
 [ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="3_ubv7v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfd4w"]
+shader = ExtResource("2_byyuw")
+shader_parameter/max_line_width = 20.0
+shader_parameter/min_line_width = 20.0
+shader_parameter/freq = 1.0
+shader_parameter/block_size = 20.0
+shader_parameter/starting_colour = Vector4(1, 0, 0, 1)
+shader_parameter/ending_colour = Vector4(0.1, 0, 0, 0)
 
 [sub_resource type="Resource" id="Resource_1ff6o"]
 script = ExtResource("3_ubv7v")
@@ -18,10 +28,12 @@ speed = 1.0
 
 [node name="AnimationHandler_Spine" type="SpineSprite" parent="."]
 skeleton_data_res = ExtResource("1_6su17")
+normal_material = SubResource("ShaderMaterial_nfd4w")
 preview_skin = "River"
 preview_animation = "Fairy/idle"
 preview_frame = false
 preview_time = 0.0
+texture_filter = 3
 script = ExtResource("2_4gtx1")
 skinName = "River"
 initial_animation = SubResource("Resource_1ff6o")
