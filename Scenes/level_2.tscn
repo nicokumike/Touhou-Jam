@@ -1,0 +1,144 @@
+[gd_scene load_steps=15 format=3 uid="uid://b775uf6udw3vl"]
+
+[ext_resource type="Script" path="res://Scenes/background.gd" id="1_hsngw"]
+[ext_resource type="PackedScene" uid="uid://btuclynen63si" path="res://Scenes/background_volcano.tscn" id="2_db0tb"]
+[ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="3_1wch0"]
+[ext_resource type="AudioStream" uid="uid://uu6lauef18jv" path="res://Game/Lib/Composer/Music_Sheets/Utsusho_Running.mp3" id="3_16e83"]
+[ext_resource type="Script" path="res://Scenes/pointer.gd" id="4_bs3am"]
+[ext_resource type="AudioStream" uid="uid://bcn2q65jun7xg" path="res://Game/Lib/Composer/Music_Sheets/Utsusho_LOOP.mp3" id="4_oximf"]
+[ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="5_ba5mo"]
+[ext_resource type="AudioStream" uid="uid://c5s4bftlnd744" path="res://Game/Lib/Composer/Music_Sheets/Utsusho_Boss.mp3" id="5_iw6i0"]
+[ext_resource type="Texture2D" uid="uid://by22eheheamcu" path="res://Assets/UI/ContactPointArrow.png" id="6_xj55f"]
+[ext_resource type="Texture2D" uid="uid://8k2553q8h8bw" path="res://Assets/UI/Notes/ComboContainer.png" id="7_o0inv"]
+[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="8_c5sms"]
+[ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="9_o3eyl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vjq"]
+size = Vector2(20, 350)
+
+[sub_resource type="LabelSettings" id="LabelSettings_371ga"]
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Level2" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("1_hsngw")
+backgroundArt = ExtResource("2_db0tb")
+song = ExtResource("3_16e83")
+loopSong = ExtResource("4_oximf")
+bossSong = ExtResource("5_iw6i0")
+
+[node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
+script = ExtResource("3_1wch0")
+emitter = NodePath("..")
+music_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running.json"
+
+[node name="Pointer" type="CharacterBody2D" parent="."]
+position = Vector2(441, 342)
+script = ExtResource("4_bs3am")
+
+[node name="FlandreContactPoint" type="Sprite2D" parent="Pointer"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("5_ba5mo")
+
+[node name="ContactPointArrow" type="Sprite2D" parent="Pointer"]
+texture_filter = 3
+scale = Vector2(2, 2)
+texture = ExtResource("6_xj55f")
+offset = Vector2(29, -2)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1208, 342)
+
+[node name="BossSpawn" type="Marker2D" parent="."]
+position = Vector2(1685, 342)
+
+[node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
+position = Vector2(360, 342)
+collision_layer = 61
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("RectangleShape2D_q6vjq")
+
+[node name="ComboContainer" type="Sprite2D" parent="Killzone"]
+texture_filter = 3
+position = Vector2(-250, -267)
+texture = ExtResource("7_o0inv")
+
+[node name="AnyKey" type="Label" parent="."]
+texture_filter = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 680.0
+offset_top = 329.0
+offset_right = 1008.0
+offset_bottom = 357.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_c5sms")
+theme_override_font_sizes/font_size = 32
+text = "Press any key to start"
+label_settings = SubResource("LabelSettings_371ga")
+
+[node name="Player_Flandre" parent="." instance=ExtResource("9_o3eyl")]
+z_index = 10
+texture_filter = 3
+position = Vector2(220, 453)
+scale = Vector2(1.5, 1.5)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+texture_filter = 3
+offset_left = 4.0
+offset_top = 38.0
+offset_right = 145.0
+offset_bottom = 132.0
+theme = ExtResource("8_c5sms")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score:"
+label_settings = SubResource("LabelSettings_371ga")
+metadata/_edit_use_anchors_ = true
+
+[node name="ComboLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Combo:"
+label_settings = SubResource("LabelSettings_371ga")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreAmount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_371ga")
+
+[node name="ComboAmount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_371ga")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 2.557
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="Background" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Killzone" to="Pointer" method="_on_killzone_area_entered"]
+[connection signal="timeout" from="Timer2" to="Background" method="_on_timer_2_timeout"]

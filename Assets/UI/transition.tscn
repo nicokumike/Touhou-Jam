@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://bq1dgrv81dr7s"]
+
+[ext_resource type="Script" path="res://Assets/UI/transition.gd" id="1_56q5w"]
+
+[sub_resource type="Gradient" id="Gradient_fkg8e"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bo088"]
+gradient = SubResource("Gradient_fkg8e")
+
+[sub_resource type="Animation" id="Animation_n2vha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1543, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_l8k2i"]
+resource_name = "fade_in"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(3.03143, 1),
+"update": 0,
+"values": [Vector2(-361, -1), Vector2(-2319, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_07qfn"]
+resource_name = "fade_out"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.277392, 1),
+"update": 0,
+"values": [Vector2(1543, -1), Vector2(-361, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jlcr5"]
+_data = {
+"RESET": SubResource("Animation_n2vha"),
+"fade_in": SubResource("Animation_l8k2i"),
+"fade_out": SubResource("Animation_07qfn")
+}
+
+[node name="Transition" type="Node2D"]
+script = ExtResource("1_56q5w")
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 1543.0
+offset_top = -1.0
+offset_right = 3573.0
+offset_bottom = 719.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect3"]
+layout_mode = 0
+offset_top = 720.0
+offset_right = 256.0
+offset_bottom = 1440.0
+rotation = 3.14159
+texture = SubResource("GradientTexture1D_bo088")
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect3/TextureRect2"]
+layout_mode = 0
+offset_left = -2030.0
+offset_top = 719.995
+offset_right = -1774.0
+offset_bottom = 1439.99
+rotation = 3.14159
+texture = SubResource("GradientTexture1D_bo088")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jlcr5")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -38,7 +38,7 @@ func _toggled(new_button_pressed):
 		pass
 
 func load_note(data):
-	#print(data)
+	print(data)
 	text = str(data)
 	for param in data:
 		if param is not float:
@@ -92,7 +92,7 @@ func reset_note():
 		"key": null,
 		"type": "P",
 		"hold": null,
-		"text": null,
+		"text": num,
 		"index": [beat, num]
 	}
 	text = str(num)
@@ -121,6 +121,7 @@ func update_note(param):
 
 func send_note():
 	#print(num, beat)
+	print(note)
 	new_note.emit(note)
 
 #func update_key_text():

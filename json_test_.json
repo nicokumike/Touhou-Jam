@@ -1,34 +1,40 @@
 {
-	"1": {                              
-		"Character": ["Patchouli", "Angry", "Top"],         
+	"1": {
+		"Character": [
+			"Patchouli",
+			"Angry",
+			"Top"
+		],
 		"Text": "I have no money."
 	},
-	
-	"0": {                                 
-		"Character": ["Patchouli", "Excited", "Bottom"],       
+	"0": {
+		"Character": [
+			"Patchouli",
+			"Excited",
+			"Bottom"
+		],
 		"Text": "I love money!"
 	},
-	
-	"2": {                                    
+	"2": {
 		"Text": "The sea spans into the horizon. Not a spec of land in sight..."
 	},
-	
-	"3": {                                 
-		"Character": ["Patchouli", "Excited", "Bottom"],       
+	"3": {
+		"Character": [
+			"Patchouli",
+			"Excited",
+			"Bottom"
+		],
 		"Text": "Thinking and testing stuff"
 	},
-	
-	"4": {                              
-		"Character": ["Patchouli", "Angry", "Top"],         
-		"Text": "Testing further again"
-	},
-	
-	"4": {                              
-		"Character": ["Patchouli", "Angry", "Top"],         
+	"4": {
+		"Character": [
+			"Patchouli",
+			"Angry",
+			"Top"
+		],
 		"Text": "Twice in a row wow nice"
 	},
-	
-	"5": {                                    
+	"5": {
 		"Text": "Finished wow nice!!!"
-	},
+	}
 }

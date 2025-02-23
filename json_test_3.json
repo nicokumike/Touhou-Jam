@@ -1,6 +1,10 @@
 {
-	"1": {                              
-		"Character": ["Patchouli", "Angry", "Top"],         
+	"1": {
+		"Character": [
+			"Patchouli",
+			"Angry",
+			"Top"
+		],
 		"Text": "This plays when you killed the boss!!"
 	}
 }

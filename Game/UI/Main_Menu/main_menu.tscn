@@ -488,11 +488,11 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.509174, 0.110092)
 
-[sub_resource type="Gradient" id="Gradient_fkg8e"]
+[sub_resource type="Gradient" id="Gradient_eluph"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_6rhuk"]
-gradient = SubResource("Gradient_fkg8e")
+gradient = SubResource("Gradient_eluph")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -903,6 +903,10 @@ text = "Hell
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="WindTimer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
@@ -913,6 +917,7 @@ vertical_alignment = 1
 [connection signal="pressed" from="HBoxContainer/Easy" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_hard_pressed"]
 [connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_button_2_pressed"]
+[connection signal="timeout" from="WindTimer" to="." method="_on_wind_timer_timeout"]
 
 [editable path="BlackHouse/Flandre_Chibi"]
 [editable path="BlackHouse/Outside/Flandre_Chibi3"]

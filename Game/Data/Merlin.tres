@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://dc7ibxciu8ncd"]
+
+[ext_resource type="Script" path="res://Game/Lib/Resources/CharacterData.gd" id="1_fpniy"]
+[ext_resource type="Texture2D" uid="uid://cdt0c5u1qcq4x" path="res://Game/Data/Sister_Merlin/merlinportrait.png" id="1_rx1dg"]
+
+[resource]
+script = ExtResource("1_fpniy")
+character_name = "Merlin"
+expression = {
+"Neutral": ExtResource("1_rx1dg")
+}

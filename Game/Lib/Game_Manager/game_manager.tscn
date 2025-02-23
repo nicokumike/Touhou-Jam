@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://r01n6g46e84a"]
+[gd_scene load_steps=4 format=3 uid="uid://r01n6g46e84a"]
 
 [ext_resource type="Script" path="res://Game/Lib/Game_Manager/game_manager.gd" id="1_uo502"]
+[ext_resource type="PackedScene" uid="uid://bwsy88eddedud" path="res://Game/Lib/Level_Manager/level_manager.tscn" id="2_aqnth"]
 [ext_resource type="PackedScene" uid="uid://5ooenep8ptyj" path="res://Game/UI/Splash_Screen/splash_screen.tscn" id="2_ymkn1"]
 
 [node name="GameManager" type="Node" node_paths=PackedStringArray("current_menu")]
 script = ExtResource("1_uo502")
+debug_mode = true
 current_menu = NodePath("Transitions/Splash")
+
+[node name="Level_Manager" parent="." instance=ExtResource("2_aqnth")]
 
 [node name="MenuUI" type="CanvasLayer" parent="."]
 layer = 99

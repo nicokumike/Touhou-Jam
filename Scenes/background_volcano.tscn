@@ -1,11 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://btuclynen63si"]
+[gd_scene load_steps=42 format=3 uid="uid://btuclynen63si"]
 
-[ext_resource type="PackedScene" uid="uid://do5dx0a7tuc54" path="res://Scenes/lava.tscn" id="1_fsbb8"]
+[ext_resource type="PackedScene" path="res://Scenes/lava.tscn" id="1_fsbb8"]
 [ext_resource type="Shader" path="res://Assets/Shaders/water.gdshader" id="1_hefh1"]
 [ext_resource type="Shader" path="res://Assets/Shaders/lava.gdshader" id="2_gy1n1"]
 [ext_resource type="Texture2D" uid="uid://d0q3466tacuhb" path="res://Assets/Environment/Backgroundrock.png" id="2_mejla"]
 [ext_resource type="Texture2D" uid="uid://brtiyi1k4u838" path="res://Assets/Environment/BackgroundVolcano.png" id="3_nlryy"]
-[ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="6_mb178"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6cuvf"]
 
@@ -240,10 +239,6 @@ rotation = 1.5708
 scale = Vector2(6.46018, 1279.71)
 energy = 2.83
 texture = SubResource("GradientTexture1D_hocpq")
-
-[node name="Player_Flandre" parent="." instance=ExtResource("6_mb178")]
-position = Vector2(243, 524)
-scale = Vector2(2, 2)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(1140, 335)

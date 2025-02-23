@@ -6,11 +6,10 @@ var speed = 300
 var music: AudioStreamMP3
 
 # Background art
-@onready var backgroundArt = preload("res://Scenes/background_forest.tscn")
+@export var backgroundArt =  preload("res://Scenes/background_forest.tscn")
+
 # Level started
 var started = false
-
-
 
 # Scene for the notes
 @onready var note = preload("res://Scenes/note.tscn")
@@ -23,11 +22,13 @@ var started = false
 
 # Song that will play
 @export var song = preload("res://Assets/SFX/penis music.mp3")
+@export var loopSong = preload("res://Assets/SFX/penis music.mp3")
+@export var bossSong = preload("res://Assets/SFX/penis music.mp3")
 
 # Boss scene
 @export var boss = preload("res://Scenes/boss.tscn")
 
-@export var fairies = [preload("res://Game/Characters/Fairy/fairy_river.tscn")]
+@export var fairies = [preload("res://Game/Characters/Fairy/fairy_river.tscn"), "GHOST"]
 
 @export_group("Sheets")
 #@export_file("*.json") var music_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
@@ -49,14 +50,41 @@ var time_delay: float
 var beat_played = true
 var last_beat = 0
 
+var now = false
+
 func _ready():
 	var bgd = backgroundArt.instantiate()
 	add_child(bgd)
 	time_begin = Time.get_ticks_usec()
 	time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+	SignalBus.transition_finished.connect(trans_finished.bind())
 	
+	#Start all relevant variables
+	boss_instance = null 
+	music_player = null
+	beat_played = true
+	last_beat = 0
+
+	now = false
+	started = false
+
+func trans_finished(type_name):
+	if type_name == "fade_out":
+		SignalBus.finish_transition.emit()
+		SignalBus.game_state_changed.emit("Start")
+	else:
+		pass
+	print(type_name)
+
+func level_two():
+	SignalBus.transition_start.emit()
+
 func _process(delta):
-	if music_player != null:
+	if Input.is_action_just_pressed("9"):
+		level_two()
+		pass
+	#if music_player != null:
+	if now:
 		var time := 0.0
 			# Obtain from ticks.
 		time = (Time.get_ticks_usec() - time_begin) / 1000000.0
@@ -67,6 +95,7 @@ func _process(delta):
 		if last_beat != beat:
 			composer.play_note()
 		last_beat = beat
+		
 	
 func _unhandled_input(event):
 	if event is InputEventKey and !started:
@@ -75,7 +104,10 @@ func _unhandled_input(event):
 		elif SignalBus.difficulty == "Hard":
 			composer.music_sheet = hard_sheet
 		composer.initialize()
-		music_player = AudMan.play_music(song, -10)
+		AudMan.stop_music()
+		#music_player = AudMan.play_music(song, -10)
+		$"../Timer2".start()
+		now = true
 		started = true
 		$"../AnyKey".visible = false
 
@@ -99,8 +131,8 @@ func emit_note(note_data):
 		"Green": note_instance.setColor(3)
 		"Yellow": note_instance.setColor(1)
 
-var json_data : JSON = preload("res://json_test_.json")
-var json_data2 : JSON = preload("res://json_test_2.json")
+var json_data : JSON = preload("res://Game/Levels/level1/Dialogue/level1_1.dialogue.json")
+var json_data2 : JSON = preload("res://Game/Levels/level1/Dialogue/level1_1.dialogue.json")
 # Boss transition/spawning
 func transition():
 	#Is boss?
@@ -111,7 +143,8 @@ func transition():
 	if boss_instance == null:
 		# Play looping song section
 		song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_LOOP.mp3")
-		AudMan.play_music(song, -10)
+		now = false
+		AudMan.play_music(loopSong, -10)
 		# Spawn boss and instantiate it
 		boss_instance = boss.instantiate()
 		# Setting bosses projectile spawn point
@@ -131,6 +164,7 @@ func transition():
 		if boss_instance.health <= 0:
 			var json_data3 : JSON = preload("res://json_test_3.json")
 			SignalBus.dialogue_triggered.emit(json_data3.data)
+			level_two()
 		else:
 			SignalBus.dialogue_triggered.emit(json_data2.data)
 			
@@ -141,11 +175,18 @@ func transition():
 	#composer.initialize()
 	
 func _on_dialogue_finished():
-	song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3")
+	AudMan.stop_music()
+	song = bossSong
 	if SignalBus.difficulty == "Easy":
 		composer.music_sheet = easy_boss_sheet
 	elif SignalBus.difficulty == "Hard":
 		composer.music_sheet = hard_boss_sheet
+	composer.music_sheet = hard_boss_sheet
 	composer.initialize()
+	$"../Timer2".start()
+	#music_player = AudMan.play_music(song, -10)
+	now = true
+
+func _on_timer_2_timeout():
 	music_player = AudMan.play_music(song, -10)
-	print(music_player)
+	pass # Replace with function body.
