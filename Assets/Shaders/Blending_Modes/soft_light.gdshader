@@ -18,4 +18,3 @@ vec4 main_texture = texture(TEXTURE, UV);
     main_texture.a *= floor(dissolve_value + min(1, noise_texture.x));
     COLOR.a *= main_texture.a;
 }
- 

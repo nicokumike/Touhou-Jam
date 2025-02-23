@@ -34,10 +34,12 @@ var started = false
 # Boss spawn point
 @onready var bossSpawnPoint = $"../BossSpawn"
 
+var boss_instance : Node = null 
+
 func _ready():
 	var bgd = backgroundArt.instantiate()
 	add_child(bgd)
-	
+
 func _unhandled_input(event):
 	if event is InputEventKey and !started:
 		composer.initialize()
@@ -71,21 +73,34 @@ func emit_note(note_data):
 		"Green": note_instance.setColor(3)
 		"Yellow": note_instance.setColor(1)
 
+
+var json_data : JSON = preload("res://json_test_.json")
+var json_data2 : JSON = preload("res://json_test_2.json")
 # Boss transition/spawning
 func transition():
 	#Is boss?
 	#Yes, trigger dialogue
 	#No, do this:
 	# Stopping timer
-	timer.stop()
-	# Spawn boss and instantiate it
-	var boss_instance = boss.instantiate()
-	# Setting bosses projectile spawn point
-	boss_instance.initiate(spawnPoint.position)
-	# Set its position
-	boss_instance.position = bossSpawnPoint.position
-	# Add scene to tree
-	get_parent().add_child(boss_instance)
+	print("Spawn boss")
+	if boss_instance == null:
+		timer.stop()
+		# Spawn boss and instantiate it
+		boss_instance = boss.instantiate()
+		# Setting bosses projectile spawn point
+		boss_instance.initiate(spawnPoint.position)
+		# Set its position
+		boss_instance.position = bossSpawnPoint.position
+		# Add scene to tree
+		get_parent().add_child(boss_instance)
+		
+		# Maybe emit when boss is on screen?
+		SignalBus.dialogue_triggered.emit(json_data.data)
+	
+	# Boss is in the scene
+	elif boss_instance.is_inside_tree():
+		# Now emit dialogue
+		SignalBus.dialogue_triggered.emit(json_data2.data)
 	
 	#Dialogue
 	#----

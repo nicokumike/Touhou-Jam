@@ -17,8 +17,10 @@ func _process(delta):
 func initiate(target):
 	targetPosition = target
 
+var json_data : JSON = preload("res://json_test_3.json")
 func take_damage(amount : int):
 	health -= amount
+	
 	if health <= 0:
-		#SignalBus.dialogue_triggered.emit(json_data.data)
-		pass
+		#Dialogue will activate here
+		SignalBus.dialogue_triggered.emit(json_data.data)

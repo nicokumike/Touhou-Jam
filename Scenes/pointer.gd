@@ -168,10 +168,13 @@ func printPrecision():
 			# So we loop and you need to land another 4 hits
 			perfect_streak = (perfect_streak + 1) % 5
 			damage = 20
+	# Boss is in the scene so make it take damage
 	if boss != null:
 		if perfect_streak == 4:
 			# perfect streak gives us an additional 100 damage
 			damage = damage + 100
+		if boss.has_method("take_damage"):
+			boss.take_damage(damage)
 			
 	noteLabel.global_position = position
 	noteLabel.global_position.y -= 250
