@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Game/UI/Settings_Menu/settings.gd" id="1_xj52j"]
 [ext_resource type="AudioStream" uid="uid://gmlgf3h8xomw" path="res://Assets/SFX/BP_Default_Sounds/Default_Attack.mp3" id="2_an335"]
 [ext_resource type="AudioStream" uid="uid://dda66qotujk1g" path="res://Assets/SFX/BP_Default_Sounds/Default_Death.mp3" id="3_1mofh"]
-[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="4_e0h5c"]
+[ext_resource type="Theme" path="res://Assets/Themes/label.tres" id="4_e0h5c"]
 [ext_resource type="Texture2D" uid="uid://055gj3xys6qy" path="res://Assets/UI/Title_Screen_Graphics/Blue_Sky.png" id="4_hxwd8"]
 [ext_resource type="FontFile" uid="uid://kpqikns6mdrr" path="res://Assets/Fonts/LittleMissLoudonBold-VGO9l.ttf" id="5_2f7ux"]
 [ext_resource type="Theme" uid="uid://bbj4at51n1iaj" path="res://Assets/Themes/button.tres" id="6_b3r87"]

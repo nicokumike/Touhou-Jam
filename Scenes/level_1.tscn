@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
 [ext_resource type="Script" path="res://Scenes/background.gd" id="2_ep8y8"]
-[ext_resource type="AudioStream" uid="uid://c1k7gw8dgw6sh" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3" id="3_wdnrs"]
+[ext_resource type="AudioStream" uid="uid://uu6lauef18jv" path="res://Game/Lib/Composer/Music_Sheets/Utsusho_Running.mp3" id="2_qyyv4"]
 [ext_resource type="Script" path="res://Scenes/pointer.gd" id="5_6yugx"]
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="7_2ahiu"]
 [ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="7_bprpc"]
 [ext_resource type="Texture2D" uid="uid://by22eheheamcu" path="res://Assets/UI/ContactPointArrow.png" id="7_d0uin"]
 [ext_resource type="Texture2D" uid="uid://8k2553q8h8bw" path="res://Assets/UI/Notes/ComboContainer.png" id="7_mvbdy"]
-[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="9_ua65x"]
+[ext_resource type="Theme" path="res://Assets/Themes/label.tres" id="9_ua65x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrojt"]
 size = Vector2(221.667, 215)
@@ -34,12 +34,12 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource("2_ep8y8")
-song = ExtResource("3_wdnrs")
+song = ExtResource("2_qyyv4")
 
 [node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
 script = ExtResource("1_auj5i")
 emitter = NodePath("..")
-music_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-boss.json"
+music_sheet = "res://Game/Lib/Composer/Music_Sheets/boss_1.json"
 
 [node name="Pointer" type="CharacterBody2D" parent="."]
 position = Vector2(441, 342)
