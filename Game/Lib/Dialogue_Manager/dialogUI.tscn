@@ -280,7 +280,6 @@ _data = {
 layer = 128
 visible = false
 script = ExtResource("1_xrtxq")
-text_speed = 2
 
 [node name="Control" type="Control" parent="."]
 texture_filter = 3

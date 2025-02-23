@@ -47,7 +47,8 @@ func _ready():
 #region Main functions
 func _shortcut_input(event: InputEvent) -> void:
 	# Check if the skip or continue button is pressed
-	if event is InputEventKey: # or event is InputEventMouseButton
+	# Check if key is pressed, check if the key is held down and check it did not echo
+	if (event is InputEventKey and event.pressed and not event.echo): # or (event is InputEventMouseButton and event.pressed)
 		# If an animation is playing, seek to the end
 		if %DialogueAnimationPlayer.is_playing():
 			# Grab current animation
