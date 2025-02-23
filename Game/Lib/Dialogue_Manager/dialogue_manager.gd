@@ -47,7 +47,7 @@ func _ready():
 #region Main functions
 func _shortcut_input(event: InputEvent) -> void:
 	# Check if the skip or continue button is pressed
-	if event is InputEventKey: # or event is InputEventMouseButton
+	if event is InputEventKey and event.pressed and not event.echo: # or event is InputEventMouseButton
 		# If an animation is playing, seek to the end
 		if %DialogueAnimationPlayer.is_playing():
 			# Grab current animation
@@ -79,7 +79,9 @@ func progress_dialogue() -> void:
 				if %TopDialogueCont.visible:
 					%TopDialogueCover.visible = true
 				current_dialogue_box = dialogue_dictionary[dialogue_sequence[dialogue_index]["position"]]
-				%BottomTextureRect.texture = dialogue_sequence[dialogue_index]["character_resource"].expression[dialogue_sequence[dialogue_index]["expression"]]
+				%BottomTextureRect.texture = dialogue_sequence[dialogue_index]["character_resource"].expression[dialogue_sequence[dialogue_index]["expression"]] \
+				if dialogue_sequence[dialogue_index]["character_resource"].expression.has(dialogue_sequence[dialogue_index]["expression"]) \
+				else dialogue_sequence[dialogue_index]["character_resource"].expression["Neutral"]
 				%BottomSpeaker.text = dialogue_sequence[dialogue_index]["character_name"]
 				%BottomDialogue.text = dialogue_sequence[dialogue_index]["text"]
 				%DialogueAnimationPlayer.play("reveal_text_bottom")
