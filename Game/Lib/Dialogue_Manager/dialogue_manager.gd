@@ -89,7 +89,9 @@ func progress_dialogue() -> void:
 				if %BottomDialogueCont.visible:
 					%BottomDialogueCover.visible = true
 				current_dialogue_box = dialogue_dictionary[dialogue_sequence[dialogue_index]["position"]]
-				%TopTextureRect.texture = dialogue_sequence[dialogue_index]["character_resource"].expression[dialogue_sequence[dialogue_index]["expression"]]
+				%TopTextureRect.texture = dialogue_sequence[dialogue_index]["character_resource"].expression[dialogue_sequence[dialogue_index]["expression"]] \
+				if dialogue_sequence[dialogue_index]["character_resource"].expression.has(dialogue_sequence[dialogue_index]["expression"]) \
+				else dialogue_sequence[dialogue_index]["character_resource"].expression["Neutral"]
 				%TopSpeaker.text = dialogue_sequence[dialogue_index]["character_name"]
 				%TopDialogue.text = dialogue_sequence[dialogue_index]["text"]
 				%DialogueAnimationPlayer.play("reveal_text_top")

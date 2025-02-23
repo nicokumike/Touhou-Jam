@@ -16,7 +16,7 @@ class_name Game_Manager
 @onready var menu_ui: CanvasLayer = $MenuUI
 
 #Put your top level menus here
-@onready var main_menu = preload("res://Game/UI/Main_Menu/main_menu.tscn")
+@onready var main_menu = preload("uid://cpnq6w7rd0t4s")
 @onready var settings_menu = preload("res://Game/UI/Settings_Menu/settings.tscn")
 @onready var credits_menu = preload("res://Game/UI/Credits_Menu/credits_menu.tscn")
 

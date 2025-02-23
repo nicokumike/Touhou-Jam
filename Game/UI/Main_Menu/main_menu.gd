@@ -14,14 +14,16 @@ func animate_button(button_node: Node, state: String) -> void:
 	await tween.finished
 	SignalBus.game_state_changed.emit(state)
 	queue_free()
-	
-var json_data : JSON = preload("res://json_test_.json")
+
+# Dialogue for the cutscene
+var cutscene_dialogue : JSON = preload("res://Game/UI/Main_Menu/Dialogue/level0_1.dialogue.json")
+
 # Function to trigger dialogue then pause
 func _trigger_dialogue() -> void:
 	# For testing
 	# TODO: Would probably be better to pause all other scenes
 	$AnimationPlayer.pause()
-	SignalBus.dialogue_triggered.emit(json_data.data)
+	SignalBus.dialogue_triggered.emit(cutscene_dialogue.data)
 	
 	
 # Function to resume custcene when dialogue is paused

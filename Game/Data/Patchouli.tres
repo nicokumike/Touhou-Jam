@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://7qg28ki727fe"]
+
+[ext_resource type="Script" path="res://Game/Lib/Resources/CharacterData.gd" id="1_osf5j"]
+[ext_resource type="Texture2D" uid="uid://va8rnnmqpd5e" path="res://Game/Data/Patchouli_Knowledge/patchportrait.png" id="1_ugg1j"]
+
+[resource]
+script = ExtResource("1_osf5j")
+character_name = "Patchouli"
+expression = {
+"Neutral": ExtResource("1_ugg1j")
+}
