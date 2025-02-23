@@ -150,6 +150,30 @@ tracks/7/keys = {
 "update": 1,
 "values": [SubResource("Resource_jq158")]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BlackHouse/Outside/Flandre_Chibi3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4263, 2827)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BlackHouse/Outside/ColorRect4:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5107.99, 2202)]
+}
 
 [sub_resource type="Animation" id="Animation_qgev1"]
 resource_name = "cutscene"
@@ -270,7 +294,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_4bhem"]
 resource_name = "cutscene2"
-length = 8.0
+length = 12.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -295,6 +319,44 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.34151, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-3550, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlackHouse/Outside/Flandre_Chibi3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.2, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4263, 2827), Vector2(4711.99, 2827)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlackHouse/Outside/Flandre_Chibi3/AnimationHandler_Spine")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Base_Chibi/walk", true, 0, -1.0, 1.0],
+"method": &"play_animation"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlackHouse/Outside/ColorRect4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8, 12),
+"transitions": PackedFloat32Array(6.27667, 1),
+"update": 0,
+"values": [Vector2(5107.99, 2202), Vector2(2799.99, 2202)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lh125"]
@@ -617,6 +679,23 @@ offset_right = 29.5
 offset_bottom = 69.5
 texture = SubResource("GradientTexture2D_rew0p")
 
+[node name="ColorRect4" type="ColorRect" parent="BlackHouse/Outside"]
+layout_mode = 0
+offset_left = 5107.99
+offset_top = 2202.0
+offset_right = 7137.99
+offset_bottom = 2922.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="BlackHouse/Outside/ColorRect4"]
+layout_mode = 0
+offset_top = 720.0
+offset_right = 256.0
+offset_bottom = 1440.0
+rotation = 3.14159
+texture = SubResource("GradientTexture1D_6rhuk")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 z_index = 100
 texture_filter = 3
@@ -774,3 +853,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_button_2_pressed"]
 
 [editable path="BlackHouse/Flandre_Chibi"]
+[editable path="BlackHouse/Outside/Flandre_Chibi3"]

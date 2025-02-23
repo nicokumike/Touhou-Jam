@@ -23,13 +23,13 @@ var cutscene_dialogue : JSON = preload("res://Game/UI/Main_Menu/Dialogue/level0_
 func _trigger_dialogue() -> void:
 	# For testing
 	# TODO: Would probably be better to pause all other scenes
-	$AnimationPlayer.pause()
+	#$AnimationPlayer.pause()
 	SignalBus.dialogue_triggered.emit(cutscene_dialogue.data)
 	
 	
 # Function to resume custcene when dialogue is paused
 func _resume_cutscene() -> void:
-	$AnimationPlayer.play()
+	$AnimationPlayer.play("cutscene2")
 
 func _on_start_pressed() -> void:
 	var tween = create_tween()
@@ -64,7 +64,7 @@ func _on_music_room_pressed() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "cutscene":
-		$AnimationPlayer.play("cutscene2")
+		pass
 		#SignalBus.game_state_changed.emit("Start")
 		#queue_free()
 

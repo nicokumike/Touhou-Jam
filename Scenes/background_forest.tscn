@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dbeo4tp0jv8gk"]
+[gd_scene load_steps=36 format=3 uid="uid://dbeo4tp0jv8gk"]
 
 [ext_resource type="Texture2D" uid="uid://v5pyu0jps4qf" path="res://Assets/Environment/BackgroundSky.png" id="1_b0ikd"]
 [ext_resource type="Shader" path="res://Assets/Shaders/water.gdshader" id="2_o38cd"]
@@ -153,6 +153,17 @@ width = 2
 height = 32
 fill_to = Vector2(0, 1)
 
+[sub_resource type="Environment" id="Environment_55avn"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.5
+glow_strength = 1.1
+glow_bloom = 0.01
+glow_blend_mode = 1
+adjustment_enabled = true
+adjustment_brightness = 1.1
+
 [node name="BackgroundForest" type="Node2D"]
 texture_filter = 3
 
@@ -200,5 +211,8 @@ texture = ExtResource("4_8ak37")
 [node name="GPUParticles2D" parent="Wind" index="0"]
 process_material = SubResource("ParticleProcessMaterial_2ihxk")
 texture = SubResource("GradientTexture2D_b511q")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_55avn")
 
 [editable path="Wind"]
