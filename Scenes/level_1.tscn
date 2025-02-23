@@ -34,14 +34,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource("2_ep8y8")
-bpm = null
 song = ExtResource("2_afo7i")
-boss = null
-fairies = null
-hard_sheet = null
-easy_sheet = null
-hard_boss_sheet = null
-easy_boss_sheet = null
 
 [node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
 script = ExtResource("1_auj5i")
