@@ -110,10 +110,10 @@ func transition():
 	elif boss_instance.is_inside_tree():
 		# Now emit dialogue
 		if boss_instance.health <= 0:
-			SignalBus.dialogue_triggered.emit(json_data2.data)
-		else:
 			var json_data3 : JSON = preload("res://json_test_3.json")
 			SignalBus.dialogue_triggered.emit(json_data3.data)
+		else:
+			SignalBus.dialogue_triggered.emit(json_data2.data)
 			
 	#Dialogue
 	#----
