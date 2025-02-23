@@ -18,6 +18,8 @@ signal dialogue_triggered(dialogue_data : Dictionary)
 signal dialogue_finished
 
 #signal difficulty_selected(diff)
-signal transition
+signal transition_start
 
 signal transition_finished
+
+signal finish_transition

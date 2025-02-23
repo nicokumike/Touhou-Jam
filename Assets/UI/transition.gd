@@ -18,4 +18,4 @@ func _begin():
 		$AnimationPlayer.play("fade_out")
 
 func _on_animation_player_animation_finished(anim_name):
-	SignalBus.emit.transition_finished(anim_name)
+	SignalBus.transition_finished.emit(anim_name)

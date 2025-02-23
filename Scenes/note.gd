@@ -25,6 +25,8 @@ var hit = false
 @onready var sprite = $Path2D/PathFollow2D/Icon
 @onready var ghost = preload("res://Assets/UI/Notes/GhostProjectile.png")
 
+var time = 0
+
 func _ready():
 	if hold:
 		holdTrail.visible = true
@@ -42,6 +44,7 @@ func going_ghost():
 	pass
 
 func _process(delta):
+	#prints(delta, speed * delta)
 	if !holding:
 		position.x -= speed * delta
 	else:

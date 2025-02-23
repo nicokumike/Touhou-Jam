@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://bc03syknr3he6"]
 
 [ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
-[ext_resource type="AudioStream" uid="uid://bdcauevp71bpn" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_FULL.mp3" id="2_afo7i"]
 [ext_resource type="Script" path="res://Scenes/background.gd" id="2_ep8y8"]
+[ext_resource type="AudioStream" uid="uid://2cnvr2qgv3h2" path="res://Game/Lib/Composer/Music_Sheets/audio sync debug.mp3" id="2_ibhey"]
 [ext_resource type="Script" path="res://Scenes/pointer.gd" id="5_6yugx"]
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="7_2ahiu"]
 [ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="7_bprpc"]
@@ -34,7 +34,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource("2_ep8y8")
-song = ExtResource("2_afo7i")
+song = ExtResource("2_ibhey")
 
 [node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
 script = ExtResource("1_auj5i")
@@ -176,7 +176,12 @@ text = "0
 label_settings = SubResource("LabelSettings_371ga")
 metadata/_edit_use_anchors_ = true
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 2.4
+one_shot = true
+
 [connection signal="area_entered" from="Pointer/Bad" to="Pointer" method="_on_bad_area_entered"]
 [connection signal="area_exited" from="Pointer/Bad" to="Pointer" method="_on_bad_area_exited"]
 [connection signal="timeout" from="Timer" to="Background" method="_on_timer_timeout"]
 [connection signal="area_entered" from="Killzone" to="Pointer" method="_on_killzone_area_entered"]
+[connection signal="timeout" from="Timer2" to="Background" method="_on_timer_2_timeout"]

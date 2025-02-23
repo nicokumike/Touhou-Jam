@@ -52,26 +52,55 @@ var last_beat = 0
 
 var curr_bgd
 
+#var time_begin
+#var time_delay
+#
+#
+#func _ready():
+	#time_begin = Time.get_ticks_usec()
+	#time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+	#$Player.play()
+#
+#
+#func _process(delta):
+	## Obtain from ticks.
+	#var time = (Time.get_ticks_usec() - time_begin) / 1000000.0
+	## Compensate for latency.
+	#time -= time_delay
+	## May be below 0 (did not begin yet).
+	#time = max(0, time)
+	#print("Time is: ", time)
+
+var now = false
+
 func _ready():
 	var bgd = backgroundArt.instantiate()
 	curr_bgd = bgd
 	add_child(bgd)
 	time_begin = Time.get_ticks_usec()
 	time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+	SignalBus.transition_finished.connect(trans_finished.bind() )
+
+func trans_finished(type_name):
+	if type_name == "fade_out":
+		curr_bgd.queue_free()
+		var bgd = volcano.instantiate()
+		curr_bgd = bgd
+		add_child(bgd)
+		SignalBus.finish_transition.emit()
+	else:
+		pass
+	print(type_name)
 
 func level_two():
-	SignalBus.transition.emit()
-	curr_bgd.queue_free()
-	var bgd = volcano.instantiate()
-	curr_bgd = bgd
-	add_child(bgd)
-	
+	SignalBus.transition_start.emit()
 
 func _process(delta):
 	if Input.is_action_just_pressed("9"):
 		level_two()
 		pass
-	if music_player != null:
+	#if music_player != null:
+	if now:
 		var time := 0.0
 			# Obtain from ticks.
 		time = (Time.get_ticks_usec() - time_begin) / 1000000.0
@@ -82,6 +111,7 @@ func _process(delta):
 		if last_beat != beat:
 			composer.play_note()
 		last_beat = beat
+		
 	
 func _unhandled_input(event):
 	if event is InputEventKey and !started:
@@ -90,7 +120,9 @@ func _unhandled_input(event):
 		elif SignalBus.difficulty == "Hard":
 			composer.music_sheet = hard_sheet
 		composer.initialize()
-		music_player = AudMan.play_music(song, -10)
+		#music_player = AudMan.play_music(song, -10)
+		$"../Timer2".start()
+		now = true
 		started = true
 		$"../AnyKey".visible = false
 
@@ -165,3 +197,8 @@ func _on_dialogue_finished():
 	composer.initialize()
 	music_player = AudMan.play_music(song, -10)
 	print(music_player)
+
+
+func _on_timer_2_timeout():
+	music_player = AudMan.play_music(song, -10)
+	pass # Replace with function body.
