@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://1cqpitcvjo8p"]
+
+[ext_resource type="Texture2D" uid="uid://crlxmq0hscn0u" path="res://Game/Data/Sister_Lunasa/lunasaportrait.png" id="1_if5bl"]
+[ext_resource type="Script" path="res://Game/Lib/Resources/CharacterData.gd" id="1_qf4s0"]
+
+[resource]
+script = ExtResource("1_qf4s0")
+character_name = "Lunasa"
+expression = {
+"Neutral": ExtResource("1_if5bl")
+}
