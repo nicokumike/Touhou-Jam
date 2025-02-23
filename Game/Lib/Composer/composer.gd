@@ -79,7 +79,6 @@ func decipher_note(note):
 			new_note.length = note[2]
 			if int(note[3]) is int:
 				new_note.length = int(note[2] + note[3])
-				print(new_note.length)
 	match note[-1]:
 		"P": new_note.type = legend[note[1]]
 		"F": new_note.type = legend[note[1]]
