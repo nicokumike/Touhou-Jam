@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [audio]
 
 buses/default_bus_layout="res://Game/Lib/Audio_Manager/audio_manager_bus.tres"
-driver/output_latency=50
 
 [autoload]
 
