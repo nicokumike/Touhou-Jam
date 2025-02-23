@@ -10,5 +10,5 @@ animation_name = "Flandre/windBrace"
 animation_index = 7
 loop = true
 track = 0
-mix_duration = 0.05
+mix_duration = 0.2
 speed = 1.0
