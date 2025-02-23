@@ -1,0 +1,33 @@
+{
+	"bpm": 148,
+	"name": "Prismriver Sisters - Running",
+	"sheet": [
+		[
+			[
+				1,
+				2,
+				3,
+				4
+			],
+			[
+				1,
+				2,
+				"YP",
+				4
+			],
+			[
+				1,
+				2,
+				3,
+				4
+			],
+			[
+				1,
+				2,
+				"YP",
+				4
+			]
+		],
+	],
+	"song": "res://Game/Lib/Composer/Music_Sheets/Utsusho_RUNNING.mp3"
+}

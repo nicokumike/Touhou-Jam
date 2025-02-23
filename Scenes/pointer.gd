@@ -87,6 +87,7 @@ func _unhandled_input(event):
 					hitNote.pointerObj = self
 				else:
 					hitNote.animPlayer.play("death")
+					hitNote.enemyPointArrow.visible = false
 					hitNote.dead = true
 					hitNote.hit = true
 			else:

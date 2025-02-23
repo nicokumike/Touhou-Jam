@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cguq6ynfjgd4q"]
+[gd_scene load_steps=14 format=3 uid="uid://cguq6ynfjgd4q"]
 
 [ext_resource type="Script" path="res://Game/Lib/Dialogue_Manager/dialogue_manager.gd" id="1_xrtxq"]
 [ext_resource type="Shader" path="res://Assets/Shaders/blur_shader.gdshader" id="2_fy62d"]
-[ext_resource type="Texture2D" uid="uid://eo0hb7b1x2xv" path="res://Game/Data/Flandre_Scarlet/Example1.jpg" id="3_hr21h"]
+[ext_resource type="Texture2D" uid="uid://ce0e116rkd8r7" path="res://Game/Data/Flandre_Scarlet/flanportrait.png" id="3_pe0yn"]
 [ext_resource type="Theme" path="res://Assets/Themes/label.tres" id="4_5j0p6"]
 [ext_resource type="Theme" uid="uid://celsilvppyh1c" path="res://Game/Lib/Resources/richLabel.tres" id="5_empc5"]
+[ext_resource type="Texture2D" uid="uid://va8rnnmqpd5e" path="res://Game/Data/Patchouli_Knowledge/patchportrait.png" id="6_0yict"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4xau"]
 shader = ExtResource("2_fy62d")
@@ -277,7 +278,6 @@ _data = {
 
 [node name="DialogUi" type="CanvasLayer"]
 layer = 128
-visible = false
 script = ExtResource("1_xrtxq")
 text_speed = 2
 
@@ -325,7 +325,7 @@ layout_mode = 2
 offset_left = -192.0
 offset_top = 0.160004
 offset_bottom = 192.16
-texture = ExtResource("3_hr21h")
+texture = ExtResource("3_pe0yn")
 expand_mode = 3
 
 [node name="DialogueBackground" type="Panel" parent="Control/BottomDialogueCont"]
@@ -392,7 +392,7 @@ layout_mode = 2
 offset_left = 704.0
 offset_right = 896.0
 offset_bottom = 192.0
-texture = ExtResource("3_hr21h")
+texture = ExtResource("6_0yict")
 expand_mode = 3
 
 [node name="DialogueBackground" type="Panel" parent="Control/TopDialogueCont"]
