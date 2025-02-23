@@ -1,11 +1,11 @@
 {
 	"1": {                              
-		"Character": ["Alice", "Angry", "Top"],         
+		"Character": ["Patchouli", "Angry", "Top"],         
 		"Text": "I have no money."
 	},
 	
 	"0": {                                 
-		"Character": ["Bob", "Excited", "Bottom"],       
+		"Character": ["Patchouli", "Excited", "Bottom"],       
 		"Text": "I love money!"
 	},
 	
@@ -14,17 +14,17 @@
 	},
 	
 	"3": {                                 
-		"Character": ["Bob", "Excited", "Bottom"],       
+		"Character": ["Patchouli", "Excited", "Bottom"],       
 		"Text": "Thinking and testing stuff"
 	},
 	
 	"4": {                              
-		"Character": ["Alice", "Angry", "Top"],         
+		"Character": ["Patchouli", "Angry", "Top"],         
 		"Text": "Testing further again"
 	},
 	
 	"4": {                              
-		"Character": ["Alice", "Angry", "Top"],         
+		"Character": ["Patchouli", "Angry", "Top"],         
 		"Text": "Twice in a row wow nice"
 	},
 	
