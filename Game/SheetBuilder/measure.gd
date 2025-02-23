@@ -23,6 +23,7 @@ func update_measure(data):
 		for note: RemapNoteButton in children:
 			var index = [note.beat -1, note.num -1]
 			var preloaded_note = data[index[0]][index[1]]
+			prints(preloaded_note, data,"PRE")
 			#prints(note.beat, note.num, index, preloaded_note)
 			note.load_note(preloaded_note)
 

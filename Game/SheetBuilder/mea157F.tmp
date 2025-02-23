@@ -1,0 +1,150 @@
+[gd_scene load_steps=3 format=3 uid="uid://c525mub6rxvk8"]
+
+[ext_resource type="Script" path="res://Game/SheetBuilder/measure.gd" id="1_e1l25"]
+[ext_resource type="Script" path="res://Game/SheetBuilder/remap_note_button.gd" id="2_kb5uk"]
+
+[node name="Measure" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_e1l25")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MeasureCountLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="BeatHContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RemapNoteButton" type="Button" parent="HBoxContainer/BeatHContainer"]
+layout_mode = 2
+text = "1"
+script = ExtResource("2_kb5uk")
+num = 1
+beat = 1
+
+[node name="RemapNoteButton2" type="Button" parent="HBoxContainer/BeatHContainer"]
+layout_mode = 2
+text = "2"
+script = ExtResource("2_kb5uk")
+num = 2
+beat = 1
+
+[node name="RemapNoteButton3" type="Button" parent="HBoxContainer/BeatHContainer"]
+layout_mode = 2
+text = "3"
+script = ExtResource("2_kb5uk")
+num = 3
+beat = 1
+
+[node name="RemapNoteButton4" type="Button" parent="HBoxContainer/BeatHContainer"]
+layout_mode = 2
+text = "4"
+script = ExtResource("2_kb5uk")
+num = 4
+beat = 1
+
+[node name="BeatHContainer2" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RemapNoteButton" type="Button" parent="HBoxContainer/BeatHContainer2"]
+layout_mode = 2
+text = "1"
+script = ExtResource("2_kb5uk")
+num = 1
+beat = 2
+
+[node name="RemapNoteButton2" type="Button" parent="HBoxContainer/BeatHContainer2"]
+layout_mode = 2
+text = "2"
+script = ExtResource("2_kb5uk")
+num = 2
+beat = 2
+
+[node name="RemapNoteButton3" type="Button" parent="HBoxContainer/BeatHContainer2"]
+layout_mode = 2
+text = "3"
+script = ExtResource("2_kb5uk")
+num = 3
+beat = 2
+
+[node name="RemapNoteButton4" type="Button" parent="HBoxContainer/BeatHContainer2"]
+layout_mode = 2
+text = "4"
+script = ExtResource("2_kb5uk")
+num = 4
+beat = 2
+
+[node name="BeatHContainer3" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RemapNoteButton" type="Button" parent="HBoxContainer/BeatHContainer3"]
+layout_mode = 2
+text = "1"
+script = ExtResource("2_kb5uk")
+num = 1
+beat = 3
+
+[node name="RemapNoteButton2" type="Button" parent="HBoxContainer/BeatHContainer3"]
+layout_mode = 2
+text = "2"
+script = ExtResource("2_kb5uk")
+num = 2
+beat = 3
+
+[node name="RemapNoteButton3" type="Button" parent="HBoxContainer/BeatHContainer3"]
+layout_mode = 2
+text = "3"
+script = ExtResource("2_kb5uk")
+num = 3
+beat = 3
+
+[node name="RemapNoteButton4" type="Button" parent="HBoxContainer/BeatHContainer3"]
+layout_mode = 2
+text = "4"
+script = ExtResource("2_kb5uk")
+num = 4
+beat = 3
+
+[node name="BeatHContainer4" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RemapNoteButton" type="Button" parent="HBoxContainer/BeatHContainer4"]
+layout_mode = 2
+text = "1"
+script = ExtResource("2_kb5uk")
+num = 1
+beat = 4
+
+[node name="RemapNoteButton2" type="Button" parent="HBoxContainer/BeatHContainer4"]
+layout_mode = 2
+text = "2"
+script = ExtResource("2_kb5uk")
+num = 2
+beat = 4
+
+[node name="RemapNoteButton3" type="Button" parent="HBoxContainer/BeatHContainer4"]
+layout_mode = 2
+text = "3"
+script = ExtResource("2_kb5uk")
+num = 3
+beat = 4
+
+[node name="RemapNoteButton4" type="Button" parent="HBoxContainer/BeatHContainer4"]
+layout_mode = 2
+text = "4"
+script = ExtResource("2_kb5uk")
+num = 4
+beat = 4
