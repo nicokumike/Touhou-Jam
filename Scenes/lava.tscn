@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://do5dx0a7tuc54"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/lava.gdshader" id="1_lx8x5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6cuvf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7skmc"]
+height = 2702
+seamless = true
+seamless_blend_skirt = 0.724
+as_normal_map = true
+bump_strength = 46.2
+noise = SubResource("FastNoiseLite_6cuvf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4ihi"]
+resource_local_to_scene = true
+shader = ExtResource("1_lx8x5")
+shader_parameter/timeScaleFactor = 0.125
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_7skmc")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_e4ihi")
+offset_top = 308.0
+offset_right = 1279.0
+offset_bottom = 529.0

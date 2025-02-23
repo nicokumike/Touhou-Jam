@@ -240,14 +240,14 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_pmol8"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uaqro"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q3ldf"]
 gradient = SubResource("Gradient_pmol8")
 
 [sub_resource type="Gradient" id="Gradient_ykmon"]
 offsets = PackedFloat32Array(0, 0.508197, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_12p6u"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tx7cv"]
 gradient = SubResource("Gradient_ykmon")
 
 [sub_resource type="Curve" id="Curve_dk4sm"]
@@ -256,7 +256,7 @@ max_value = 200.0
 _data = [Vector2(0, -10.989), 0.0, 0.0, 0, 0, Vector2(0.16, 46.1538), 0.0, 0.0, 0, 0, Vector2(0.313333, -15.3846), 0.0, 0.0, 0, 0, Vector2(0.433333, 32.967), 0.0, 0.0, 0, 0, Vector2(0.606667, -19.7802), 0.0, 0.0, 0, 0, Vector2(0.773333, 28.5714), 0.0, 0.0, 0, 0, Vector2(0.886667, -28.5714), 0.0, 0.0, 0, 0, Vector2(1, 37.3626), 0.0, 0.0, 0, 0]
 point_count = 8
 
-[sub_resource type="CurveTexture" id="CurveTexture_dha20"]
+[sub_resource type="CurveTexture" id="CurveTexture_7k3jg"]
 curve = SubResource("Curve_dk4sm")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p7a2o"]
@@ -270,19 +270,21 @@ initial_velocity_max = 80.0
 gravity = Vector3(-200, 20, 0)
 tangential_accel_min = -2.23517e-06
 tangential_accel_max = 6.0
-tangential_accel_curve = SubResource("CurveTexture_dha20")
+tangential_accel_curve = SubResource("CurveTexture_7k3jg")
 damping_max = 100.0
 scale_min = 1.5
 scale_max = 1.8
-color_ramp = SubResource("GradientTexture1D_12p6u")
-color_initial_ramp = SubResource("GradientTexture1D_uaqro")
+color_ramp = SubResource("GradientTexture1D_tx7cv")
+color_initial_ramp = SubResource("GradientTexture1D_q3ldf")
 
-[sub_resource type="Gradient" id="Gradient_eoj1g"]
+[sub_resource type="Gradient" id="Gradient_xvb5q"]
+resource_local_to_scene = true
 offsets = PackedFloat32Array(0.012987, 0.525974, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 0.7, 0.98, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ydg04"]
-gradient = SubResource("Gradient_eoj1g")
+resource_local_to_scene = true
+gradient = SubResource("Gradient_xvb5q")
 width = 2
 height = 32
 fill_to = Vector2(0, 1)

@@ -108,8 +108,10 @@ func _on_stop_button_pressed() -> void:
 	m_timer.stop()
 	m_timer.wait_time = (60 / bpm) * 4
 	var measures = $ScrollContainer/MeasureVContainer.get_children()
+	current_measure = 1
 	for measure in measures:
 		measure.modulate = Color.WHITE
+		
 		pass
 
 func _on_test_button_pressed() -> void:
