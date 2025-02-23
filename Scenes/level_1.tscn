@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc03syknr3he6"]
+[gd_scene load_steps=16 format=3 uid="uid://bc03syknr3he6"]
 
 [ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
 [ext_resource type="Script" path="res://Scenes/background.gd" id="2_ep8y8"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="7_2ahiu"]
 [ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="7_bprpc"]
 [ext_resource type="Texture2D" uid="uid://by22eheheamcu" path="res://Assets/UI/ContactPointArrow.png" id="7_d0uin"]
+[ext_resource type="Texture2D" uid="uid://8k2553q8h8bw" path="res://Assets/UI/Notes/ComboContainer.png" id="7_mvbdy"]
+[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="9_ua65x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrojt"]
 size = Vector2(221.667, 215)
@@ -106,14 +108,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("RectangleShape2D_q6vjq")
 
-[node name="ScoreLabel" type="Label" parent="."]
-offset_left = 31.0
-offset_top = 9.0
-offset_right = 125.0
-offset_bottom = 54.0
-text = "Score:"
-label_settings = SubResource("LabelSettings_371ga")
-metadata/_edit_use_anchors_ = true
+[node name="ComboContainer" type="Sprite2D" parent="Killzone"]
+texture_filter = 3
+position = Vector2(-250, -267)
+texture = ExtResource("7_mvbdy")
 
 [node name="AnyKey" type="Label" parent="."]
 offset_left = 499.0
@@ -123,38 +121,50 @@ offset_bottom = 387.0
 text = "Press any key to start"
 label_settings = SubResource("LabelSettings_371ga")
 
-[node name="ScoreAmount" type="Label" parent="."]
-offset_left = 180.0
-offset_top = 9.0
-offset_right = 526.0
-offset_bottom = 54.0
-text = "0
-"
-label_settings = SubResource("LabelSettings_371ga")
+[node name="Player_Flandre" parent="." instance=ExtResource("7_2ahiu")]
+z_index = 10
+texture_filter = 3
+position = Vector2(220, 453)
+scale = Vector2(1.5, 1.5)
 
-[node name="ComboLabel" type="Label" parent="."]
-offset_left = 31.0
-offset_top = 72.0
-offset_right = 125.0
-offset_bottom = 117.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+texture_filter = 3
+offset_left = 4.0
+offset_top = 38.0
+offset_right = 145.0
+offset_bottom = 132.0
+theme = ExtResource("9_ua65x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score:"
+label_settings = SubResource("LabelSettings_371ga")
+metadata/_edit_use_anchors_ = true
+
+[node name="ComboLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
 text = "Combo:"
 label_settings = SubResource("LabelSettings_371ga")
 metadata/_edit_use_anchors_ = true
 
-[node name="ComboAmount" type="Label" parent="."]
-offset_left = 180.0
-offset_top = 72.0
-offset_right = 274.0
-offset_bottom = 117.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreAmount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_371ga")
+
+[node name="ComboAmount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
 text = "0
 "
 label_settings = SubResource("LabelSettings_371ga")
 metadata/_edit_use_anchors_ = true
-
-[node name="Player_Flandre" parent="." instance=ExtResource("7_2ahiu")]
-z_index = 10
-position = Vector2(220, 453)
-scale = Vector2(1.5, 1.5)
 
 [connection signal="area_entered" from="Pointer/Bad" to="Pointer" method="_on_bad_area_entered"]
 [connection signal="area_exited" from="Pointer/Bad" to="Pointer" method="_on_bad_area_exited"]

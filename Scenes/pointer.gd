@@ -5,8 +5,8 @@ extends CharacterBody2D
 # Scene
 @onready var noteGraphics = preload("res://Game/UI/Notes_Graphics/note_graphics.tscn")
 
-@onready var scoreAmount = $"../ScoreAmount"
-@onready var comboAmount = $"../ComboAmount"
+@onready var scoreAmount = $"../HBoxContainer/VBoxContainer2/ScoreAmount"
+@onready var comboAmount = $"../HBoxContainer/VBoxContainer2/ComboAmount"
 
 # Scoring
 var score = 0
