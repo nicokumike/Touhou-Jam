@@ -4,6 +4,7 @@ var speed
 var bpm
 var type = 0
 var is_fairy = false
+#var fairy = null
 
 @onready var holdTrail = $HoldTrail
 var hold = false
@@ -28,6 +29,10 @@ func _ready():
 		var holdSize = speed * (bpm / 16.0 / 60.0) * holdTime / 2
 		holdTrail.scale.x = (1.0 * holdSize) / holdTrail.texture.get_width()
 		holdTrailWidth = holdTrail.texture.get_width() * holdTrail.scale.x
+	pass
+
+func spawn_fairy(fairy):
+	print(fairy)
 	pass
 
 func _process(delta):

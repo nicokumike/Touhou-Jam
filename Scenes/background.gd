@@ -89,8 +89,9 @@ func emit_note(note_data):
 	note_instance.speed = speed
 	note_instance.bpm = bpm
 	if note_data.type:
-		#print("type is", note_data)
 		note_instance.is_fairy = true
+		var new_fairy = fairies.pick_random()
+		note_instance.spawn_fairy(new_fairy)
 	get_parent().add_child(note_instance)
 	match note_data.color:
 		"Red": note_instance.setColor(4)
