@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8ppak2hpy7qc"]
+[gd_scene load_steps=18 format=3 uid="uid://8ppak2hpy7qc"]
 
 [ext_resource type="Script" path="res://Game/Lib/Player/player.gd" id="1_fkgm5"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://dl8kow7042sab" path="res://Assets/Characters/Base/base_data_resource.tres" id="1_nsdd7"]
@@ -6,8 +6,15 @@
 [ext_resource type="Script" path="res://Game/Lib/StateMachine/statemachine.gd" id="3_33epy"]
 [ext_resource type="Script" path="res://Game/Characters/Player/States/player_idle.gd" id="6_xuki0"]
 [ext_resource type="Script" path="res://Game/Characters/Player/States/player_wind_brace.gd" id="7_korh1"]
-[ext_resource type="Script" path="res://Game/Characters/Player/States/player_attack_d.gd" id="7_nh2sa"]
+[ext_resource type="Resource" uid="uid://8es45meorutc" path="res://Game/Characters/Player/Animations/player_flying.tres" id="7_kuuy7"]
+[ext_resource type="Script" path="res://Game/Characters/Player/States/player_attack.gd" id="7_nh2sa"]
 [ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="8_m6tr3"]
+[ext_resource type="Resource" uid="uid://h58lhqaxs0ur" path="res://Game/Characters/Player/Animations/player_swing_up.tres" id="9_ybaqt"]
+[ext_resource type="Resource" uid="uid://bl11it02qfs22" path="res://Game/Characters/Player/Animations/player_swing_down.tres" id="10_6h581"]
+[ext_resource type="Resource" uid="uid://cfqqtqlysppne" path="res://Game/Characters/Player/Animations/player_hold.tres" id="10_c08c2"]
+[ext_resource type="Resource" uid="uid://bn38fen04yi0w" path="res://Game/Characters/Player/Animations/player_bump.tres" id="11_vaee4"]
+[ext_resource type="Resource" uid="uid://tfavnasgbcf7" path="res://Game/Characters/Player/Animations/player_knee.tres" id="12_bfx87"]
+[ext_resource type="Resource" uid="uid://durb4wmbb4yr5" path="res://Game/Characters/Player/Animations/player_ohohoh.tres" id="15_twi3g"]
 
 [sub_resource type="Resource" id="Resource_jaao4"]
 script = ExtResource("8_m6tr3")
@@ -26,27 +33,7 @@ animation_name = "Flandre/idle"
 animation_index = 0
 loop = true
 track = 0
-mix_duration = -1.0
-speed = 1.0
-
-[sub_resource type="Resource" id="Resource_cn0sb"]
-script = ExtResource("8_m6tr3")
-skeleton_data_resource = ExtResource("1_nsdd7")
-animation_name = "Flandre/knee"
-animation_index = 1
-loop = false
-track = 0
-mix_duration = 0.025
-speed = 1.0
-
-[sub_resource type="Resource" id="Resource_uaohq"]
-script = ExtResource("8_m6tr3")
-skeleton_data_resource = ExtResource("1_nsdd7")
-animation_name = "Flandre/windBrace"
-animation_index = 2
-loop = true
-track = 0
-mix_duration = -1.0
+mix_duration = 0.2
 speed = 1.0
 
 [node name="Player_Base" type="Node2D" node_paths=PackedStringArray("state_machine", "animation_handler")]
@@ -67,14 +54,34 @@ initial_animation = SubResource("Resource_jaao4")
 script = ExtResource("3_33epy")
 initial_state = NodePath("Idle")
 
+[node name="Flying" type="Node" parent="StateMachine"]
+script = ExtResource("6_xuki0")
+animation_spine = ExtResource("7_kuuy7")
+
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_xuki0")
 animation_spine = SubResource("Resource_qxsu3")
 
-[node name="Attack_D" type="Node" parent="StateMachine"]
+[node name="Attack_UP" type="Node" parent="StateMachine"]
 script = ExtResource("7_nh2sa")
-animation_spine = SubResource("Resource_cn0sb")
+animation_spine = ExtResource("9_ybaqt")
 
-[node name="WindBrace" type="Node" parent="StateMachine"]
+[node name="Attack_DOWN" type="Node" parent="StateMachine"]
+script = ExtResource("7_nh2sa")
+animation_spine = ExtResource("10_6h581")
+
+[node name="Attack_LEFT" type="Node" parent="StateMachine"]
+script = ExtResource("7_nh2sa")
+animation_spine = ExtResource("11_vaee4")
+
+[node name="Attack_RIGHT" type="Node" parent="StateMachine"]
+script = ExtResource("7_nh2sa")
+animation_spine = ExtResource("12_bfx87")
+
+[node name="Hold" type="Node" parent="StateMachine"]
 script = ExtResource("7_korh1")
-animation_spine = SubResource("Resource_uaohq")
+animation_spine = ExtResource("10_c08c2")
+
+[node name="OHOHOH" type="Node" parent="StateMachine"]
+script = ExtResource("7_korh1")
+animation_spine = ExtResource("15_twi3g")

@@ -10,7 +10,7 @@ class_name StateMachine extends Node
 func _ready():
 	# Give every state a reference to the state machine.
 	for state_node: State in find_children("*", "State"):
-		state_node.finished.connect(change_state)
+		state_node.finished.connect(set_state)
 
 	# Wait for the owner to be ready before entering the initial state.
 	await owner.ready
@@ -26,7 +26,7 @@ func _process(delta):
 ##
 ## @param target_state_path: The path to the state to change to.
 ## @param data: The data to pass to the new state.
-func change_state(target_state_path: String, data := {}) -> void:
+func set_state(target_state_path: String, data := {}) -> void:
 	if not has_node(target_state_path):
 		printerr(owner.name + ": " + target_state_path + " is not a valid state path.")
 		return
