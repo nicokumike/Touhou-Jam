@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://8ppak2hpy7qc"]
+[gd_scene load_steps=22 format=3 uid="uid://8ppak2hpy7qc"]
 
 [ext_resource type="Script" path="res://Game/Lib/Player/player.gd" id="1_fkgm5"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://dl8kow7042sab" path="res://Assets/Characters/Base/base_data_resource.tres" id="1_nsdd7"]
@@ -12,9 +12,13 @@
 [ext_resource type="Resource" uid="uid://h58lhqaxs0ur" path="res://Game/Characters/Player/Animations/player_swing_up.tres" id="9_ybaqt"]
 [ext_resource type="Resource" uid="uid://bl11it02qfs22" path="res://Game/Characters/Player/Animations/player_swing_down.tres" id="10_6h581"]
 [ext_resource type="Resource" uid="uid://cfqqtqlysppne" path="res://Game/Characters/Player/Animations/player_hold.tres" id="10_c08c2"]
+[ext_resource type="AudioStream" uid="uid://bilucb5i2nllu" path="res://Assets/Characters/SWSH_Swing 4 Normal 01_DDUMAIS_NONE.wav" id="10_oo5ea"]
 [ext_resource type="Resource" uid="uid://bn38fen04yi0w" path="res://Game/Characters/Player/Animations/player_bump.tres" id="11_vaee4"]
 [ext_resource type="Resource" uid="uid://tfavnasgbcf7" path="res://Game/Characters/Player/Animations/player_knee.tres" id="12_bfx87"]
+[ext_resource type="AudioStream" uid="uid://fb7k2cdwympu" path="res://Assets/Characters/SWSH_Swing 4 Normal 02_DDUMAIS_NONE.wav" id="12_txetn"]
+[ext_resource type="AudioStream" uid="uid://bnifi7xw2vm1" path="res://Assets/Characters/SWSH_Swing 3 Small 01_DDUMAIS_NONE.wav" id="14_8pn7x"]
 [ext_resource type="Resource" uid="uid://durb4wmbb4yr5" path="res://Game/Characters/Player/Animations/player_ohohoh.tres" id="15_twi3g"]
+[ext_resource type="AudioStream" uid="uid://7q6m4j8sgdng" path="res://Assets/Characters/SWSH_Swing 3 Small 06_DDUMAIS_NONE.wav" id="16_pu0oh"]
 
 [sub_resource type="Resource" id="Resource_jaao4"]
 script = ExtResource("8_m6tr3")
@@ -65,22 +69,31 @@ animation_spine = SubResource("Resource_qxsu3")
 [node name="Attack_UP" type="Node" parent="StateMachine"]
 script = ExtResource("7_nh2sa")
 animation_spine = ExtResource("9_ybaqt")
+audio_enter = ExtResource("10_oo5ea")
+audio_enter_volume = -40.0
 
 [node name="Attack_DOWN" type="Node" parent="StateMachine"]
 script = ExtResource("7_nh2sa")
 animation_spine = ExtResource("10_6h581")
+audio_enter = ExtResource("12_txetn")
+audio_enter_volume = -40.0
 
 [node name="Attack_LEFT" type="Node" parent="StateMachine"]
 script = ExtResource("7_nh2sa")
 animation_spine = ExtResource("11_vaee4")
+audio_enter = ExtResource("14_8pn7x")
+audio_enter_volume = -40.0
 
 [node name="Attack_RIGHT" type="Node" parent="StateMachine"]
 script = ExtResource("7_nh2sa")
 animation_spine = ExtResource("12_bfx87")
+audio_enter = ExtResource("16_pu0oh")
+audio_enter_volume = -40.0
 
 [node name="Hold" type="Node" parent="StateMachine"]
 script = ExtResource("7_korh1")
 animation_spine = ExtResource("10_c08c2")
+audio_enter_volume = -40.0
 
 [node name="OHOHOH" type="Node" parent="StateMachine"]
 script = ExtResource("7_korh1")

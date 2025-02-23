@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://7q6m4j8sgdng"
+path="res://.godot/imported/SWSH_Swing 3 Small 06_DDUMAIS_NONE.wav-68c50b328eb3fad641dd24fc92157cd1.sample"
+
+[deps]
+
+source_file="res://Assets/Characters/SWSH_Swing 3 Small 06_DDUMAIS_NONE.wav"
+dest_files=["res://.godot/imported/SWSH_Swing 3 Small 06_DDUMAIS_NONE.wav-68c50b328eb3fad641dd24fc92157cd1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
