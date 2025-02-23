@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cpnq6w7rd0t4s"]
+[gd_scene load_steps=51 format=3 uid="uid://cpnq6w7rd0t4s"]
 
 [ext_resource type="Script" path="res://Game/UI/Main_Menu/main_menu.gd" id="1_lbcms"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://d2y5byo3k7up3" path="res://Assets/Characters/Base_Chibi/base_chibi_data_resource.tres" id="2_6f0g6"]
@@ -25,6 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://islsqt57ygga" path="res://Assets/UI/Title_Screen_Graphics/Music_Room.png" id="16_c1qd8"]
 [ext_resource type="Texture2D" uid="uid://dg6k1fyokeha0" path="res://Assets/UI/Title_Screen_Graphics/Quit_Gray.png" id="17_m3amv"]
 [ext_resource type="Texture2D" uid="uid://bg6i5f1duif0l" path="res://Assets/UI/Title_Screen_Graphics/Quit.png" id="18_tyf8r"]
+[ext_resource type="Texture2D" uid="uid://btn4k0c6ms3g" path="res://Assets/UI/Title_Screen_Graphics/easybutton.png" id="26_5pq6m"]
+[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="27_2bun6"]
+[ext_resource type="Texture2D" uid="uid://mh5a1vhmjjfr" path="res://Assets/UI/Title_Screen_Graphics/hardbutton.png" id="28_63dgu"]
 
 [sub_resource type="Environment" id="Environment_i042l"]
 background_mode = 3
@@ -671,7 +674,7 @@ scale = Vector2(2, 2)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 process_mode = 2
-visible = false
+texture_filter = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -684,18 +687,63 @@ offset_right = 164.5
 offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 30
 
-[node name="Easy" type="Button" parent="HBoxContainer"]
+[node name="Easy" type="TextureButton" parent="HBoxContainer"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
-text = "EASY BABY"
+texture_normal = ExtResource("26_5pq6m")
+texture_pressed = ExtResource("26_5pq6m")
+texture_hover = ExtResource("26_5pq6m")
 
-[node name="Hard" type="Button" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/Easy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("27_2bun6")
+theme_override_colors/font_color = Color(0.329412, 0.819608, 0.415686, 1)
+theme_override_font_sizes/font_size = 64
+text = "Heaven
+(Easy)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hard" type="TextureButton" parent="HBoxContainer"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
-text = "FUCKKKKKKKKKKKKKKKKKKK
-KILLLLL MEEEEEE
-"
+texture_normal = ExtResource("28_63dgu")
+texture_pressed = ExtResource("28_63dgu")
+texture_hover = ExtResource("28_63dgu")
+
+[node name="Label2" type="Label" parent="HBoxContainer/Hard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("27_2bun6")
+theme_override_colors/font_color = Color(0.827451, 0.376471, 0.686275, 1)
+theme_override_font_sizes/font_size = 64
+text = "Hell
+(Hard)"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
