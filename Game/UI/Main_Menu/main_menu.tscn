@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cpnq6w7rd0t4s"]
+[gd_scene load_steps=53 format=3 uid="uid://cpnq6w7rd0t4s"]
 
 [ext_resource type="Script" path="res://Game/UI/Main_Menu/main_menu.gd" id="1_lbcms"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://d2y5byo3k7up3" path="res://Assets/Characters/Base_Chibi/base_chibi_data_resource.tres" id="2_6f0g6"]
@@ -25,9 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://islsqt57ygga" path="res://Assets/UI/Title_Screen_Graphics/Music_Room.png" id="16_c1qd8"]
 [ext_resource type="Texture2D" uid="uid://dg6k1fyokeha0" path="res://Assets/UI/Title_Screen_Graphics/Quit_Gray.png" id="17_m3amv"]
 [ext_resource type="Texture2D" uid="uid://bg6i5f1duif0l" path="res://Assets/UI/Title_Screen_Graphics/Quit.png" id="18_tyf8r"]
-[ext_resource type="Texture2D" uid="uid://btn4k0c6ms3g" path="res://Assets/UI/Title_Screen_Graphics/easybutton.png" id="26_5pq6m"]
+[ext_resource type="Texture2D" uid="uid://bk2q70jckfgl6" path="res://Assets/UI/Title_Screen_Graphics/easybutton2.png" id="26_5pq6m"]
 [ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="27_2bun6"]
-[ext_resource type="Texture2D" uid="uid://mh5a1vhmjjfr" path="res://Assets/UI/Title_Screen_Graphics/hardbutton.png" id="28_63dgu"]
+[ext_resource type="Texture2D" uid="uid://u1nkqbm05iie" path="res://Assets/UI/Title_Screen_Graphics/easybutton3.png" id="27_jny33"]
+[ext_resource type="Texture2D" uid="uid://bj2w2l3sfd16o" path="res://Assets/UI/Title_Screen_Graphics/hardbutton2.png" id="28_63dgu"]
+[ext_resource type="Texture2D" uid="uid://bqcmrc0qflcw7" path="res://Assets/UI/Title_Screen_Graphics/hardbutton3.png" id="30_x1xbc"]
 
 [sub_resource type="Environment" id="Environment_i042l"]
 background_mode = 3
@@ -694,8 +696,8 @@ theme_override_constants/separation = 30
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 texture_normal = ExtResource("26_5pq6m")
-texture_pressed = ExtResource("26_5pq6m")
-texture_hover = ExtResource("26_5pq6m")
+texture_pressed = ExtResource("27_jny33")
+texture_hover = ExtResource("27_jny33")
 
 [node name="Label" type="Label" parent="HBoxContainer/Easy"]
 layout_mode = 1
@@ -722,8 +724,8 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 texture_normal = ExtResource("28_63dgu")
-texture_pressed = ExtResource("28_63dgu")
-texture_hover = ExtResource("28_63dgu")
+texture_pressed = ExtResource("30_x1xbc")
+texture_hover = ExtResource("30_x1xbc")
 
 [node name="Label2" type="Label" parent="HBoxContainer/Hard"]
 layout_mode = 1
@@ -752,9 +754,9 @@ vertical_alignment = 1
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/MusicRoom" to="." method="_on_music_room_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="HBoxContainer/Easy" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Easy" to="." method="_on_easy_pressed"]
-[connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/Easy" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_hard_pressed"]
+[connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_button_2_pressed"]
 
 [editable path="BlackHouse/Flandre_Chibi"]
