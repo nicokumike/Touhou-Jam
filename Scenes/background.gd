@@ -19,9 +19,6 @@ var started = false
 # Where the notes are going to
 @onready var pointer = $"../Pointer"
 
-# Time between 16ths
-@onready var timer = $"../Timer"
-
 # Song that will play
 @export var song = preload("res://Assets/SFX/penis music.mp3")
 
@@ -35,27 +32,39 @@ var started = false
 @onready var bossSpawnPoint = $"../BossSpawn"
 
 var boss_instance : Node = null 
+var music_player = null
+var time_begin: float
+var time_delay: float
+var beat_played = true
+var last_beat = 0
 
 func _ready():
 	var bgd = backgroundArt.instantiate()
 	add_child(bgd)
-
+	time_begin = Time.get_ticks_usec()
+	time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+	
+func _process(delta):
+	if music_player != null:
+		var time := 0.0
+			# Obtain from ticks.
+		time = (Time.get_ticks_usec() - time_begin) / 1000000.0
+		# Compensate.
+		time -= time_delay
+		
+		var beat := int(time * composer.bpm / (60.0 / 4))
+		if last_beat != beat:
+			composer.play_note()
+		print("BEAT: ", beat, ", LAST BEAT: ", last_beat)
+		
+		last_beat = beat
+	
 func _unhandled_input(event):
 	if event is InputEventKey and !started:
 		composer.initialize()
-		AudMan.play_music(song, -10)
-		timer.wait_time = (60.0/bpm)/4
-		timer.start()
+		music_player = AudMan.play_music(song, -10)
 		started = true
 		$"../AnyKey".visible = false
-
-func _on_timer_timeout():
-	composer.play_note()
-	#var note_instance = note.instantiate()
-	#note_instance.setColor(randi_range(1, 4))
-	#note_instance.setSpeed(speed)
-	#note_instance.position = spawnPoint.position
-	#get_parent().add_child(note_instance)
 
 # Emits note for the level
 func emit_note(note_data):
@@ -73,7 +82,6 @@ func emit_note(note_data):
 		"Green": note_instance.setColor(3)
 		"Yellow": note_instance.setColor(1)
 
-
 var json_data : JSON = preload("res://json_test_.json")
 var json_data2 : JSON = preload("res://json_test_2.json")
 # Boss transition/spawning
@@ -82,9 +90,9 @@ func transition():
 	#Yes, trigger dialogue
 	#No, do this:
 	# Stopping timer
+	music_player = null
 	print("Spawn boss")
 	if boss_instance == null:
-		timer.stop()
 		# Spawn boss and instantiate it
 		boss_instance = boss.instantiate()
 		# Setting bosses projectile spawn point

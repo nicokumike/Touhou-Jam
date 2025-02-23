@@ -94,9 +94,6 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_qb27d")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(1208, 342)
 
@@ -155,5 +152,4 @@ label_settings = SubResource("LabelSettings_371ga")
 
 [connection signal="area_entered" from="Pointer/Bad" to="Pointer" method="_on_bad_area_entered"]
 [connection signal="area_exited" from="Pointer/Bad" to="Pointer" method="_on_bad_area_exited"]
-[connection signal="timeout" from="Timer" to="Background" method="_on_timer_timeout"]
 [connection signal="area_entered" from="Killzone" to="Pointer" method="_on_killzone_area_entered"]

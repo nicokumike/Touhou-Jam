@@ -95,7 +95,7 @@ func play_note():
 	var note_data = null
 	#print(note)
 	if note is not float:
-		#prints("play note:", note)
+		#prints("play note:", note)w
 		#Map it out according to our legend
 		note_data = decipher_note(note)
 	#Build the note projectile
