@@ -674,6 +674,7 @@ scale = Vector2(2, 2)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 process_mode = 2
+visible = false
 texture_filter = 3
 layout_mode = 1
 anchors_preset = 8

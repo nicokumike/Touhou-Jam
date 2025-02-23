@@ -1,6 +1,7 @@
 extends Control
 
 @onready var menu_music = preload("res://Assets/SFX/BP_Default_Sounds/Default_Muzak.mp3")
+@onready var easy_modo = preload("res://Assets/SFX/EEEH_EASY MODE_.mp3")
 
 func _ready() -> void:
 	SignalBus.dialogue_finished.connect(_resume_cutscene)
@@ -69,7 +70,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_easy_pressed() -> void:
-	#ur a baby 
+	#ur a baby
+	AudMan.play_quip(easy_modo)
 	$AnimationPlayer.play("cutscene")
 	SignalBus.difficulty = "Easy"
 	$HBoxContainer/Easy.visible = false
