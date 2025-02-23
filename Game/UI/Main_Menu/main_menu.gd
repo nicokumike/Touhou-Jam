@@ -71,7 +71,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_easy_pressed() -> void:
 	#ur a baby
-	AudMan.play_quip(easy_modo)
+	AudMan.play_quip(easy_modo, -12)
 	$AnimationPlayer.play("cutscene")
 	SignalBus.difficulty = "Easy"
 	$HBoxContainer/Easy.visible = false
