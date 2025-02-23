@@ -9,7 +9,6 @@ func exit() -> void:
 
 func end_state(_spine_sprite: Object, _animation_state: Object, _track_entry: Object) -> void:
 	if Input.is_action_pressed("Yellow") or Input.is_action_pressed("Blue") or Input.is_action_pressed("Green") or Input.is_action_pressed("Red"):
-		print(Input.is_action_pressed("Yellow"))
 		finished.emit("Hold")
 	else:
 		finished.emit("Flying")
