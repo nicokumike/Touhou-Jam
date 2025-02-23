@@ -1,0 +1,36 @@
+{
+    "0": {
+        "Character": ["Flandre", "Grin", "Bottom"],
+        "Text": "Now, out of my way. Unless you want to die."
+    },
+
+    "1": {
+        "Character": ["Lyrica", "Annoyed", "Top"],
+        "Text": "H-how? We've never been bested in a battle of the bands."
+    },
+
+    "2": {
+        "Character": ["Merlin", "Annoyed", "Top"],
+        "Text": "It's the metronome, Lyrica. She can keep up no matter how hard we play."
+    },
+
+    "3": {
+        "Character": ["Lunasa", "Annoyed", "Top"],
+        "Text": "She knew each note before they were even heard."
+    },
+
+    "4": {
+        "Character": ["Flandre", "Grin", "Bottom"],
+        "Text": "You girls played well, but not well enough. I've had more fun with the fairies at the mansion."
+    },
+
+    "5": {
+        "Character": ["Lunasa", "Grin", "Top"],
+        "Text": "It was more than enough. We bought her the time she needs. The Resonate is ours!"
+    },
+	
+	"6": {
+        "Character": ["Flandre", "Annoyed", "Bottom"],
+        "Text": "No matter who you're working for, she will be stopped. The Resonate will be returned to the mansion shortly."
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "0": {
+        "Character": ["Utsuho", "Neutral", "Top"],
+        "Text": "Huh? Company already?"
+    },
+
+    "1": {
+        "Character": ["Flandre", "Annoyed", "Bottom"],
+        "Text": "So you're the one creating chores for me?"
+    },
+
+    "2": {
+        "Character": ["Utsuho", "Grin", "Top"],
+        "Text": "Welcome, Flandre. I want to say I'm surprised you made it but I knew those weaklings couldn't stop you."
+    },
+
+    "3": {
+        "Character": ["Flandre", "Annoyed", "Bottom"],
+        "Text": "I don't care about what you're planning, I just want the Ethereal Resonate."
+    },
+
+    "4": {
+        "Character": ["Utsuho", "Grin", "Top"],
+        "Text": "You'd care if you knew what danger you're in."
+    },
+
+    "5": {
+        "Character": ["Flandre", "Grin", "Bottom"],
+        "Text": "Where's the Resonate? I don't see it anywhere. I want to get back home before tea is ready."
+    },
+	
+	"6": {
+        "Character": ["Utsuho", "Grin", "Top"],
+        "Text": "You're not getting it back, I'll make sure of it. You and the rest of Gensokyo will soon answer to me, once the rhapsody begins.."
+    }
+}

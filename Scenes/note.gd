@@ -3,6 +3,7 @@ extends CharacterBody2D
 var speed
 var bpm
 var type = 0
+var is_fairy = false
 
 @onready var holdTrail = $HoldTrail
 var hold = false
