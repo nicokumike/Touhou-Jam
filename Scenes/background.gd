@@ -34,7 +34,7 @@ var started = false
 #@export_file("*.json") var music_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 @export_file("*.json") var hard_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 @export_file("*.json") var easy_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
-@export_file("*.json") var hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
+@export_file("*.json") var hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-boss.json"
 @export_file("*.json") var easy_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 
 # Loads music cheat
@@ -146,8 +146,8 @@ func emit_note(note_data):
 		"Green": note_instance.setColor(3)
 		"Yellow": note_instance.setColor(1)
 
-var json_data : JSON = preload("res://json_test_.json")
-var json_data2 : JSON = preload("res://json_test_2.json")
+var json_data : JSON = preload("res://Game/Levels/level1/Dialogue/level1_1.dialogue.json")
+var json_data2 : JSON = preload("res://Game/Levels/level1/Dialogue/level1_1.dialogue.json")
 # Boss transition/spawning
 func transition():
 	#Is boss?
@@ -158,6 +158,7 @@ func transition():
 	if boss_instance == null:
 		# Play looping song section
 		song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_LOOP.mp3")
+		now = false
 		AudMan.play_music(song, -10)
 		# Spawn boss and instantiate it
 		boss_instance = boss.instantiate()
@@ -189,15 +190,17 @@ func transition():
 	#composer.initialize()
 	
 func _on_dialogue_finished():
+	AudMan.stop_music()
 	song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3")
 	if SignalBus.difficulty == "Easy":
 		composer.music_sheet = easy_boss_sheet
 	elif SignalBus.difficulty == "Hard":
 		composer.music_sheet = hard_boss_sheet
+	composer.music_sheet = hard_boss_sheet
 	composer.initialize()
-	music_player = AudMan.play_music(song, -10)
-	print(music_player)
-
+	$"../Timer2".start()
+	#music_player = AudMan.play_music(song, -10)
+	now = true
 
 func _on_timer_2_timeout():
 	music_player = AudMan.play_music(song, -10)
