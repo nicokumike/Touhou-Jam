@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://bc03syknr3he6"]
 
 [ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
+[ext_resource type="AudioStream" uid="uid://bxpovugslghq0" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_RUNNING.mp3" id="2_8f5yi"]
 [ext_resource type="Script" path="res://Scenes/background.gd" id="2_ep8y8"]
-[ext_resource type="AudioStream" uid="uid://2cnvr2qgv3h2" path="res://Game/Lib/Composer/Music_Sheets/audio sync debug.mp3" id="2_ibhey"]
 [ext_resource type="Script" path="res://Scenes/pointer.gd" id="5_6yugx"]
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="7_2ahiu"]
 [ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="7_bprpc"]
@@ -34,12 +34,12 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource("2_ep8y8")
-song = ExtResource("2_ibhey")
+song = ExtResource("2_8f5yi")
 
 [node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
 script = ExtResource("1_auj5i")
 emitter = NodePath("..")
-music_sheet = "res://Game/Lib/Composer/Music_Sheets/EASYPRISM.json"
+music_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running.json"
 
 [node name="Pointer" type="CharacterBody2D" parent="."]
 position = Vector2(441, 342)
