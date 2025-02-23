@@ -10,6 +10,8 @@ var music: AudioStreamMP3
 # Level started
 var started = false
 
+
+
 # Scene for the notes
 @onready var note = preload("res://Scenes/note.tscn")
 
@@ -24,6 +26,8 @@ var started = false
 
 # Boss scene
 @export var boss = preload("res://Scenes/boss.tscn")
+
+@export var fairies = [preload("res://Game/Characters/Fairy/fairy_river.tscn")]
 
 @export_group("Sheets")
 #@export_file("*.json") var music_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
@@ -84,6 +88,9 @@ func emit_note(note_data):
 	note_instance.holdTime = note_data.length
 	note_instance.speed = speed
 	note_instance.bpm = bpm
+	if note_data.type:
+		#print("type is", note_data)
+		note_instance.is_fairy = true
 	get_parent().add_child(note_instance)
 	match note_data.color:
 		"Red": note_instance.setColor(4)
