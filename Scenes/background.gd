@@ -87,10 +87,12 @@ func transition():
 	#Is boss?
 	#Yes, trigger dialogue
 	#No, do this:
-	# Stopping timer
+	# Stopping notes
 	music_player = null
-	print("Spawn boss")
 	if boss_instance == null:
+		# Play looping song section
+		song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_LOOP.mp3")
+		AudMan.play_music(song, -10)
 		# Spawn boss and instantiate it
 		boss_instance = boss.instantiate()
 		# Setting bosses projectile spawn point
@@ -102,15 +104,25 @@ func transition():
 		
 		# Maybe emit when boss is on screen?
 		SignalBus.dialogue_triggered.emit(json_data.data)
+		SignalBus.dialogue_finished.connect(_on_dialogue_finished)
 	
 	# Boss is in the scene
 	elif boss_instance.is_inside_tree():
 		# Now emit dialogue
-		SignalBus.dialogue_triggered.emit(json_data2.data)
-	
+		if boss_instance.health <= 0:
+			SignalBus.dialogue_triggered.emit(json_data2.data)
+		else:
+			var json_data3 : JSON = preload("res://json_test_3.json")
+			SignalBus.dialogue_triggered.emit(json_data3.data)
+			
 	#Dialogue
 	#----
 	#After dialogue is done
 	#composer.music_sheet("boss section")
 	#composer.initialize()
 	
+func _on_dialogue_finished():
+	song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3")
+	composer.initialize()
+	music_player = AudMan.play_music(song, -10)
+	print(music_player)

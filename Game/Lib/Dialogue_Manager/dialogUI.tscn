@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Game/Lib/Dialogue_Manager/dialogue_manager.gd" id="1_xrtxq"]
 [ext_resource type="Shader" path="res://Assets/Shaders/blur_shader.gdshader" id="2_fy62d"]
 [ext_resource type="Texture2D" uid="uid://eo0hb7b1x2xv" path="res://Game/Data/Flandre_Scarlet/Example1.jpg" id="3_hr21h"]
-[ext_resource type="Theme" path="res://Assets/Themes/label.tres" id="4_5j0p6"]
+[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="4_5j0p6"]
 [ext_resource type="Theme" uid="uid://celsilvppyh1c" path="res://Game/Lib/Resources/richLabel.tres" id="5_empc5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4xau"]

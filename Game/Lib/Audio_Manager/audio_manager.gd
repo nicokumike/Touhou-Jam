@@ -33,7 +33,7 @@ func play_music(music: AudioStreamMP3, volume = 0, looped = true):
 		new_music = music
 		new_volume = volume
 		switch_songs()
-		return
+		return music_manager
 	loop_music = looped
 	current_music = music
 	current_music.set_loop(looped)

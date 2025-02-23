@@ -44,6 +44,7 @@ func initialize():
 	#AudMan.play_music(music)
 	song_name = sheet_data.name
 	sheet = sheet_data.sheet
+	index = [0,0,0]
 	
 	prints(bpm, song_path, emitter.music, song_name, sheet)
 	print('------------------')

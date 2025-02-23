@@ -9,6 +9,7 @@ script = ExtResource("1_ad85s")
 bus = &"Music"
 
 [node name="FadeTimer" type="Timer" parent="MusicManager"]
+one_shot = true
 
 [connection signal="finished" from="MusicManager" to="." method="_on_music_manager_finished"]
 [connection signal="timeout" from="MusicManager/FadeTimer" to="." method="_on_fade_timer_timeout"]

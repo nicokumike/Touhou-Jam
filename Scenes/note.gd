@@ -18,6 +18,7 @@ var dead = false
 var hit = false
 
 @onready var contactPoint = $EnemyContactPoint
+@onready var enemyPointArrow = $EnemyPointArrow
 @onready var sprite = $Path2D/PathFollow2D/Icon
 
 func _ready():
@@ -43,32 +44,32 @@ func setColor(color):
 	match (color):
 		1:
 			#yellow
-			tween.tween_property($EnemyPointArrow, "rotation_degrees", 270, 0)
-			$EnemyPointArrow.modulate = Color.YELLOW
+			tween.tween_property(enemyPointArrow, "rotation_degrees", 270, 0)
+			enemyPointArrow.modulate = Color.YELLOW
 			sprite.material.set("shader_parameter/starting_colour", Vector4(1, 1, 0, 1))
 			sprite.material.set("shader_parameter/ending_colour", Vector4(1, 1, 0, 0))
 			type = 1
 			pass
 		2:
 			#blue
-			$EnemyPointArrow.modulate = Color.BLUE
-			tween.tween_property($EnemyPointArrow, "rotation_degrees", 180, 0)
+			enemyPointArrow.modulate = Color.BLUE
+			tween.tween_property(enemyPointArrow, "rotation_degrees", 180, 0)
 			sprite.material.set("shader_parameter/starting_colour", Vector4(0, 0, 1, 1))
 			sprite.material.set("shader_parameter/ending_colour", Vector4(0, 0, 1, 0))
 			type = 2
 			pass
 		3:
 			#green
-			$EnemyPointArrow.modulate = Color.GREEN
-			tween.tween_property($EnemyPointArrow, "rotation_degrees", 90, 0)
+			enemyPointArrow.modulate = Color.GREEN
+			tween.tween_property(enemyPointArrow, "rotation_degrees", 90, 0)
 			sprite.material.set("shader_parameter/starting_colour", Vector4(0, 1, 0, 1))
 			sprite.material.set("shader_parameter/ending_colour", Vector4(0, 1, 0, 0))
 			type = 3
 			pass
 		4:
 			#red
-			$EnemyPointArrow.modulate = Color.RED
-			tween.tween_property($EnemyPointArrow, "rotation_degrees", 360, 0)
+			enemyPointArrow.modulate = Color.RED
+			tween.tween_property(enemyPointArrow, "rotation_degrees", 360, 0)
 			sprite.material.set("shader_parameter/starting_colour", Vector4(1, 0, 0, 1))
 			sprite.material.set("shader_parameter/ending_colour", Vector4(1, 0, 0, 0))
 			type = 4

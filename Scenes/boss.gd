@@ -21,6 +21,6 @@ var json_data : JSON = preload("res://json_test_3.json")
 func take_damage(amount : int):
 	health -= amount
 	
-	if health <= 0:
+	#if health <= 0:
 		#Dialogue will activate here
-		SignalBus.dialogue_triggered.emit(json_data.data)
+		#SignalBus.dialogue_triggered.emit(json_data.data)
