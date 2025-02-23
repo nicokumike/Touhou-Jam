@@ -6,7 +6,7 @@ var speed = 300
 var music: AudioStreamMP3
 
 # Background art
-@onready var backgroundArt = preload("res://Scenes/background_forest.tscn")
+@onready var backgroundArt w= preload("res://Scenes/background_forest.tscn")
 # Level started
 var started = false
 

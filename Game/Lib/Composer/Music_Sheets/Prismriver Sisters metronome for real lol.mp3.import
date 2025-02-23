@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bp0qx0n51d88q"
+path="res://.godot/imported/Prismriver Sisters metronome for real lol.mp3-a9f47bf1af70c25d67bb0bb4604e11c0.mp3str"
+
+[deps]
+
+source_file="res://Game/Lib/Composer/Music_Sheets/Prismriver Sisters metronome for real lol.mp3"
+dest_files=["res://.godot/imported/Prismriver Sisters metronome for real lol.mp3-a9f47bf1af70c25d67bb0bb4604e11c0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
