@@ -1,40 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmy2yrct1t6pi"]
+[gd_scene load_steps=2 format=3 uid="uid://cmy2yrct1t6pi"]
 
 [ext_resource type="PackedScene" uid="uid://8ppak2hpy7qc" path="res://Game/Characters/Player/player.tscn" id="1_gll5a"]
-[ext_resource type="Script" path="res://Game/Characters/Player/States/player_attack_d.gd" id="2_jbphc"]
-[ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="3_bwsnn"]
-[ext_resource type="SpineSkeletonDataResource" uid="uid://dl8kow7042sab" path="res://Assets/Characters/Base/base_data_resource.tres" id="4_hya5b"]
-[ext_resource type="Script" path="res://Game/Characters/Player/States/player_wind_brace.gd" id="5_eqlk2"]
-
-[sub_resource type="Resource" id="Resource_cn0sb"]
-script = ExtResource("3_bwsnn")
-skeleton_data_resource = ExtResource("4_hya5b")
-animation_name = "Flandre/knee"
-animation_index = 1
-loop = false
-track = 0
-mix_duration = 0.025
-speed = 1.0
-
-[sub_resource type="Resource" id="Resource_uaohq"]
-script = ExtResource("3_bwsnn")
-skeleton_data_resource = ExtResource("4_hya5b")
-animation_name = "Flandre/windBrace"
-animation_index = 2
-loop = true
-track = 0
-mix_duration = -1.0
-speed = 1.0
 
 [node name="Player_Flandre" instance=ExtResource("1_gll5a")]
 
 [node name="AnimationHandler_Spine" parent="." index="0"]
 skinName = "Flandre"
-
-[node name="Attack_D" type="Node" parent="StateMachine" index="1"]
-script = ExtResource("2_jbphc")
-animation_spine = SubResource("Resource_cn0sb")
-
-[node name="WindBrace" type="Node" parent="StateMachine" index="2"]
-script = ExtResource("5_eqlk2")
-animation_spine = SubResource("Resource_uaohq")

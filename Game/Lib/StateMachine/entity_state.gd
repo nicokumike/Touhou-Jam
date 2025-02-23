@@ -10,6 +10,8 @@ class_name EntityState extends State
 ).call()
 
 @export var animation_spine: SpineAnimationAsset
+@export var audio_enter: AudioStream
+@export var audio_enter_volume: float = 0.5
 
 var entity: Entity
 
@@ -20,3 +22,5 @@ func _ready() -> void:
 
 func enter(_previous_state_path: String, _data := {}) -> void:
 	animation_handler.play_animation(animation_spine.animation_name, animation_spine.loop, 0, animation_spine.mix_duration)
+	if audio_enter:
+		AudMan.play_sfx_wav(audio_enter, audio_enter_volume)
