@@ -73,6 +73,7 @@ func _ready():
 
 	now = false
 	started = false
+	pointer.cutscene = true
 
 func trans_finished(type_name):
 	if type_name == "fade_out":
@@ -89,6 +90,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("9"):
 		level_two()
 		pass
+	if Input.is_action_just_pressed("8"):
+		transition()
+		#SignalBus.dialogue_finished.connect(_on_dialogue_finished)
+		#SignalBus.dialogue_finished.emit()
 	#if music_player != null:
 	if now:
 		var time := 0.0
@@ -109,12 +114,14 @@ func _unhandled_input(event):
 			composer.music_sheet = easy_sheet
 		elif SignalBus.difficulty == "Hard":
 			composer.music_sheet = hard_sheet
+		composer.music_sheet = hard_sheet
 		composer.initialize()
 		AudMan.stop_music()
 		#music_player = AudMan.play_music(song, -10)
 		$"../Timer2".start()
 		now = true
 		started = true
+		pointer.cutscene = false
 		$"../AnyKey".visible = false
 
 # Emits note for the level
@@ -147,6 +154,7 @@ func transition():
 	# Stopping notes
 	music_player = null
 	now = false
+	pointer.cutscene = true
 	if boss_instance == null:
 		# Play looping song section
 		song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_LOOP.mp3")
@@ -208,6 +216,7 @@ func _on_dialogue_finished():
 		$"../Timer2".start()
 		#music_player = AudMan.play_music(song, -10)
 		now = true
+		pointer.cutscene = false
 
 func _on_timer_2_timeout():
 	music_player = AudMan.play_music(song, -10)

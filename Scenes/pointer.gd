@@ -45,6 +45,8 @@ var hit_modifier : Dictionary = {
 # Total score
 
 # Dev's best score 
+# Exception when on cutscene
+var cutscene = false
 
 func _process(delta):
 	$FlandreContactPoint.rotation_degrees += .5
@@ -54,7 +56,7 @@ func _process(delta):
 		score += 1 * precisionMult * comboMult
 
 func _unhandled_input(event):
-	if event is InputEventKey:
+	if event is InputEventKey and !cutscene:
 		var hitList = checkNotes()
 		var hitNote = hitList[0]
 		var hitPrecision = hitList[1]
@@ -78,6 +80,11 @@ func _unhandled_input(event):
 			if keyPress == hitNote.type:
 				note_hit = true
 			if note_hit:
+				# match precision: #BAD
+				#	1: badcounter ++
+				#	2: goodcounter ++
+				#	3: greatcounter ++
+				
 				precisionMult = 1
 				comboMult = 1
 				combo += 1
