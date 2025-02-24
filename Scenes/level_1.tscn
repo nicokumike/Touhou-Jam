@@ -27,13 +27,13 @@ script = ExtResource("2_ep8y8")
 song = ExtResource("2_8f5yi")
 loopSong = ExtResource("3_b5tno")
 bossSong = ExtResource("4_47too")
-hard_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running.json"
-hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-boss.json"
+hard_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running-hard.json"
+hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-boss-hard.json"
 
 [node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
 script = ExtResource("1_auj5i")
 emitter = NodePath("..")
-music_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running.json"
+music_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running-hard.json"
 
 [node name="Pointer" type="CharacterBody2D" parent="."]
 position = Vector2(441, 342)
