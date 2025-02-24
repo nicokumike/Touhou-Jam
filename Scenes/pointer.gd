@@ -50,7 +50,7 @@ var cutscene = false
 
 func _process(delta):
 	$FlandreContactPoint.rotation_degrees += .5
-	scoreAmount.text = str(score)
+	scoreAmount.text = str(int(score))
 	comboAmount.text = str(combo)
 	if holding:
 		score += 1 * precisionMult * comboMult

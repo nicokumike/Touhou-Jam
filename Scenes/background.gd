@@ -209,7 +209,7 @@ func _on_dialogue_finished():
 		$"../HBoxContainer".visible = false
 		end_score_board_instance = end_score_board.instantiate()
 		add_sibling(end_score_board_instance)
-		end_score_board_instance.score_count.text = str(pointer.score)
+		end_score_board_instance.score_count.text = str(int(pointer.score))
 		end_score_board_instance.perfect_count.text = str(pointer.hit_modifier["perfect"])
 		end_score_board_instance.great_count.text = str(pointer.hit_modifier["great"])
 		end_score_board_instance.good_count.text = str(pointer.hit_modifier["good"])
