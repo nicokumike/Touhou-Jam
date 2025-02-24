@@ -4,6 +4,7 @@
 [ext_resource type="SpineSkeletonDataResource" uid="uid://dl8kow7042sab" path="res://Assets/Characters/Base/base_data_resource.tres" id="2_tx2vr"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_mdl71")
 skeleton_data_resource = ExtResource("2_tx2vr")
 animation_name = "Flandre/flying"

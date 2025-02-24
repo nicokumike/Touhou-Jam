@@ -1,11 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3i5qvgb1wof1"]
+[gd_scene load_steps=5 format=3 uid="uid://c3i5qvgb1wof1"]
 
 [ext_resource type="Script" path="res://Scenes/boss.gd" id="1_nkbkm"]
-[ext_resource type="Texture2D" uid="uid://dt0g18e7aly5u" path="res://Assets/Characters/Utsuho_Reiuji_Vector.webp" id="2_nsj4c"]
+[ext_resource type="PackedScene" uid="uid://vpyds6nh3lxv" path="res://Game/Characters/PrismRiver/prism_river_black.tscn" id="2_nk0vj"]
+[ext_resource type="PackedScene" uid="uid://u4oq7b3l32pe" path="res://Game/Characters/PrismRiver/prism_river_red.tscn" id="3_mj7hc"]
+[ext_resource type="PackedScene" uid="uid://bawavabrqj7kg" path="res://Game/Characters/PrismRiver/prism_river_white.tscn" id="4_gg7ky"]
 
 [node name="Boss" type="Node2D"]
+texture_filter = 3
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nkbkm")
 
-[node name="UtsuhoReiujiVector" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_nsj4c")
+[node name="PrismRiver_Black" parent="." instance=ExtResource("2_nk0vj")]
+position = Vector2(75, -89)
+
+[node name="PrismRiver_Red" parent="." instance=ExtResource("3_mj7hc")]
+position = Vector2(80, -9)
+
+[node name="PrismRiver_White" parent="." instance=ExtResource("4_gg7ky")]
+position = Vector2(-31, -87)
+
+[editable path="PrismRiver_Black"]
+[editable path="PrismRiver_Red"]
+[editable path="PrismRiver_White"]

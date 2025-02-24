@@ -7,3 +7,4 @@
 atlas_res = ExtResource("1_1qmdw")
 skeleton_file_res = ExtResource("2_6xhh5")
 default_mix = 0.1
+resource_local_to_scene = true
