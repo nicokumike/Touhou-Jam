@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5okftixnlb3w"]
+[gd_scene load_steps=18 format=3 uid="uid://c5okftixnlb3w"]
 
 [ext_resource type="Script" path="res://Scenes/note.gd" id="1_j3arb"]
 [ext_resource type="Texture2D" uid="uid://6qa8bbo65uxg" path="res://Assets/UI/Notes/HoldGraphic.png" id="2_5smbn"]
@@ -6,6 +6,27 @@
 [ext_resource type="Shader" path="res://Assets/Shaders/note.gdshader" id="3_3tjxe"]
 [ext_resource type="Texture2D" uid="uid://drrbubr80a1w7" path="res://Assets/UI/Notes/Projectile2.png" id="5_mcwh5"]
 [ext_resource type="Texture2D" uid="uid://bsfmf4ofw2ivx" path="res://Assets/UI/EnemyPointArrow.png" id="6_6a8ug"]
+[ext_resource type="Texture2D" uid="uid://wpv08rbvoqrs" path="res://Assets/UI/Notes/tinystar.png" id="7_sj7e8"]
+
+[sub_resource type="Curve" id="Curve_bcgxd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8p538"]
+curve = SubResource("Curve_bcgxd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qcpnp"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 10.0
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -120.0
+angular_velocity_max = 120.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.5
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_8p538")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0c15"]
 size = Vector2(3.75, 3.8125)
@@ -132,6 +153,13 @@ shader_parameter/ending_colour = Vector4(0, 1, 0, 0)
 
 [node name="Note" type="CharacterBody2D" groups=["note"]]
 script = ExtResource("1_j3arb")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture_filter = 3
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_qcpnp")
+texture = ExtResource("7_sj7e8")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["perfect"]]
 collision_layer = 2

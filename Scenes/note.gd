@@ -109,9 +109,11 @@ func checkPosition() -> int:
 	
 func holdNote():
 	sprite.global_position = pointer
+	$GPUParticles2D.emitting = true
 	holding = true
 
 func releaseNote():
+	$GPUParticles2D.emitting = false
 	queue_free()
 
 func _on_hitbox_area_entered(area):
