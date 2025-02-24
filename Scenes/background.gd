@@ -11,6 +11,9 @@ var music: AudioStreamMP3
 # Level started
 var started = false
 
+# Level ended
+var ended = false
+
 # Scene for the notes
 @onready var note = preload("res://Scenes/note.tscn")
 
@@ -24,7 +27,8 @@ var started = false
 @export var song = preload("res://Assets/SFX/penis music.mp3")
 @export var loopSong = preload("res://Assets/SFX/penis music.mp3")
 @export var bossSong = preload("res://Assets/SFX/penis music.mp3")
-
+@export var winSong = preload("res://Game/Lib/Composer/Music_Sheets/Victory_FIRST.mp3")
+@export var winSongLoop = preload("res://Game/Lib/Composer/Music_Sheets/Victory_LOOP.mp3")
 
 # Boss scene
 @export var boss = preload("res://Scenes/boss.tscn")
@@ -44,7 +48,7 @@ var started = false
 # Boss spawn point
 @onready var bossSpawnPoint = $"../BossSpawn"
 
-var end_score_board = preload("uid://dsjruqxp1cwvl")
+var end_score_board = preload("res://Scenes/ScoreTracker.tscn")
 var end_score_board_instance : Node = null
 var boss_started_talking : bool = false
 
@@ -109,20 +113,27 @@ func _process(delta):
 		
 	
 func _unhandled_input(event):
-	if event is InputEventKey and !started:
-		if SignalBus.difficulty == "Easy":
-			composer.music_sheet = easy_sheet
-		elif SignalBus.difficulty == "Hard":
+	if event is InputEventKey:
+		if !started:
+			if SignalBus.difficulty == "Easy":
+				composer.music_sheet = easy_sheet
+			elif SignalBus.difficulty == "Hard":
+				composer.music_sheet = hard_sheet
 			composer.music_sheet = hard_sheet
-		composer.music_sheet = hard_sheet
-		composer.initialize()
-		AudMan.stop_music()
-		#music_player = AudMan.play_music(song, -10)
-		$"../Timer2".start()
-		now = true
-		started = true
-		pointer.cutscene = false
-		$"../AnyKey".visible = false
+			composer.initialize()
+			AudMan.stop_music()
+			#music_player = AudMan.play_music(song, -10)
+			$"../Timer2".start()
+			now = true
+			started = true
+			pointer.cutscene = false
+			$"../AnyKey".visible = false
+			return
+		if ended:
+			ended = false
+			AudMan.stop_music()
+			level_two()
+			return
 
 # Emits note for the level
 func emit_note(note_data):
@@ -157,7 +168,6 @@ func transition():
 	pointer.cutscene = true
 	if boss_instance == null:
 		# Play looping song section
-		song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_LOOP.mp3")
 		AudMan.play_music(loopSong, -10)
 		# Spawn boss and instantiate it
 		boss_instance = boss.instantiate()
@@ -176,13 +186,13 @@ func transition():
 	elif boss_instance.is_inside_tree():
 		boss_started_talking = true
 		# Now emit dialogue
-		if boss_instance.health <= 0:
-			#print("test2")
-			var json_data3 : JSON = preload("res://json_test_3.json")
-			SignalBus.dialogue_triggered.emit(json_data3.data)
-			level_two()
-		else:
-			SignalBus.dialogue_triggered.emit(json_data2.data)
+		#if boss_instance.health <= 0:
+			##print("test2")
+		var json_data3 : JSON = preload("res://json_test_3.json")
+		SignalBus.dialogue_triggered.emit(json_data3.data)
+		#level_two()
+		#else:
+		#SignalBus.dialogue_triggered.emit(json_data2.data)
 		
 	#Dialogue
 	#----
@@ -193,6 +203,8 @@ func transition():
 func _on_dialogue_finished():
 	if boss_started_talking:
 		print("SCENE STARTED")
+		music_player = AudMan.play_music(winSong, -10)
+		ended = true
 		%ComboContainer.visible = false
 		$"../HBoxContainer".visible = false
 		end_score_board_instance = end_score_board.instantiate()
@@ -204,6 +216,7 @@ func _on_dialogue_finished():
 		end_score_board_instance.bad_count.text = str(pointer.hit_modifier["bad"])
 		end_score_board_instance.miss_count.text = str(pointer.hit_modifier["misses"])
 		#end_score_board_instance.acccuracy_count.text = str(pointer.hit_modifier[""])
+		#on_win_music_ended()
 	else:
 		AudMan.stop_music()
 		song = bossSong
@@ -219,5 +232,9 @@ func _on_dialogue_finished():
 		pointer.cutscene = false
 
 func _on_timer_2_timeout():
-	music_player = AudMan.play_music(song, -10)
+	music_player = AudMan.play_music(song, -10, false)
 	pass # Replace with function body.
+
+#func on_win_music_ended():
+	#await get_tree().create_timer(6.85)
+	#AudMan.play_music(winSongLoop, -10, true)

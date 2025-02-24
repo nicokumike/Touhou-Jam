@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsjruqxp1cwvl"]
+[gd_scene load_steps=12 format=3 uid="uid://by5bhs57fvf3v"]
 
 [ext_resource type="Shader" path="res://Assets/Shaders/note.gdshader" id="1_3r41p"]
 [ext_resource type="Texture2D" uid="uid://8k2553q8h8bw" path="res://Assets/UI/Notes/ComboContainer.png" id="1_m5grj"]
