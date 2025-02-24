@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bc03syknr3he6"]
+[gd_scene load_steps=17 format=3 uid="uid://bc03syknr3he6"]
 
 [ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
 [ext_resource type="AudioStream" uid="uid://bxpovugslghq0" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_RUNNING.mp3" id="2_8f5yi"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bpc8t3uvyeirb" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_LOOP.mp3" id="3_b5tno"]
 [ext_resource type="AudioStream" uid="uid://c1k7gw8dgw6sh" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3" id="4_47too"]
 [ext_resource type="Script" path="res://Scenes/pointer.gd" id="5_6yugx"]
+[ext_resource type="JSON" path="res://Game/Levels/level1/Dialogue/level1_2.dialogue.json" id="5_7n4r4"]
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="7_2ahiu"]
 [ext_resource type="Shader" path="res://Assets/Shaders/note.gdshader" id="7_308qn"]
 [ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="7_bprpc"]
@@ -41,7 +42,7 @@ hard_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running-har
 easy_sheet = "res://Game/Lib/Composer/Music_Sheets/EASYPRISM.json"
 hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-boss-hard.json"
 easy_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/EASYPRISMBOSS.json"
-win_dialogue = "res://Game/Levels/level1/Dialogue/level1_2.dialogue.json"
+win_dialogue = ExtResource("5_7n4r4")
 
 [node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
 script = ExtResource("1_auj5i")
