@@ -169,7 +169,7 @@ func transition():
 	pointer.cutscene = true
 	if boss_instance == null:
 		# Play looping song section
-		music_player = AudMan.play_music(loopSong, -10)
+		music_player = AudMan.play_music(loopSong, -10, true, false)
 		# Spawn boss and instantiate it
 		boss_instance = boss.instantiate()
 		# Setting bosses projectile spawn point
@@ -235,15 +235,15 @@ func _on_dialogue_finished():
 			composer.music_sheet = easy_boss_sheet
 		elif SignalBus.difficulty == "Hard":
 			composer.music_sheet = hard_boss_sheet
-		composer.music_sheet = easy_boss_sheet
+		composer.music_sheet = hard_boss_sheet
 		composer.initialize()
-		pointer.cutscene = false
-		#Wait until loop finishes to actually start the timer for the song
-		$"../Timer2".wait_time -= music_player.stream.get_length()
-		await get_tree().create_timer(music_player.stream.get_length() - music_player.get_playback_position())
-		now = true
+		
+		#Wait for loop to finish
+		var waitTime = music_player.stream.get_length() - music_player.get_playback_position()
+		$"../Timer2".wait_time += waitTime
 		$"../Timer2".start()
-		#music_player = AudMan.play_music(song, -10)
+		$"../Timer".wait_time = waitTime
+		$"../Timer".start()
 
 func _on_timer_2_timeout():
 	music_player = AudMan.play_music(song, -10, false, false)
@@ -252,3 +252,7 @@ func _on_timer_2_timeout():
 func _on_win_music_ended():
 	music_player.finished.disconnect(_on_win_music_ended)
 	music_player = AudMan.play_music(winSongLoop, -10, true, false)
+
+func _on_timer_timeout():
+	now = true
+	pointer.cutscene = false
