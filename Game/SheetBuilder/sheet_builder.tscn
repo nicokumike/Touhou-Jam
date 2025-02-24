@@ -105,6 +105,12 @@ position = Vector2(215, 462)
 
 [node name="MeasureTimer" type="Timer" parent="."]
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="FileDialog" type="FileDialog" parent="."]
+position = Vector2i(200, 200)
+size = Vector2i(600, 500)
+
 [connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/EditButton" to="." method="_on_edit_button_pressed"]

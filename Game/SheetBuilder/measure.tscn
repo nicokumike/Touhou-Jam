@@ -4,8 +4,9 @@
 [ext_resource type="Script" path="res://Game/SheetBuilder/remap_note_button.gd" id="2_kb5uk"]
 
 [node name="Measure" type="MarginContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+layout_direction = 2
+offset_right = 550.0
+offset_bottom = 51.0
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -20,6 +21,10 @@ theme_override_constants/separation = 20
 [node name="MeasureCountLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "1"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "▶"
 
 [node name="BeatHContainer" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -148,3 +153,5 @@ text = "4"
 script = ExtResource("2_kb5uk")
 num = 4
 beat = 4
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -14,6 +14,7 @@ var count
 var measure_data = []
 
 signal on_changed_note
+signal play_from_measure
 #
 func update_measure(data):
 	#print(data)
@@ -23,7 +24,7 @@ func update_measure(data):
 		for note: RemapNoteButton in children:
 			var index = [note.beat -1, note.num -1]
 			var preloaded_note = data[index[0]][index[1]]
-			prints(preloaded_note, data,"PRE")
+			#prints(preloaded_note, data,"PRE")
 			#prints(note.beat, note.num, index, preloaded_note)
 			note.load_note(preloaded_note)
 
@@ -44,3 +45,7 @@ func _on_button_new_note(data):
 		"index": [count, data.index[0], data.index[1]]
 	}
 	on_changed_note.emit(new_note)
+
+
+func _on_button_pressed():
+	play_from_measure.emit(count - 1)

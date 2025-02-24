@@ -13,6 +13,7 @@ class_name SheetBuilder
 @onready var sheet_container: VBoxContainer = $ScrollContainer/MeasureVContainer
 @onready var new_measure_button: Button = $ScrollContainer/MeasureVContainer/NewMeasureButton
 @onready var m_timer: Timer = $MeasureTimer
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 var music
 var bpm
@@ -51,6 +52,8 @@ func initialize():
 	bpm_label.text = str("BPM: ", bpm)
 	m_timer.wait_time = (60 / bpm) * 4
 	#prints(m_timer.wait_time, bpm)
+	var music = load(song_path)
+	music_player.stream = music
 	
 	sheet = sheet_data.sheet
 	prints(bpm, song_path, music, song_name, sheet)
@@ -68,13 +71,37 @@ func populate_measures(sheet):
 		new_measure.measure_data = measure
 		new_measure.update_measure(measure)
 		new_measure.on_changed_note.connect(on_new_note.bind())
+		new_measure.play_from_measure.connect(on_play_from_measure.bind())
 		
 		index[0] += 1
 		#print(measure)
 	sheet_container.move_child(new_measure_button, index[0] + 1)
 
+func on_play_from_measure(measure):
+	var measures_collection = $ScrollContainer/MeasureVContainer.get_children()
+	var measure_time = ((60 / bpm) * 4) * measure
+	music_player.play(float(measure_time))
+	current_measure = measure + 1
+	m_timer.start()
+	for count in measure + 1:
+		var to_highlight = measures_collection[count]
+		print(measures_collection[count])
+		to_highlight.modulate = Color.AQUA
+	
+
+	#var measures = $ScrollContainer/MeasureVContainer.get_children()
+	##prints(current_measure, measures, measures[current_measure -1])
+	#var new_measure = measures[current_measure]
+	##print(new_measure)
+	#if new_measure:
+		#new_measure.modulate = Color.AQUA
+	#current_measure += 1
+	#if current_measure == measures.size():
+		#m_timer.stop()
+		#current_measure = 1
+
 func on_new_note(data):
-	print("TOP LEVEL",data)
+	#print("TOP LEVEL",data)
 	var index = [data.index[0] -1, data.index[1] -1, data.index[2] -1]
 	#print(index)
 	#var note = sheet[index[0]][index[1]][index[2]]
@@ -95,7 +122,8 @@ func save_to_file(content):
 	file.store_string(content)
 
 func _on_play_song_button_pressed() -> void:
-	AudMan.play_music(music)
+	#AudMan.play_music(music)
+	music_player.play(0)
 	m_timer.start()
 	var measures = $ScrollContainer/MeasureVContainer.get_children()
 	#prints(current_measure, measures, measures[current_measure -1])
@@ -104,7 +132,8 @@ func _on_play_song_button_pressed() -> void:
 		new_measure.modulate = Color.AQUA
 
 func _on_stop_button_pressed() -> void:
-	AudMan.stop_music()
+	#AudMan.stop_music()
+	music_player.stop()
 	m_timer.stop()
 	m_timer.wait_time = (60 / bpm) * 4
 	var measures = $ScrollContainer/MeasureVContainer.get_children()
@@ -182,4 +211,3 @@ func _on_measure_timer_timeout():
 	if current_measure == measures.size():
 		m_timer.stop()
 		current_measure = 1
-	pass # Replace with function body.
