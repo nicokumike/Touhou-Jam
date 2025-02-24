@@ -124,7 +124,7 @@ func _unhandled_input(event):
 				composer.music_sheet = easy_sheet
 			elif SignalBus.difficulty == "Hard":
 				composer.music_sheet = hard_sheet
-			composer.music_sheet = hard_sheet
+			#composer.music_sheet = hard_sheet
 			composer.initialize()
 			AudMan.stop_music()
 			#music_player = AudMan.play_music(song, -10)
@@ -236,7 +236,7 @@ func _on_dialogue_finished():
 			composer.music_sheet = easy_boss_sheet
 		elif SignalBus.difficulty == "Hard":
 			composer.music_sheet = hard_boss_sheet
-		composer.music_sheet = hard_boss_sheet
+		#composer.music_sheet = hard_boss_sheet
 		composer.initialize()
 		
 		#Wait for loop to finish
