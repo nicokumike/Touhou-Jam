@@ -30,6 +30,22 @@ var comboMult = 1
 var miss = false
 var holding = false
 
+# Keep track of accuracy
+
+# Longest perfect streak
+var longest_perfect_streak : int = 0
+# Tally up how many good bad perfects etc
+var hit_modifier : Dictionary = {
+	"misses" : 0,   # Miss
+	"bad" : 0,    # Bad
+	"good" : 0,   # Good
+	"great" : 0,  # Great
+	"perfect" : 0 # Perfect
+}
+# Total score
+
+# Dev's best score 
+
 func _process(delta):
 	$FlandreContactPoint.rotation_degrees += .5
 	scoreAmount.text = str(score)
@@ -151,6 +167,8 @@ func resetPrecision():
 	miss = false
 	note_precision = 0
 
+
+var current_streak : int = 0
 func printPrecision():
 	if !note_hit:
 		note_precision = 0
@@ -159,15 +177,31 @@ func printPrecision():
 	var damage : int
 	var boss := get_node_or_null("../Boss")
 	match noteLabel.initiate(note_precision):
-		2:
+		0:
+			hit_modifier["misses"] += 1
 			perfect_streak = 0
+			current_streak = 0
+		1:
+			hit_modifier["bad"] += 1
+			perfect_streak = 0
+			current_streak = 0
+		2:
+			hit_modifier["good"] += 1
+			perfect_streak = 0
+			current_streak = 0
 			damage = 5
 		3:
+			hit_modifier["great"] += 1
 			perfect_streak = 0
+			current_streak = 0
 			damage = 10
 		4:
+			hit_modifier["perfect"] += 1
 			# So we loop and you need to land another 4 hits
 			perfect_streak = (perfect_streak + 1) % 5
+			current_streak += 1
+			longest_perfect_streak = max(longest_perfect_streak, current_streak)
+			
 			damage = 20
 	# Boss is in the scene so make it take damage
 	if boss != null:

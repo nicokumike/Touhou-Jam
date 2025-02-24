@@ -1,8 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsjruqxp1cwvl"]
+[gd_scene load_steps=12 format=3 uid="uid://dsjruqxp1cwvl"]
 
 [ext_resource type="Shader" path="res://Assets/Shaders/note.gdshader" id="1_3r41p"]
 [ext_resource type="Texture2D" uid="uid://8k2553q8h8bw" path="res://Assets/UI/Notes/ComboContainer.png" id="1_m5grj"]
 [ext_resource type="FontFile" uid="uid://kpqikns6mdrr" path="res://Assets/Fonts/LittleMissLoudonBold-VGO9l.ttf" id="3_2ibcx"]
+
+[sub_resource type="GDScript" id="GDScript_10vw4"]
+script/source = "extends Control
+@onready var score_count: Label = %ScoreCount
+@onready var perfect_count: Label = %PerfectCount
+@onready var great_count: Label = %GreatCount
+@onready var good_count: Label = %GoodCount
+@onready var bad_count: Label = %BadCount
+@onready var miss_count: Label = %MissCount
+@onready var acccuracy_count: Label = %AcccuracyCount
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fqjil"]
 shader = ExtResource("1_3r41p")
@@ -144,6 +155,9 @@ Label/constants/outline_size = 23
 Label/font_sizes/font_size = 64
 Label/fonts/font = ExtResource("3_2ibcx")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7obs"]
+bg_color = Color(0, 0, 0, 0)
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -151,14 +165,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_10vw4")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 texture_filter = 3
 material = SubResource("ShaderMaterial_fqjil")
 custom_minimum_size = Vector2(220, 150)
 layout_mode = 0
-offset_right = 220.0
-offset_bottom = 150.0
+offset_left = 476.0
+offset_top = 67.0
+offset_right = 1215.0
+offset_bottom = 652.0
 texture = ExtResource("1_m5grj")
 patch_margin_left = 104
 patch_margin_top = 50
@@ -169,6 +186,7 @@ patch_margin_bottom = 50
 libraries = {
 "": SubResource("AnimationLibrary_uccro")
 }
+autoplay = "grow"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 visible = false
@@ -212,35 +230,47 @@ text = "Misses:"
 layout_mode = 2
 text = "Accuracy:"
 
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxFlat_b7obs")
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="ScoreCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "0"
 
 [node name="PerfectCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
 [node name="GreatCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
 [node name="GoodCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
 [node name="BadCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
 [node name="MissCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
 [node name="AcccuracyCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "0"

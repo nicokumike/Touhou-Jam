@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn5tlvobabucw"]
+[gd_scene load_steps=5 format=3 uid="uid://cn5tlvobabucw"]
 
+[ext_resource type="PackedScene" uid="uid://dsjruqxp1cwvl" path="res://Scenes/ScoreTracker.tscn" id="1_btv7y"]
 [ext_resource type="Texture2D" uid="uid://dkwbp1wa2kgvq" path="res://icon.svg" id="1_gojix"]
 
 [sub_resource type="GDScript" id="GDScript_rvrdn"]
@@ -7,17 +8,25 @@ script/source = "extends CharacterBody2D
 
 @export var speed: float = 200.0  # Movement speed
 
-var json_data : JSON = preload(\"res://json_test_.json\")
+#var json_data : JSON = preload(\"res://json_test_.json\")
+@onready var control: Control = $\"../Control\"
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(\"test\"):
-		SignalBus.dialogue_triggered.emit(json_data.data)
+func _ready() -> void:
+	control.score_count.text = str(int(45.62))
+	control.perfect_count.text = str(int(45.62))
+	control.great_count.text = str(int(45.62))
+	control.good_count.text = str(int(45.62))
+	control.bad_count.text = str(int(45.62))
+	control.miss_count.text = str(int(45.62))
+	control.acccuracy_count.text = str(int(45.62))
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5o7r"]
 size = Vector2(129, 126)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Control" parent="." instance=ExtResource("1_btv7y")]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(545, 365)

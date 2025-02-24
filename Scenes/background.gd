@@ -25,6 +25,7 @@ var started = false
 @export var loopSong = preload("res://Assets/SFX/penis music.mp3")
 @export var bossSong = preload("res://Assets/SFX/penis music.mp3")
 
+
 # Boss scene
 @export var boss = preload("res://Scenes/boss.tscn")
 
@@ -43,6 +44,10 @@ var started = false
 # Boss spawn point
 @onready var bossSpawnPoint = $"../BossSpawn"
 
+var end_score_board = preload("uid://dsjruqxp1cwvl")
+var end_score_board_instance : Node = null
+var boss_started_talking : bool = false
+
 var boss_instance : Node = null 
 var music_player = null
 var time_begin: float
@@ -58,6 +63,7 @@ func _ready():
 	time_begin = Time.get_ticks_usec()
 	time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
 	SignalBus.transition_finished.connect(trans_finished.bind())
+	SignalBus.dialogue_finished.connect(_on_dialogue_finished)
 	
 	#Start all relevant variables
 	boss_instance = null 
@@ -140,10 +146,10 @@ func transition():
 	#No, do this:
 	# Stopping notes
 	music_player = null
+	now = false
 	if boss_instance == null:
 		# Play looping song section
 		song = load("res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_LOOP.mp3")
-		now = false
 		AudMan.play_music(loopSong, -10)
 		# Spawn boss and instantiate it
 		boss_instance = boss.instantiate()
@@ -156,18 +162,20 @@ func transition():
 		
 		# Maybe emit when boss is on screen?
 		SignalBus.dialogue_triggered.emit(json_data.data)
-		SignalBus.dialogue_finished.connect(_on_dialogue_finished)
+
 	
 	# Boss is in the scene
 	elif boss_instance.is_inside_tree():
+		boss_started_talking = true
 		# Now emit dialogue
 		if boss_instance.health <= 0:
+			#print("test2")
 			var json_data3 : JSON = preload("res://json_test_3.json")
 			SignalBus.dialogue_triggered.emit(json_data3.data)
 			level_two()
 		else:
 			SignalBus.dialogue_triggered.emit(json_data2.data)
-			
+		
 	#Dialogue
 	#----
 	#After dialogue is done
@@ -175,17 +183,31 @@ func transition():
 	#composer.initialize()
 	
 func _on_dialogue_finished():
-	AudMan.stop_music()
-	song = bossSong
-	if SignalBus.difficulty == "Easy":
-		composer.music_sheet = easy_boss_sheet
-	elif SignalBus.difficulty == "Hard":
+	if boss_started_talking:
+		print("SCENE STARTED")
+		%ComboContainer.visible = false
+		$"../HBoxContainer".visible = false
+		end_score_board_instance = end_score_board.instantiate()
+		add_sibling(end_score_board_instance)
+		#end_score_board_instance.score_count.text = str(pointer.hit_modifier[""])
+		end_score_board_instance.perfect_count.text = str(pointer.hit_modifier["perfect"])
+		end_score_board_instance.great_count.text = str(pointer.hit_modifier["great"])
+		end_score_board_instance.good_count.text = str(pointer.hit_modifier["good"])
+		end_score_board_instance.bad_count.text = str(pointer.hit_modifier["bad"])
+		end_score_board_instance.miss_count.text = str(pointer.hit_modifier["misses"])
+		#end_score_board_instance.acccuracy_count.text = str(pointer.hit_modifier[""])
+	else:
+		AudMan.stop_music()
+		song = bossSong
+		if SignalBus.difficulty == "Easy":
+			composer.music_sheet = easy_boss_sheet
+		elif SignalBus.difficulty == "Hard":
+			composer.music_sheet = hard_boss_sheet
 		composer.music_sheet = hard_boss_sheet
-	composer.music_sheet = hard_boss_sheet
-	composer.initialize()
-	$"../Timer2".start()
-	#music_player = AudMan.play_music(song, -10)
-	now = true
+		composer.initialize()
+		$"../Timer2".start()
+		#music_player = AudMan.play_music(song, -10)
+		now = true
 
 func _on_timer_2_timeout():
 	music_player = AudMan.play_music(song, -10)
