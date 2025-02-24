@@ -31,6 +31,7 @@ song = ExtResource("3_16e83")
 loopSong = ExtResource("4_oximf")
 bossSong = ExtResource("5_iw6i0")
 fairies = [ExtResource("6_020jm"), "GHOST"]
+hard_sheet = "res://Game/Lib/Composer/Music_Sheets/utsuhoreiuji-running-hard.json"
 
 [node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
 script = ExtResource("3_1wch0")

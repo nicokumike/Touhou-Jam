@@ -95,6 +95,7 @@ func _process(delta):
 		level_two()
 		pass
 	if Input.is_action_just_pressed("8"):
+		$"../Timer2".stop()
 		transition()
 		#SignalBus.dialogue_finished.connect(_on_dialogue_finished)
 		#SignalBus.dialogue_finished.emit()
@@ -119,7 +120,7 @@ func _unhandled_input(event):
 				composer.music_sheet = easy_sheet
 			elif SignalBus.difficulty == "Hard":
 				composer.music_sheet = hard_sheet
-			#composer.music_sheet = easy_sheet
+			composer.music_sheet = hard_sheet
 			composer.initialize()
 			AudMan.stop_music()
 			#music_player = AudMan.play_music(song, -10)
@@ -168,7 +169,7 @@ func transition():
 	pointer.cutscene = true
 	if boss_instance == null:
 		# Play looping song section
-		AudMan.play_music(loopSong, -10)
+		music_player = AudMan.play_music(loopSong, -10)
 		# Spawn boss and instantiate it
 		boss_instance = boss.instantiate()
 		# Setting bosses projectile spawn point
@@ -203,7 +204,8 @@ func transition():
 func _on_dialogue_finished():
 	if boss_started_talking:
 		#print("SCENE STARTED")
-		music_player = AudMan.play_music(winSong, -10)
+		music_player = AudMan.play_music(winSong, -10, false)
+		music_player.finished.connect(_on_win_music_ended)
 		ended = true
 		%ComboContainer.visible = false
 		$"../HBoxContainer".visible = false
@@ -227,23 +229,26 @@ func _on_dialogue_finished():
 
 		#on_win_music_ended()
 	else:
-		AudMan.stop_music()
+		#AudMan.stop_music()
 		song = bossSong
 		if SignalBus.difficulty == "Easy":
 			composer.music_sheet = easy_boss_sheet
 		elif SignalBus.difficulty == "Hard":
 			composer.music_sheet = hard_boss_sheet
-		composer.music_sheet = hard_boss_sheet
+		composer.music_sheet = easy_boss_sheet
 		composer.initialize()
+		pointer.cutscene = false
+		#Wait until loop finishes to actually start the timer for the song
+		$"../Timer2".wait_time -= music_player.stream.get_length()
+		await get_tree().create_timer(music_player.stream.get_length() - music_player.get_playback_position())
+		now = true
 		$"../Timer2".start()
 		#music_player = AudMan.play_music(song, -10)
-		now = true
-		pointer.cutscene = false
 
 func _on_timer_2_timeout():
-	music_player = AudMan.play_music(song, -10, false)
+	music_player = AudMan.play_music(song, -10, false, false)
 	pass # Replace with function body.
 
-#func on_win_music_ended():
-	#await get_tree().create_timer(6.85)
-	#AudMan.play_music(winSongLoop, -10, true)
+func _on_win_music_ended():
+	music_player.finished.disconnect(_on_win_music_ended)
+	music_player = AudMan.play_music(winSongLoop, -10, true, false)

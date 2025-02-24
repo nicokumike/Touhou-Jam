@@ -17,14 +17,20 @@ func _process(delta):
 	if new_music && !fade_timer.is_stopped():
 		music_manager.volume_db = music_manager.volume_db - (30 * delta)
 
-func switch_songs():
-	fade_timer.start()
+func switch_songs(fade = true):
+	if fade:
+		fade_timer.start()
+	else:
+		music_manager.stream = new_music
+		music_manager.volume_db = new_volume
+		music_manager.play()
+		current_music = new_music
 
 #Music bus
 #Plays an mp3 file
 #takes an argument of volume (which is then affected by bus volume)
 #takes a looped argument defaults to true
-func play_music(music: AudioStreamMP3, volume = 0, looped = true):
+func play_music(music: AudioStreamMP3, volume = 0, looped = true, fade = true):
 	#music_manager.playing = true
 	#Checks if the song is the same song, prevents double triggers
 	if music == current_music:
@@ -32,7 +38,7 @@ func play_music(music: AudioStreamMP3, volume = 0, looped = true):
 	if current_music:
 		new_music = music
 		new_volume = volume
-		switch_songs()
+		switch_songs(fade)
 		return music_manager
 	loop_music = looped
 	current_music = music
