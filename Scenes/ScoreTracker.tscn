@@ -159,6 +159,7 @@ Label/fonts/font = ExtResource("3_2ibcx")
 bg_color = Color(0, 0, 0, 0)
 
 [node name="Control" type="Control"]
+z_index = 99
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -172,10 +173,8 @@ texture_filter = 3
 material = SubResource("ShaderMaterial_fqjil")
 custom_minimum_size = Vector2(220, 150)
 layout_mode = 0
-offset_left = 476.0
-offset_top = 67.0
-offset_right = 1215.0
-offset_bottom = 652.0
+offset_right = 220.0
+offset_bottom = 150.0
 texture = ExtResource("1_m5grj")
 patch_margin_left = 104
 patch_margin_top = 50

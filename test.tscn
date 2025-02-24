@@ -18,7 +18,7 @@ func _ready() -> void:
 	control.good_count.text = str(int(45.62))
 	control.bad_count.text = str(int(45.62))
 	control.miss_count.text = str(int(45.62))
-	control.acccuracy_count.text = str(int(45.62))
+	control.acccuracy_count.text = \"%.2f\" % 97.845641
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5o7r"]
