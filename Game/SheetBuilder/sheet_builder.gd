@@ -78,6 +78,7 @@ func populate_measures(sheet):
 	sheet_container.move_child(new_measure_button, index[0] + 1)
 
 func on_play_from_measure(measure):
+	reset_measures()
 	var measures_collection = $ScrollContainer/MeasureVContainer.get_children()
 	var measure_time = ((60 / bpm) * 4) * measure
 	music_player.play(float(measure_time))
@@ -121,6 +122,13 @@ func save_to_file(content):
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_string(content)
 
+func reset_measures():
+	var measures = $ScrollContainer/MeasureVContainer.get_children()
+	current_measure = 1
+	for measure in measures:
+		measure.modulate = Color.WHITE
+	pass
+
 func _on_play_song_button_pressed() -> void:
 	#AudMan.play_music(music)
 	music_player.play(0)
@@ -136,10 +144,8 @@ func _on_stop_button_pressed() -> void:
 	music_player.stop()
 	m_timer.stop()
 	m_timer.wait_time = (60 / bpm) * 4
-	var measures = $ScrollContainer/MeasureVContainer.get_children()
-	current_measure = 1
-	for measure in measures:
-		measure.modulate = Color.WHITE
+	reset_measures()
+	pass
 
 func _on_test_button_pressed() -> void:
 	#TODO go to a debug stage and play this track
