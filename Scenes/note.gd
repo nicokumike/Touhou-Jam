@@ -23,6 +23,7 @@ var hit = false
 @onready var contactPoint = $EnemyContactPoint
 @onready var enemyPointArrow = $EnemyPointArrow
 @onready var sprite = $Path2D/PathFollow2D/Icon
+@onready var particle: GPUParticles2D = $GPUParticles2D2
 @onready var ghost = preload("res://Assets/UI/Notes/GhostProjectile.png")
 
 var time = 0
@@ -34,6 +35,8 @@ func _ready():
 		holdTrail.scale.x = (1.0 * holdSize) / holdTrail.texture.get_width()
 		holdTrailWidth = holdTrail.texture.get_width() * holdTrail.scale.x
 	pass
+func _burst():
+	particle.emitting = true
 
 func spawn_fairy(fairy):
 	#print(fairy)

@@ -1,12 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cir17lwomofg3"]
+[gd_scene load_steps=5 format=3 uid="uid://cir17lwomofg3"]
 
 [ext_resource type="Script" path="res://Game/UI/flander_contact_point.gd" id="1_h64d6"]
 [ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="1_yjt50"]
+[ext_resource type="Shader" path="res://Assets/Shaders/note.gdshader" id="2_dregu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8jij2"]
+shader = ExtResource("2_dregu")
+shader_parameter/max_line_width = 15.405
+shader_parameter/min_line_width = -48.215
+shader_parameter/freq = 9.515
+shader_parameter/block_size = 20.0
+shader_parameter/starting_colour = Vector4(1, 0, 0, 1)
+shader_parameter/ending_colour = Vector4(1, 0, 0, 0)
 
 [node name="FlandreContactPoint" type="Node2D"]
 script = ExtResource("1_h64d6")
 
 [node name="FlandreContactPoint" type="Sprite2D" parent="."]
 texture_filter = 3
+material = SubResource("ShaderMaterial_8jij2")
 scale = Vector2(2, 2)
 texture = ExtResource("1_yjt50")

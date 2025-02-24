@@ -202,20 +202,29 @@ func transition():
 	
 func _on_dialogue_finished():
 	if boss_started_talking:
-		print("SCENE STARTED")
+		#print("SCENE STARTED")
 		music_player = AudMan.play_music(winSong, -10)
 		ended = true
 		%ComboContainer.visible = false
 		$"../HBoxContainer".visible = false
 		end_score_board_instance = end_score_board.instantiate()
 		add_sibling(end_score_board_instance)
-		#end_score_board_instance.score_count.text = str(pointer.hit_modifier[""])
+		end_score_board_instance.score_count.text = str(pointer.score)
 		end_score_board_instance.perfect_count.text = str(pointer.hit_modifier["perfect"])
 		end_score_board_instance.great_count.text = str(pointer.hit_modifier["great"])
 		end_score_board_instance.good_count.text = str(pointer.hit_modifier["good"])
 		end_score_board_instance.bad_count.text = str(pointer.hit_modifier["bad"])
 		end_score_board_instance.miss_count.text = str(pointer.hit_modifier["misses"])
-		#end_score_board_instance.acccuracy_count.text = str(pointer.hit_modifier[""])
+		
+		# Calculate accuracy by comparing hits to total notes
+		var total_hits : int = (pointer.hit_modifier["perfect"] + 
+				pointer.hit_modifier["great"] + 
+				pointer.hit_modifier["good"] + 
+				pointer.hit_modifier["bad"])
+		var total_notes : int = total_hits + pointer.hit_modifier["misses"]
+			
+		end_score_board_instance.acccuracy_count.text = "%.2f" % ((total_hits / float(total_notes)) * 100.0)
+
 		#on_win_music_ended()
 	else:
 		AudMan.stop_music()
