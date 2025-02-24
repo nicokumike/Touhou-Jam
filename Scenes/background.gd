@@ -31,7 +31,7 @@ var ended = false
 @export var winSongLoop = preload("res://Game/Lib/Composer/Music_Sheets/Victory_LOOP.mp3")
 
 # Boss scene
-@export var boss = preload("res://Scenes/boss.tscn")
+@export var boss = preload("res://Scenes/prismriversisters.tscn")
 
 @export var fairies = [preload("res://Game/Characters/Fairy/fairy_river.tscn"), "GHOST"]
 
@@ -233,7 +233,7 @@ func _on_dialogue_finished():
 			composer.music_sheet = easy_boss_sheet
 		elif SignalBus.difficulty == "Hard":
 			composer.music_sheet = hard_boss_sheet
-		#composer.music_sheet = easy_boss_sheet
+		composer.music_sheet = hard_boss_sheet
 		composer.initialize()
 		$"../Timer2".start()
 		#music_player = AudMan.play_music(song, -10)

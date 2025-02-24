@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://c3i5qvgb1wof1"]
+
+[ext_resource type="Script" path="res://Scenes/boss.gd" id="1_nkbkm"]
+[ext_resource type="PackedScene" uid="uid://vpyds6nh3lxv" path="res://Game/Characters/PrismRiver/prism_river_black.tscn" id="2_nk0vj"]
+[ext_resource type="SpineAtlasResource" uid="uid://31q0ryklov0o" path="res://Assets/Characters/Base/Base.atlas" id="3_j50qh"]
+[ext_resource type="PackedScene" uid="uid://u4oq7b3l32pe" path="res://Game/Characters/PrismRiver/prism_river_red.tscn" id="3_mj7hc"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://cskdu3eeria7w" path="res://Assets/Characters/Base/Base.skel" id="4_8ovyv"]
+[ext_resource type="PackedScene" uid="uid://bawavabrqj7kg" path="res://Game/Characters/PrismRiver/prism_river_white.tscn" id="4_gg7ky"]
+[ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="5_ha5u7"]
+
+[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_rd0us"]
+atlas_res = ExtResource("3_j50qh")
+skeleton_file_res = ExtResource("4_8ovyv")
+default_mix = 0.1
+resource_local_to_scene = true
+
+[sub_resource type="Resource" id="Resource_4t2no"]
+resource_local_to_scene = true
+script = ExtResource("5_ha5u7")
+skeleton_data_resource = SubResource("SpineSkeletonDataResource_rd0us")
+animation_name = "Flandre/flying"
+animation_index = 1
+loop = true
+track = 0
+mix_duration = 0.2
+speed = 1.0
+
+[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_4xo41"]
+atlas_res = ExtResource("3_j50qh")
+skeleton_file_res = ExtResource("4_8ovyv")
+default_mix = 0.1
+resource_local_to_scene = true
+
+[sub_resource type="Resource" id="Resource_8d4w3"]
+resource_local_to_scene = true
+script = ExtResource("5_ha5u7")
+skeleton_data_resource = SubResource("SpineSkeletonDataResource_4xo41")
+animation_name = "Flandre/flying"
+animation_index = 1
+loop = true
+track = 0
+mix_duration = 0.2
+speed = 1.0
+
+[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_d2380"]
+atlas_res = ExtResource("3_j50qh")
+skeleton_file_res = ExtResource("4_8ovyv")
+default_mix = 0.1
+resource_local_to_scene = true
+
+[sub_resource type="Resource" id="Resource_1e5sj"]
+resource_local_to_scene = true
+script = ExtResource("5_ha5u7")
+skeleton_data_resource = SubResource("SpineSkeletonDataResource_d2380")
+animation_name = "Flandre/flying"
+animation_index = 1
+loop = true
+track = 0
+mix_duration = 0.2
+speed = 1.0
+
+[node name="Boss" type="Node2D"]
+texture_filter = 3
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_nkbkm")
+
+[node name="PrismRiver_Black" parent="." instance=ExtResource("2_nk0vj")]
+position = Vector2(-38, 22.6667)
+scale = Vector2(-1, 1)
+
+[node name="AnimationHandler_Spine" parent="PrismRiver_Black" index="0"]
+skeleton_data_res = SubResource("SpineSkeletonDataResource_rd0us")
+initial_animation = SubResource("Resource_4t2no")
+
+[node name="PrismRiver_Red" parent="." instance=ExtResource("3_mj7hc")]
+position = Vector2(-33, 102.667)
+scale = Vector2(-1, 1)
+
+[node name="AnimationHandler_Spine" parent="PrismRiver_Red" index="0"]
+skeleton_data_res = SubResource("SpineSkeletonDataResource_4xo41")
+initial_animation = SubResource("Resource_8d4w3")
+
+[node name="PrismRiver_White" parent="." instance=ExtResource("4_gg7ky")]
+position = Vector2(-144, 24.6667)
+scale = Vector2(-1, 1)
+
+[node name="AnimationHandler_Spine" parent="PrismRiver_White" index="0"]
+skeleton_data_res = SubResource("SpineSkeletonDataResource_d2380")
+initial_animation = SubResource("Resource_1e5sj")
+
+[editable path="PrismRiver_Black"]
+[editable path="PrismRiver_Red"]
+[editable path="PrismRiver_White"]

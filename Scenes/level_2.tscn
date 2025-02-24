@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bh3dqgf8ufbly" path="res://Game/Characters/Fairy/fairy_volcano.tscn" id="6_020jm"]
 [ext_resource type="Texture2D" uid="uid://by22eheheamcu" path="res://Assets/UI/ContactPointArrow.png" id="6_xj55f"]
 [ext_resource type="Texture2D" uid="uid://8k2553q8h8bw" path="res://Assets/UI/Notes/ComboContainer.png" id="7_o0inv"]
-[ext_resource type="Theme" path="res://Assets/Themes/label.tres" id="8_c5sms"]
+[ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="8_c5sms"]
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="9_o3eyl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vjq"]
