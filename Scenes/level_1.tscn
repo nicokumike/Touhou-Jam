@@ -28,7 +28,9 @@ song = ExtResource("2_8f5yi")
 loopSong = ExtResource("3_b5tno")
 bossSong = ExtResource("4_47too")
 hard_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running-hard.json"
+easy_sheet = "res://Game/Lib/Composer/Music_Sheets/EASYPRISM.json"
 hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-boss-hard.json"
+easy_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/EASYPRISMBOSS.json"
 
 [node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
 script = ExtResource("1_auj5i")
