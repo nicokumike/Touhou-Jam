@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgtytybqry53w"]
+
+[ext_resource type="PackedScene" uid="uid://kpifd68fnr6p" path="res://Game/Characters/Player/player_utsuho.tscn" id="1_iamfi"]
+
+[node name="Utsuho" type="Node2D"]
+
+[node name="Player_Utsuho" parent="." instance=ExtResource("1_iamfi")]
+position = Vector2(-155, 263)
+scale = Vector2(-1, 1)
