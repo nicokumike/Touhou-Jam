@@ -64,15 +64,23 @@ func _unhandled_input(event):
 		var tween = create_tween()
 		arrow()
 		if keyPress == 1:
+			#hitNote.particle.material.set("shader_parameter/starting_colour", Vector4(1, 1, 0, 1))
+			#hitNote.particle.material.set("shader_parameter/ending_colour", Vector4(1, 1, 0, 0))
 			tween.tween_property($ContactPointArrow, "rotation_degrees", 270, 0)
 			$ContactPointArrow.modulate = Color.YELLOW
 		elif keyPress == 2:
+			#hitNote.particle.material.set("shader_parameter/starting_colour", Vector4(0, 0, 1, 1))
+			#hitNote.particle.material.set("shader_parameter/ending_colour", Vector4(0, 0, 1, 0))
 			$ContactPointArrow.modulate = Color.BLUE
 			tween.tween_property($ContactPointArrow, "rotation_degrees", 180, 0)
 		elif keyPress == 3:
+			#hitNote.particle.material.set("shader_parameter/starting_colour", Vector4(0, 1, 0, 1))
+			#hitNote.particle.material.set("shader_parameter/ending_colour", Vector4(0, 1, 0, 0))
 			$ContactPointArrow.modulate = Color.GREEN
 			tween.tween_property($ContactPointArrow, "rotation_degrees", 90, 0)
 		elif keyPress == 4:
+			#hitNote.particle.material.set("shader_parameter/starting_colour", Vector4(1, 0, 0, 1))
+			#hitNote.particle.material.set("shader_parameter/ending_colour", Vector4(1, 0, 0, 0))
 			$ContactPointArrow.modulate = Color.RED
 			tween.tween_property($ContactPointArrow, "rotation_degrees", 360, 0)
 		if hitNote != null and hitPrecision > 0 and keyPress > 0:
@@ -109,6 +117,7 @@ func _unhandled_input(event):
 					hitNote.holdNote()
 					hitNote.pointerObj = self
 				else:
+					hitNote.particle.emitting = true
 					hitNote.animPlayer.play("death")
 					hitNote.enemyPointArrow.visible = false
 					hitNote.dead = true

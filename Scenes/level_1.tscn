@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc03syknr3he6"]
+[gd_scene load_steps=16 format=3 uid="uid://bc03syknr3he6"]
 
 [ext_resource type="Script" path="res://Game/Lib/Composer/composer.gd" id="1_auj5i"]
 [ext_resource type="AudioStream" uid="uid://bxpovugslghq0" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_RUNNING.mp3" id="2_8f5yi"]
@@ -7,10 +7,20 @@
 [ext_resource type="AudioStream" uid="uid://c1k7gw8dgw6sh" path="res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3" id="4_47too"]
 [ext_resource type="Script" path="res://Scenes/pointer.gd" id="5_6yugx"]
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="7_2ahiu"]
+[ext_resource type="Shader" path="res://Assets/Shaders/note.gdshader" id="7_308qn"]
 [ext_resource type="Texture2D" uid="uid://cd1ou6npgov5j" path="res://Assets/UI/FlandreContactPoint.png" id="7_bprpc"]
 [ext_resource type="Texture2D" uid="uid://by22eheheamcu" path="res://Assets/UI/ContactPointArrow.png" id="7_d0uin"]
 [ext_resource type="Texture2D" uid="uid://8k2553q8h8bw" path="res://Assets/UI/Notes/ComboContainer.png" id="7_mvbdy"]
 [ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="9_ua65x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdaka"]
+shader = ExtResource("7_308qn")
+shader_parameter/max_line_width = 41.025
+shader_parameter/min_line_width = -26.58
+shader_parameter/freq = 14.08
+shader_parameter/block_size = 4.92
+shader_parameter/starting_colour = Vector4(1, 0, 0, 1)
+shader_parameter/ending_colour = Vector4(1, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vjq"]
 size = Vector2(20, 350)
@@ -41,6 +51,7 @@ script = ExtResource("5_6yugx")
 
 [node name="FlandreContactPoint" type="Sprite2D" parent="Pointer"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_hdaka")
 scale = Vector2(2, 2)
 texture = ExtResource("7_bprpc")
 

@@ -1,12 +1,30 @@
-[gd_scene load_steps=18 format=3 uid="uid://c5okftixnlb3w"]
+[gd_scene load_steps=22 format=3 uid="uid://c5okftixnlb3w"]
 
 [ext_resource type="Script" path="res://Scenes/note.gd" id="1_j3arb"]
 [ext_resource type="Texture2D" uid="uid://6qa8bbo65uxg" path="res://Assets/UI/Notes/HoldGraphic.png" id="2_5smbn"]
 [ext_resource type="Texture2D" uid="uid://bxat8gcmm7lmf" path="res://Assets/UI/EnemyContactPoint.png" id="3_2gvvc"]
 [ext_resource type="Shader" path="res://Assets/Shaders/note.gdshader" id="3_3tjxe"]
+[ext_resource type="Texture2D" uid="uid://bev3e0l14vgb8" path="res://Assets/UI/Notes/particlecircle.png" id="3_jyqpr"]
 [ext_resource type="Texture2D" uid="uid://drrbubr80a1w7" path="res://Assets/UI/Notes/Projectile2.png" id="5_mcwh5"]
 [ext_resource type="Texture2D" uid="uid://bsfmf4ofw2ivx" path="res://Assets/UI/EnemyPointArrow.png" id="6_6a8ug"]
 [ext_resource type="Texture2D" uid="uid://wpv08rbvoqrs" path="res://Assets/UI/Notes/tinystar.png" id="7_sj7e8"]
+
+[sub_resource type="Curve" id="Curve_v1wcj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d20h0"]
+curve = SubResource("Curve_v1wcj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wxenv"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_d20h0")
 
 [sub_resource type="Curve" id="Curve_bcgxd"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -16,11 +34,12 @@ point_count = 2
 curve = SubResource("Curve_bcgxd")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qcpnp"]
+resource_local_to_scene = true
 particle_flag_disable_z = true
 inherit_velocity_ratio = 10.0
 spread = 180.0
-initial_velocity_min = 300.0
-initial_velocity_max = 400.0
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
 angular_velocity_min = -120.0
 angular_velocity_max = 120.0
 gravity = Vector3(0, 0, 0)
@@ -81,7 +100,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(0.15932, 1),
+"transitions": PackedFloat32Array(0.125, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
@@ -154,10 +173,20 @@ shader_parameter/ending_colour = Vector4(0, 1, 0, 0)
 [node name="Note" type="CharacterBody2D" groups=["note"]]
 script = ExtResource("1_j3arb")
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+texture_filter = 3
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_wxenv")
+texture = ExtResource("3_jyqpr")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 texture_filter = 3
 emitting = false
-amount = 100
+amount = 60
 process_material = SubResource("ParticleProcessMaterial_qcpnp")
 texture = ExtResource("7_sj7e8")
 
@@ -178,6 +207,7 @@ centered = false
 offset = Vector2(0, -55)
 
 [node name="EnemyContactPoint" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.454902)
 texture_filter = 1
 scale = Vector2(2, 2)
@@ -196,6 +226,7 @@ scale = Vector2(0.2, 0.2)
 rotates = false
 
 [node name="Icon" type="Sprite2D" parent="Path2D/PathFollow2D"]
+z_index = 20
 texture_filter = 3
 material = SubResource("ShaderMaterial_1qf07")
 scale = Vector2(10, 10)

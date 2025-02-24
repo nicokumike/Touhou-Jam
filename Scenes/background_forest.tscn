@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bwo6p8ttiatv7" path="res://Assets/Environment/WaterReflections.png" id="4_8gpir"]
 [ext_resource type="PackedScene" uid="uid://ctlkjntcstche" path="res://Game/Characters/Fairy/fairy_river.tscn" id="6_lb5lr"]
 [ext_resource type="PackedScene" uid="uid://ctat1o7jjpnk1" path="res://Scenes/wind.tscn" id="8_00l0s"]
-[ext_resource type="PackedScene" uid="uid://bp4spstrcqf4l" path="res://Game/Characters/Fairy/fairy_rock.tscn" id="8_yty7t"]
+[ext_resource type="PackedScene" path="res://Game/Characters/Fairy/fairy_pine.tscn" id="8_n2v6l"]
 
 [sub_resource type="Gradient" id="Gradient_e4jpv"]
 offsets = PackedFloat32Array(0.00819672, 0.696721, 1)
@@ -185,6 +185,21 @@ glow_blend_mode = 1
 adjustment_enabled = true
 adjustment_brightness = 1.1
 
+[sub_resource type="Animation" id="Animation_rdo7x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_gb7fc"]
 resource_name = "fairy1"
 length = 5.0
@@ -202,12 +217,18 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_rdo7x"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3njr8"]
+_data = {
+"RESET": SubResource("Animation_rdo7x"),
+"fairy1": SubResource("Animation_gb7fc")
+}
+
+[sub_resource type="Animation" id="Animation_lvspf"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/path = NodePath("../Path2D2/PathFollow2D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -215,12 +236,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3njr8"]
-_data = {
-"RESET": SubResource("Animation_rdo7x"),
-"fairy1": SubResource("Animation_gb7fc")
 }
 
 [sub_resource type="Animation" id="Animation_a02ey"]
@@ -240,12 +255,18 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_lvspf"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b8yq2"]
+_data = {
+"RESET": SubResource("Animation_lvspf"),
+"fairy": SubResource("Animation_a02ey")
+}
+
+[sub_resource type="Animation" id="Animation_c1gs7"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Path2D2/PathFollow2D:progress_ratio")
+tracks/0/path = NodePath("Path2D3/PathFollow2D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -253,12 +274,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b8yq2"]
-_data = {
-"RESET": SubResource("Animation_lvspf"),
-"fairy": SubResource("Animation_a02ey")
 }
 
 [sub_resource type="Animation" id="Animation_vcls6"]
@@ -276,21 +291,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.253, 0.747, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_c1gs7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Path2D3/PathFollow2D:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w4wfh"]
@@ -348,9 +348,9 @@ scale = Vector2(0.5, 0.5)
 rotation = 0.20944
 scale = Vector2(-1, 1)
 
-[node name="Fairy_River2" parent="Path2D3/PathFollow2D/Node2D" instance=ExtResource("6_lb5lr")]
-position = Vector2(114, -62)
-rotation = 0.20944
+[node name="Fairy_Pine" parent="Path2D3/PathFollow2D/Node2D" instance=ExtResource("8_n2v6l")]
+position = Vector2(122, -14)
+rotation = 0.174533
 scale = Vector2(-1, 1)
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -382,8 +382,7 @@ rotates = false
 
 [node name="Node2D" type="Node2D" parent="Path2D2/PathFollow2D"]
 
-[node name="Fairy_Rock" parent="Path2D2/PathFollow2D/Node2D" instance=ExtResource("8_yty7t")]
-rotation = 0.359538
+[node name="Fairy_Pine" parent="Path2D2/PathFollow2D/Node2D" instance=ExtResource("8_n2v6l")]
 scale = Vector2(-1, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
