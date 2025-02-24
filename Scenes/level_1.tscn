@@ -41,6 +41,7 @@ hard_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-running-har
 easy_sheet = "res://Game/Lib/Composer/Music_Sheets/EASYPRISM.json"
 hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/prismriversisters-boss-hard.json"
 easy_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/EASYPRISMBOSS.json"
+win_dialogue = "res://Game/Levels/level1/Dialogue/level1_2.dialogue.json"
 
 [node name="Composer" type="Node" parent="Background" node_paths=PackedStringArray("emitter")]
 script = ExtResource("1_auj5i")

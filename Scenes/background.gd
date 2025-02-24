@@ -42,6 +42,10 @@ var ended = false
 @export_file("*.json") var hard_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 @export_file("*.json") var easy_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 
+@export_group("Dialogue")
+@export_file("*.json") var boss_dialogue = "res://Game/Levels/level1/Dialogue/level1_1.dialogue.json"
+@export_file("*.json") var win_dialogue = "res://Game/Levels/level1/Dialogue/level1_1.dialogue.json"
+
 # Loads music cheat
 @onready var composer = $Composer
 
@@ -155,9 +159,7 @@ func emit_note(note_data):
 		"Blue": note_instance.setColor(2)
 		"Green": note_instance.setColor(3)
 		"Yellow": note_instance.setColor(1)
-
-var json_data : JSON = preload("res://Game/Levels/level1/Dialogue/level1_1.dialogue.json")
-var json_data2 : JSON = preload("res://Game/Levels/level1/Dialogue/level1_1.dialogue.json")
+		
 # Boss transition/spawning
 func transition():
 	#Is boss?
@@ -180,7 +182,7 @@ func transition():
 		get_parent().add_child(boss_instance)
 		
 		# Maybe emit when boss is on screen?
-		SignalBus.dialogue_triggered.emit(json_data.data)
+		SignalBus.dialogue_triggered.emit(boss_dialogue.data)
 
 	
 	# Boss is in the scene
@@ -189,8 +191,7 @@ func transition():
 		# Now emit dialogue
 		#if boss_instance.health <= 0:
 			##print("test2")
-		var json_data3 : JSON = preload("res://json_test_3.json")
-		SignalBus.dialogue_triggered.emit(json_data3.data)
+		SignalBus.dialogue_triggered.emit(win_dialogue.data)
 		#level_two()
 		#else:
 		#SignalBus.dialogue_triggered.emit(json_data2.data)
