@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://fi5nld418t3r"]
+
+[ext_resource type="Texture2D" uid="uid://k3fwu5xcmmah" path="res://Game/Data/Utsuho_Reiuji/utsuhoportrait.png" id="1_imob8"]
+[ext_resource type="Script" path="res://Game/Lib/Resources/CharacterData.gd" id="2_ci8ol"]
+
+[resource]
+script = ExtResource("2_ci8ol")
+character_name = "Utsuho"
+expression = {
+"Neutral": ExtResource("1_imob8")
+}
