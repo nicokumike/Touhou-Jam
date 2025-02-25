@@ -55,8 +55,6 @@ func initialize():
 	bpm_label.text = str("BPM: ", bpm)
 	m_timer.wait_time = (60 / bpm) * 4
 	t_timer.wait_time = (60 / bpm) / 4
-	#print(t_timer.wait_time)
-	#prints(m_timer.wait_time, bpm)
 	var music = load(song_path)
 	music_player.stream = music
 	
@@ -66,7 +64,6 @@ func initialize():
 	populate_measures(sheet)
 
 func populate_measures(sheet):
-	#print(sheet)
 	for measure in sheet:
 		var new_measure: Measure = measure_node.instantiate()
 		sheet_container.add_child(new_measure)
@@ -79,7 +76,6 @@ func populate_measures(sheet):
 		new_measure.play_from_measure.connect(on_play_from_measure.bind())
 		
 		index[0] += 1
-		#print(measure)
 	sheet_container.move_child(new_measure_button, index[0] + 1)
 
 func on_play_from_measure(measure):
@@ -88,25 +84,20 @@ func on_play_from_measure(measure):
 	var measure_time = ((60 / bpm) * 4) * measure
 	music_player.play(float(measure_time))
 	current_measure = measure + 1
+	current_teenth = measure * 16
+	
+	#var new_teenth = current_teenth
+	print(current_teenth)
 	m_timer.start()
+	t_timer.start()
 	for count in measure + 1:
 		var to_highlight = measures_collection[count]
-		print(measures_collection[count])
 		to_highlight.modulate = Color.AQUA
 	
 
 func on_new_note(data):
-	#print("TOP LEVEL",data)
 	var index = [data.index[0] -1, data.index[1] -1, data.index[2] -1]
-	#print(index)
-	#var note = sheet[index[0]][index[1]][index[2]]
-	#print(note)
-	#note = data.note_data.text
-	#print(note)
-	#print(sheet[index[0]][index[1]][index[2]])
 	sheet[index[0]][index[1]][index[2]] = data.note_data.text
-	#print(sheet[index[0]][index[1]][index[2]])
-	#print(sheet)
 
 func save_to_file(content):
 	#var save_dir = "res://Game/Lib/Composer/Music_Sheets/"
@@ -126,21 +117,11 @@ func reset_measures():
 		for node in children:
 			var beats = node.get_children()
 			for beat in beats:
-				#print(beat)
 				var buttons = beat.get_children()
-				#print(buttons)
 				if buttons.size() > 0:
 					for i in 4:
 						var new_button = buttons[i]
-						##TODO reset button not modulate
-						#new_button.modulate = Color.WHITE
 						new_button.reset_color()
-						#print(new_button)
-						pass 
-			#print(kids)
-			#if node is not HBoxContainer:
-				#print(node)
-		#print(children)
 
 func _on_play_song_button_pressed() -> void:
 	music_player.play(0)
@@ -209,7 +190,6 @@ func _on_new_measure_button_pressed() -> void:
 	new_measure.count_label.text = str(sheet.size())
 	new_measure.measure_data = new_data
 	new_measure.on_changed_note.connect(on_new_note.bind())
-	#print(new_measure.measure_data)
 	sheet_container.move_child(new_measure_button, sheet.size() + 1)
 	#This only works by waiting a frame, dunno why
 	call_deferred("update_scroll")
@@ -220,9 +200,7 @@ func update_scroll():
 
 func _on_measure_timer_timeout():
 	var measures = $ScrollContainer/MeasureVContainer.get_children()
-	#prints(current_measure, measures, measures[current_measure -1])
 	var new_measure = measures[current_measure]
-	#print(new_measure)
 	if new_measure:
 		new_measure.modulate = Color.AQUA
 	current_measure += 1
@@ -236,15 +214,7 @@ func _on_teenth_timer_timeout():
 	var beats = teenth_measure.get_children()[0].get_children()
 	var current_beat = beats[((current_teenth / 4) % 4) + 2].get_children()
 	var new_teenth = current_beat[current_teenth % 4]
-	#var new_teenth = current_teenth % 4
-	#var current_beat = beats[(current_teenth % 4) + 2]
-	
-	#current_beat.modulate = Color.DARK_RED
 	new_teenth.modulate = Color.DARK_GREEN
 	
 	old_teenth = current_teenth
 	current_teenth += 1
-	#prints(current_teenth, teenth_measure, beats, current_beat, new_teenth)
-	#prints(beats, teenth_measure)
-	#prints((current_teenth / 4) % 4, current_beat)
-	#print(new_teenth)
