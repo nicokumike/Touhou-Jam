@@ -1822,11 +1822,5 @@
 				4
 			]
 		]
-	],
-<<<<<<< Updated upstream
-	"song":"res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3"
+	],	"song":"res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3"
 }
-=======
-	"song": "res://Game/Lib/Composer/Music_Sheets/Prismriver_Sisters_BOSS.mp3"
-}
->>>>>>> Stashed changes
