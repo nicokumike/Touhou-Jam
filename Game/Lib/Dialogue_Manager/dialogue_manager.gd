@@ -165,6 +165,7 @@ func _on_dialogue_animation_player_animation_finished(anim_name: StringName) -> 
 	elif anim_name == &"Fade_Out":
 		%TopDialogue.visible_characters = 0
 		%BottomDialogue.visible_characters = 0
+		visible = false
 		SignalBus.dialogue_finished.emit()
 #endregion
 	
