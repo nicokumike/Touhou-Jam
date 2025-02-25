@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://duw118u44yegl"
+path="res://.godot/imported/EAASY MODE TRIMMED.wav-46a04d5eda05998fdda1ade9a9d4288e.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/EAASY MODE TRIMMED.wav"
+dest_files=["res://.godot/imported/EAASY MODE TRIMMED.wav-46a04d5eda05998fdda1ade9a9d4288e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -2,7 +2,7 @@ extends Control
 
 @onready var menu_music = preload("res://Assets/Music/TSR_PRESS_START.mp3")
 @onready var wind = preload("res://Assets/Music/TSR_Wind.mp3")
-@onready var easy_modo = preload("res://Assets/SFX/EEEH_EASY MODE_.mp3")
+@onready var easy_modo = preload("res://Assets/SFX/EAASY MODE TRIMMED.wav")
 
 func _ready() -> void:
 	SignalBus.dialogue_finished.connect(_resume_cutscene)
@@ -42,11 +42,10 @@ func _on_start_pressed() -> void:
 	await get_tree().create_timer(1.5).timeout
 	tween.tween_property($BlackHouse/GPUParticles2D, "modulate", Color.TRANSPARENT, 0.2)
 	difficulty()
-	$AnimationPlayer.play("cutscene")
 	
 func difficulty():
 	$HBoxContainer.visible = true
-	get_tree().paused = true
+	#get_tree().paused = true
 	pass
 
 func _on_settings_pressed() -> void:
@@ -75,13 +74,14 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_easy_pressed() -> void:
 	#ur a baby
-	AudMan.play_quip(easy_modo, -12)
+	AudMan.play_sfx_wav(easy_modo, -12)
 	$AnimationPlayer.play("cutscene")
 	SignalBus.difficulty = "Easy"
 	$HBoxContainer/Easy.visible = false
 	$HBoxContainer/Hard.visible = false
 	print(SignalBus.difficulty)
-	get_tree().paused = false
+	#get_tree().paused = false
+	$AnimationPlayer.play("cutscene")
 
 
 func _on_hard_pressed() -> void:
@@ -91,7 +91,8 @@ func _on_hard_pressed() -> void:
 	$HBoxContainer/Easy.visible = false
 	$HBoxContainer/Hard.visible = false
 	print(SignalBus.difficulty)
-	get_tree().paused = false
+	#get_tree().paused = false
+	$AnimationPlayer.play("cutscene")
 
 
 func _on_wind_timer_timeout():
