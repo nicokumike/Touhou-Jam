@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d4v2n")
-music_sheet = "res://Game/Lib/Composer/Music_Sheets/utsuhoreiuji-boss-easy.json"
+music_sheet = "res://Game/Lib/Composer/Music_Sheets/utsuhoreiuji-running-easy.json"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
