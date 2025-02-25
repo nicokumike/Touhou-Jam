@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 	print(color)
 	
 	if Input.is_anything_pressed():
-		SignalBus.game_state_changed.emit("main")
+		SignalBus.game_state_changed.emit("Main")
 		queue_free()
