@@ -1,10 +1,7 @@
 extends Control
 
-var color = 1.0
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
+var color = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -14,3 +11,7 @@ func _process(delta: float) -> void:
 	else:
 		color = 0.0
 	print(color)
+	
+	if Input.is_anything_pressed():
+		SignalBus.game_state_changed.emit("main")
+		queue_free()
