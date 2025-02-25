@@ -236,7 +236,7 @@ func _on_dialogue_finished():
 			composer.music_sheet = easy_boss_sheet
 		elif SignalBus.difficulty == "Hard":
 			composer.music_sheet = hard_boss_sheet
-		#composer.music_sheet = hard_boss_sheet
+		#composer.music_sheet = easy_boss_sheet
 		composer.initialize()
 		
 		#Wait for loop to finish
