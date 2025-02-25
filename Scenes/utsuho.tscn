@@ -12,6 +12,7 @@ default_mix = 0.1
 resource_local_to_scene = true
 
 [node name="Utsuho" type="Node2D"]
+texture_filter = 3
 script = ExtResource("1_xkakd")
 
 [node name="Player_Utsuho" parent="." instance=ExtResource("2_r4af5")]

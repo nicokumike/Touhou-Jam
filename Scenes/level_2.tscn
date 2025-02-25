@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b775uf6udw3vl"]
+[gd_scene load_steps=21 format=3 uid="uid://b775uf6udw3vl"]
 
 [ext_resource type="Script" path="res://Scenes/background.gd" id="1_hsngw"]
 [ext_resource type="PackedScene" uid="uid://btuclynen63si" path="res://Scenes/background_volcano.tscn" id="2_db0tb"]
@@ -16,6 +16,16 @@
 [ext_resource type="JSON" path="res://Game/Levels/level2/Dialogue/level2_2.dialogue.json" id="8_0qgwu"]
 [ext_resource type="Theme" uid="uid://b3mt2m647n0e3" path="res://Assets/Themes/label.tres" id="8_c5sms"]
 [ext_resource type="PackedScene" uid="uid://cmy2yrct1t6pi" path="res://Game/Characters/Player/player_flandre.tscn" id="9_o3eyl"]
+[ext_resource type="Shader" path="res://Assets/Shaders/note.gdshader" id="12_j3epu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6seen"]
+shader = ExtResource("12_j3epu")
+shader_parameter/max_line_width = 31.05
+shader_parameter/min_line_width = 1.665
+shader_parameter/freq = 18.29
+shader_parameter/block_size = 3.4
+shader_parameter/starting_colour = Vector4(1, 0, 0, 1)
+shader_parameter/ending_colour = Vector4(1, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vjq"]
 size = Vector2(20, 350)
@@ -54,6 +64,7 @@ script = ExtResource("4_bs3am")
 
 [node name="FlandreContactPoint" type="Sprite2D" parent="Pointer"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_6seen")
 scale = Vector2(2, 2)
 texture = ExtResource("5_ba5mo")
 
