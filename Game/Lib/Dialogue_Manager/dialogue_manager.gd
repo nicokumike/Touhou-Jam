@@ -79,11 +79,11 @@ func progress_dialogue() -> void:
 				if %TopDialogueCont.visible:
 					%TopDialogueCover.visible = true
 				current_dialogue_box = dialogue_dictionary[dialogue_sequence[dialogue_index]["position"]]
+				%BottomSpeaker.text = dialogue_sequence[dialogue_index]["character_name"]
+				%BottomDialogue.text = dialogue_sequence[dialogue_index]["text"]
 				%BottomTextureRect.texture = dialogue_sequence[dialogue_index]["character_resource"].expression[dialogue_sequence[dialogue_index]["expression"]] \
 				if dialogue_sequence[dialogue_index]["character_resource"].expression.has(dialogue_sequence[dialogue_index]["expression"]) \
 				else dialogue_sequence[dialogue_index]["character_resource"].expression["Neutral"]
-				%BottomSpeaker.text = dialogue_sequence[dialogue_index]["character_name"]
-				%BottomDialogue.text = dialogue_sequence[dialogue_index]["text"]
 				%DialogueAnimationPlayer.play("reveal_text_bottom")
 			# Handle top dialogue
 			else:
@@ -91,11 +91,11 @@ func progress_dialogue() -> void:
 				if %BottomDialogueCont.visible:
 					%BottomDialogueCover.visible = true
 				current_dialogue_box = dialogue_dictionary[dialogue_sequence[dialogue_index]["position"]]
+				%TopSpeaker.text = dialogue_sequence[dialogue_index]["character_name"]
+				%TopDialogue.text = dialogue_sequence[dialogue_index]["text"]
 				%TopTextureRect.texture = dialogue_sequence[dialogue_index]["character_resource"].expression[dialogue_sequence[dialogue_index]["expression"]] \
 				if dialogue_sequence[dialogue_index]["character_resource"].expression.has(dialogue_sequence[dialogue_index]["expression"]) \
 				else dialogue_sequence[dialogue_index]["character_resource"].expression["Neutral"]
-				%TopSpeaker.text = dialogue_sequence[dialogue_index]["character_name"]
-				%TopDialogue.text = dialogue_sequence[dialogue_index]["text"]
 				%DialogueAnimationPlayer.play("reveal_text_top")
 		# Handle narration
 		else:
@@ -192,7 +192,7 @@ func load_character_resources(character_names: Array) -> void:
 			continue
 			
 		# Converting character name to lowercase for consistent file naming
-		var resource_path : String = CHARACTER_DATA_PATH % character_name.to_lower()
+		var resource_path : String = CHARACTER_DATA_PATH % character_name
 		
 		# Attempt to load the character resource
 		var character_resource : Resource = load(resource_path)
