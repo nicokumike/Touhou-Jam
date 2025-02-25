@@ -34,8 +34,16 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Beret Parade Armory Credits
 
+Tealy_Man: Music + Sheets
 Alex Cristoffanini / DiFigurati: Programming
-Tealy_Man: Sound"
+Nicolás Kumike / Ryou: Programming + Sheets
+Poph: Programming + Sheets
+Jere: Character Art
+Madi: Background Art
+Caleb: Background Art
+Martin / Jyunaut: Animations
+Max / Kulbaltz: Writing + Portraits
+"
 fit_content = true
 
 [node name="BackButton" type="Button" parent="."]
