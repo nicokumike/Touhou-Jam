@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Game/Lib/Level_Manager/level_manager.gd" id="1_4wjy5"]
 [ext_resource type="PackedScene" uid="uid://bc03syknr3he6" path="res://Scenes/level_1.tscn" id="2_06poh"]
 [ext_resource type="PackedScene" uid="uid://b775uf6udw3vl" path="res://Scenes/level_2.tscn" id="3_r3kwm"]
-[ext_resource type="PackedScene" uid="uid://bgnwifasovatj" path="res://Scenes/endscreen.tscn" id="4_vcrpg"]
+[ext_resource type="PackedScene" path="res://Scenes/endscreen.tscn" id="4_vcrpg"]
 
 [node name="Level_Manager" type="Node"]
 script = ExtResource("1_4wjy5")
