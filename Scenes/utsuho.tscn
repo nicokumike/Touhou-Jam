@@ -1,9 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgtytybqry53w"]
+[gd_scene load_steps=6 format=3 uid="uid://btsyp5tmtj1gn"]
 
-[ext_resource type="PackedScene" uid="uid://kpifd68fnr6p" path="res://Game/Characters/Player/player_utsuho.tscn" id="1_iamfi"]
+[ext_resource type="Script" path="res://Scenes/boss.gd" id="1_xkakd"]
+[ext_resource type="PackedScene" uid="uid://dwupi0iwugm1a" path="res://Game/Characters/Player/utsuhoBOSS.tscn" id="2_r4af5"]
+[ext_resource type="SpineAtlasResource" uid="uid://31q0ryklov0o" path="res://Assets/Characters/Base/Base.atlas" id="3_x253p"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://cskdu3eeria7w" path="res://Assets/Characters/Base/Base.skel" id="4_02y77"]
+
+[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_gmx57"]
+atlas_res = ExtResource("3_x253p")
+skeleton_file_res = ExtResource("4_02y77")
+default_mix = 0.1
+resource_local_to_scene = true
 
 [node name="Utsuho" type="Node2D"]
+script = ExtResource("1_xkakd")
 
-[node name="Player_Utsuho" parent="." instance=ExtResource("1_iamfi")]
-position = Vector2(-155, 263)
-scale = Vector2(-1, 1)
+[node name="Player_Utsuho" parent="." instance=ExtResource("2_r4af5")]
+position = Vector2(-106, 72)
+scale = Vector2(-1.5, 1.5)
+
+[node name="AnimationHandler_Spine" parent="Player_Utsuho" index="0"]
+skeleton_data_res = SubResource("SpineSkeletonDataResource_gmx57")
+
+[editable path="Player_Utsuho"]

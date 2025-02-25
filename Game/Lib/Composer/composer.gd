@@ -40,7 +40,7 @@ func initialize():
 	#Preloads the song
 	#emitter.music = load(song_path)
 	#I'm doing the trigger here but only because THE LEVEL CODE IS DIRTY AND GROSS, it will have to be fixed
-	#AudMan.play_music(emitter.music, -20)
+	#AudMan.play_music(emitter.music, -20)s
 	#AudMan.play_music(music)
 	song_name = sheet_data.name
 	sheet = sheet_data.sheet

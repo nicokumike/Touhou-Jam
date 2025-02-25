@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwupi0iwugm1a"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://31q0ryklov0o" path="res://Assets/Characters/Base/Base.atlas" id="2_umsvg"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://cskdu3eeria7w" path="res://Assets/Characters/Base/Base.skel" id="3_8u262"]
+[ext_resource type="Script" path="res://Game/Lib/Animation_Handler/Spine/animation_handler_spine.gd" id="3_xg8n4"]
+[ext_resource type="Script" path="res://addons/SpineAnimationAsset/spine_animation_asset.gd" id="4_53kod"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://dl8kow7042sab" path="res://Assets/Characters/Base/base_data_resource.tres" id="5_i4h3y"]
+
+[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_r3ac5"]
+atlas_res = ExtResource("2_umsvg")
+skeleton_file_res = ExtResource("3_8u262")
+default_mix = 0.1
+resource_local_to_scene = true
+
+[sub_resource type="Resource" id="Resource_jaao4"]
+script = ExtResource("4_53kod")
+skeleton_data_resource = ExtResource("5_i4h3y")
+animation_name = "Flandre/flying"
+animation_index = 1
+loop = true
+track = 0
+mix_duration = -1.0
+speed = 1.0
+
+[node name="Player_Utsuho" type="Node2D"]
+
+[node name="AnimationHandler_Spine" type="SpineSprite" parent="."]
+skeleton_data_res = SubResource("SpineSkeletonDataResource_r3ac5")
+preview_skin = "Utsuho"
+preview_animation = "Flandre/idle"
+preview_frame = false
+preview_time = 0.0
+script = ExtResource("3_xg8n4")
+skinName = "Utsuho"
+initial_animation = SubResource("Resource_jaao4")

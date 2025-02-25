@@ -1,36 +1,36 @@
 {
-    "0": {
-        "Character": ["Flandre", "Smile", "Bottom"],
-        "Text": "You're fun to play with, how pathetic you're already worn out. I'll ask again, where is the Resonate?"
-    },
+	"0": {
+		"Character": ["Flandre", "Smile", "Bottom"],
+		"Text": "You're fun to play with, how pathetic you're already worn out. I'll ask again, where is the Resonate?"
+	},
 
-    "1": {
-        "Character": ["Utsuho", "Annoyed", "Top"],
-        "Text": "This can't be... the music doesn't affect her."
-    },
+	"1": {
+		"Character": ["Utsuho", "Annoyed", "Top"],
+		"Text": "This can't be... the music doesn't affect her."
+	},
 
-    "2": {
-        "Character": ["Flandre", "Neutral", "Bottom"],
-        "Text": "Probably 'cause I listen to records on the Resonate all the time at home!"
-    },
+	"2": {
+		"Character": ["Flandre", "Neutral", "Bottom"],
+		"Text": "Probably 'cause I listen to records on the Resonate all the time at home!"
+	},
 
-    "3": {
-        "Character": ["Utsuho", "Annoyed", "Top"],
-        "Text": "I told you the rhapsody began. It is... at the mouth of the volcano."
-    },
+	"3": {
+		"Character": ["Utsuho", "Annoyed", "Top"],
+		"Text": "I told you the rhapsody began. It is... at the mouth of the volcano."
+	},
 
-    "4": {
-        "Character": ["Flandre", "Neutral", "Bottom"],
-        "Text": "That's what you've been playing this whole time? I thought something bad was supposed to happen."
-    },
+	"4": {
+		"Character": ["Flandre", "Neutral", "Bottom"],
+		"Text": "That's what you've been playing this whole time? I thought something bad was supposed to happen."
+	},
 	
 	"5": {
-        "Character": ["Utsuho", "Annoyed", "Top"],
-        "Text": "..."
-    },
+		"Character": ["Utsuho", "Annoyed", "Top"],
+		"Text": "..."
+	},
 	
 	"6": {
-        "Character": ["Flandre", "Grin", "Bottom"],
-        "Text": "It was a nice song, Utsuho. Rest up now, I'll return when I can for more fun."
-    }
+		"Character": ["Flandre", "Grin", "Bottom"],
+		"Text": "It was a nice song, Utsuho. Rest up now, I'll return when I can for more fun."
+	}
 }

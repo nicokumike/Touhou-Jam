@@ -43,8 +43,8 @@ var ended = false
 @export_file("*.json") var easy_boss_sheet = "res://Game/Lib/Composer/Music_Sheets/debugsheet.json"
 
 @export_group("Dialogue")
-@export_file("*.json") var boss_dialogue = "res://Game/Levels/level1/Dialogue/level1_1.dialogue.json"
-@export_file("*.json") var win_dialogue = "res://Game/Levels/level1/Dialogue/level1_1.dialogue.json"
+@export var boss_dialogue = preload("res://Game/Levels/level1/Dialogue/level1_1.dialogue.json")
+@export var win_dialogue = preload("res://Game/Levels/level1/Dialogue/level1_1.dialogue.json")
 
 # Loads music cheat
 @onready var composer = $Composer
@@ -236,7 +236,7 @@ func _on_dialogue_finished():
 			composer.music_sheet = easy_boss_sheet
 		elif SignalBus.difficulty == "Hard":
 			composer.music_sheet = hard_boss_sheet
-		#composer.music_sheet = hard_boss_sheet
+		#composer.music_sheet = easy_boss_sheet
 		composer.initialize()
 		
 		#Wait for loop to finish
