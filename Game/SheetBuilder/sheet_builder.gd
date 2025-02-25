@@ -12,7 +12,8 @@ class_name SheetBuilder
 @onready var scroll_container: ScrollContainer = $ScrollContainer
 @onready var sheet_container: VBoxContainer = $ScrollContainer/MeasureVContainer
 @onready var new_measure_button: Button = $ScrollContainer/MeasureVContainer/NewMeasureButton
-@onready var m_timer: Timer = $MeasureTimer
+@onready var m_timer: Timer = $Node/MeasureTimer
+@onready var t_timer: Timer = $Node/TeenthTimer
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 var music
@@ -22,6 +23,8 @@ var song_name
 var sheet = []
 var index = [0,0,0]
 var current_measure = 1
+var old_teenth: int
+var current_teenth = 1
 
 #This could be made into a global data type
 var legend = {
@@ -51,6 +54,8 @@ func initialize():
 	bpm = sheet_data.bpm
 	bpm_label.text = str("BPM: ", bpm)
 	m_timer.wait_time = (60 / bpm) * 4
+	t_timer.wait_time = (60 / bpm) / 4
+	#print(t_timer.wait_time)
 	#prints(m_timer.wait_time, bpm)
 	var music = load(song_path)
 	music_player.stream = music
@@ -90,17 +95,6 @@ func on_play_from_measure(measure):
 		to_highlight.modulate = Color.AQUA
 	
 
-	#var measures = $ScrollContainer/MeasureVContainer.get_children()
-	##prints(current_measure, measures, measures[current_measure -1])
-	#var new_measure = measures[current_measure]
-	##print(new_measure)
-	#if new_measure:
-		#new_measure.modulate = Color.AQUA
-	#current_measure += 1
-	#if current_measure == measures.size():
-		#m_timer.stop()
-		#current_measure = 1
-
 func on_new_note(data):
 	#print("TOP LEVEL",data)
 	var index = [data.index[0] -1, data.index[1] -1, data.index[2] -1]
@@ -125,24 +119,42 @@ func save_to_file(content):
 func reset_measures():
 	var measures = $ScrollContainer/MeasureVContainer.get_children()
 	current_measure = 1
+	current_teenth = 1
 	for measure in measures:
 		measure.modulate = Color.WHITE
-	pass
+		var children = measure.get_children()
+		for node in children:
+			var beats = node.get_children()
+			for beat in beats:
+				#print(beat)
+				var buttons = beat.get_children()
+				#print(buttons)
+				if buttons.size() > 0:
+					for i in 4:
+						var new_button = buttons[i]
+						##TODO reset button not modulate
+						#new_button.modulate = Color.WHITE
+						new_button.reset_color()
+						#print(new_button)
+						pass 
+			#print(kids)
+			#if node is not HBoxContainer:
+				#print(node)
+		#print(children)
 
 func _on_play_song_button_pressed() -> void:
-	#AudMan.play_music(music)
 	music_player.play(0)
 	m_timer.start()
+	t_timer.start()
 	var measures = $ScrollContainer/MeasureVContainer.get_children()
-	#prints(current_measure, measures, measures[current_measure -1])
 	var new_measure = measures[0]
 	if new_measure:
 		new_measure.modulate = Color.AQUA
 
 func _on_stop_button_pressed() -> void:
-	#AudMan.stop_music()
 	music_player.stop()
 	m_timer.stop()
+	t_timer.stop()
 	m_timer.wait_time = (60 / bpm) * 4
 	reset_measures()
 	pass
@@ -217,3 +229,22 @@ func _on_measure_timer_timeout():
 	if current_measure == measures.size():
 		m_timer.stop()
 		current_measure = 1
+
+func _on_teenth_timer_timeout():
+	var measures = $ScrollContainer/MeasureVContainer.get_children()
+	var teenth_measure = measures[current_teenth / 16]
+	var beats = teenth_measure.get_children()[0].get_children()
+	var current_beat = beats[((current_teenth / 4) % 4) + 2].get_children()
+	var new_teenth = current_beat[current_teenth % 4]
+	#var new_teenth = current_teenth % 4
+	#var current_beat = beats[(current_teenth % 4) + 2]
+	
+	#current_beat.modulate = Color.DARK_RED
+	new_teenth.modulate = Color.DARK_GREEN
+	
+	old_teenth = current_teenth
+	current_teenth += 1
+	#prints(current_teenth, teenth_measure, beats, current_beat, new_teenth)
+	#prints(beats, teenth_measure)
+	#prints((current_teenth / 4) % 4, current_beat)
+	#print(new_teenth)

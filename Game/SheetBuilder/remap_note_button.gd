@@ -15,6 +15,8 @@ var note = {
 
 signal new_note
 
+var color = Color.WHITE
+
 func _init():
 	toggle_mode = true
 	theme_type_variation = "RemapButton"
@@ -23,7 +25,12 @@ func _init():
 func _ready():
 	set_process_unhandled_input(false)
 	if !(num % 2):
-		modulate = Color.LIGHT_SLATE_GRAY
+		color = Color.LIGHT_SLATE_GRAY
+		modulate = color
+
+func reset_color():
+	modulate = color
+	pass
 
 
 func _toggled(new_button_pressed):
@@ -130,17 +137,24 @@ func send_note():
 	##text = "%s" % InputMap.action_get_events(note)[0].as_text()
 	#pass
 
-func setColor(color):
-	match (color):
+func setColor(new_color):
+	match (new_color):
 		"Y":
-			modulate = Color.YELLOW
+			color = Color.YELLOW
+			modulate = color
 			#type = 1
 		"B":
-			modulate = Color.BLUE
+			color = Color.BLUE
+			modulate = color
 			#type = 2
 		"G":
-			modulate = Color.GREEN
+			color = Color.GREEN
+			#modulate = Color.GREEN
+			modulate = color
 			#type = 3
 		"R":
-			modulate = Color.RED
+			color = Color.RED
+			#modulate = Color.RED
+			modulate = color
 			#type = 4
+	#print(color)

@@ -103,13 +103,17 @@ text = "New Measure +"
 [node name="Player_Flandre" parent="." instance=ExtResource("3_gp34d")]
 position = Vector2(215, 462)
 
-[node name="MeasureTimer" type="Timer" parent="."]
-
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="FileDialog" type="FileDialog" parent="."]
 position = Vector2i(200, 200)
 size = Vector2i(600, 500)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="TeenthTimer" type="Timer" parent="Node"]
+
+[node name="MeasureTimer" type="Timer" parent="Node"]
 
 [connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
@@ -119,4 +123,5 @@ size = Vector2i(600, 500)
 [connection signal="pressed" from="VBoxContainer2/StopButton" to="." method="_on_stop_button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/TestButton" to="." method="_on_test_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/MeasureVContainer/NewMeasureButton" to="." method="_on_new_measure_button_pressed"]
-[connection signal="timeout" from="MeasureTimer" to="." method="_on_measure_timer_timeout"]
+[connection signal="timeout" from="Node/TeenthTimer" to="." method="_on_teenth_timer_timeout"]
+[connection signal="timeout" from="Node/MeasureTimer" to="." method="_on_measure_timer_timeout"]
