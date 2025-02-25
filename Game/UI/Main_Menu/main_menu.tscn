@@ -913,10 +913,10 @@ autostart = true
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/MusicRoom" to="." method="_on_music_room_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="HBoxContainer/Easy" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Easy" to="." method="_on_easy_pressed"]
-[connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/Easy" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_hard_pressed"]
+[connection signal="pressed" from="HBoxContainer/Hard" to="." method="_on_button_2_pressed"]
 [connection signal="timeout" from="WindTimer" to="." method="_on_wind_timer_timeout"]
 
 [editable path="BlackHouse/Flandre_Chibi"]
